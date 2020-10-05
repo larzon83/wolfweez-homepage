@@ -12,11 +12,11 @@ export default {
 			{ hid: 'description', name: 'description', content: 'bla bla bla' }
 		],
 		link: [
-			{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
-			{
-				rel: 'stylesheet',
-				href: 'https://fonts.googleapis.com/css?family=Open+Sans:300,400,600'
-			}
+			{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
+			// {
+			// 	rel: 'stylesheet',
+			// 	href: 'https://fonts.googleapis.com/css?family=Open+Sans:300,400,600'
+			// }
 		]
 	},
 
@@ -58,10 +58,11 @@ export default {
 		customVariables: ['~/assets/variables.scss'],
 		optionsPath: './config/vuetify.options.js',
 		treeShake: true,
-		defaultAssets: {
-			font: false
-			// icons: 'md' // TODO: md was the standard used in vuetify 1.5 -> new standard is mdi -> change later or better remove all together
-		}
+		defaultAssets: false
+		// defaultAssets: {
+		// 	font: false
+		// 	// icons: 'md' // TODO: md was the standard used in vuetify 1.5 -> new standard is mdi -> change later or better remove all together
+		// }
 	},
 
 	// Build Configuration (https://go.nuxtjs.dev/config-build)
