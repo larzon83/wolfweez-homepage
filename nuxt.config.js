@@ -1,5 +1,3 @@
-import colors from 'vuetify/es5/util/colors'
-
 export default {
 	// Target (https://go.nuxtjs.dev/config-target)
 	target: 'static',
@@ -11,9 +9,15 @@ export default {
 		meta: [
 			{ charset: 'utf-8' },
 			{ name: 'viewport', content: 'width=device-width, initial-scale=1' },
-			{ hid: 'description', name: 'description', content: '' }
+			{ hid: 'description', name: 'description', content: 'bla bla bla' }
 		],
-		link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]
+		link: [
+			{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+			{
+				rel: 'stylesheet',
+				href: 'https://fonts.googleapis.com/css?family=Open+Sans:300,400,600'
+			}
+		]
 	},
 
 	// Global CSS (https://go.nuxtjs.dev/config-css)
@@ -38,33 +42,25 @@ export default {
 		// https://go.nuxtjs.dev/axios
 		'@nuxtjs/axios',
 		// https://go.nuxtjs.dev/pwa
-		'@nuxtjs/pwa',
+		'@nuxtjs/pwa'
 		// https://go.nuxtjs.dev/content
-		'@nuxt/content'
+		// '@nuxt/content'
 	],
 
 	// Axios module configuration (https://go.nuxtjs.dev/config-axios)
 	axios: {},
 
 	// Content module configuration (https://go.nuxtjs.dev/content-config)
-	content: {},
+	// content: {},
 
 	// Vuetify module configuration (https://go.nuxtjs.dev/config-vuetify)
 	vuetify: {
 		customVariables: ['~/assets/variables.scss'],
-		theme: {
-			dark: true,
-			themes: {
-				dark: {
-					primary: colors.blue.darken2,
-					accent: colors.grey.darken3,
-					secondary: colors.amber.darken3,
-					info: colors.teal.lighten1,
-					warning: colors.amber.base,
-					error: colors.deepOrange.accent4,
-					success: colors.green.accent3
-				}
-			}
+		optionsPath: './config/vuetify.options.js',
+		treeShake: true,
+		defaultAssets: {
+			font: false
+			// icons: 'md' // TODO: md was the standard used in vuetify 1.5 -> new standard is mdi -> change later or better remove all together
 		}
 	},
 
