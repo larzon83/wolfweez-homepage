@@ -53,6 +53,18 @@ export default {
 	// Axios module configuration (https://go.nuxtjs.dev/config-axios)
 	axios: {},
 
+	pwa: {
+		manifest: {
+			name: 'WW',
+			short_name: 'WW',
+			description: 'WW Test site',
+			background_color: '#000',
+			theme_color: '#000',
+			lang: 'de-DE',
+			orientation: 'portrait-primary'
+		}
+	},
+
 	// Content module configuration (https://go.nuxtjs.dev/content-config)
 	// content: {},
 

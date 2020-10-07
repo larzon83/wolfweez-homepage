@@ -1,6 +1,6 @@
 <template>
 	<v-bottom-navigation>
-		<v-btn @click="showDrawer">
+		<v-btn aria-label="Menü öffnen" role="button" @click="showDrawer">
 			<span>MORE</span>
 			<v-icon>mdi-history</v-icon>
 		</v-btn>
