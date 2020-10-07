@@ -15,7 +15,7 @@ import Nav from '~/components/Nav'
 import Toolbar from '~/components/Toolbar'
 
 export default {
-	name: 'Default',
+	name: 'TestLayout',
 	components: {
 		Nav,
 		Toolbar
