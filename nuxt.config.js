@@ -36,6 +36,8 @@ export default {
 	buildModules: [
 		// https://go.nuxtjs.dev/eslint
 		'@nuxtjs/eslint-module',
+		// https://go.nuxtjs.dev/pwa
+		'@nuxtjs/pwa',
 		// https://go.nuxtjs.dev/vuetify
 		'@nuxtjs/vuetify'
 	],
@@ -43,9 +45,7 @@ export default {
 	// Modules (https://go.nuxtjs.dev/config-modules)
 	modules: [
 		// https://go.nuxtjs.dev/axios
-		'@nuxtjs/axios',
-		// https://go.nuxtjs.dev/pwa
-		'@nuxtjs/pwa'
+		'@nuxtjs/axios'
 		// https://go.nuxtjs.dev/content
 		// '@nuxt/content'
 	],
