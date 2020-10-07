@@ -1,6 +1,7 @@
 export default {
 	// Target (https://go.nuxtjs.dev/config-target)
-	target: 'server',
+	target: 'static',
+	// target: 'server',
 
 	serverMiddleware: ['~/server-middleware/log.js'],
 
