@@ -1,0 +1,81 @@
+{
+	"folders": [
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+		"telemetry.enableCrashReporter": false,
+		"telemetry.enableTelemetry": false,
+		"editor.renderControlCharacters": true,
+		"editor.detectIndentation": false,
+		"editor.tabSize": 2,
+		"editor.insertSpaces": false,
+		"editor.codeActionsOnSave": {
+			"source.fixAll.eslint": true
+		},
+		"files.trimTrailingWhitespace": true,
+		"javascript.format.insertSpaceAfterSemicolonInForStatements": false,
+		"prettier.useTabs": true,
+		"prettier.tabWidth": 2,
+		"prettier.semi": false,
+		"prettier.endOfLine": "lf",
+		"prettier.singleQuote": true,
+		// "prettier.eslintIntegration": true,
+		// "eslint.validate": [
+		// 	{ "language": "html", "autoFix": true },
+		// 	{ "language": "vue", "autoFix": true },
+		// 	{ "language": "javascript", "autoFix": true },
+		// 	{ "language": "javascriptreact", "autoFix": true }
+		// ],
+		// "eslint.autoFixOnSave": true,
+		"eslint.alwaysShowStatus": true,
+		"vetur.format.options.useTabs": true,
+		"vetur.format.options.tabSize": 2,
+		"vetur.format.defaultFormatter.html": "prettier",
+		"vetur.validation.template": false,
+		"todohighlight.keywords": [
+			{
+				"text": "NOTE:",
+				"color": "#ffffff",
+				"backgroundColor": "#28C732"
+			},
+			{
+				"text": "OXYGEN:",
+				"color": "#ffffff",
+				"backgroundColor": "#A21A56"
+			}
+		],
+		"todo-tree.tree.showInExplorer": false,
+		"todo-tree.highlights.customHighlight": {
+			"TODO": {
+				"iconColour": "#FCB021"
+			},
+			"FIXME": {
+				"iconColour": "#E9477F"
+			},
+			"NOTE": {
+				"iconColour": "#28C732"
+			},
+			"OXYGEN": {
+				"iconColour": "#A21A56"
+			}
+		},
+		"todo-tree.filtering.excludeGlobs": [
+			"**/node_modules/**",
+			"**/dist/**",
+			"**/build/**",
+			"**/.vscode/**",
+			"**/.github/**",
+			"**/_output/**",
+			"**/*.min.*",
+			"**/*.map",
+			"**/.next/**"
+		],
+		"diffEditor.ignoreTrimWhitespace": true,
+		"files.associations": {
+			".env-cmdrc.example": "json",
+			".env-cmdrc": "json"
+		}
+	}
+}

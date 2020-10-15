@@ -1,11 +1,21 @@
 <template>
-	<v-row justify="center" align="center">
-		<v-col cols="12" sm="8" md="6">
+	<v-row justify="center" align="center" style="margin-top: -25px" no-gutters>
+		<!-- <v-col cols="12" sm="8" md="6"> -->
+		<v-col cols="12">
 			<div class="text-center">
-				<logo />
-				<vuetify-logo />
+				<v-img
+					:src="require('~/assets/img/logo.png')"
+					:alt="'Logo'"
+					eager
+					class="px-8"
+					min-height="100"
+					:transition="false"
+					position="top center"
+					contain
+				></v-img>
+				<!-- max-width="220" -->
 			</div>
-			<v-card>
+			<v-card color="#666">
 				<v-card-title class="headline">
 					Welcome to the Vuetify + Nuxt.js template
 				</v-card-title>
@@ -54,6 +64,33 @@
 					<div class="text-xs-right">
 						<em><small>&mdash; John Leider</small></em>
 					</div>
+					<p>
+						Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
+						eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+						ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+						aliquip ex ea commodo consequat. Duis aute irure dolor in
+						reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+						pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+						culpa qui officia deserunt mollit anim id est laborum.
+					</p>
+					<p>
+						Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
+						eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+						ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+						aliquip ex ea commodo consequat. Duis aute irure dolor in
+						reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+						pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+						culpa qui officia deserunt mollit anim id est laborum.
+					</p>
+					<p>
+						Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
+						eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+						ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+						aliquip ex ea commodo consequat. Duis aute irure dolor in
+						reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+						pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+						culpa qui officia deserunt mollit anim id est laborum.
+					</p>
 					<hr class="my-3" />
 					<a
 						href="https://nuxtjs.org/"
@@ -81,13 +118,7 @@
 </template>
 
 <script>
-import Logo from '~/components/Logo.vue'
-import VuetifyLogo from '~/components/VuetifyLogo.vue'
-
 export default {
-	components: {
-		Logo,
-		VuetifyLogo
-	}
+	name: 'Index'
 }
 </script>

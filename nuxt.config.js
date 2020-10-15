@@ -3,7 +3,7 @@ export default {
 	target: 'static',
 	// target: 'server',
 
-	serverMiddleware: ['~/server-middleware/log.js'],
+	// serverMiddleware: ['~/server-middleware/log.js'],
 
 	// Global page headers (https://go.nuxtjs.dev/config-head)
 	head: {
@@ -15,16 +15,21 @@ export default {
 			{ hid: 'description', name: 'description', content: 'bla bla bla' }
 		],
 		link: [
-			{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
+			{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
 			// {
 			// 	rel: 'stylesheet',
 			// 	href: 'https://fonts.googleapis.com/css?family=Open+Sans:300,400,600'
 			// }
+			{
+				rel: 'stylesheet',
+				href:
+					'https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap'
+			}
 		]
 	},
 
 	// Global CSS (https://go.nuxtjs.dev/config-css)
-	css: [],
+	css: ['~/assets/style/main.scss'],
 
 	// Plugins to run before rendering page (https://go.nuxtjs.dev/config-plugins)
 	plugins: [],
@@ -73,11 +78,11 @@ export default {
 		customVariables: ['~/assets/variables.scss'],
 		optionsPath: './config/vuetify.options.js',
 		treeShake: true,
-		defaultAssets: false
-		// defaultAssets: {
-		// 	font: false
-		// 	// icons: 'md' // TODO: md was the standard used in vuetify 1.5 -> new standard is mdi -> change later or better remove all together
-		// }
+		// defaultAssets: false
+		defaultAssets: {
+			font: false
+			// icons: 'md'
+		}
 	},
 
 	// Build Configuration (https://go.nuxtjs.dev/config-build)
