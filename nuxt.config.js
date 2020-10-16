@@ -1,6 +1,6 @@
 export default {
-	ssr: process.env.NUXT_ENV_IS_PREVIEW !== 'true',
-	target: process.env.NUXT_ENV_IS_PREVIEW === 'true' ? 'server' : 'static',
+	ssr: process.env.NUXT_ENV_IS_SPA !== 'true',
+	target: process.env.NUXT_ENV_IS_SPA === 'true' ? 'server' : 'static',
 
 	// serverMiddleware: ['~/server-middleware/log.js'],
 

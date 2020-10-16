@@ -3,7 +3,7 @@ export const sbData = ({ ctx, path = '', startsWith = '' }) => {
 	const version =
 		ctx.query._storyblok ||
 		ctx.isDev ||
-		process.env.NUXT_ENV_IS_PREVIEW === 'true'
+		process.env.NUXT_ENV_STORYBLOK_PREVIEW === 'true'
 			? 'draft'
 			: 'published'
 
