@@ -1,14 +1,13 @@
 <template>
 	<v-layout>
 		<v-flex class="text-center">
-			<div>This page uses the "testLayout"</div>
+			<div>Line-Up</div>
 		</v-flex>
 	</v-layout>
 </template>
 
 <script>
 export default {
-	name: 'Test',
-	layout: 'testLayout'
+	name: 'LineUp'
 }
 </script>

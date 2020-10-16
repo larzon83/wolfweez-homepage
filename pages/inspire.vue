@@ -13,3 +13,9 @@
 		</v-flex>
 	</v-layout>
 </template>
+
+<script>
+export default {
+	name: 'Inspire'
+}
+</script>

@@ -1,7 +1,6 @@
 export default {
-	// Target (https://go.nuxtjs.dev/config-target)
-	target: 'static',
-	// target: 'server',
+	ssr: process.env.NUXT_ENV_IS_PREVIEW !== 'true',
+	target: process.env.NUXT_ENV_IS_PREVIEW === 'true' ? 'server' : 'static',
 
 	// serverMiddleware: ['~/server-middleware/log.js'],
 
@@ -44,7 +43,14 @@ export default {
 		// https://go.nuxtjs.dev/pwa
 		'@nuxtjs/pwa',
 		// https://go.nuxtjs.dev/vuetify
-		'@nuxtjs/vuetify'
+		'@nuxtjs/vuetify',
+		[
+			'storyblok-nuxt',
+			{
+				accessToken: process.env.STORYBLOK_TOKEN,
+				cacheProvider: 'memory'
+			}
+		]
 	],
 
 	// Modules (https://go.nuxtjs.dev/config-modules)
