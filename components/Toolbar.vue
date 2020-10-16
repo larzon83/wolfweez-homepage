@@ -130,17 +130,6 @@ export default {
 			return require(`~/assets/icons/menu-${fileAddition}.svg`)
 		}
 	}
-
-	// watch: {
-	// 	'$store.state.general.moreClicked': {
-	// 		handler(val) {
-	// 			if (val === true) {
-	// 				this.drawer = true
-	// 				this.$store.commit('general/RESET_MORE')
-	// 			}
-	// 		}
-	// 	}
-	// }
 }
 </script>
 
