@@ -1,6 +1,15 @@
 <template>
 	<div>
-		<v-navigation-drawer v-model="drawer" fixed app right temporary>
+		<v-navigation-drawer
+			v-model="drawer"
+			fixed
+			app
+			right
+			temporary
+			width="100vw"
+			height="auto"
+			style="padding-bottom: 100px"
+		>
 			<v-list>
 				<v-list-item
 					v-for="(item, i) in items"
@@ -27,7 +36,7 @@
 				elevate: swapToolbar
 			}"
 		>
-			<!-- <v-toolbar-title v-text="title" /> -->
+			<!-- <v-toolbar-title v-text="toolbarTitle" /> -->
 			<v-spacer />
 			<!-- <v-app-bar-nav-icon @click.stop="drawer = !drawer" /> -->
 
@@ -52,6 +61,17 @@
 				color="#202020"
 				class="ma-0"
 				>Line-up</v-btn
+			>
+			<v-btn
+				:ripple="false"
+				to="/bands"
+				nuxt
+				active-class="aaa"
+				text
+				tile
+				color="#202020"
+				class="ma-0"
+				>Bands</v-btn
 			>
 
 			<v-btn
@@ -88,20 +108,19 @@ export default {
 			drawer: false,
 			items: [
 				{
-					title: 'Welcome',
+					title: 'Home',
 					to: '/'
 				},
 				{
-					title: 'Inspire',
-					to: '/inspire'
+					title: 'Line-up',
+					to: '/line-up'
 				},
 				{
-					title: 'test',
-					to: '/test'
+					title: 'Bands',
+					to: '/bands'
 				}
 			],
-			right: true,
-			title: 'Vuetify.js'
+			toolbarTitle: 'WW'
 		}
 	},
 
@@ -137,6 +156,10 @@ export default {
 	&:before {
 		opacity: 0 !important;
 	}
+}
+
+.v-navigation-drawer--close.v-navigation-drawer--temporary {
+	transform: translateY(-13vw) !important;
 }
 
 // .v-app-bar ::v-deep .v-toolbar__content {

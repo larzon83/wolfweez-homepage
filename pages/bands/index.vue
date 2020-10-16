@@ -1,6 +1,6 @@
 <template>
 	<section>
-		<h2 class="py-10 text-center font-bold text-4xl">Bands</h2>
+		<h2 class="py-10 text-center font-bold text-4xl">Alle Bands</h2>
 		<ul class="flex py-6 mb-6">
 			<li
 				v-for="band in stories"
