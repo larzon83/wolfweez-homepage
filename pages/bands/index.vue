@@ -16,9 +16,13 @@
 					<h2 class="pt-2 pb-4 text-2xl font-bold">
 						{{ band.content.name }}
 					</h2>
-					<p class="pb-6 leading-relaxed">
+					<rich-text-renderer
+						v-if="band.content.description_short"
+						:document="band.content.description_short"
+					/>
+					<!-- <p class="pb-6 leading-relaxed">
 						{{ band.content.description }}
-					</p>
+					</p> -->
 				</nuxt-link>
 				<p v-else class="px-4 py-2 text-white bg-red-700 text-center rounded">
 					This content loads on save. <strong>Save the entry & reload.</strong>

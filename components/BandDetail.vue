@@ -12,8 +12,7 @@
 			position="top center"
 			contain
 		></v-img>
-		<p>{{ band.description }}</p>
-		<!-- <rich-text-renderer :document="band.body" /> -->
+		<rich-text-renderer v-if="band.description" :document="band.description" />
 	</div>
 </template>
 
