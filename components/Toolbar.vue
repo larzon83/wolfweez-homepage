@@ -27,7 +27,8 @@
 		</v-navigation-drawer>
 		<v-app-bar
 			app
-			fixed
+			:absolute="!swapToolbar"
+			:fixed="swapToolbar"
 			tile
 			:flat="!swapToolbar"
 			:color="swapToolbar ? '#202020' : 'transparent'"
@@ -51,6 +52,9 @@
 				tile
 				color="#202020"
 				class="ma-0"
+				:class="{
+					'white--text': swapToolbar
+				}"
 				>{{ item.title }}</v-btn
 			>
 
