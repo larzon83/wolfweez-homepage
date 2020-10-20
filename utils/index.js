@@ -1,5 +1,5 @@
 // Get Data From Storyblok -> for use with asyncData
-export const sbData = ({ ctx, path = '', startsWith = '' }) => {
+export const sbData = ({ ctx, path = '', resolve = '', startsWith = '' }) => {
 	const version =
 		ctx.query._storyblok ||
 		ctx.isDev ||
@@ -9,10 +9,12 @@ export const sbData = ({ ctx, path = '', startsWith = '' }) => {
 
 	return ctx.app.$storyapi
 		.get(`cdn/stories${path}`, {
+			resolve_relations: resolve,
 			starts_with: startsWith,
 			version
 		})
 		.then(res => {
+			// console.log('res.data:', res.data)
 			return res.data
 		})
 		.catch(res => {
@@ -30,4 +32,19 @@ export const sbData = ({ ctx, path = '', startsWith = '' }) => {
 				})
 			}
 		})
+}
+
+export const niceTime = (timeStart, timeEnd) => {
+	if (timeStart === '') return 'TBA'
+
+	let time = formatTime(timeStart)
+
+	if (timeEnd !== '') time += ' – ' + formatTime(timeEnd)
+
+	return time
+}
+
+export const formatTime = dateRaw => {
+	const splitted = dateRaw.split(' ')
+	return splitted[1]
 }

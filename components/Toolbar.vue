@@ -41,37 +41,17 @@
 			<!-- <v-app-bar-nav-icon @click.stop="drawer = !drawer" /> -->
 
 			<v-btn
+				v-for="(item, i) in items"
+				:key="`nav-btn-${i}`"
 				:ripple="false"
-				to="/"
+				:to="item.to"
 				nuxt
 				active-class="aaa"
 				text
 				tile
 				color="#202020"
 				class="ma-0"
-				>Home</v-btn
-			>
-			<v-btn
-				:ripple="false"
-				to="/line-up"
-				nuxt
-				active-class="aaa"
-				text
-				tile
-				color="#202020"
-				class="ma-0"
-				>Line-up</v-btn
-			>
-			<v-btn
-				:ripple="false"
-				to="/bands"
-				nuxt
-				active-class="aaa"
-				text
-				tile
-				color="#202020"
-				class="ma-0"
-				>Bands</v-btn
+				>{{ item.title }}</v-btn
 			>
 
 			<v-btn
@@ -114,10 +94,6 @@ export default {
 				{
 					title: 'Line-up',
 					to: '/line-up'
-				},
-				{
-					title: 'Bands',
-					to: '/bands'
 				}
 			],
 			toolbarTitle: 'WW'
@@ -140,7 +116,7 @@ export default {
 
 .aaa {
 	color: #fff !important;
-	background: #e05e5e;
+	background: var(--v-primary-base);
 
 	&:before {
 		opacity: 0 !important;

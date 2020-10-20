@@ -4,11 +4,13 @@ export default {
 			customProperties: true,
 			variations: false
 		},
-		dark: true
-		// themes: {
-		// 	dark: theme,
-		// 	light: theme
-		// }
+		dark: true,
+		themes: {
+			dark: {
+				anchor: '#e05e5e',
+				primary: '#e05e5e'
+			}
+		}
 	},
 	breakpoint: {
 		thresholds: {

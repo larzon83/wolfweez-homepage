@@ -1,6 +1,6 @@
 <template>
 	<section>
-		<h2 class="py-10 text-center font-bold text-4xl">Alle Bands</h2>
+		<LineupTabs />
 		<ul class="flex py-6 mb-6">
 			<li
 				v-for="band in stories"
@@ -20,9 +20,6 @@
 						v-if="band.content.description_short"
 						:document="band.content.description_short"
 					/>
-					<!-- <p class="pb-6 leading-relaxed">
-						{{ band.content.description }}
-					</p> -->
 				</nuxt-link>
 				<p v-else class="px-4 py-2 text-white bg-red-700 text-center rounded">
 					This content loads on save. <strong>Save the entry & reload.</strong>
@@ -33,43 +30,19 @@
 </template>
 
 <script>
+import useStorybridge from '~/mixins/useStorybridge.js'
 import { sbData } from '~/utils'
 
 export default {
-	data() {
-		return {
-			stories: []
-		}
-	},
-	asyncData(context) {
-		return sbData({
-			ctx: context,
-			startsWith: 'bands/'
-		})
+	name: 'BandsOverview',
+	mixins: [useStorybridge],
 
-		// return context.app.$storyapi
-		// 	.get('cdn/stories', {
-		// 		starts_with: 'articles/',
-		// 		version: 'draft'
-		// 	})
-		// 	.then(res => {
-		// 		return res.data
-		// 	})
-		// 	.catch(res => {
-		// 		if (!res.response) {
-		// 			console.error(res)
-		// 			context.error({
-		// 				statusCode: 404,
-		// 				message: 'Failed to receive content form api'
-		// 			})
-		// 		} else {
-		// 			console.error(res.response.data)
-		// 			context.error({
-		// 				statusCode: res.response.status,
-		// 				message: res.response.data
-		// 			})
-		// 		}
-		// 	})
+	async asyncData(context) {
+		// expands to -> stories: []
+		return await sbData({
+			ctx: context,
+			startsWith: 'line-up/bands/'
+		})
 	}
 }
 </script>

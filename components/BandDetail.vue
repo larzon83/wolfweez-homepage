@@ -1,6 +1,7 @@
 <template>
 	<div v-editable="band" class="prose my-24 mx-auto">
 		<h1>{{ band.name }}</h1>
+		<h5>{{ time }}</h5>
 		<v-img
 			v-if="band.logo.filename"
 			:src="band.logo.filename"
@@ -23,6 +24,10 @@ export default {
 		band: {
 			type: Object,
 			required: true
+		},
+		time: {
+			type: String,
+			default: ''
 		}
 	}
 }
