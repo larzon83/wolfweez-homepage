@@ -40,7 +40,7 @@
 		"@commitlint/cli": "^11.0.0",
 		"@commitlint/config-conventional": "^11.0.0",
 		"@epegzz/sass-vars-loader": "6.0.0",
-		"@nuxtjs/eslint-config": "^3.1.0",
+		"@nuxtjs/eslint-config": "^4.0.0",
 		"@nuxtjs/eslint-module": "^3.0.0",
 		"@nuxtjs/pwa": "^3.2.2",
 		"@nuxtjs/vuetify": "^1.11.2",
