@@ -1,24 +1,24 @@
 <template>
 	<section>
-		<LineupTabs />
 		<ul class="flex py-6 mb-6">
 			<li
-				v-for="band in stories"
-				:key="band.content._uid"
+				v-for="news in stories"
+				:key="news.content._uid"
 				class="flex-auto px-6"
 				style="min-width: 33%"
 			>
 				<nuxt-link
-					v-if="band.content"
-					:to="`/${band.full_slug}`"
+					v-if="news.content"
+					:to="`/${news.full_slug}`"
 					class="article-teaser block py-4 px-6 border rounded border-gray-500"
 				>
 					<h2 class="pt-2 pb-4 text-2xl font-bold">
-						{{ band.content.name }}
+						{{ news.content.headline }}
 					</h2>
+					<h5>{{ $_niceDate(news.created_at) }}</h5>
 					<rich-text-renderer
-						v-if="band.content.description_short"
-						:document="band.content.description_short"
+						v-if="news.content.description_short"
+						:document="news.content.description_short"
 					/>
 				</nuxt-link>
 				<p v-else class="px-4 py-2 text-white bg-red-700 text-center rounded">
@@ -30,16 +30,17 @@
 </template>
 
 <script>
+import useFormatting from '~/mixins/useFormatting.js'
 import useStorybridge from '~/mixins/useStorybridge.js'
 import { sbData } from '~/utils'
 
 export default {
-	name: 'BandsOverview',
-	mixins: [useStorybridge],
+	name: 'NewsOverview',
+	mixins: [useFormatting, useStorybridge],
 
 	head() {
 		return {
-			title: 'Bands',
+			title: 'News',
 			meta: [
 				{
 					hid: 'description',
@@ -54,7 +55,8 @@ export default {
 		// expands to -> stories: []
 		return await sbData({
 			ctx: context,
-			startsWith: 'line-up/bands/'
+			startsWith: 'news/',
+			sortBy: 'created_at:desc'
 		})
 	}
 }

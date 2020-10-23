@@ -1,3 +1,7 @@
+const siteTitleShort = 'Wolfweez Openair Festival'
+const siteTitleLong =
+	'Wolfweez Openair Festival | Irslingen | Festival | Live Musik'
+
 export default {
 	ssr: process.env.NUXT_ENV_IS_SPA !== 'true',
 	target: process.env.NUXT_ENV_IS_SPA === 'true' ? 'server' : 'static',
@@ -6,8 +10,8 @@ export default {
 
 	// Global page headers (https://go.nuxtjs.dev/config-head)
 	head: {
-		titleTemplate: '%s - ww-test',
-		title: 'ww-test',
+		titleTemplate: `%s - ${siteTitleShort}`,
+		title: siteTitleLong,
 		meta: [
 			{ charset: 'utf-8' },
 			{ name: 'viewport', content: 'width=device-width, initial-scale=1' },
@@ -66,11 +70,11 @@ export default {
 
 	pwa: {
 		manifest: {
-			name: 'WW',
-			short_name: 'WW',
-			description: 'WW Test site',
-			background_color: '#000',
-			theme_color: '#000',
+			name: siteTitleShort,
+			short_name: 'Wolfweez',
+			description: 'description description description', // TODO:
+			background_color: '#202020',
+			theme_color: '#000', // TODO:
 			lang: 'de-DE',
 			orientation: 'portrait-primary'
 		}

@@ -96,6 +96,10 @@ export default {
 					to: '/'
 				},
 				{
+					title: 'News',
+					to: '/news'
+				},
+				{
 					title: 'Line-up',
 					to: '/line-up'
 				}

@@ -1,5 +1,11 @@
 // Get Data From Storyblok -> for use with asyncData
-export const sbData = ({ ctx, path = '', resolve = '', startsWith = '' }) => {
+export const sbData = ({
+	ctx,
+	path = '',
+	resolveRelations = '',
+	sortBy = null,
+	startsWith = ''
+}) => {
 	const version =
 		ctx.query._storyblok ||
 		ctx.isDev ||
@@ -9,12 +15,13 @@ export const sbData = ({ ctx, path = '', resolve = '', startsWith = '' }) => {
 
 	return ctx.app.$storyapi
 		.get(`cdn/stories${path}`, {
-			resolve_relations: resolve,
+			resolve_relations: resolveRelations,
+			sort_by: sortBy,
 			starts_with: startsWith,
 			version
 		})
 		.then(res => {
-			// console.log('res.data:', res.data)
+			console.log('res.data:', res.data)
 			return res.data
 		})
 		.catch(res => {
@@ -34,7 +41,12 @@ export const sbData = ({ ctx, path = '', resolve = '', startsWith = '' }) => {
 		})
 }
 
-export const niceTime = (timeStart, timeEnd) => {
+export const getNiceDate = date => {
+	const splitted = date.substr(0, 10).split('-')
+	return `${splitted[2]}.${splitted[1]}.${splitted[0]}`
+}
+
+export const getPlayTime = (timeStart, timeEnd) => {
 	if (timeStart === '') return 'TBA'
 
 	let time = formatTime(timeStart)

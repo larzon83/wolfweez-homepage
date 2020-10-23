@@ -12,8 +12,8 @@ insert_final_newline = true
 [*.md]
 trim_trailing_whitespace = false
 
-[depandabot.yml]
+[*.yml]
 indent_style = space
 
-[semantic.yml]
+[*.toml]
 indent_style = space

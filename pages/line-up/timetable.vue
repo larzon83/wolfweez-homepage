@@ -13,7 +13,7 @@
 					{{ day.day_display_name }}
 				</h2>
 				<div>
-					{{ niceDateForDay(day.day) }}
+					{{ $_niceDate(day.day) }}
 				</div>
 				<br />
 				<br />
@@ -25,7 +25,7 @@
 					v-editable="slot"
 					class="slot"
 				>
-					TIME: {{ time(slot.time_start, slot.time_end) }}<br /><br />
+					TIME: {{ $_playTime(slot.time_start, slot.time_end) }}<br /><br />
 					BAND:
 					<nuxt-link :to="`/${slot.band.full_slug}`">{{
 						slot.band.content.name
@@ -40,31 +40,34 @@
 </template>
 
 <script>
+import useFormatting from '~/mixins/useFormatting.js'
 import useStorybridge from '~/mixins/useStorybridge.js'
-import { niceTime, sbData } from '~/utils'
+import { sbData } from '~/utils'
 
 export default {
 	name: 'Timetable',
-	mixins: [useStorybridge],
+	mixins: [useFormatting, useStorybridge],
+
+	head() {
+		return {
+			title: 'Timetable',
+			meta: [
+				{
+					hid: 'description',
+					name: 'description',
+					content: 'description description description' // TODO:
+				}
+			]
+		}
+	},
 
 	async asyncData(context) {
 		// expands to -> story: { content: {} }
 		return await sbData({
 			ctx: context,
 			path: '/line-up/timetable',
-			resolve: 'timetable_entry.band'
+			resolveRelations: 'timetable_entry.band'
 		})
-	},
-
-	methods: {
-		niceDateForDay(dateRaw) {
-			const splitted = dateRaw.substr(0, 10).split('-')
-			return `${splitted[2]}.${splitted[1]}.${splitted[0]}`
-		},
-
-		time(timeStart, timeEnd) {
-			return niceTime(timeStart, timeEnd)
-		}
 	}
 }
 </script>

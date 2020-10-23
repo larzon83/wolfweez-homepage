@@ -6,6 +6,7 @@
 				<nuxt />
 			</v-container>
 		</v-main>
+		<Footer />
 	</v-app>
 </template>
 
@@ -44,7 +45,7 @@ export default {
 	bottom: 0;
 	right: 0;
 	// background: red;
-	height: 65vw;
+	max-height: 65vw;
 	background-image: url('~assets/img/bg-top.jpg');
 	// background-position: bottom 23px center;
 	// background-size: auto 120px;

@@ -8,13 +8,26 @@
 <script>
 import BandDetail from '~/components/BandDetail.vue'
 import useStorybridge from '~/mixins/useStorybridge.js'
-import { niceTime, sbData } from '~/utils'
+import { getPlayTime, sbData } from '~/utils'
 
 export default {
 	components: {
 		BandDetail
 	},
 	mixins: [useStorybridge],
+
+	head() {
+		return {
+			title: `${this.story.content.name} | Bands`,
+			meta: [
+				{
+					hid: 'description',
+					name: 'description',
+					content: this.story.content.description_meta
+				}
+			]
+		}
+	},
 
 	async asyncData(context) {
 		const band = await sbData({
@@ -35,7 +48,7 @@ export default {
 			for (const slot of day.entry) {
 				if (slot.band === band.story.uuid) {
 					found = true
-					time = niceTime(slot.time_start, slot.time_end)
+					time = getPlayTime(slot.time_start, slot.time_end)
 					break
 				}
 			}
