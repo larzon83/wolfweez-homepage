@@ -21,7 +21,7 @@ export const sbData = ({
 			version
 		})
 		.then(res => {
-			console.log('res.data:', res.data)
+			// console.log('res.data:', res.data)
 			return res.data
 		})
 		.catch(res => {

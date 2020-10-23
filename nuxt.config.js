@@ -54,7 +54,8 @@ export default {
 				accessToken: process.env.STORYBLOK_TOKEN,
 				cacheProvider: 'memory'
 			}
-		]
+		],
+		['nuxt-canonical', { baseUrl: 'https://ww-test.netlify.app/' }]
 	],
 
 	// Modules (https://go.nuxtjs.dev/config-modules)
