@@ -4,6 +4,9 @@
   force = true
 
 [[plugins]]
+package = "netlify-plugin-subfont"
+
+[[plugins]]
 package = "@netlify/plugin-sitemap"
 
   [plugins.inputs]
