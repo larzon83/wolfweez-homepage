@@ -2,3 +2,10 @@
   from = "/line-up"
   to = "/line-up/bands"
   force = true
+
+[[plugins]]
+package = "@netlify/plugin-sitemap"
+
+  [plugins.inputs]
+  # Append missing trailing slash to pretty URL
+  trailingSlash = true
