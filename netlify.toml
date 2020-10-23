@@ -3,18 +3,16 @@
   to = "/line-up/bands"
   force = true
 
-# Works. But increases build-time bc nuxt webpack build triggered
-# [[plugins]]
-# package = "@netlify/plugin-sitemap"
+[[plugins]]
+package = "@netlify/plugin-sitemap"
 
-#   [plugins.inputs]
-#   changeFreq = "daily"
-#   priority = 0.5
-#   # Append missing trailing slash to pretty URL
-#   trailingSlash = true
-#   exclude = [
-#     # './dist/200/',
-#     '**/line-up/index.html',
-#     # By Glob pattern
-#     '**/**/200.html'
-#   ]
+  [plugins.inputs]
+  changeFreq = "daily"
+  priority = 0.5
+  # Append missing trailing slash to pretty URL
+  trailingSlash = true
+  exclude = [
+    # './dist/200.html',
+    '**/line-up/index.html',
+    '**/**/200.html'
+  ]
