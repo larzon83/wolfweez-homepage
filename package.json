@@ -12,9 +12,11 @@
 		"local:generate:preview": "env-cmd -e target_preview nuxt generate",
 		"local:generate:prod": "env-cmd -e target_prod nuxt generate",
 		"start": "nuxt start",
+		"----------- MISC ----------": "",
 		"lint:js": "eslint --ext .js,.vue --ignore-path .gitignore .",
 		"lint": "npm run lint:js",
-		"test": "jest"
+		"test": "jest",
+		"story:bak": "env-cmd -e storyblok npx storyblok-backup --components --stories"
 	},
 	"lint-staged": {
 		"*.{js,vue}": "eslint"
@@ -58,6 +60,7 @@
 		"lint-staged": "^10.4.2",
 		"npm-run-all": "4.1.5",
 		"prettier": "^2.1.2",
+		"storyblok-migrate": "0.3.4",
 		"vue-jest": "^3.0.7"
 	}
 }
