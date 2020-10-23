@@ -12,8 +12,8 @@ package = "@netlify/plugin-sitemap"
   # Append missing trailing slash to pretty URL
   trailingSlash = true
   exclude = [
-    './200.html',
+    './200',
     './line-up/index.html',
     # By Glob pattern
-    # '**/**/child-one.html'
+    '**/**/child-one.html'
   ]
