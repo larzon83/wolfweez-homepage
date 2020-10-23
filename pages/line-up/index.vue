@@ -19,6 +19,10 @@ export default {
 				}
 			]
 		}
+	},
+
+	middleware(context) {
+		context.redirect(301, '/line-up/bands')
 	}
 }
 </script>
