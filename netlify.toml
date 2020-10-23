@@ -3,6 +3,7 @@
   to = "/line-up/bands"
   force = true
 
+# Works. But increases build-time bc nuxt webpack build triggered
 # [[plugins]]
 # package = "@netlify/plugin-sitemap"
 
