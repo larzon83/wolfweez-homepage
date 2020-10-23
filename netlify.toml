@@ -13,7 +13,7 @@ package = "@netlify/plugin-sitemap"
   trailingSlash = true
   exclude = [
     # './dist/200/',
-    '/line-up/index.html',
+    'line-up/index.html',
     # By Glob pattern
     '**/**/200.html'
   ]
