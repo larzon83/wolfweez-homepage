@@ -44,7 +44,6 @@ export default {
 	top: 0;
 	bottom: 0;
 	right: 0;
-	// background: red;
 	max-height: 65vw;
 	background-image: url('~assets/img/bg-top.jpg');
 	// background-position: bottom 23px center;
