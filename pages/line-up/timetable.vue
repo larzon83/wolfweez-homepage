@@ -27,8 +27,8 @@
 				>
 					TIME: {{ $_playTime(slot.time_start, slot.time_end) }}<br /><br />
 					BAND:
-					<nuxt-link :to="`/${slot.band.full_slug}`">{{
-						slot.band.content.name
+					<nuxt-link :to="`/${slot.band.story.full_slug}`">{{
+						slot.band.story.content.name
 					}}</nuxt-link>
 					<br />
 					<br />
@@ -66,7 +66,7 @@ export default {
 		return await sbData({
 			ctx: context,
 			path: '/line-up/timetable',
-			resolveRelations: 'timetable_entry.band'
+			resolveLinks: 'story'
 		})
 	}
 }

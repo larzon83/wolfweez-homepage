@@ -2,7 +2,8 @@
 export const sbData = ({
 	ctx,
 	path = '',
-	resolveRelations = '',
+	resolveLinks = null,
+	resolveRelations = null,
 	sortBy = null,
 	startsWith = ''
 }) => {
@@ -15,6 +16,7 @@ export const sbData = ({
 
 	return ctx.app.$storyapi
 		.get(`cdn/stories${path}`, {
+			resolve_links: resolveLinks,
 			resolve_relations: resolveRelations,
 			sort_by: sortBy,
 			starts_with: startsWith,
