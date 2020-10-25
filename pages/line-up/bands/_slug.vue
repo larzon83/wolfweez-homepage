@@ -1,6 +1,6 @@
 <template>
 	<section>
-		<LineupTabs />
+		<TabsLineup />
 		<BandDetail :band="story.content" :time="time" />
 	</section>
 </template>
@@ -42,19 +42,21 @@ export default {
 
 		let time = ''
 
-		for (const day of timetable.story.content.entry) {
-			let found = false
+		if (band) {
+			for (const day of timetable.story.content.entry) {
+				let found = false
 
-			for (const slot of day.entry) {
-				if (slot.band === band.story.uuid) {
-					found = true
-					time = getPlayTime(slot.time_start, slot.time_end)
+				for (const slot of day.entry) {
+					if (slot.band === band.story.uuid) {
+						found = true
+						time = getPlayTime(slot.time_start, slot.time_end)
+						break
+					}
+				}
+
+				if (found) {
 					break
 				}
-			}
-
-			if (found) {
-				break
 			}
 		}
 

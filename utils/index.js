@@ -1,6 +1,7 @@
 // Get Data From Storyblok -> for use with asyncData
 export const sbData = ({
 	ctx,
+	isStartpage = null,
 	path = '',
 	resolveLinks = null,
 	resolveRelations = null,
@@ -16,6 +17,7 @@ export const sbData = ({
 
 	return ctx.app.$storyapi
 		.get(`cdn/stories${path}`, {
+			is_startpage: isStartpage,
 			resolve_links: resolveLinks,
 			resolve_relations: resolveRelations,
 			sort_by: sortBy,
@@ -37,7 +39,7 @@ export const sbData = ({
 				console.error(res.response.data)
 				ctx.error({
 					statusCode: res.response.status,
-					message: res.response.data
+					message: 'ohohoh: ' + res.response.data
 				})
 			}
 		})

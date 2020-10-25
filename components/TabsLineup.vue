@@ -18,7 +18,7 @@
 
 <script>
 export default {
-	name: 'LineupTabs',
+	name: 'TabsLineup',
 
 	data() {
 		return {

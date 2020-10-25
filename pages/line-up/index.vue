@@ -1,7 +1,5 @@
 <template>
-	<section>
-		<LineupTabs />
-	</section>
+	<section></section>
 </template>
 
 <script>

@@ -102,6 +102,10 @@ export default {
 				{
 					title: 'Line-up',
 					to: '/line-up'
+				},
+				{
+					title: 'Historie',
+					to: '/historie'
 				}
 			],
 			toolbarTitle: 'WW'

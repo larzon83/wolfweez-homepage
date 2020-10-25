@@ -1,6 +1,4 @@
-const siteTitleShort = 'Wolfweez Openair Festival'
-const siteTitleLong =
-	'Wolfweez Openair Festival | Irslingen | Festival | Live Musik'
+import { siteTitleShort, siteTitleLong } from './utils/constants'
 
 export default {
 	ssr: process.env.NUXT_ENV_IS_SPA !== 'true',
@@ -94,6 +92,10 @@ export default {
 		// 	font: false
 		// 	// icons: 'md'
 		// }
+	},
+
+	router: {
+		middleware: 'setConfig'
 	},
 
 	// Build Configuration (https://go.nuxtjs.dev/config-build)
