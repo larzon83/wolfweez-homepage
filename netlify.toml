@@ -3,6 +3,11 @@
   to = "/line-up/bands"
   force = true
 
+[[redirects]]
+  from = "/historie"
+  to = "/historie/2019"
+  force = true
+
 [[plugins]]
 package = "@netlify/plugin-sitemap"
 
