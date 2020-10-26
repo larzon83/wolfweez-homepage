@@ -37,7 +37,8 @@ export default {
 
 		const timetable = await sbData({
 			ctx: context,
-			path: '/line-up/timetable'
+			path: '/line-up/timetable',
+			resolveLinks: 'story'
 		})
 
 		let time = ''

@@ -4,7 +4,7 @@
 			v-for="(tab, i) in years"
 			:key="`history-tab-${i}`"
 			:ripple="false"
-			:to="`/${tab.full_slug}`"
+			:to="tab.full_slug"
 			nuxt
 			active-class="aaa"
 			text
@@ -17,10 +17,12 @@
 </template>
 
 <script>
+import useFormatting from '~/mixins/useFormatting.js'
 import { sbData } from '~/utils'
 
 export default {
 	name: 'TabsHistory',
+	mixins: [useFormatting],
 
 	data() {
 		return {
@@ -38,7 +40,7 @@ export default {
 
 		this.years = historyYears.stories.map(year => {
 			return {
-				full_slug: year.full_slug,
+				full_slug: this.$_slashify(year.full_slug),
 				slug: year.slug
 			}
 		})

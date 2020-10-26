@@ -39,7 +39,7 @@ export const sbData = ({
 				console.error(res.response.data)
 				ctx.error({
 					statusCode: res.response.status,
-					message: 'ohohoh: ' + res.response.data
+					message: res.response.data
 				})
 			}
 		})

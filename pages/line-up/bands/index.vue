@@ -10,7 +10,7 @@
 			>
 				<nuxt-link
 					v-if="band.content"
-					:to="`/${band.full_slug}`"
+					:to="$_slashify(band.full_slug)"
 					class="article-teaser block py-4 px-6 border rounded border-gray-500"
 				>
 					<h2 class="pt-2 pb-4 text-2xl font-bold">
@@ -30,12 +30,13 @@
 </template>
 
 <script>
+import useFormatting from '~/mixins/useFormatting.js'
 import useStorybridge from '~/mixins/useStorybridge.js'
 import { sbData } from '~/utils'
 
 export default {
 	name: 'BandsOverview',
-	mixins: [useStorybridge],
+	mixins: [useFormatting, useStorybridge],
 
 	head() {
 		return {

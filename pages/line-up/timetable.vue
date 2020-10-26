@@ -27,7 +27,7 @@
 				>
 					TIME: {{ $_playTime(slot.time_start, slot.time_end) }}<br /><br />
 					BAND:
-					<nuxt-link :to="`/${slot.band.story.full_slug}`">{{
+					<nuxt-link :to="$_slashify(slot.band.story.full_slug)">{{
 						slot.band.story.content.name
 					}}</nuxt-link>
 					<br />

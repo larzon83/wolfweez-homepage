@@ -9,7 +9,7 @@
 			>
 				<nuxt-link
 					v-if="news.content"
-					:to="`/${news.full_slug}`"
+					:to="$_slashify(news.full_slug)"
 					class="article-teaser block py-4 px-6 border rounded border-gray-500"
 				>
 					<h2 class="pt-2 pb-4 text-2xl font-bold">

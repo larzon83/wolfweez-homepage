@@ -95,7 +95,8 @@ export default {
 	},
 
 	router: {
-		middleware: 'setConfig'
+		middleware: 'setConfig',
+		trailingSlash: true
 	},
 
 	// Build Configuration (https://go.nuxtjs.dev/config-build)

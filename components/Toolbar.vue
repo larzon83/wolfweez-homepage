@@ -97,15 +97,15 @@ export default {
 				},
 				{
 					title: 'News',
-					to: '/news'
+					to: '/news/'
 				},
 				{
 					title: 'Line-up',
-					to: '/line-up'
+					to: '/line-up/'
 				},
 				{
 					title: 'Historie',
-					to: '/historie'
+					to: '/historie/'
 				}
 			],
 			toolbarTitle: 'WW'

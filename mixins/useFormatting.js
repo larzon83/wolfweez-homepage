@@ -2,6 +2,14 @@ import { getNiceDate, getPlayTime } from '~/utils'
 
 export default {
 	methods: {
+		$_slashify(path, { startSlash = true } = {}) {
+			let slash1 = ''
+			if (startSlash) slash1 = path.substr(0, 1) !== '/' ? '/' : ''
+
+			const slash2 = path.substr(-1) !== '/' ? '/' : ''
+			return slash1 + path + slash2
+		},
+
 		$_niceDate(dateString) {
 			return getNiceDate(dateString)
 		},

@@ -25,11 +25,11 @@ export default {
 			tabItems: [
 				{
 					title: 'Bands',
-					to: '/line-up/bands'
+					to: '/line-up/bands/'
 				},
 				{
 					title: 'Timetable',
-					to: '/line-up/timetable'
+					to: '/line-up/timetable/'
 				}
 			]
 		}
