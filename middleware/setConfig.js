@@ -1,5 +1,5 @@
 export default async function ({ isDev, query, store }) {
-	if (!store.state.config.date) {
+	if (!store.state.config.festivalDate) {
 		const version =
 			query._storyblok ||
 			isDev ||

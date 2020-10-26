@@ -1,5 +1,7 @@
 <template>
-	<section></section>
+	<section>
+		<TabsHistory />
+	</section>
 </template>
 
 <script>
@@ -21,7 +23,7 @@ export default {
 		}
 	},
 
-	async middleware(context) {
+	async asyncData(context) {
 		const historyYears = await sbData({
 			ctx: context,
 			isStartpage: 1,
@@ -35,10 +37,35 @@ export default {
 			const years = historyYears.stories.map(year => {
 				return year.slug
 			})
-			destination = years[0]
+			destination = 'historie/' + years[0]
 		}
 
-		context.redirect(301, `/historie/${destination}`)
+		return { destination }
+	},
+
+	created() {
+		this.$router.push(this.destination)
 	}
+
+	// async middleware(context) {
+	// 	const historyYears = await sbData({
+	// 		ctx: context,
+	// 		isStartpage: 1,
+	// 		sortBy: 'slug:desc',
+	// 		startsWith: 'historie/'
+	// 	})
+
+	// 	let destination = '/'
+
+	// 	if (historyYears) {
+	// 		const years = historyYears.stories.map(year => {
+	// 			return year.slug
+	// 		})
+	// 		destination = years[0]
+	// 	}
+	// 	console.log('destination:', destination)
+
+	// 	context.redirect(301, `/historie/${destination}`)
+	// }
 }
 </script>
