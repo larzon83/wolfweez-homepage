@@ -37,8 +37,7 @@ export default {
 
 		const timetable = await sbData({
 			ctx: context,
-			path: '/line-up/timetable',
-			resolveLinks: 'story'
+			path: '/line-up/timetable'
 		})
 
 		let time = ''
@@ -48,7 +47,7 @@ export default {
 				let found = false
 
 				for (const slot of day.entry) {
-					if (slot.band === band.story.uuid) {
+					if (slot.band.id === band.story.uuid) {
 						found = true
 						time = getPlayTime(slot.time_start, slot.time_end)
 						break
