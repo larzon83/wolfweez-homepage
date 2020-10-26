@@ -1,7 +1,7 @@
 <template>
 	<section>
 		<TabsLineup />
-		<v-row v-if="timetable" class="timetable">
+		<v-row v-if="story.content.entry" class="timetable">
 			<v-col
 				v-for="day in story.content.entry"
 				:key="day._uid"
