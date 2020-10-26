@@ -96,7 +96,7 @@ export default {
 
 	router: {
 		middleware: 'setConfig',
-		trailingSlash: true
+		trailingSlash: process.env.NUXT_ENV_IS_SPA === 'true' ? undefined : true
 	},
 
 	// Build Configuration (https://go.nuxtjs.dev/config-build)
