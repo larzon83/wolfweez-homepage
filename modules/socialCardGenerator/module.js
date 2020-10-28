@@ -29,6 +29,7 @@ let allRoutes = [
 const createImages = async content => {
 	await nodeHtmlToImage({
 		content,
+		puppeteerArgs: { args: ['--no-sandbox'] },
 		html: `<html>
 			<head>
 				<style>
