@@ -40,11 +40,8 @@ export default {
 
 	// Modules for dev and build (recommended) (https://go.nuxtjs.dev/config-modules)
 	buildModules: [
-		// https://go.nuxtjs.dev/eslint
 		'@nuxtjs/eslint-module',
-		// https://go.nuxtjs.dev/pwa
 		'@nuxtjs/pwa',
-		// https://go.nuxtjs.dev/vuetify
 		'@nuxtjs/vuetify',
 		[
 			'storyblok-nuxt',
@@ -53,7 +50,9 @@ export default {
 				cacheProvider: 'memory'
 			}
 		],
-		['nuxt-canonical', { baseUrl: 'https://ww-test.netlify.app' }]
+		['nuxt-canonical', { baseUrl: 'https://ww-test.netlify.app' }],
+		'@/modules/netlifyTomlGenerator',
+		'@/modules/socialCardGenerator'
 	],
 
 	// Modules (https://go.nuxtjs.dev/config-modules)

@@ -1,11 +1,11 @@
 [[redirects]]
-  from = "/line-up"
-  to = "/line-up/bands"
+  from = "/line-up/"
+  to = "/line-up/bands/"
   force = true
 
 [[redirects]]
-  from = "/historie"
-  to = "/historie/2019"
+  from = "/historie/"
+  to = "/historie/2019/"
   force = true
 
 [[plugins]]
