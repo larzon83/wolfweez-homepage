@@ -53,7 +53,8 @@ export default {
 				cacheProvider: 'memory'
 			}
 		],
-		['nuxt-canonical', { baseUrl: 'https://ww-test.netlify.app' }]
+		['nuxt-canonical', { baseUrl: 'https://ww-test.netlify.app' }],
+		'@/modules/socialCardGenerator'
 	],
 
 	// Modules (https://go.nuxtjs.dev/config-modules)
