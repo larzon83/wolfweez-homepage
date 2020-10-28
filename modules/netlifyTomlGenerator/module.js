@@ -39,9 +39,12 @@ export default async function (moduleOptions) {
 					trailingSlash: true,
 					exclude: [
 						// './dist/200.html',
-						'**/historie/index.html',
-						'**/line-up/index.html',
-						'**/**/200.html'
+						// '**/historie/index.html',
+						// '**/line-up/index.html',
+						// '**/**/200.html'
+						'./historie/index.html',
+						'./line-up/index.html',
+						'./**/200.html'
 					]
 				}
 			}
