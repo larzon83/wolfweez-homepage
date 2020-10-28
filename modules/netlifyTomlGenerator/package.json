@@ -1,0 +1,11 @@
+{
+	"name": "netlify-toml-generator",
+	"version": "1.0.0",
+	"description": "",
+	"private": true,
+	"main": "module.js",
+	"license": "MIT",
+	"publishConfig": {
+		"access": "restricted"
+	}
+}

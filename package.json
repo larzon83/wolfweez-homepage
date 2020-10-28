@@ -44,6 +44,7 @@
 		"@epegzz/sass-vars-loader": "6.0.0",
 		"@nuxtjs/eslint-config": "^4.0.0",
 		"@nuxtjs/eslint-module": "^3.0.0",
+		"@nuxtjs/netlify-files": "^1.2.0",
 		"@nuxtjs/pwa": "^3.2.2",
 		"@nuxtjs/vuetify": "^1.11.2",
 		"@vue/test-utils": "^1.1.0",
@@ -63,6 +64,6 @@
 		"nuxt-canonical": "^1.0.5",
 		"prettier": "^2.1.2",
 		"storyblok-migrate": "0.3.4",
-		"vue-jest": "^3.0.7"
+		"vue-jest": "4.0.0-rc.0"
 	}
 }
