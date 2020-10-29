@@ -1,40 +1,5 @@
 import { siteTitleShort, siteTitleLong } from './utils/constants'
 
-const netlifyToml = {
-	redirects: [
-		{
-			from: '/line-up/',
-			to: '/line-up/bands/',
-			force: true
-		},
-		{
-			from: '/historie/',
-			to: '/historie/2019/',
-			force: true
-		}
-	],
-	plugins: [
-		{
-			package: '@netlify/plugin-sitemap',
-			inputs: {
-				changeFreq: 'daily',
-				priority: 0.5,
-				// Append missing trailing slash to pretty URL
-				trailingSlash: true,
-				exclude: [
-					// './dist/200.html',
-					// '**/historie/index.html',
-					// '**/line-up/index.html',
-					// '**/**/200.html'
-					'./historie/index.html',
-					'./line-up/index.html',
-					'./**/200.html'
-				]
-			}
-		}
-	]
-}
-
 export default {
 	ssr: process.env.NUXT_ENV_IS_SPA !== 'true',
 	target: process.env.NUXT_ENV_IS_SPA === 'true' ? 'server' : 'static',
@@ -86,15 +51,8 @@ export default {
 			}
 		],
 		['nuxt-canonical', { baseUrl: 'https://ww-test.netlify.app' }],
-		// '@/modules/netlifyTomlUpdater',
-		'@/modules/socialCardGenerator',
-		[
-			'@nuxtjs/netlify-files',
-			{
-				copyExistingFiles: false,
-				netlifyToml
-			}
-		]
+		'@/modules/netlifyTomlUpdater', // only ehen NODE_ENV === 'production'
+		'@/modules/socialCardGenerator'
 	],
 
 	// Modules (https://go.nuxtjs.dev/config-modules)
