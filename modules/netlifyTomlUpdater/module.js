@@ -7,6 +7,9 @@ export default async function (moduleOptions) {
 		`https://api.storyblok.com/v1/cdn/stories?is_startpage=true&starts_with=historie/&sort_by=slug:desc&token=${process.env.STORYBLOK_TOKEN}`
 	)
 
+	let val = data.stories[0].slug
+	val = 'fuckup'
+
 	const srcFile = resolve(this.options.srcDir, 'netlify.toml')
 
 	const contentRaw = fse.readFileSync(srcFile, 'UTF-8')
@@ -17,7 +20,7 @@ export default async function (moduleOptions) {
 		throw new Error('netlifyTomlUpdater: regular Expression failed')
 	}
 
-	const contentNew = contentRaw.replace(regEx, `$1${data.stories[0].slug}$3`)
+	const contentNew = contentRaw.replace(regEx, `$1${val}$3`)
 
 	fse.writeFileSync(srcFile, contentNew, 'UTF-8')
 
