@@ -1,5 +1,5 @@
 {
-	"name": "netlify-toml-generator",
+	"name": "netlify-toml-updater",
 	"version": "1.0.0",
 	"description": "",
 	"private": true,

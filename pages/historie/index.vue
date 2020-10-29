@@ -24,6 +24,8 @@ export default {
 	},
 
 	async asyncData(context) {
+		// NOTE: same api-call is used inside @/modules/netlifyTomlUpdater
+		// -> when updating here, update there, too
 		const historyYears = await sbData({
 			ctx: context,
 			isStartpage: 1,

@@ -6,13 +6,20 @@ export default async function (moduleOptions) {
 	const { data } = await axios.get(
 		`https://api.storyblok.com/v1/cdn/stories?is_startpage=true&starts_with=historie/&sort_by=slug:desc&token=${process.env.STORYBLOK_TOKEN}`
 	)
-	console.log('axios:', data.stories[0].slug)
 
 	const srcFile = resolve(this.options.srcDir, 'netlify.toml')
 
-	// const contentRaw = fse.readFileSync('../../netlify.toml', 'UTF-8')
 	const contentRaw = fse.readFileSync(srcFile, 'UTF-8')
-	console.log('contentRaw:', contentRaw)
+
+	const regEx = /(to = "\/historie\/)(\w+)(\/")/i
+
+	if (!contentRaw.match(regEx)) {
+		throw new Error('netlifyTomlUpdater: regular Expression failed')
+	}
+
+	const contentNew = contentRaw.replace(regEx, `$1${data.stories[0].slug}$3`)
+
+	fse.writeFileSync(srcFile, contentNew, 'UTF-8')
 
 	// const netlifyToml = {
 	// 	redirects: [
@@ -23,8 +30,7 @@ export default async function (moduleOptions) {
 	// 		},
 	// 		{
 	// 			from: '/historie/',
-	// 			// to: '/historie/2019/',
-	// 			to: '/historie/2018/', // FIXME:
+	// 			to: '/historie/2019/',
 	// 			force: true
 	// 		}
 	// 	],

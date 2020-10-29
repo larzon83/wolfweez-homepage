@@ -6,7 +6,7 @@
 [[redirects]]
   from = "/historie/"
   # this gets constantly updated from nuxt-module
-  to = "/historie/2019/"
+  to = "/historie/something/"
   force = true
 
 [[plugins]]
@@ -18,8 +18,8 @@ package = "@netlify/plugin-sitemap"
   # Append missing trailing slash to pretty URL
   trailingSlash = true
   exclude = [
-  # './dist/200.html',
-  '**/historie/index.html',
-  '**/line-up/index.html',
-  '**/**/200.html'
-]
+    # './dist/200.html',
+    '**/historie/index.html',
+    '**/line-up/index.html',
+    '**/**/200.html'
+  ]

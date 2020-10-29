@@ -51,7 +51,7 @@ export default {
 			}
 		],
 		['nuxt-canonical', { baseUrl: 'https://ww-test.netlify.app' }],
-		// '@/modules/netlifyTomlGenerator',
+		'@/modules/netlifyTomlUpdater',
 		'@/modules/socialCardGenerator'
 	],
 
