@@ -6,20 +6,20 @@
 
 <script>
 import { sbData } from '~/utils'
+import { createSEOMeta } from '~/utils/seo'
 
 export default {
 	name: 'HistoryOverview',
 
 	head() {
+		const title = 'Historie'
 		return {
-			title: 'Historie',
-			meta: [
-				{
-					hid: 'description',
-					name: 'description',
-					content: 'description description description' // TODO:
-				}
-			]
+			title,
+			meta: createSEOMeta({
+				description: '',
+				title,
+				url: this.$route.path
+			})
 		}
 	},
 

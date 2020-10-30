@@ -43,21 +43,21 @@
 import useFormatting from '~/mixins/useFormatting.js'
 import useStorybridge from '~/mixins/useStorybridge.js'
 import { sbData } from '~/utils'
+import { createSEOMeta } from '~/utils/seo'
 
 export default {
 	name: 'Timetable',
 	mixins: [useFormatting, useStorybridge],
 
 	head() {
+		const title = 'Timetable'
 		return {
-			title: 'Timetable',
-			meta: [
-				{
-					hid: 'description',
-					name: 'description',
-					content: 'description description description' // TODO:
-				}
-			]
+			title,
+			meta: createSEOMeta({
+				// description: '', // TODO:
+				title,
+				url: this.$route.path
+			})
 		}
 	},
 

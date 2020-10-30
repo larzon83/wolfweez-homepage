@@ -9,6 +9,7 @@ import NewsDetail from '~/components/NewsDetail.vue'
 import useFormatting from '~/mixins/useFormatting.js'
 import useStorybridge from '~/mixins/useStorybridge.js'
 import { sbData } from '~/utils'
+import { createSEOMeta } from '~/utils/seo'
 
 export default {
 	components: {
@@ -17,15 +18,14 @@ export default {
 	mixins: [useFormatting, useStorybridge],
 
 	head() {
+		const title = `${this.story.content.headline} | News`
 		return {
-			title: `${this.story.content.headline} | News`,
-			meta: [
-				{
-					hid: 'description',
-					name: 'description',
-					content: this.story.content.description_meta
-				}
-			]
+			title,
+			meta: createSEOMeta({
+				description: this.story.content.description_meta,
+				title,
+				url: this.$route.path
+			})
 		}
 	},
 

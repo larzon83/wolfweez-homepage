@@ -54,21 +54,21 @@
 import useFormatting from '~/mixins/useFormatting.js'
 import useStorybridge from '~/mixins/useStorybridge.js'
 import { sbData } from '~/utils'
-import { siteTitleShort } from '~/utils/constants'
+import { siteTitle } from '~/utils/constants'
+import { createSEOMeta } from '~/utils/seo'
 
 export default {
 	mixins: [useFormatting, useStorybridge],
 
 	head() {
+		const title = `${this.year.slug} | Historie`
 		return {
-			title: `${this.year.slug} | Historie`,
-			meta: [
-				{
-					hid: 'description',
-					name: 'description',
-					content: this.year.description_meta
-				}
-			]
+			title,
+			meta: createSEOMeta({
+				description: this.year.content.description_meta,
+				title,
+				url: this.$route.path
+			})
 		}
 	},
 
@@ -93,7 +93,7 @@ export default {
 
 	computed: {
 		headline() {
-			return `${siteTitleShort} ${this.year.slug}`
+			return `${siteTitle.short} ${this.year.slug}`
 		}
 	}
 }

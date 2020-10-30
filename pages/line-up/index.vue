@@ -3,19 +3,20 @@
 </template>
 
 <script>
+import { createSEOMeta } from '~/utils/seo'
+
 export default {
 	name: 'LineUp',
 
 	head() {
+		const title = 'Line-Up'
 		return {
-			title: 'Line-Up',
-			meta: [
-				{
-					hid: 'description',
-					name: 'description',
-					content: 'description description description' // TODO:
-				}
-			]
+			title,
+			meta: createSEOMeta({
+				// description: '', // TODO:
+				title,
+				url: this.$route.path
+			})
 		}
 	},
 

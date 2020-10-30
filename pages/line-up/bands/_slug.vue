@@ -9,6 +9,7 @@
 import BandDetail from '~/components/BandDetail.vue'
 import useStorybridge from '~/mixins/useStorybridge.js'
 import { getPlayTime, sbData } from '~/utils'
+import { createSEOMeta } from '~/utils/seo'
 
 export default {
 	components: {
@@ -17,15 +18,14 @@ export default {
 	mixins: [useStorybridge],
 
 	head() {
+		const title = `${this.story.content.name} | Bands`
 		return {
-			title: `${this.story.content.name} | Bands`,
-			meta: [
-				{
-					hid: 'description',
-					name: 'description',
-					content: this.story.content.description_meta
-				}
-			]
+			title,
+			meta: createSEOMeta({
+				description: this.story.content.description_meta,
+				title,
+				url: this.$route.path
+			})
 		}
 	},
 

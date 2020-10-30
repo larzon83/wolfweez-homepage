@@ -1,4 +1,5 @@
-import { siteTitleShort, siteTitleLong } from './utils/constants'
+import { baseUrl, siteTitle } from './utils/constants'
+import { createSEOMeta } from './utils/seo'
 
 export default {
 	ssr: process.env.NUXT_ENV_IS_SPA !== 'true',
@@ -8,12 +9,25 @@ export default {
 
 	// Global page headers (https://go.nuxtjs.dev/config-head)
 	head: {
-		titleTemplate: `%s - ${siteTitleShort}`,
-		title: siteTitleLong,
+		titleTemplate: `%s - ${siteTitle.short}`,
+		title: siteTitle.long,
 		meta: [
+			...createSEOMeta(),
 			{ charset: 'utf-8' },
 			{ name: 'viewport', content: 'width=device-width, initial-scale=1' },
-			{ hid: 'description', name: 'description', content: 'bla bla bla' }
+			{
+				hid: 'og:site_name',
+				property: 'og:site_name',
+				content: siteTitle.short
+			},
+			{ hid: 'og:image:width', property: 'og:image:width', content: '740' }, // TODO:
+			{ hid: 'og:image:height', property: 'og:image:height', content: '300' }, // TODO:
+			// { hid: 'twitter:site', name: 'twitter:site', content: '@bobross' }, // TODO:
+			{
+				hid: 'twitter:card',
+				name: 'twitter:card',
+				content: 'summary_large_image'
+			}
 		],
 		link: [
 			{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
@@ -50,7 +64,7 @@ export default {
 				cacheProvider: 'memory'
 			}
 		],
-		['nuxt-canonical', { baseUrl: 'https://ww-test.netlify.app' }],
+		['nuxt-canonical', { baseUrl }],
 		'@/modules/netlifyTomlUpdater', // only ehen NODE_ENV === 'production'
 		'@/modules/socialCardGenerator'
 	],
@@ -68,7 +82,7 @@ export default {
 
 	pwa: {
 		manifest: {
-			name: siteTitleShort,
+			name: siteTitle.short,
 			short_name: 'Wolfweez',
 			description: 'description description description', // TODO:
 			background_color: '#202020',
