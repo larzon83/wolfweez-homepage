@@ -26,7 +26,6 @@ export default async function (moduleOptions) {
 		}
 
 		const contentNew = contentRaw.replace(regEx, `$1${data.stories[0].slug}$3`)
-		console.log('contentNew:', contentNew)
 
 		fse.writeFileSync(srcFile, contentNew, 'UTF-8')
 	}

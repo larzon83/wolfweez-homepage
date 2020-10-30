@@ -22,7 +22,7 @@ export default {
 			},
 			{ hid: 'og:image:width', property: 'og:image:width', content: '740' }, // TODO:
 			{ hid: 'og:image:height', property: 'og:image:height', content: '300' }, // TODO:
-			// { hid: 'twitter:site', name: 'twitter:site', content: '@bobross' }, // TODO:
+			// { hid: 'twitter:site', name: 'twitter:site', content: '@bobross' },
 			{
 				hid: 'twitter:card',
 				name: 'twitter:card',

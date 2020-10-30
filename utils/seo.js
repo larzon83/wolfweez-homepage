@@ -2,7 +2,8 @@ import { baseUrl, siteTitle } from './constants'
 
 const defaults = {
 	description: 'bla bla bla', // TODO:
-	mainImage: '/a-lovely-image.jpg', // TODO:
+	image: '/a-lovely-image.jpg', // TODO:
+	imageAlt: '', // TODO:
 	title: siteTitle.long,
 	type: 'website',
 	url: baseUrl
@@ -37,7 +38,13 @@ export const createSEOMeta = data => [
 	{
 		hid: 'og:image',
 		property: 'og:image',
-		content: (data && data.mainImage) || defaults.mainImage
+		content: (data && data.image) || defaults.image
+	},
+	{
+		// TODO:
+		hid: 'og:image:alt',
+		property: 'og:image:alt',
+		content: (data && data.imageAlt) || defaults.imageAlt
 	},
 	{
 		hid: 'twitter:url',
@@ -57,6 +64,6 @@ export const createSEOMeta = data => [
 	{
 		hid: 'twitter:image',
 		name: 'twitter:image',
-		content: (data && data.mainImage) || defaults.mainImage
+		content: (data && data.image) || defaults.image
 	}
 ]
