@@ -6,6 +6,7 @@ export const isTest = false
 const hookName = isTest ? 'build:before' : 'generate:done'
 const dirStatic = './static/og-images'
 let dir = dirStatic
+// let allRoutes = ['/line-up/bands/']
 let allRoutes = [
 	'/historie/',
 	'/line-up/',

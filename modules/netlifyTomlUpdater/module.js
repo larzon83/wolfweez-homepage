@@ -1,12 +1,19 @@
-import axios from 'axios'
+import StoryblokClient from 'storyblok-js-client'
+
 import fse from 'fs-extra'
 const { resolve } = require('path')
 
 export default async function (moduleOptions) {
 	if (process.env.NODE_ENV === 'production') {
-		const { data } = await axios.get(
-			`https://api.storyblok.com/v1/cdn/stories?is_startpage=true&starts_with=historie/&sort_by=slug:desc&token=${process.env.STORYBLOK_TOKEN}`
-		)
+		const client = new StoryblokClient({
+			accessToken: process.env.STORYBLOK_TOKEN
+		})
+
+		const { data } = await client.get('cdn/stories', {
+			starts_with: 'historie/',
+			is_startpage: 1,
+			sort_by: 'slug:desc'
+		})
 
 		const srcFile = resolve(this.options.srcDir, 'netlify.toml')
 
