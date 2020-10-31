@@ -23,6 +23,9 @@ export default {
 			title,
 			meta: createSEOMeta({
 				description: this.story.content.description_meta,
+				image: this.story.content.image.filename,
+				imageAlt: title,
+				imageHeight: '758',
 				title,
 				url: this.$route.path
 			})

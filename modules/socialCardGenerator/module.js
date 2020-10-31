@@ -1,12 +1,15 @@
+import StoryblokClient from 'storyblok-js-client'
+import { ogImagesDir, removeSlashesFromStartAndEnd } from './../../utils/seo'
+
 const fs = require('fs-extra')
 const nodeHtmlToImage = require('node-html-to-image')
 
-export const isTest = false
+let isTest = true
+if (process.env.NODE_ENV === 'production') isTest = false
 
 const hookName = isTest ? 'build:before' : 'generate:done'
-const dirStatic = './static/og-images'
+const dirStatic = `./static/${ogImagesDir}`
 let dir = dirStatic
-// let allRoutes = ['/line-up/bands/']
 let allRoutes = [
 	'/historie/',
 	'/line-up/',
@@ -35,12 +38,12 @@ const createImages = async content => {
 			<head>
 				<style>
 					body {
-						width: 1280px;
-						height: 600px;
+						width: 1200px;
+						height: 630px;
 					}
 				</style>
 			</head>
-			<body>{{name}}</body>
+			<body><h1>{{headline}}</h1><h5>{{subline}}</h5></body>
 		</html>
 		`
 	}).then(() => console.log('successfully created social card images!'))
@@ -55,47 +58,66 @@ export default function () {
 
 	this.nuxt.hook(hookName, async context => {
 		if (!isTest) {
-			dir = context.options.generate.dir + '/og-images'
+			dir = `${context.options.generate.dir}/${ogImagesDir}`
 			allRoutes = await Array.from(context.generatedRoutes)
 		}
+
+		const client = new StoryblokClient({
+			accessToken: process.env.STORYBLOK_TOKEN
+		})
+
+		const { data } = await client.get('cdn/stories', {
+			starts_with: 'news/',
+			is_startpage: 0,
+			sort_by: 'created_at:desc'
+		})
+
+		const newsData = data.stories.map(item => {
+			return {
+				slug: item.slug,
+				headline: item.content.headline
+			}
+		})
 
 		if (!fs.existsSync(dir)) {
 			fs.mkdirSync(dir)
 		}
 
+		const finalRoutes = allRoutes.filter(route => {
+			const splitted = route.split('/')
+			if (splitted[2] === 'bands' && splitted[3]) return false
+			if (route === '/') return false
+			return route
+		})
+
 		const content = []
 
-		// TODO: create a fallback image
-		for (const routeRaw of allRoutes) {
-			let route = routeRaw
-			let addToContent = true
-
-			if (route.substr(0, 1) === '/') {
-				route = route.substr(1)
-			}
-
-			if (route.substr(-1) === '/') {
-				route = route.substr(0, route.length - 1)
-			}
-
-			let output = route
-
+		for (const routeRaw of finalRoutes) {
+			let subline = ''
+			let headline = ''
+			const route = removeSlashesFromStartAndEnd(routeRaw)
+			const outputFilePath = route.replace('/', '-')
 			const splitted = route.split('/')
 
-			if (splitted[0] === '' || (splitted[1] === 'bands' && splitted[2])) {
-				addToContent = false
-			} else if (splitted.length > 1) {
-				const splitted2 = route.split('/')
-				route = splitted2[1]
-				output = splitted2.join('-')
+			if (splitted.length > 1) {
+				headline = splitted[1].toUpperCase()
+				if (splitted[0] === 'historie') subline = splitted[0].toUpperCase()
+				if (splitted[0] === 'news') {
+					subline = splitted[0].toUpperCase()
+					const headlineFromStoryblok = newsData.filter(news => {
+						return news.slug === splitted[1]
+					})
+					headline = headlineFromStoryblok[0].headline
+				}
+			} else {
+				headline = route.toUpperCase()
 			}
 
-			if (addToContent) {
-				content.push({
-					name: route.toUpperCase(),
-					output: `${dir}/${output}.png`
-				})
-			}
+			content.push({
+				headline,
+				subline,
+				output: `${dir}/${outputFilePath}.png`
+			})
 		}
 
 		await createImages(content)

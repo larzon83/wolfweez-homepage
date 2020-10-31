@@ -9,7 +9,7 @@ import NewsDetail from '~/components/NewsDetail.vue'
 import useFormatting from '~/mixins/useFormatting.js'
 import useStorybridge from '~/mixins/useStorybridge.js'
 import { sbData } from '~/utils'
-import { createSEOMeta } from '~/utils/seo'
+import { createOgImagePath, createSEOMeta } from '~/utils/seo'
 
 export default {
 	components: {
@@ -23,6 +23,8 @@ export default {
 			title,
 			meta: createSEOMeta({
 				description: this.story.content.description_meta,
+				image: createOgImagePath(this.$route.path),
+				imageAlt: title,
 				title,
 				url: this.$route.path
 			})

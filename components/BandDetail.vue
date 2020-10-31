@@ -14,6 +14,18 @@
 			position="top center"
 			contain
 		></v-img>
+		<v-img
+			v-if="band.image.filename"
+			:lazy-src="$_transformImage(band.image.filename, '300x0')"
+			:src="band.image.filename"
+			:alt="band.name"
+			eager
+			class="py-3"
+			max-width="300"
+			:transition="false"
+			position="top center"
+			contain
+		></v-img>
 		<rich-text-renderer v-if="band.description" :document="band.description" />
 	</div>
 </template>

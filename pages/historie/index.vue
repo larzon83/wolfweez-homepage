@@ -6,7 +6,7 @@
 
 <script>
 import { sbData } from '~/utils'
-import { createSEOMeta } from '~/utils/seo'
+import { createOgImagePath, createSEOMeta } from '~/utils/seo'
 
 export default {
 	name: 'HistoryOverview',
@@ -17,6 +17,8 @@ export default {
 			title,
 			meta: createSEOMeta({
 				description: '',
+				image: createOgImagePath(this.$route.path),
+				imageAlt: title,
 				title,
 				url: this.$route.path
 			})

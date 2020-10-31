@@ -43,7 +43,7 @@
 import useFormatting from '~/mixins/useFormatting.js'
 import useStorybridge from '~/mixins/useStorybridge.js'
 import { sbData } from '~/utils'
-import { createSEOMeta } from '~/utils/seo'
+import { createOgImagePath, createSEOMeta } from '~/utils/seo'
 
 export default {
 	name: 'Timetable',
@@ -55,6 +55,8 @@ export default {
 			title,
 			meta: createSEOMeta({
 				// description: '', // TODO:
+				image: createOgImagePath(this.$route.path),
+				imageAlt: title,
 				title,
 				url: this.$route.path
 			})

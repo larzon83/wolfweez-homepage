@@ -55,7 +55,7 @@ import useFormatting from '~/mixins/useFormatting.js'
 import useStorybridge from '~/mixins/useStorybridge.js'
 import { sbData } from '~/utils'
 import { siteTitle } from '~/utils/constants'
-import { createSEOMeta } from '~/utils/seo'
+import { createOgImagePath, createSEOMeta } from '~/utils/seo'
 
 export default {
 	mixins: [useFormatting, useStorybridge],
@@ -66,6 +66,8 @@ export default {
 			title,
 			meta: createSEOMeta({
 				description: this.year.content.description_meta,
+				image: createOgImagePath(this.$route.path),
+				imageAlt: title,
 				title,
 				url: this.$route.path
 			})

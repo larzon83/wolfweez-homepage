@@ -3,7 +3,7 @@
 </template>
 
 <script>
-import { createSEOMeta } from '~/utils/seo'
+import { createOgImagePath, createSEOMeta } from '~/utils/seo'
 
 export default {
 	name: 'LineUp',
@@ -13,7 +13,8 @@ export default {
 		return {
 			title,
 			meta: createSEOMeta({
-				// description: '', // TODO:
+				image: createOgImagePath(this.$route.path),
+				imageAlt: title,
 				title,
 				url: this.$route.path
 			})
