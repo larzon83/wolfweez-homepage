@@ -1,31 +1,49 @@
 <template>
 	<section>
 		<TabsLineup />
-		<ul class="flex py-6 mb-6">
-			<li
+		<v-row fill-height>
+			<v-col
 				v-for="band in stories"
 				:key="band.content._uid"
-				class="flex-auto px-6"
-				style="min-width: 33%"
+				cols="12"
+				md="6"
+				lg="4"
 			>
-				<nuxt-link
+				<v-card
 					v-if="band.content"
+					color="#212322"
+					href
+					nuxt
+					height="100%"
+					:ripple="false"
 					:to="$_slashify(band.full_slug)"
-					class="article-teaser block py-4 px-6 border rounded border-gray-500"
 				>
-					<h2 class="pt-2 pb-4 text-2xl font-bold">
+					<v-img
+						v-if="band.content.image.filename"
+						:lazy-src="$_transformImage(band.content.image.filename, '300x0')"
+						:src="band.content.image.filename"
+						:alt="band.content.name"
+						eager
+						class="py-3"
+						:transition="false"
+						position="top center"
+						contain
+					></v-img>
+					<v-card-title class="text-h4 text-md-h6 text-xl-h5">
 						{{ band.content.name }}
-					</h2>
-					<rich-text-renderer
-						v-if="band.content.description_short"
-						:document="band.content.description_short"
-					/>
-				</nuxt-link>
+					</v-card-title>
+					<v-card-text>
+						<rich-text-renderer
+							v-if="band.content.description_short"
+							:document="band.content.description_short"
+						/>
+					</v-card-text>
+				</v-card>
 				<p v-else class="px-4 py-2 text-white bg-red-700 text-center rounded">
 					This content loads on save. <strong>Save the entry & reload.</strong>
 				</p>
-			</li>
-		</ul>
+			</v-col>
+		</v-row>
 	</section>
 </template>
 
