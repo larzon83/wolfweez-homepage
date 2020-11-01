@@ -13,8 +13,7 @@ export const mutations = {
 export const actions = {
 	loadConfig({ commit }, { version }) {
 		return this.$storyapi
-			.get(`cdn/stories/line-up`, {
-				is_startpage: 1,
+			.get(`cdn/stories/config`, {
 				version
 			})
 			.then(res => {

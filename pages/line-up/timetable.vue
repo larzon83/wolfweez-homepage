@@ -1,9 +1,9 @@
 <template>
 	<section>
 		<TabsLineup />
-		<v-row v-if="story.content.entry" class="timetable">
+		<v-row v-if="timetable.entry" class="timetable">
 			<v-col
-				v-for="day in story.content.entry"
+				v-for="day in timetable.entry"
 				:key="day._uid"
 				v-editable="day"
 				cols="6"
@@ -54,7 +54,7 @@ export default {
 		return {
 			title,
 			meta: createSEOMeta({
-				// description: '', // TODO:
+				description: this.timetable.description_meta,
 				image: createOgImagePath(this.$route.path),
 				imageAlt: title,
 				title,
@@ -64,12 +64,15 @@ export default {
 	},
 
 	async asyncData(context) {
-		// expands to -> story: { content: {} }
-		return await sbData({
+		const timetable = await sbData({
 			ctx: context,
 			path: '/line-up/timetable',
 			resolveLinks: 'story'
 		})
+
+		return {
+			timetable: timetable.story.content
+		}
 	}
 }
 </script>

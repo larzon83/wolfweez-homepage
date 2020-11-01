@@ -3,7 +3,7 @@
 		<TabsLineup />
 		<v-row fill-height>
 			<v-col
-				v-for="band in stories"
+				v-for="band in bandsAll"
 				:key="band.content._uid"
 				cols="12"
 				md="6"
@@ -62,7 +62,7 @@ export default {
 		return {
 			title,
 			meta: createSEOMeta({
-				// description: '', // TODO:
+				description: this.metaDescription,
 				image: createOgImagePath(this.$route.path),
 				imageAlt: title,
 				title,
@@ -72,11 +72,23 @@ export default {
 	},
 
 	async asyncData(context) {
-		// expands to -> stories: []
-		return await sbData({
+		const bandsDir = await sbData({
 			ctx: context,
 			startsWith: 'line-up/bands/'
 		})
+
+		const bandsMeta = bandsDir.stories.filter(item => {
+			return item.is_startpage
+		})
+
+		const bandsAll = bandsDir.stories.filter(item => {
+			return !item.is_startpage
+		})
+
+		return {
+			bandsAll,
+			metaDescription: bandsMeta[0].content.description_meta
+		}
 	}
 }
 </script>

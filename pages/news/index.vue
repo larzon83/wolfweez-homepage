@@ -2,7 +2,7 @@
 	<section>
 		<ul class="flex py-6 mb-6">
 			<li
-				v-for="news in stories"
+				v-for="news in newsAll"
 				:key="news.content._uid"
 				class="flex-auto px-6"
 				style="min-width: 33%"
@@ -44,7 +44,7 @@ export default {
 		return {
 			title,
 			meta: createSEOMeta({
-				// description: '', // TODO:
+				description: this.metaDescription,
 				image: createOgImagePath(this.$route.path),
 				imageAlt: title,
 				title,
@@ -54,12 +54,24 @@ export default {
 	},
 
 	async asyncData(context) {
-		// expands to -> stories: []
-		return await sbData({
+		const newsDir = await sbData({
 			ctx: context,
 			startsWith: 'news/',
 			sortBy: 'created_at:desc'
 		})
+
+		const newsMeta = newsDir.stories.filter(item => {
+			return item.is_startpage
+		})
+
+		const newsAll = newsDir.stories.filter(item => {
+			return !item.is_startpage
+		})
+
+		return {
+			newsAll,
+			metaDescription: newsMeta[0].content.description_meta
+		}
 	}
 }
 </script>

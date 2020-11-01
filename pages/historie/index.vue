@@ -16,7 +16,6 @@ export default {
 		return {
 			title,
 			meta: createSEOMeta({
-				description: '',
 				image: createOgImagePath(this.$route.path),
 				imageAlt: title,
 				title,
