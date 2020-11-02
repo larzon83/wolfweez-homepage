@@ -96,7 +96,7 @@ export default async function () {
 				}
 			],
 			['nuxt-canonical', { baseUrl }],
-			'@/modules/netlifyTomlUpdater',
+			'@/modules/netlifyFilesGenerator',
 			'@/modules/socialCardGenerator'
 		],
 

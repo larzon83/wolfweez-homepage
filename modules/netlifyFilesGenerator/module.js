@@ -22,7 +22,7 @@ export default async function (moduleOptions) {
 		const regEx = /(to = "\/historie\/)(\w+)(\/")/i
 
 		if (!contentRaw.match(regEx)) {
-			throw new Error('netlifyTomlUpdater: regular Expression failed')
+			throw new Error('netlifyFilesGenerator: regular Expression failed')
 		}
 
 		const contentNew = contentRaw.replace(regEx, `$1${data.stories[0].slug}$3`)
