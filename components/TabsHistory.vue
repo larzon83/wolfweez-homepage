@@ -19,6 +19,7 @@
 <script>
 import useFormatting from '~/mixins/useFormatting.js'
 import { sbData } from '~/utils'
+import { queryHistoryYears } from '~/utils/constants'
 
 export default {
 	name: 'TabsHistory',
@@ -33,9 +34,7 @@ export default {
 	async fetch() {
 		const historyYears = await sbData({
 			ctx: this.$nuxt.context,
-			isStartpage: 1,
-			sortBy: 'slug:desc',
-			startsWith: 'historie/'
+			...queryHistoryYears
 		})
 
 		this.years = historyYears.stories.map(year => {

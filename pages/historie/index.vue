@@ -6,6 +6,7 @@
 
 <script>
 import { sbData } from '~/utils'
+import { queryHistoryYears } from '~/utils/constants'
 import { createOgImagePath, createSEOMeta } from '~/utils/seo'
 
 export default {
@@ -25,13 +26,9 @@ export default {
 	},
 
 	async asyncData(context) {
-		// NOTE: same api-call is used inside @/modules/netlifyTomlUpdater
-		// -> when updating here, update there, too
 		const historyYears = await sbData({
 			ctx: context,
-			isStartpage: 1,
-			sortBy: 'slug:desc',
-			startsWith: 'historie/'
+			...queryHistoryYears
 		})
 
 		let destination = '/'
