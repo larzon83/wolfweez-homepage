@@ -19,6 +19,13 @@ export default async function () {
 		ssr: process.env.NUXT_ENV_IS_SPA !== 'true',
 		target: process.env.NUXT_ENV_IS_SPA === 'true' ? 'server' : 'static',
 
+		publicRuntimeConfig: {
+			netlifyUrl: process.env.URL || 'netlifyUrl',
+			netlifyDeployUrl: process.env.DEPLOY_URL || 'netlifyDeployUrl',
+			netlifyDeployPrimeUrl:
+				process.env.DEPLOY_PRIME_URL || 'netlifyDeployPrimeUrl'
+		},
+
 		// serverMiddleware: ['~/server-middleware/log.js'],
 
 		// Global page headers (https://go.nuxtjs.dev/config-head)
