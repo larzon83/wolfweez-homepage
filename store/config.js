@@ -1,12 +1,14 @@
 export const state = () => ({
 	festivalDate: '',
-	festivalFlyer: ''
+	festivalFlyer: '',
+	festivalDescription: ''
 })
 
 export const mutations = {
 	SET_CONFIG(state, payload) {
 		state.festivalDate = payload.date
 		state.festivalFlyer = payload.flyer.filename
+		state.festivalDescription = payload.description_meta
 	}
 }
 

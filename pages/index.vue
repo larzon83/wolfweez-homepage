@@ -21,7 +21,9 @@
 				</v-card-title>
 				<v-card-text>
 					<p>DATE: {{ festivalDate }}</p>
+					<p>DATE from plugin: {{ $sbConfig.date }}</p>
 					<p>FLYER: {{ festivalFlyer }}</p>
+					<p>DESC: {{ festivalDescription }}</p>
 					<p>
 						Vuetify is a progressive Material Design component framework for
 						Vue.js. It was designed to empower developers to create amazing
@@ -122,7 +124,11 @@ export default {
 	name: 'Index',
 
 	computed: {
-		...mapState('config', ['festivalDate', 'festivalFlyer'])
+		...mapState('config', [
+			'festivalDate',
+			'festivalFlyer',
+			'festivalDescription'
+		])
 	}
 }
 </script>

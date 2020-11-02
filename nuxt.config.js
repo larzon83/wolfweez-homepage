@@ -45,7 +45,11 @@ export default {
 	css: ['~/assets/style/main.scss'],
 
 	// Plugins to run before rendering page (https://go.nuxtjs.dev/config-plugins)
-	plugins: ['~/plugins/composition-api.js', '~/plugins/rich-text-renderer.js'],
+	plugins: [
+		'~/plugins/sb-config.js',
+		'~/plugins/composition-api.js',
+		'~/plugins/rich-text-renderer.js'
+	],
 
 	// Auto import components (https://go.nuxtjs.dev/config-components)
 	components: true,
@@ -63,7 +67,8 @@ export default {
 			}
 		],
 		['nuxt-canonical', { baseUrl }],
-		'@/modules/netlifyTomlUpdater', // only ehen NODE_ENV === 'production'
+		// '@/modules/sbConfig',
+		'@/modules/netlifyTomlUpdater',
 		'@/modules/socialCardGenerator'
 	],
 
