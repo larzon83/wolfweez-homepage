@@ -24,12 +24,6 @@
 					<p>FLYER: {{ festivalFlyer.filename }}</p>
 					<p>DESC: {{ festivalDescription }}</p>
 					<p>
-						ENV:<br />
-						netlifyUrl: {{ $config.netlifyUrl }}<br />
-						netlifyDeployUrl: {{ $config.netlifyDeployUrl }}<br />
-						netlifyDeployPrimeUrl: {{ $config.netlifyDeployPrimeUrl }}<br />
-					</p>
-					<p>
 						Vuetify is a progressive Material Design component framework for
 						Vue.js. It was designed to empower developers to create amazing
 						applications.

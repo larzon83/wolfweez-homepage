@@ -1,4 +1,5 @@
-export const baseUrl = 'https://ww-test.netlify.app' // FIXME: use env
+// env.URL is main url of netlify site
+export const baseUrl = process.env.URL || 'http://localhost:3000'
 
 export const siteTitle = {
 	short: 'Wolfweez Openair Festival',
