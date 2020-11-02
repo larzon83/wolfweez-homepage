@@ -58,74 +58,76 @@ export default function () {
 		fs.removeSync(dir)
 	}
 
-	this.nuxt.hook(hookName, async context => {
-		if (!isTest) {
-			dir = `${context.options.generate.dir}/${ogImagesDir}`
-			allRoutes = await Array.from(context.generatedRoutes)
-		}
-
-		const client = new StoryblokClient({
-			accessToken: process.env.STORYBLOK_TOKEN
-		})
-
-		const { data } = await client.get('cdn/stories', {
-			starts_with: 'news/',
-			is_startpage: 0,
-			sort_by: 'created_at:desc'
-		})
-
-		const newsData = data.stories.map(item => {
-			return {
-				slug: item.slug,
-				headline: item.content.headline
-			}
-		})
-
-		if (!fs.existsSync(dir)) {
-			fs.mkdirSync(dir)
-		}
-
-		const finalRoutes = allRoutes.filter(route => {
-			const splitted = route.split('/')
-			if (splitted[2] === 'bands' && splitted[3]) return false
-			if (route === '/') return false
-			return route
-		})
-
-		const content = []
-
-		for (const routeRaw of finalRoutes) {
-			let bodyClass = ''
-			let subline = ''
-			let headline = ''
-			const route = removeSlashesFromStartAndEnd(routeRaw)
-			const outputFilePath = route.replace('/', '-')
-			const splitted = route.split('/')
-
-			if (splitted.length > 1) {
-				headline = splitted[1].toUpperCase()
-				if (splitted[0] === 'historie') subline = splitted[0].toUpperCase()
-				if (splitted[0] === 'news') {
-					subline = splitted[0].toUpperCase()
-					bodyClass = 'is-news'
-					const headlineFromStoryblok = newsData.filter(news => {
-						return news.slug === splitted[1]
-					})
-					headline = headlineFromStoryblok[0].headline
-				}
-			} else {
-				headline = route.toUpperCase()
+	if (process.env.NUXT_ENV_IS_SPA !== 'true') {
+		this.nuxt.hook(hookName, async context => {
+			if (!isTest) {
+				dir = `${context.options.generate.dir}/${ogImagesDir}`
+				allRoutes = await Array.from(context.generatedRoutes)
 			}
 
-			content.push({
-				headline,
-				subline,
-				bgImage,
-				bodyClass,
-				output: `${dir}/${outputFilePath}.png`
+			const client = new StoryblokClient({
+				accessToken: process.env.STORYBLOK_TOKEN
 			})
-		}
 
-		await createImages(content)
-	})
+			const { data } = await client.get('cdn/stories', {
+				starts_with: 'news/',
+				is_startpage: 0,
+				sort_by: 'created_at:desc'
+			})
+
+			const newsData = data.stories.map(item => {
+				return {
+					slug: item.slug,
+					headline: item.content.headline
+				}
+			})
+
+			if (!fs.existsSync(dir)) {
+				fs.mkdirSync(dir)
+			}
+
+			const finalRoutes = allRoutes.filter(route => {
+				const splitted = route.split('/')
+				if (splitted[2] === 'bands' && splitted[3]) return false
+				if (route === '/') return false
+				return route
+			})
+
+			const content = []
+
+			for (const routeRaw of finalRoutes) {
+				let bodyClass = ''
+				let subline = ''
+				let headline = ''
+				const route = removeSlashesFromStartAndEnd(routeRaw)
+				const outputFilePath = route.replace('/', '-')
+				const splitted = route.split('/')
+
+				if (splitted.length > 1) {
+					headline = splitted[1].toUpperCase()
+					if (splitted[0] === 'historie') subline = splitted[0].toUpperCase()
+					if (splitted[0] === 'news') {
+						subline = splitted[0].toUpperCase()
+						bodyClass = 'is-news'
+						const headlineFromStoryblok = newsData.filter(news => {
+							return news.slug === splitted[1]
+						})
+						headline = headlineFromStoryblok[0].headline
+					}
+				} else {
+					headline = route.toUpperCase()
+				}
+
+				content.push({
+					headline,
+					subline,
+					bgImage,
+					bodyClass,
+					output: `${dir}/${outputFilePath}.png`
+				})
+			}
+
+			await createImages(content)
+		})
+	}
 }

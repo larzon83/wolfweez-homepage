@@ -72,4 +72,14 @@ export default async function (moduleOptions) {
 	// 		netlifyToml
 	// 	}
 	// ])
+
+	if (process.env.NUXT_ENV_IS_SPA === 'true') {
+		this.requireModule([
+			'@nuxtjs/netlify-files',
+			{
+				copyExistingFiles: true,
+				existingFilesDirectory: resolve(__dirname, 'files')
+			}
+		])
+	}
 }
