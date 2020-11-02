@@ -17,18 +17,12 @@
 			</div>
 			<v-card color="#666">
 				<v-card-title class="headline">
-					Welcome to the Vuetify + Nuxt.js template
+					Welcome to the Vuetify + Nuxt.js template!
 				</v-card-title>
 				<v-card-text>
 					<p>DATE: {{ festivalDate }}</p>
 					<p>FLYER: {{ festivalFlyer.filename }}</p>
 					<p>DESC: {{ festivalDescription }}</p>
-					<p>
-						ENV:<br />
-						netlifyUrl: {{ $config.netlifyUrl }}<br />
-						netlifyDeployUrl: {{ $config.netlifyDeployUrl }}<br />
-						netlifyDeployPrimeUrl: {{ $config.netlifyDeployPrimeUrl }}<br />
-					</p>
 					<p>
 						Vuetify is a progressive Material Design component framework for
 						Vue.js. It was designed to empower developers to create amazing

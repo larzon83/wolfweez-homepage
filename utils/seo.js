@@ -7,14 +7,18 @@ const defaults = {
 	imageWidth: '1200',
 	imageHeight: '630',
 	title: siteTitle.long + ' - ' + siteTitle.short,
-	type: 'website',
-	url: baseUrl
+	type: 'website'
 }
 
 export const createSEOMeta = data => {
 	let metaTitle = defaults.title
 	if (data && data.title) {
 		metaTitle = data.title + ' - ' + siteTitle.short
+	}
+
+	let metaUrl = baseUrl
+	if (data && data.url) {
+		metaUrl = baseUrl + data.url
 	}
 
 	let imageAlt = defaults.title
@@ -31,7 +35,7 @@ export const createSEOMeta = data => {
 		{
 			hid: 'og:url',
 			property: 'og:url',
-			content: (data && baseUrl + data.url) || defaults.url
+			content: metaUrl
 		},
 		{
 			hid: 'og:title',
@@ -61,7 +65,7 @@ export const createSEOMeta = data => {
 		{
 			hid: 'twitter:url',
 			name: 'twitter:url',
-			content: (data && baseUrl + data.url) || defaults.url
+			content: metaUrl
 		},
 		{
 			hid: 'twitter:title',
@@ -75,6 +79,7 @@ export const createSEOMeta = data => {
 		}
 	]
 
+	// default description is defined in nuxt.config.js
 	if (data && data.description) {
 		metaArray.push(
 			{
@@ -111,9 +116,10 @@ export const removeSlashesFromStartAndEnd = routeRaw => {
 }
 
 export const dashifyPath = path => {
-	return removeSlashesFromStartAndEnd(path).replace('/', '-')
+	return path.replace('/', '-')
 }
 
 export const createOgImagePath = path => {
-	return `/${ogImagesDir}/${dashifyPath(path)}.png`
+	const newPath = removeSlashesFromStartAndEnd(path)
+	return `/${ogImagesDir}/${dashifyPath(newPath)}.png`
 }
