@@ -21,8 +21,7 @@
 				</v-card-title>
 				<v-card-text>
 					<p>DATE: {{ festivalDate }}</p>
-					<p>DATE from plugin: {{ $sbConfig.date }}</p>
-					<p>FLYER: {{ festivalFlyer }}</p>
+					<p>FLYER: {{ festivalFlyer.filename }}</p>
 					<p>DESC: {{ festivalDescription }}</p>
 					<p>
 						Vuetify is a progressive Material Design component framework for
