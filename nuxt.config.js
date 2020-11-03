@@ -137,7 +137,18 @@ export default async function () {
 		],
 
 		netlify: {
-			redirects: netlifyRedirects
+			mergeSecurityHeaders: false, // to be able to override X-Frame-Options
+			redirects: netlifyRedirects,
+			headers: {
+				'/*': [
+					// default headers, the module sets
+					'Referrer-Policy: origin',
+					'X-Content-Type-Options: nosniff',
+					'X-XSS-Protection: 1; mode=block',
+					// custom X-Frame-Options
+					'X-Frame-Options: ALLOW-FROM https://app.storyblok.com/'
+				]
+			}
 		},
 
 		// Axios module configuration (https://go.nuxtjs.dev/config-axios)
