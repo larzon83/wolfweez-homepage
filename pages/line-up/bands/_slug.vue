@@ -1,7 +1,7 @@
 <template>
 	<section>
 		<TabsLineup />
-		<BandDetail :band="band" :time="time" />
+		<BandDetail :band="story.content" :time="time" />
 	</section>
 </template>
 
@@ -18,12 +18,12 @@ export default {
 	mixins: [useStorybridge],
 
 	head() {
-		const title = `${this.band.name} | Bands`
+		const title = `${this.story.content.name} | Bands`
 		return {
 			title,
 			meta: createSEOMeta({
-				description: this.band.description_meta,
-				image: this.band.image.filename,
+				description: this.story.content.description_meta,
+				image: this.story.content.image.filename,
 				imageAlt: title,
 				title,
 				url: this.$route.path
@@ -62,10 +62,7 @@ export default {
 			}
 		}
 
-		return {
-			band: band.story.content,
-			time
-		}
+		return { ...band, time }
 	}
 }
 </script>
