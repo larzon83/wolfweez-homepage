@@ -146,7 +146,9 @@ export default async function () {
 					'X-Content-Type-Options: nosniff',
 					'X-XSS-Protection: 1; mode=block',
 					// custom X-Frame-Options
-					'X-Frame-Options: ALLOW-FROM https://app.storyblok.com/'
+					'X-Frame-Options: ALLOW-FROM https://app.storyblok.com/',
+					// other custom headers
+					'Content-Security-Policy: frame-ancestors https://app.storyblok.com'
 				]
 			}
 		},
