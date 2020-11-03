@@ -7,6 +7,7 @@ export default async function () {
 		accessToken: process.env.STORYBLOK_TOKEN
 	})
 
+	// Storyblok: get main festival-config -> extract main meta-description
 	const { data } = await client.get('cdn/stories/config', {
 		version:
 			process.env.NUXT_ENV_STORYBLOK_PREVIEW === 'true' ? 'draft' : 'published'
@@ -14,6 +15,34 @@ export default async function () {
 
 	const defaultMetaDescription =
 		data.story.content.description_meta || siteTitle.long
+
+	// Storyblok: get all history years -> most recend one will be used in netlify redirects
+	const { data: sbHistoryYears } = await client.get('cdn/stories', {
+		starts_with: 'historie/',
+		is_startpage: 1,
+		sort_by: 'slug:desc'
+	})
+
+	const netlifyRedirects = [
+		{
+			from: '/line-up/',
+			to: '/line-up/bands/',
+			force: true
+		},
+		{
+			from: '/historie/',
+			to: `/historie/${sbHistoryYears.stories[0].slug}/`,
+			force: true
+		}
+	]
+
+	if (process.env.NUXT_ENV_IS_SPA === 'true') {
+		netlifyRedirects.push({
+			from: '/*',
+			to: '/index.html',
+			status: 200
+		})
+	}
 
 	return {
 		ssr: process.env.NUXT_ENV_IS_SPA !== 'true',
@@ -96,7 +125,8 @@ export default async function () {
 				}
 			],
 			['nuxt-canonical', { baseUrl }],
-			'@/modules/netlifyFilesGenerator',
+			// '@/modules/netlifyFilesGenerator',
+			'@aceforth/nuxt-netlify',
 			'@/modules/socialCardGenerator'
 		],
 
@@ -104,9 +134,11 @@ export default async function () {
 		modules: [
 			// https://go.nuxtjs.dev/axios
 			'@nuxtjs/axios'
-			// https://go.nuxtjs.dev/content
-			// '@nuxt/content'
 		],
+
+		netlify: {
+			redirects: netlifyRedirects
+		},
 
 		// Axios module configuration (https://go.nuxtjs.dev/config-axios)
 		axios: {},
@@ -122,9 +154,6 @@ export default async function () {
 				orientation: 'portrait-primary'
 			}
 		},
-
-		// Content module configuration (https://go.nuxtjs.dev/content-config)
-		// content: {},
 
 		// Vuetify module configuration (https://go.nuxtjs.dev/config-vuetify)
 		vuetify: {

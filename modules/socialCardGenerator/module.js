@@ -48,7 +48,7 @@ const createImages = async content => {
 		content,
 		puppeteerArgs: { args: ['--no-sandbox'] },
 		html: htmlTemplate
-	}).then(() => console.log('successfully created social card images!'))
+	}).then(() => console.log('✔ successfully created social card images'))
 }
 
 export default function () {

@@ -1,3 +1,6 @@
+// NOTE: deprecated - DON'T use!!!
+// -> _headers and _redirects are now handled via 'nuxt-netlify' module in nuxt.config.js
+
 import StoryblokClient from 'storyblok-js-client'
 
 import fse from 'fs-extra'
