@@ -182,7 +182,11 @@ export default async function () {
 
 		router: {
 			middleware: 'setConfig',
-			trailingSlash: process.env.NUXT_ENV_IS_SPA === 'true' ? undefined : true
+			trailingSlash:
+				process.env.NUXT_ENV_IS_SPA === 'true' ||
+				process.env.NODE_ENV === 'development'
+					? undefined
+					: true
 		},
 
 		// Build Configuration (https://go.nuxtjs.dev/config-build)
