@@ -1,14 +1,14 @@
 <template>
-	<section>
+	<section v-editable="story.content">
 		<TabsHistory />
 		<h2>{{ headline }}</h2>
-		<b>{{ year.content.date }}</b>
+		<b>{{ story.content.date }}</b>
 		<br /><br />
 
 		<v-img
-			v-if="year.content.flyer.filename"
-			:lazy-src="$_transformImage(year.content.flyer.filename, '150x0')"
-			:src="$_transformImage(year.content.flyer.filename, '600x0')"
+			v-if="story.content.flyer.filename"
+			:lazy-src="$_transformImage(story.content.flyer.filename, '150x0')"
+			:src="$_transformImage(story.content.flyer.filename, '600x0')"
 			:alt="'Logo'"
 			eager
 			class="py-3"
@@ -21,13 +21,7 @@
 		<h3>Line-Up</h3>
 
 		<v-row v-if="timetable" class="timetable">
-			<v-col
-				v-for="day in timetable"
-				:key="day._uid"
-				v-editable="day"
-				cols="6"
-				class="day"
-			>
+			<v-col v-for="day in timetable" :key="day._uid" cols="6" class="day">
 				<h4>
 					{{ day.day_display_name }}
 				</h4>
@@ -36,12 +30,7 @@
 				</div>
 
 				<ul v-if="day.entry" class="flex py-6 mb-6">
-					<li
-						v-for="slot in day.entry"
-						:key="slot._uid"
-						v-editable="slot"
-						class="slot"
-					>
+					<li v-for="slot in day.entry" :key="slot._uid" class="slot">
 						{{ slot.band.story.content.name }}
 					</li>
 				</ul>
@@ -61,11 +50,11 @@ export default {
 	mixins: [useFormatting, useStorybridge],
 
 	head() {
-		const title = `${this.year.slug} | Historie`
+		const title = `${this.story.slug} | Historie`
 		return {
 			title,
 			meta: createSEOMeta({
-				description: this.year.content.description_meta,
+				description: this.story.content.description_meta,
 				image: createOgImagePath(this.$route.path),
 				imageAlt: title,
 				title,
@@ -89,13 +78,13 @@ export default {
 
 		return {
 			timetable: historyTimetable.story.content.entry,
-			year: historyYear.story
+			...historyYear
 		}
 	},
 
 	computed: {
 		headline() {
-			return `${siteTitle.short} ${this.year.slug}`
+			return `${siteTitle.short} ${this.story.slug}`
 		}
 	}
 }
