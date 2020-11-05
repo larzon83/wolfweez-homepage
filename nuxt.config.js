@@ -180,6 +180,10 @@ export default async function () {
 			// }
 		},
 
+		generate: {
+			fallback: true
+		},
+
 		router: {
 			middleware: 'setConfig',
 			trailingSlash:
