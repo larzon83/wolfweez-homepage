@@ -181,7 +181,7 @@ export default async function () {
 		},
 
 		generate: {
-			fallback: true
+			fallback: process.env.NUXT_ENV_IS_SPA === 'true' ? '200.html' : true
 		},
 
 		router: {
