@@ -1,27 +1,17 @@
 import StoryblokClient from 'storyblok-js-client'
 import { baseUrl, siteTitle } from './utils/constants'
+import { getInitialStoryblokData } from './utils/initialStoryblokData'
 import { createSEOMeta } from './utils/seo'
 
 export default async function () {
-	const client = new StoryblokClient({
+	const sbClient = new StoryblokClient({
 		accessToken: process.env.STORYBLOK_TOKEN
 	})
 
-	// Storyblok: get main festival-config -> extract main meta-description
-	const { data } = await client.get('cdn/stories/config', {
-		version:
-			process.env.NUXT_ENV_STORYBLOK_PREVIEW === 'true' ? 'draft' : 'published'
-	})
+	const sbVersion =
+		process.env.NUXT_ENV_STORYBLOK_PREVIEW === 'true' ? 'draft' : 'published'
 
-	const defaultMetaDescription =
-		data.story.content.description_meta || siteTitle.long
-
-	// Storyblok: get all history years -> most recend one will be used in netlify redirects
-	const { data: sbHistoryYears } = await client.get('cdn/stories', {
-		starts_with: 'historie/',
-		is_startpage: 1,
-		sort_by: 'slug:desc'
-	})
+	const storyblokData = await getInitialStoryblokData(sbClient, sbVersion)
 
 	const netlifyRedirects = [
 		{
@@ -31,10 +21,14 @@ export default async function () {
 		},
 		{
 			from: '/historie/',
-			to: `/historie/${sbHistoryYears.stories[0].slug}/`,
+			to: `/historie/${storyblokData.historyRedirectSlug}/`,
 			force: true
 		}
 	]
+
+	if (storyblokData.bandsRedirects.length) {
+		netlifyRedirects.push(...storyblokData.bandsRedirects)
+	}
 
 	if (process.env.NUXT_ENV_IS_SPA === 'true') {
 		netlifyRedirects.push({
@@ -73,17 +67,17 @@ export default async function () {
 				{
 					hid: 'description',
 					name: 'description',
-					content: defaultMetaDescription
+					content: storyblokData.metaDescription
 				},
 				{
 					hid: 'og:description',
 					name: 'og:description',
-					content: defaultMetaDescription
+					content: storyblokData.metaDescription
 				},
 				{
 					hid: 'twitter:description',
 					name: 'twitter:description',
-					content: defaultMetaDescription
+					content: storyblokData.metaDescription
 				}
 			],
 			link: [
@@ -160,7 +154,7 @@ export default async function () {
 			manifest: {
 				name: siteTitle.short,
 				short_name: 'Wolfweez',
-				description: defaultMetaDescription,
+				description: storyblokData.metaDescription,
 				background_color: '#202020',
 				theme_color: '#000', // TODO:
 				lang: 'de-DE',
