@@ -41,12 +41,12 @@
 		</v-row>
 
 		<!-- Bilder -->
-		<v-row v-if="sortedThumbs">
+		<v-row v-if="story.content.gallery && story.content.gallery.length">
 			<v-col cols="12" class="py-0">
 				<h3>Bilder</h3>
 			</v-col>
 			<v-col
-				v-for="(img, index) in sortedThumbs"
+				v-for="(img, index) in story.content.gallery"
 				:key="index"
 				class="d-flex child-flex"
 				cols="4"
