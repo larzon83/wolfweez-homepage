@@ -20,12 +20,12 @@
 				>
 					<v-img
 						v-if="band.content.image.filename"
-						:lazy-src="$_transformImage(band.content.image.filename, '300x0')"
-						:src="band.content.image.filename"
 						:alt="band.content.name"
+						:src="band.content.image.filename"
+						:lazy-src="$_transformImage(band.content.image.filename, '300x0')"
+						aspect-ratio="1.9048"
 						eager
 						class="py-3"
-						:transition="false"
 						position="top center"
 						contain
 					></v-img>

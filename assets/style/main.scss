@@ -3,6 +3,16 @@ body {
 	// background-attachment: fixed;
 }
 
+body.lg-on {
+	font-family: $body-font-family;
+	line-height: 1.5;
+}
+
+.lg-outer .lg-thumb-item.active,
+.lg-outer .lg-thumb-item:hover {
+	border-color: var(--v-primary-base) !important;
+}
+
 // .v-application {
 // 	font-size: $size15;
 // }

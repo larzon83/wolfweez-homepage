@@ -4,12 +4,12 @@
 		<h5>{{ time }}</h5>
 		<v-img
 			v-if="news.image.filename"
+			:alt="news.headline"
 			:src="news.image.filename"
-			:alt="'image'"
+			:lazy-src="$_transformImage(news.image.filename, '300x0')"
 			eager
 			class="py-3"
 			max-width="300"
-			:transition="false"
 			position="top center"
 			contain
 		></v-img>

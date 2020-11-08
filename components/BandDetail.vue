@@ -4,25 +4,24 @@
 		<h5>{{ time }}</h5>
 		<v-img
 			v-if="band.logo.filename"
-			:lazy-src="$_transformImage(band.logo.filename, '300x0')"
+			:alt="`Logo ${band.name}`"
 			:src="band.logo.filename"
-			:alt="'Logo'"
+			:lazy-src="$_transformImage(band.logo.filename, '300x0')"
 			eager
 			class="py-3"
 			max-width="300"
-			:transition="false"
 			position="top center"
 			contain
 		></v-img>
 		<v-img
 			v-if="band.image.filename"
-			:lazy-src="$_transformImage(band.image.filename, '300x0')"
-			:src="band.image.filename"
 			:alt="band.name"
+			:src="band.image.filename"
+			:lazy-src="$_transformImage(band.image.filename, '300x0')"
+			aspect-ratio="1.9048"
 			eager
 			class="py-3"
 			max-width="300"
-			:transition="false"
 			position="top center"
 			contain
 		></v-img>

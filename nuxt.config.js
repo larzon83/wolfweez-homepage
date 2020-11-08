@@ -100,7 +100,8 @@ export default async function () {
 		// Plugins to run before rendering page (https://go.nuxtjs.dev/config-plugins)
 		plugins: [
 			'~/plugins/composition-api.js',
-			'~/plugins/rich-text-renderer.js'
+			'~/plugins/rich-text-renderer.js',
+			{ src: '~/plugins/lightgallery.js', ssr: false }
 		],
 
 		// Auto import components (https://go.nuxtjs.dev/config-components)

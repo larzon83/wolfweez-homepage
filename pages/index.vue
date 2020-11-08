@@ -6,10 +6,10 @@
 				<v-img
 					:src="require('~/assets/img/logo.png')"
 					:alt="'Logo'"
+					aspect-ratio="2.4294"
 					eager
 					class="px-8"
 					min-height="100"
-					:transition="false"
 					position="top center"
 					contain
 				></v-img>
