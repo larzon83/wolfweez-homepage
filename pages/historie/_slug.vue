@@ -40,16 +40,6 @@
 			</v-col>
 		</v-row>
 
-		<h5>story.content.gallery</h5>
-		<div v-for="(img, index) in story.content.gallery" :key="'story-' + index">
-			<div>{{ img.filename }}</div>
-		</div>
-
-		<h5>sortedThumbs</h5>
-		<div v-for="(img, index) in sortedThumbs" :key="'sortedThumbs-' + index">
-			<div>{{ img.filename }}</div>
-		</div>
-
 		<!-- Bilder -->
 		<v-row v-if="sortedThumbs">
 			<v-col cols="12" class="py-0">
