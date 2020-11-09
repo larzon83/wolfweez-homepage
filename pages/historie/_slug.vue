@@ -40,18 +40,8 @@
 			</v-col>
 		</v-row>
 
-		<h5>story.content.gallery</h5>
-		<div v-for="(img, index) in story.content.gallery" :key="'story-' + index">
-			<div>{{ img.filename }}</div>
-		</div>
-
-		<h5>sortedThumbs</h5>
-		<div v-for="(img, index) in sortedThumbs" :key="'sortedThumbs-' + index">
-			<div>{{ img.filename }}</div>
-		</div>
-
 		<!-- Bilder -->
-		<v-row>
+		<v-row v-if="sortedThumbs">
 			<v-col cols="12" class="py-0">
 				<h3>Bilder</h3>
 			</v-col>
@@ -189,54 +179,52 @@ export default {
 
 	methods: {
 		openGallery(slideIndex = 0) {
-			if (process.client) {
-				const lg = document.getElementById('lightgallery')
+			const lg = document.getElementById('lightgallery')
 
-				window.lightGallery(lg, {
-					download: true,
-					dynamic: true,
-					dynamicEl: this.dynamicElements,
-					fullScreen: true,
-					hideBarsDelay: 3000,
-					hideControlOnEnd: true,
-					loop: false,
-					mode: 'lg-slide',
-					speed: 120,
-					supportLegacyBrowser: false,
-					thumbnail: true
-				})
+			window.lightGallery(lg, {
+				download: true,
+				dynamic: true,
+				dynamicEl: this.dynamicElements,
+				fullScreen: true,
+				hideBarsDelay: 3000,
+				hideControlOnEnd: true,
+				loop: false,
+				mode: 'lg-slide',
+				speed: 120,
+				supportLegacyBrowser: false,
+				thumbnail: true
+			})
 
-				// set slide index to the one passed from the clicked thumb
-				const pl = window.lgData[lg.getAttribute('lg-uid')]
-				pl.index = parseInt(slideIndex)
+			// set slide index to the one passed from the clicked thumb
+			const pl = window.lgData[lg.getAttribute('lg-uid')]
+			pl.index = parseInt(slideIndex)
 
-				// lg.addEventListener(
-				// 	'onAfterOpen',
-				// 	function () {
-				// 		window.lgData[lg.getAttribute('lg-uid')].slide(Number(slideIndex))
-				// 		window.lgData[lg.getAttribute('lg-uid')].index = Number(slideIndex)
-				// 	},
-				// 	{
-				// 		once: true
-				// 	}
-				// )
+			// lg.addEventListener(
+			// 	'onAfterOpen',
+			// 	function () {
+			// 		window.lgData[lg.getAttribute('lg-uid')].slide(Number(slideIndex))
+			// 		window.lgData[lg.getAttribute('lg-uid')].index = Number(slideIndex)
+			// 	},
+			// 	{
+			// 		once: true
+			// 	}
+			// )
 
-				// lg.addEventListener(
-				// 	'onBeforeOpen',
-				// 	function (event) {
-				// 		// console.log('event:', event)
-				// 		// window.lgData[lg.getAttribute('lg-uid')].index = 1
-				// 		// lg.data('lightgallery').destroy(true)
-				// 		// window.lgData[lg.getAttribute('lg-uid')].slide(index)
-				// 		// window.lgData[lg.getAttribute('lg-uid')].destroy(true)
-				// 	},
-				// 	false
-				// )
+			// lg.addEventListener(
+			// 	'onBeforeOpen',
+			// 	function (event) {
+			// 		// console.log('event:', event)
+			// 		// window.lgData[lg.getAttribute('lg-uid')].index = 1
+			// 		// lg.data('lightgallery').destroy(true)
+			// 		// window.lgData[lg.getAttribute('lg-uid')].slide(index)
+			// 		// window.lgData[lg.getAttribute('lg-uid')].destroy(true)
+			// 	},
+			// 	false
+			// )
 
-				// window.lightGallery(lg)
+			// window.lightGallery(lg)
 
-				// window.lgData[lg.getAttribute('lg-uid')].slide(index)
-			}
+			// window.lgData[lg.getAttribute('lg-uid')].slide(index)
 		}
 	}
 }
