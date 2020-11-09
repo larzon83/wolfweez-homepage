@@ -1,32 +1,102 @@
 <template>
-	<v-footer dark padless>
-		<v-card flat tile class="text-center">
-			<v-divider></v-divider>
-
-			<!-- <v-card-text>
-				<v-btn v-for="icon in icons" :key="icon" class="mx-4 white--text" icon>
-					<v-icon size="24px">
-						{{ icon }}
-					</v-icon>
-				</v-btn>
-			</v-card-text> -->
-
-			<v-card-text>
-				Phasellus feugiat arcu sapien, et iaculis ipsum elementum sit amet.
-				Mauris cursus commodo interdum. Praesent ut risus eget metus luctus
-				accumsan id ultrices nunc. Sed at orci sed massa consectetur dignissim a
-				sit amet dui. Duis commodo vitae velit et faucibus. Morbi vehicula
-				lacinia malesuada. Nulla placerat augue vel ipsum ultrices, cursus
-				iaculis dui sollicitudin. Vestibulum eu ipsum vel diam elementum tempor
-				vel ut orci. Orci varius natoque penatibus et magnis dis parturient
-				montes, nascetur ridiculus mus.
-			</v-card-text>
-
-			<v-divider></v-divider>
-
-			<v-card-text class="white--text">
-				{{ new Date().getFullYear() }} — <strong>Vuetify</strong>
-			</v-card-text>
-		</v-card>
-	</v-footer>
+	<div>
+		<v-footer dark padless class="pb-3">
+			<v-container class="py-0">
+				<v-row justify="center" no-gutters>
+					<v-col
+						v-for="(section, sectionIndex) in sections"
+						:key="`section-${sectionIndex}`"
+						class="py-4"
+						cols="6"
+					>
+						<v-card flat tile color="transparent">
+							<v-subheader class="text-button font-weight-regular pl-0">{{
+								section.title
+							}}</v-subheader>
+							<v-list dense flat tile color="transparent" class="pt-0">
+								<v-list-item
+									v-for="(link, linkIndex) in section.links"
+									:key="`link-${linkIndex}`"
+									class="pl-0"
+									style="min-height: auto"
+								>
+									<v-list-item-content class="pa-0">
+										<v-list-item-action class="my-1">
+											<nuxt-link :to="link.to">
+												{{ link.title }}
+											</nuxt-link></v-list-item-action
+										>
+									</v-list-item-content>
+								</v-list-item>
+							</v-list>
+						</v-card>
+					</v-col>
+				</v-row>
+			</v-container>
+		</v-footer>
+		<v-footer dark padless>
+			<v-card flat tile color="transparent" class="text-center" width="100%">
+				<v-divider></v-divider>
+				<v-card-text>
+					{{ new Date().getFullYear() }} — <strong>{{ copy }}</strong>
+				</v-card-text>
+			</v-card>
+		</v-footer>
+	</div>
 </template>
+
+<script>
+import { siteTitle } from '~/utils/constants'
+
+export default {
+	data: () => ({
+		copy: siteTitle.short,
+		sections: [
+			{
+				title: 'Line-Up',
+				links: [
+					{
+						title: 'Bands',
+						to: '/line-up/bands/'
+					},
+					{
+						title: 'Timetable',
+						to: '/line-up/timetable/'
+					}
+				]
+			},
+			{
+				title: 'Rechtliches',
+				links: [
+					{
+						title: 'AGB',
+						to: '/rechtliches/agb/'
+					},
+					{
+						title: 'Datenschutz',
+						to: '/rechtliches/datenschutz/'
+					},
+					{
+						title: 'Impressum',
+						to: '/rechtliches/impressum/'
+					}
+				]
+			}
+		]
+	})
+}
+</script>
+
+<style lang="scss" scoped>
+.v-list ::v-deep {
+	.v-list-item__content > * {
+		line-height: 1.4;
+	}
+
+	a {
+		color: white;
+		text-decoration: none;
+		font-size: 0.9375rem; // 15px
+	}
+}
+</style>

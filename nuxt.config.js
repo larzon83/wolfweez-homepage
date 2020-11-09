@@ -20,6 +20,11 @@ export default async function () {
 			force: true
 		},
 		{
+			from: '/rechtliches/',
+			to: '/rechtliches/agb/',
+			force: true
+		},
+		{
 			from: '/historie/',
 			to: `/historie/${storyblokData.historyRedirectSlug}/`,
 			force: true
