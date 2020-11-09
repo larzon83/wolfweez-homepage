@@ -189,6 +189,8 @@ export default async function () {
 		},
 
 		// Build Configuration (https://go.nuxtjs.dev/config-build)
-		build: {}
+		build: {
+			// analyze: true
+		}
 	}
 }
