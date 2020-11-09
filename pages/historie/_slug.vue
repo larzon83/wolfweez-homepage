@@ -41,12 +41,12 @@
 		</v-row>
 
 		<!-- Bilder -->
-		<v-row v-if="sortedThumbs">
+		<v-row v-if="story.content.gallery">
 			<v-col cols="12" class="py-0">
 				<h3>Bilder</h3>
 			</v-col>
 			<v-col
-				v-for="(img, index) in sortedThumbs"
+				v-for="(img, index) in story.content.gallery"
 				:key="index"
 				class="d-flex child-flex"
 				cols="4"
@@ -80,7 +80,7 @@
 <script>
 import useFormatting from '~/mixins/useFormatting.js'
 import useStorybridge from '~/mixins/useStorybridge.js'
-import { sbData } from '~/utils'
+import { sbData, sortAssetsByName } from '~/utils'
 import { siteTitle } from '~/utils/constants'
 import { createOgImagePath, createSEOMeta } from '~/utils/seo'
 
@@ -114,6 +114,10 @@ export default {
 			isStartpage: 1
 		})
 
+		historyYear.story.content.gallery = sortAssetsByName(
+			historyYear.story.content.gallery
+		)
+
 		return {
 			timetable: historyTimetable.story.content.entry,
 			...historyYear
@@ -125,24 +129,8 @@ export default {
 			return `${siteTitle.short} ${this.story.slug}`
 		},
 
-		sortedThumbs() {
-			if (!this.story.content.gallery || !this.story.content.gallery.length)
-				return []
-
-			const sortedThumbs = this.story.content.gallery
-
-			const getFilename = url => {
-				return url.substring(url.lastIndexOf('/') + 1)
-			}
-
-			return sortedThumbs.sort((a, b) => {
-				const sorted = getFilename(a.filename) - getFilename(b.filename)
-				return this.story.content.gallery.indexOf(sorted)
-			})
-		},
-
 		dynamicElements() {
-			return this.sortedThumbs.map((img, index) => {
+			return this.story.content.gallery.map((img, index) => {
 				return {
 					downloadUrl: img.filename,
 					subHtml: this.headline,

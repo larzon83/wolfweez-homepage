@@ -64,3 +64,16 @@ export const formatTime = dateRaw => {
 	const splitted = dateRaw.split(' ')
 	return splitted[1]
 }
+
+export const getAssetFilename = url => {
+	return url.substring(url.lastIndexOf('/') + 1)
+}
+
+export const sortAssetsByName = gallery => {
+	if (!gallery || !gallery.length) return []
+
+	return gallery.sort((a, b) => {
+		const sorted = getAssetFilename(a.filename) - getAssetFilename(b.filename)
+		return gallery.indexOf(sorted)
+	})
+}
