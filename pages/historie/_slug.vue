@@ -51,43 +51,39 @@
 		</div>
 
 		<!-- Bilder -->
-		<client-only>
-			<v-row>
-				<v-col cols="12" class="py-0">
-					<h3>Bilder</h3>
-				</v-col>
-				<v-col
-					v-for="(img, index) in sortedThumbs"
-					:key="index"
-					class="d-flex child-flex"
-					cols="4"
+		<v-row>
+			<v-col cols="12" class="py-0">
+				<h3>Bilder</h3>
+			</v-col>
+			<v-col
+				v-for="(img, index) in sortedThumbs"
+				:key="index"
+				class="d-flex child-flex"
+				cols="4"
+			>
+				<v-img
+					:alt="`${headline} - Bild ${index + 1}`"
+					:src="$_transformImage(img.filename, '500x500')"
+					:lazy-src="$_transformImage(img.filename, '6x6')"
+					aspect-ratio="1"
+					class="grey lighten-2"
+					style="cursor: pointer"
+					@click="openGallery(index)"
 				>
-					<v-img
-						:alt="`${headline} - Bild ${index + 1}`"
-						:src="$_transformImage(img.filename, '500x500')"
-						:lazy-src="$_transformImage(img.filename, '6x6')"
-						aspect-ratio="1"
-						class="grey lighten-2"
-						style="cursor: pointer"
-						@click="openGallery(index)"
-					>
-						<template v-slot:placeholder>
-							<v-row class="fill-height ma-0" align="center" justify="center">
-								<v-progress-circular
-									indeterminate
-									color="grey lighten-5"
-								></v-progress-circular>
-							</v-row>
-						</template>
-					</v-img>
-				</v-col>
-			</v-row>
-		</client-only>
+					<template v-slot:placeholder>
+						<v-row class="fill-height ma-0" align="center" justify="center">
+							<v-progress-circular
+								indeterminate
+								color="grey lighten-5"
+							></v-progress-circular>
+						</v-row>
+					</template>
+				</v-img>
+			</v-col>
+		</v-row>
 
 		<!-- Placeholder for lightgallery -->
-		<client-only>
-			<div id="lightgallery"></div>
-		</client-only>
+		<div id="lightgallery"></div>
 	</section>
 </template>
 
