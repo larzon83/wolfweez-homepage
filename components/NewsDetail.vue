@@ -1,7 +1,7 @@
 <template>
 	<div v-editable="news" class="prose my-24 mx-auto">
 		<h1>{{ news.headline }}</h1>
-		<h5>{{ time }}</h5>
+		<h2>{{ time }}</h2>
 		<v-img
 			v-if="news.image.filename"
 			:alt="news.headline"
