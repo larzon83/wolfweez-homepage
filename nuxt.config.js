@@ -114,6 +114,7 @@ export default async function () {
 
 		// Modules for dev and build (recommended) (https://go.nuxtjs.dev/config-modules)
 		buildModules: [
+			'@nuxtjs/html-validator',
 			'@nuxtjs/eslint-module',
 			'@nuxtjs/pwa',
 			'@nuxtjs/vuetify',
