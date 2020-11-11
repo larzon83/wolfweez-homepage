@@ -91,3 +91,6 @@ sw.*
 
 .env-cmdrc
 /static/og-images
+
+# Local Netlify folder
+.netlify
