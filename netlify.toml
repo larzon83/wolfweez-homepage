@@ -10,6 +10,7 @@ package = "@netlify/plugin-sitemap"
     # './dist/200.html',
     '**/historie/index.html',
     '**/line-up/index.html',
+    '**/rechtliches/index.html',
     '**/**/200.html',
     '**/**/404.html'
   ]
