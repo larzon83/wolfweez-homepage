@@ -20,6 +20,7 @@
 
 // eslint-disable-next-line require-await
 exports.handler = async (event, context) => {
+	console.log('calledddddd')
 	try {
 		console.log('event:', JSON.stringify(event))
 		return {

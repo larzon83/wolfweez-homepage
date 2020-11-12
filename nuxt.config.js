@@ -4,19 +4,38 @@ import { getInitialStoryblokData } from './utils/initialStoryblokData'
 import { createSEOMeta } from './utils/seo'
 
 const proxyOptionsDev = {
-	axiosProxy: false,
+	axiosProxy: true,
 	rules: {}
 }
 
 if (process.env.NODE_ENV === 'development') {
 	proxyOptionsDev.axiosProxy = true
-	proxyOptionsDev.rules = {
-		'/api/': {
-			target: 'http://localhost:8888',
-			pathRewrite: { '^/api/': '' }
-		}
-	}
+	// proxyOptionsDev.rules = {
+	// 	'/api/': {
+	// 		target: 'http://localhost:8888',
+	// 		pathRewrite: { '^/api/': '' }
+	// 	}
+	// }
 }
+
+// const proxyOptionsDev = {
+// 	axiosProxy: false,
+// 	rules: {
+// 		'/api/': {
+// 			pathRewrite: { '^/api/': '/' }
+// 		}
+// 	}
+// }
+
+// if (process.env.NODE_ENV === 'development') {
+// 	proxyOptionsDev.axiosProxy = true
+// 	proxyOptionsDev.rules = {
+// 		'/api/': {
+// 			target: 'http://localhost:8888',
+// 			pathRewrite: { '^/api/': '' }
+// 		}
+// 	}
+// }
 
 export default async function () {
 	const sbClient = new StoryblokClient({
