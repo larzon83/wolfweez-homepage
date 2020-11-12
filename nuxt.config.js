@@ -3,6 +3,21 @@ import { baseUrl, siteTitle } from './utils/constants'
 import { getInitialStoryblokData } from './utils/initialStoryblokData'
 import { createSEOMeta } from './utils/seo'
 
+const proxyOptionsDev = {
+	axiosProxy: false,
+	rules: {}
+}
+
+if (process.env.NODE_ENV === 'development') {
+	proxyOptionsDev.axiosProxy = true
+	proxyOptionsDev.rules = {
+		'/api/': {
+			target: 'http://localhost:8888',
+			pathRewrite: { '^/api/': '' }
+		}
+	}
+}
+
 export default async function () {
 	const sbClient = new StoryblokClient({
 		accessToken: process.env.STORYBLOK_TOKEN
@@ -144,7 +159,8 @@ export default async function () {
 		// Modules (https://go.nuxtjs.dev/config-modules)
 		modules: [
 			// https://go.nuxtjs.dev/axios
-			'@nuxtjs/axios'
+			'@nuxtjs/axios',
+			'@nuxtjs/proxy'
 		],
 
 		netlify: {
@@ -165,7 +181,12 @@ export default async function () {
 		},
 
 		// Axios module configuration (https://go.nuxtjs.dev/config-axios)
-		axios: {},
+		axios: { proxy: proxyOptionsDev.axiosProxy },
+
+		/*
+		 ** Proxy module configuration
+		 */
+		proxy: proxyOptionsDev.rules,
 
 		pwa: {
 			manifest: {

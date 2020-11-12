@@ -1,6 +1,9 @@
 [build]
   functions = "functions/"
 
+[dev]
+  autoLaunch = false
+
 [[plugins]]
 package = "@netlify/plugin-sitemap"
 

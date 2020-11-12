@@ -7,12 +7,13 @@
 			action="/"
 			data-netlify="true"
 			netlify-honeypot="bot-field"
+			@submit.prevent="handleSubmit"
 		>
 			<v-container>
 				<input type="hidden" name="form-name" value="contact" />
-				<label style="display: none"
-					>Don’t fill this out if you're human: <input name="bot-field"
-				/></label>
+				<div hidden aria-hidden="true">
+					Don’t fill this out if you're human: <input name="bot-field" />
+				</div>
 				<v-row>
 					<v-col cols="12" md="6">
 						<v-text-field
@@ -38,6 +39,7 @@
 				<v-row>
 					<v-col cols="12" md="6">
 						<v-textarea
+							v-model="message"
 							name="message"
 							filled
 							label="Text"
@@ -106,12 +108,45 @@ export default {
 		valid: false,
 		firstname: '',
 		lastname: '',
+		message: '',
 		nameRules: [v => !!v || 'Name is required'],
 		email: '',
 		emailRules: [
 			v => !!v || 'E-mail is required',
 			v => /.+@.+/.test(v) || 'E-mail must be valid'
 		]
-	})
+	}),
+
+	methods: {
+		encode(data) {
+			return Object.keys(data)
+				.map(
+					key => `${encodeURIComponent(key)}=${encodeURIComponent(data[key])}`
+				)
+				.join('&')
+		},
+		handleSubmit() {
+			const axiosConfig = {
+				header: {
+					'Content-Type': 'application/x-www-form-urlencoded',
+					'Access-Control-Allow-Origin': '*',
+					Accept: '*/*'
+				}
+			}
+			this.$axios
+				.post(
+					'/.netlify/functions/submission-created',
+					this.encode({
+						'form-name': 'contact',
+						// ...this.form
+						firstname: this.firstname,
+						email: this.email,
+						message: this.message
+					}),
+					axiosConfig
+				)
+				.then(res => console.log('res:', res))
+		}
+	}
 }
 </script>
