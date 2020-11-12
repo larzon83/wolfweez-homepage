@@ -135,7 +135,7 @@ export default {
 			}
 			this.$axios
 				.post(
-					'/.netlify/functions/submission-created',
+					'/',
 					this.encode({
 						'form-name': 'contact',
 						// ...this.form
