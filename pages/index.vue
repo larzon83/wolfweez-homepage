@@ -20,9 +20,10 @@
 					Welcome to the Vuetify + Nuxt.js template!
 				</v-card-title>
 				<v-card-text>
-					<p>DATE: {{ festivalDate }}</p>
-					<p>FLYER: {{ festivalFlyer.filename }}</p>
-					<p>DESC: {{ festivalDescription }}</p>
+					<p>YEAR: {{ currentFestival.content.year }}</p>
+					<p>DATE: {{ currentFestival.content.date }}</p>
+					<p>FLYER: {{ currentFestival.content.flyer.filename }}</p>
+					<p>DESC: {{ currentFestival.content.description_meta }}</p>
 					<p>
 						Vuetify is a progressive Material Design component framework for
 						Vue.js. It was designed to empower developers to create amazing
@@ -117,17 +118,13 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import { mapGetters } from 'vuex'
 
 export default {
 	name: 'Index',
 
 	computed: {
-		...mapState('config', [
-			'festivalDate',
-			'festivalFlyer',
-			'festivalDescription'
-		])
+		...mapGetters('config', ['currentFestival'])
 	}
 }
 </script>

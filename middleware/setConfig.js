@@ -8,6 +8,5 @@ export default async function ({ isDev, query, store }) {
 				: 'published'
 
 		await store.dispatch('config/loadConfig', { version })
-		await store.dispatch('config/loadConfig2', { version })
 	}
 }
