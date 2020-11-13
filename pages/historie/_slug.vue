@@ -1,8 +1,8 @@
 <template>
 	<section v-editable="story.content">
-		<TabsHistory />
+		<TabsNavigation :type="tabType" />
 		<h2>{{ headline }}</h2>
-		<b>{{ story.content.date }}</b>
+		<b>{{ story.content.date }} {{ story.content.year }}</b>
 		<br /><br />
 
 		<!-- Flyer -->
@@ -81,7 +81,7 @@
 import useFormatting from '~/mixins/useFormatting.js'
 import useStorybridge from '~/mixins/useStorybridge.js'
 import { sbData, sortAssetsByName } from '~/utils'
-import { siteTitle } from '~/utils/constants'
+import { siteTitle, tabTypes } from '~/utils/constants'
 import { createOgImagePath, createSEOMeta } from '~/utils/seo'
 
 export default {
@@ -98,6 +98,12 @@ export default {
 				title,
 				url: this.$route.path
 			})
+		}
+	},
+
+	data() {
+		return {
+			tabType: tabTypes.HISTORY
 		}
 	},
 

@@ -1,3 +1,4 @@
+// FIXME: remove
 <template>
 	<v-tabs optional background-color="transparent" class="mb-10">
 		<v-tab

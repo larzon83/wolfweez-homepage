@@ -13,3 +13,8 @@ export const queryHistoryYears = {
 	sortBy: 'slug:desc',
 	startsWith: 'historie/'
 }
+
+export const tabTypes = {
+	HISTORY: 'history',
+	LINEUP: 'lineup'
+}

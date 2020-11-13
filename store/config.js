@@ -5,23 +5,6 @@ export const state = () => ({
 	festivals: []
 })
 
-export const getters = {
-	// make sure, we have at least 2 "config"-stories
-	// -> first one is the current festival
-	// -> all after that are historical festivals
-	hasHistory(state) {
-		if (
-			state.festivals.length &&
-			state.festivals.length > 1 &&
-			state.festivals[1].slug
-		) {
-			return true
-		} else {
-			return false
-		}
-	}
-}
-
 export const mutations = {
 	SET_CONFIG(state, payload) {
 		state.festivalDate = payload.date
@@ -31,6 +14,14 @@ export const mutations = {
 
 	SET_CONFIG2(state, payload) {
 		state.festivals = payload
+	}
+}
+
+export const getters = {
+	historicFestivals(state) {
+		return state.festivals.filter(item => {
+			return item.is_startpage
+		})
 	}
 }
 
@@ -57,7 +48,6 @@ export const actions = {
 				version
 			})
 			.then(res => {
-				// console.log('res.data:', res.data.stories)
 				commit('SET_CONFIG2', res.data.stories)
 			})
 	}

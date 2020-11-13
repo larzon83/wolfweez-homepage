@@ -1,6 +1,6 @@
 <template>
 	<section>
-		<TabsLineup />
+		<TabsNavigation :type="tabType" />
 		<BandDetail :band="story.content" :time="time" />
 	</section>
 </template>
@@ -9,6 +9,7 @@
 import BandDetail from '~/components/BandDetail.vue'
 import useStorybridge from '~/mixins/useStorybridge.js'
 import { getPlayTime, sbData } from '~/utils'
+import { tabTypes } from '~/utils/constants'
 import { createSEOMeta } from '~/utils/seo'
 
 export default {
@@ -28,6 +29,12 @@ export default {
 				title,
 				url: this.$route.path
 			})
+		}
+	},
+
+	data() {
+		return {
+			tabType: tabTypes.LINEUP
 		}
 	},
 
