@@ -3,28 +3,9 @@ import { baseUrl, siteTitle } from './utils/constants'
 import { getInitialStoryblokData } from './utils/initialStoryblokData'
 import { createSEOMeta } from './utils/seo'
 
-const proxyOptionsDev = {
-	axiosProxy: true,
-	rules: {}
-}
-
-if (process.env.NODE_ENV === 'development') {
-	proxyOptionsDev.axiosProxy = true
-	// proxyOptionsDev.rules = {
-	// 	'/api/': {
-	// 		target: 'http://localhost:8888',
-	// 		pathRewrite: { '^/api/': '' }
-	// 	}
-	// }
-}
-
 // const proxyOptionsDev = {
 // 	axiosProxy: false,
-// 	rules: {
-// 		'/api/': {
-// 			pathRewrite: { '^/api/': '/' }
-// 		}
-// 	}
+// 	rules: {}
 // }
 
 // if (process.env.NODE_ENV === 'development') {
@@ -200,12 +181,12 @@ export default async function () {
 		},
 
 		// Axios module configuration (https://go.nuxtjs.dev/config-axios)
-		axios: { proxy: proxyOptionsDev.axiosProxy },
+		axios: { proxy: true },
 
 		/*
 		 ** Proxy module configuration
 		 */
-		proxy: proxyOptionsDev.rules,
+		proxy: {},
 
 		pwa: {
 			manifest: {

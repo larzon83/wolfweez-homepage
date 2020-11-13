@@ -4,11 +4,11 @@
 			v-model="valid"
 			name="contact"
 			method="POST"
-			action="/"
 			data-netlify="true"
 			netlify-honeypot="bot-field"
 			@submit.prevent="handleSubmit"
 		>
+			<!-- action="/" -->
 			<v-container>
 				<input type="hidden" name="form-name" value="contact" />
 				<div hidden aria-hidden="true">
@@ -59,6 +59,16 @@
 			</v-container>
 		</v-form>
 
+		<v-snackbar v-model="showSuccess" timeout="2000" color="success">
+			Nachricht erfolgreich gesendet.
+
+			<template v-slot:action="{ attrs }">
+				<v-btn text v-bind="attrs" @click="showSuccess = false">
+					Schließen
+				</v-btn>
+			</template>
+		</v-snackbar>
+
 		<!-- <form name="contact" method="POST" data-netlify="true">
 			<p>
 				<label>Your Name: <input type="text" name="name" /></label>
@@ -105,6 +115,7 @@ export default {
 	},
 
 	data: () => ({
+		showSuccess: false,
 		valid: false,
 		firstname: '',
 		lastname: '',
@@ -128,9 +139,9 @@ export default {
 		handleSubmit() {
 			const axiosConfig = {
 				header: {
-					'Content-Type': 'application/x-www-form-urlencoded',
-					'Access-Control-Allow-Origin': '*',
-					Accept: '*/*'
+					'Content-Type': 'application/x-www-form-urlencoded'
+					// 'Access-Control-Allow-Origin': '*',
+					// Accept: '*/*'
 				}
 			}
 			this.$axios
@@ -145,7 +156,15 @@ export default {
 					}),
 					axiosConfig
 				)
-				.then(res => console.log('res:', res))
+				.then(res => {
+					console.log('res:', res.data.body)
+					this.valid = null
+					this.firstname = ''
+					this.email = ''
+					this.message = ''
+					this.showSuccess = true
+					// this.$router.push('/')
+				})
 		}
 	}
 }
