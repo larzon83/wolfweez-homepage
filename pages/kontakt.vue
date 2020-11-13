@@ -4,11 +4,11 @@
 			v-model="valid"
 			name="contact"
 			method="POST"
+			action="/"
 			data-netlify="true"
 			netlify-honeypot="bot-field"
 			@submit.prevent="handleSubmit"
 		>
-			<!-- action="/" -->
 			<v-container>
 				<input type="hidden" name="form-name" value="contact" />
 				<div hidden aria-hidden="true">
@@ -52,7 +52,13 @@
 				<v-row>
 					<v-col cols="12" md="4">
 						<v-col cols="12" md="4">
-							<v-btn class="mr-4" color="primary" type="submit">Submit</v-btn>
+							<v-btn
+								:disabled="buttonDisabled"
+								class="mr-4"
+								color="primary"
+								type="submit"
+								>Submit</v-btn
+							>
 						</v-col>
 					</v-col>
 				</v-row>
@@ -68,30 +74,6 @@
 				</v-btn>
 			</template>
 		</v-snackbar>
-
-		<!-- <form name="contact" method="POST" data-netlify="true">
-			<p>
-				<label>Your Name: <input type="text" name="name" /></label>
-			</p>
-			<p>
-				<label>Your Email: <input type="email" name="email" /></label>
-			</p>
-			<p>
-				<label
-					>Your Role:
-					<select name="role[]" multiple>
-						<option value="leader">Leader</option>
-						<option value="follower">Follower</option>
-					</select></label
-				>
-			</p>
-			<p>
-				<label>Message: <textarea name="message"></textarea></label>
-			</p>
-			<p>
-				<button type="submit">Send</button>
-			</p>
-		</form> -->
 	</section>
 </template>
 
@@ -115,6 +97,7 @@ export default {
 	},
 
 	data: () => ({
+		buttonDisabled: false,
 		showSuccess: false,
 		valid: false,
 		firstname: '',
@@ -137,6 +120,8 @@ export default {
 				.join('&')
 		},
 		handleSubmit() {
+			this.buttonDisabled = true
+
 			const axiosConfig = {
 				header: {
 					'Content-Type': 'application/x-www-form-urlencoded'
@@ -158,12 +143,17 @@ export default {
 				)
 				.then(res => {
 					console.log('res:', res.data.body)
+					this.buttonDisabled = false
 					this.valid = null
 					this.firstname = ''
 					this.email = ''
 					this.message = ''
 					this.showSuccess = true
 					// this.$router.push('/')
+				})
+				.catch(function (error) {
+					this.buttonDisabled = false
+					console.log(error)
 				})
 		}
 	}
