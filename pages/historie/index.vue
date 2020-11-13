@@ -5,8 +5,7 @@
 </template>
 
 <script>
-import { sbData } from '~/utils'
-import { queryHistoryYears } from '~/utils/constants'
+import { mapGetters, mapState } from 'vuex'
 import { createOgImagePath, createSEOMeta } from '~/utils/seo'
 
 export default {
@@ -25,26 +24,16 @@ export default {
 		}
 	},
 
-	async asyncData(context) {
-		const historyYears = await sbData({
-			ctx: context,
-			...queryHistoryYears
-		})
+	computed: {
+		...mapGetters('config', ['hasHistory']),
 
-		let destination = '/'
-
-		if (historyYears) {
-			const years = historyYears.stories.map(year => {
-				return year.slug
-			})
-			destination = years[0] + '/'
-		}
-
-		return { destination }
+		...mapState('config', ['festivals'])
 	},
 
+	// route to the latest history on page-load
 	created() {
-		this.$router.push(this.destination)
+		const destination = this.hasHistory ? this.festivals[1].slug + '/' : '/'
+		this.$router.push(destination)
 	}
 }
 </script>

@@ -1,5 +1,5 @@
 export default async function ({ isDev, query, store }) {
-	if (!store.state.config.festivalDate) {
+	if (!store.state.config.festivals.length) {
 		const version =
 			query._storyblok ||
 			isDev ||
@@ -8,5 +8,6 @@ export default async function ({ isDev, query, store }) {
 				: 'published'
 
 		await store.dispatch('config/loadConfig', { version })
+		await store.dispatch('config/loadConfig2', { version })
 	}
 }
