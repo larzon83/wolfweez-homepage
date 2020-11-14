@@ -49,14 +49,13 @@
 
 <script>
 import useFormatting from '~/mixins/useFormatting.js'
-import useStorybridge from '~/mixins/useStorybridge.js'
 import { sbData } from '~/utils'
 import { tabTypes } from '~/utils/constants'
 import { createOgImagePath, createSEOMeta } from '~/utils/seo'
 
 export default {
 	name: 'BandsOverview',
-	mixins: [useFormatting, useStorybridge],
+	mixins: [useFormatting],
 
 	head() {
 		const title = 'Bands'

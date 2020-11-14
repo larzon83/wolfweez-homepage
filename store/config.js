@@ -1,9 +1,16 @@
+import { sortAssetsByName } from '~/utils'
+
 export const state = () => ({
 	festivals: []
 })
 
 export const mutations = {
 	SET_CONFIG(state, payload) {
+		payload.forEach(item => {
+			if (item.content.gallery.length > 0) {
+				item.content.gallery = sortAssetsByName(item.content.gallery)
+			}
+		})
 		state.festivals = payload
 	}
 }
@@ -23,16 +30,6 @@ export const getters = {
 }
 
 export const actions = {
-	// loadConfig_OLD({ commit }, { version }) {
-	// 	return this.$storyapi
-	// 		.get(`cdn/stories/config`, {
-	// 			version
-	// 		})
-	// 		.then(res => {
-	// 			commit('SET_CONFIG', res.data.story.content)
-	// 		})
-	// },
-
 	loadConfig({ commit }, { version }) {
 		return this.$storyapi
 			.get(`cdn/stories`, {

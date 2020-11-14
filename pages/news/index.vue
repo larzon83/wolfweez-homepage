@@ -31,13 +31,12 @@
 
 <script>
 import useFormatting from '~/mixins/useFormatting.js'
-import useStorybridge from '~/mixins/useStorybridge.js'
 import { sbData } from '~/utils'
 import { createOgImagePath, createSEOMeta } from '~/utils/seo'
 
 export default {
 	name: 'NewsOverview',
-	mixins: [useFormatting, useStorybridge],
+	mixins: [useFormatting],
 
 	head() {
 		const title = 'News'

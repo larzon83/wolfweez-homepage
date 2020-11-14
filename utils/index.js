@@ -69,6 +69,8 @@ export const getAssetFilename = url => {
 	return url.substring(url.lastIndexOf('/') + 1)
 }
 
+// FIXME: seems not to work always
+// -> if imgs in sb are manually ordered, this seems to take precedence
 export const sortAssetsByName = gallery => {
 	if (!gallery || !gallery.length) return []
 

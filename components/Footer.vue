@@ -2,12 +2,13 @@
 	<div>
 		<v-footer dark padless class="pb-3">
 			<v-container class="py-0">
-				<v-row justify="center" no-gutters>
+				<v-row justify="start" no-gutters>
 					<v-col
 						v-for="(section, sectionIndex) in sections"
 						:key="`section-${sectionIndex}`"
 						class="py-4"
 						cols="6"
+						md="4"
 					>
 						<v-card flat tile color="transparent">
 							<v-subheader class="text-button font-weight-regular pl-0">{{
@@ -62,6 +63,15 @@ export default {
 					{
 						title: 'Timetable',
 						to: '/line-up/timetable/'
+					}
+				]
+			},
+			{
+				title: 'Medien',
+				links: [
+					{
+						title: 'Fotogalerie',
+						to: '/fotogalerie/'
 					}
 				]
 			},
