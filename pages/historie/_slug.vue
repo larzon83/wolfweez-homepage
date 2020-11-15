@@ -1,14 +1,14 @@
 <template>
 	<section v-editable="story.content">
 		<TabsNavigation :type="tabType" />
-		<h2>{{ headline }}</h2>
+		<h1>{{ headlinePage }}</h1>
 		<b>{{ story.content.date }} {{ story.content.year }}</b>
 		<br /><br />
 
 		<!-- Flyer -->
 		<v-img
 			v-if="story.content.flyer.filename"
-			:alt="`Flyer ${headline}`"
+			:alt="`Flyer ${headlinePage}`"
 			:src="$_transformImage(story.content.flyer.filename, '600x0')"
 			:lazy-src="$_transformImage(story.content.flyer.filename, '150x0')"
 			aspect-ratio="0.7168"
@@ -22,7 +22,7 @@
 		<!-- Line-Up -->
 		<v-row v-if="timetable">
 			<v-col cols="12" class="py-0">
-				<h3>Line-Up</h3>
+				<h2>Line-Up</h2>
 			</v-col>
 			<v-col v-for="day in timetable" :key="day._uid" cols="6" class="day">
 				<h4>
@@ -41,36 +41,7 @@
 		</v-row>
 
 		<!-- Bilder -->
-		<v-row v-if="story.content.gallery">
-			<v-col cols="12" class="py-0">
-				<h3>Bilder</h3>
-			</v-col>
-			<v-col
-				v-for="(img, index) in story.content.gallery"
-				:key="index"
-				class="d-flex child-flex"
-				cols="4"
-			>
-				<v-img
-					:alt="`${headline} - Bild ${index + 1}`"
-					:src="$_transformImage(img.filename, '500x500')"
-					:lazy-src="$_transformImage(img.filename, '6x6')"
-					aspect-ratio="1"
-					class="grey lighten-2"
-					style="cursor: pointer"
-					@click="openGallery(index)"
-				>
-					<template #placeholder>
-						<v-row class="fill-height ma-0" align="center" justify="center">
-							<v-progress-circular
-								indeterminate
-								color="grey lighten-5"
-							></v-progress-circular>
-						</v-row>
-					</template>
-				</v-img>
-			</v-col>
-		</v-row>
+		<ImgGalleries :galleries="galleries" headline="Bilder" />
 
 		<!-- Placeholder for lightgallery -->
 		<div id="lightgallery"></div>
@@ -131,94 +102,17 @@ export default {
 	},
 
 	computed: {
-		headline() {
+		headlinePage() {
 			return `${siteTitle.short} ${this.story.slug}`
 		},
 
-		dynamicElements() {
-			return this.story.content.gallery.map((img, index) => {
-				return {
-					downloadUrl: img.filename,
-					subHtml: this.headline,
-					alt: `${this.headline} - Bild ${index + 1}`,
-					responsive: `
-									${this.$_transformImage(img.filename, '329x0')} 340,
-									${this.$_transformImage(img.filename, '529x0')} 540,
-									${this.$_transformImage(img.filename, '773x0')} 784,
-									${this.$_transformImage(img.filename, '1253x0')} 1264,
-									${this.$_transformImage(img.filename, '1589x0')} 1600
-									`,
-					src: img.filename,
-					thumb: this.$_transformImage(img.filename, '96x96')
+		galleries() {
+			return [
+				{
+					year: this.story.content.year,
+					imgs: this.story.content.gallery
 				}
-			})
-		}
-	},
-
-	mounted() {
-		// const el = document.getElementById('lightgallery')
-		// el.addEventListener(
-		// 	'onBeforeOpen',
-		// 	function (e) {
-		// 		// alert('onBeforeOpen')
-		// 		console.log('e:', e)
-		// 	},
-		// 	false
-		// )
-		// window.lightGallery(el)
-		// Go to third slide
-		// Index starts from 0
-		// window.lgData[el.getAttribute('lg-uid')].slide(1)
-	},
-
-	methods: {
-		openGallery(slideIndex = 0) {
-			const lg = document.getElementById('lightgallery')
-
-			window.lightGallery(lg, {
-				download: true,
-				dynamic: true,
-				dynamicEl: this.dynamicElements,
-				fullScreen: true,
-				hideBarsDelay: 3000,
-				hideControlOnEnd: true,
-				loop: false,
-				mode: 'lg-slide',
-				speed: 120,
-				supportLegacyBrowser: false,
-				thumbnail: true
-			})
-
-			// set slide index to the one passed from the clicked thumb
-			const pl = window.lgData[lg.getAttribute('lg-uid')]
-			pl.index = parseInt(slideIndex)
-
-			// lg.addEventListener(
-			// 	'onAfterOpen',
-			// 	function () {
-			// 		window.lgData[lg.getAttribute('lg-uid')].slide(Number(slideIndex))
-			// 		window.lgData[lg.getAttribute('lg-uid')].index = Number(slideIndex)
-			// 	},
-			// 	{
-			// 		once: true
-			// 	}
-			// )
-
-			// lg.addEventListener(
-			// 	'onBeforeOpen',
-			// 	function (event) {
-			// 		// console.log('event:', event)
-			// 		// window.lgData[lg.getAttribute('lg-uid')].index = 1
-			// 		// lg.data('lightgallery').destroy(true)
-			// 		// window.lgData[lg.getAttribute('lg-uid')].slide(index)
-			// 		// window.lgData[lg.getAttribute('lg-uid')].destroy(true)
-			// 	},
-			// 	false
-			// )
-
-			// window.lightGallery(lg)
-
-			// window.lgData[lg.getAttribute('lg-uid')].slide(index)
+			]
 		}
 	}
 }
