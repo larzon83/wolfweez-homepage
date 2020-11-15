@@ -60,7 +60,7 @@
 					style="cursor: pointer"
 					@click="openGallery(index)"
 				>
-					<template v-slot:placeholder>
+					<template #placeholder>
 						<v-row class="fill-height ma-0" align="center" justify="center">
 							<v-progress-circular
 								indeterminate

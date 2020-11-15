@@ -68,7 +68,7 @@
 		<v-snackbar v-model="showSuccess" timeout="2000" color="success">
 			Nachricht erfolgreich gesendet.
 
-			<template v-slot:action="{ attrs }">
+			<template #action="{ attrs }">
 				<v-btn text v-bind="attrs" @click="showSuccess = false">
 					Schließen
 				</v-btn>
