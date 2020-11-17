@@ -1,7 +1,9 @@
 <template>
 	<section>
 		<v-form
+			ref="contactForm"
 			v-model="valid"
+			:disabled="formDisabled"
 			name="contact"
 			method="POST"
 			action="/"
@@ -17,11 +19,11 @@
 				<v-row>
 					<v-col cols="12" md="6">
 						<v-text-field
-							v-model="firstname"
+							v-model="name"
 							:rules="nameRules"
-							label="First name"
+							name="name"
+							label="Name*"
 							required
-							name="firstname"
 						></v-text-field>
 					</v-col>
 
@@ -29,9 +31,9 @@
 						<v-text-field
 							v-model="email"
 							:rules="emailRules"
-							label="E-mail"
-							required
 							name="email"
+							label="E-mail*"
+							required
 						></v-text-field>
 					</v-col>
 				</v-row>
@@ -40,11 +42,13 @@
 					<v-col cols="12" md="6">
 						<v-textarea
 							v-model="message"
+							:rules="messageRules"
 							name="message"
+							label="Nachricht*"
+							required
 							filled
-							label="Text"
 							auto-grow
-							value="The Woodman set to work at once, and so sharp was his axe that the tree was soon chopped nearly through."
+							height="200"
 						></v-textarea>
 					</v-col>
 				</v-row>
@@ -98,16 +102,17 @@ export default {
 
 	data: () => ({
 		buttonDisabled: false,
+		formDisabled: false,
 		showSuccess: false,
 		valid: false,
-		firstname: '',
-		lastname: '',
+		name: '',
+		nameRules: [v => !!v || 'Name darf nicht leer sein'],
 		message: '',
-		nameRules: [v => !!v || 'Name is required'],
+		messageRules: [v => !!v || 'Nachricht darf nicht leer sein'],
 		email: '',
 		emailRules: [
-			v => !!v || 'E-mail is required',
-			v => /.+@.+/.test(v) || 'E-mail must be valid'
+			v => !!v || 'E-mail darf nicht leer sein',
+			v => /.+@.+\..+/.test(v) || 'E-mail ungültig'
 		]
 	}),
 
@@ -120,41 +125,45 @@ export default {
 				.join('&')
 		},
 		handleSubmit() {
-			this.buttonDisabled = true
+			this.$refs.contactForm.validate()
 
-			const axiosConfig = {
-				header: {
-					'Content-Type': 'application/x-www-form-urlencoded'
-					// 'Access-Control-Allow-Origin': '*',
-					// Accept: '*/*'
+			if (this.valid) {
+				this.buttonDisabled = true
+				this.formDisabled = true
+
+				const axiosConfig = {
+					header: {
+						'Content-Type': 'application/x-www-form-urlencoded'
+						// 'Access-Control-Allow-Origin': '*',
+						// Accept: '*/*'
+					}
 				}
+				this.$axios
+					.post(
+						'/',
+						this.encode({
+							'form-name': 'contact',
+							// ...this.form
+							name: this.name,
+							email: this.email,
+							message: this.message
+						}),
+						axiosConfig
+					)
+					.then(res => {
+						console.log('res:', res.data.body)
+						this.$refs.contactForm.reset()
+						this.buttonDisabled = false
+						this.formDisabled = false
+						this.showSuccess = true
+						// this.$router.push('/')
+					})
+					.catch(function (error) {
+						this.buttonDisabled = false
+						this.formDisabled = false
+						console.log(error)
+					})
 			}
-			this.$axios
-				.post(
-					'/',
-					this.encode({
-						'form-name': 'contact',
-						// ...this.form
-						firstname: this.firstname,
-						email: this.email,
-						message: this.message
-					}),
-					axiosConfig
-				)
-				.then(res => {
-					console.log('res:', res.data.body)
-					this.buttonDisabled = false
-					this.valid = null
-					this.firstname = ''
-					this.email = ''
-					this.message = ''
-					this.showSuccess = true
-					// this.$router.push('/')
-				})
-				.catch(function (error) {
-					this.buttonDisabled = false
-					console.log(error)
-				})
 		}
 	}
 }

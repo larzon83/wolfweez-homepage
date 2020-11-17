@@ -71,7 +71,12 @@ export default async function () {
 			meta: [
 				...createSEOMeta(),
 				{ charset: 'utf-8' },
-				{ name: 'viewport', content: 'width=device-width, initial-scale=1' },
+				// { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+				{
+					name: 'viewport',
+					content:
+						'width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0, minimal-ui, viewport-fit=cover'
+				},
 				{
 					hid: 'og:site_name',
 					property: 'og:site_name',
@@ -189,6 +194,10 @@ export default async function () {
 		proxy: {},
 
 		pwa: {
+			// workbox: {
+			// 	enabled: true
+			// },
+
 			manifest: {
 				name: siteTitle.short,
 				short_name: 'Wolfweez',
@@ -197,6 +206,13 @@ export default async function () {
 				theme_color: '#000', // TODO:
 				lang: 'de-DE',
 				orientation: 'portrait-primary'
+			},
+
+			meta: {
+				// will generate "apple-mobile-web-app-capable"
+				mobileAppIOS: true,
+				// 'black' => black background with white text. 'default' is the opposite
+				appleStatusBarStyle: 'black'
 			}
 		},
 

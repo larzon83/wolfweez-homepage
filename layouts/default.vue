@@ -5,8 +5,8 @@
 			<v-container class="pt-0">
 				<nuxt />
 			</v-container>
+			<Footer />
 		</v-main>
-		<Footer />
 	</v-app>
 </template>
 

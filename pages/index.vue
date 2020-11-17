@@ -114,17 +114,43 @@
 				</v-card-text>
 			</v-card>
 		</v-col>
+
+		<!-- <component
+			:is="story.content.component"
+			v-if="story.content.component"
+			:key="story.content._uid"
+			:blok="story.content"
+		/> -->
+		<HomePage v-if="story.content.component" :blok="story.content" />
 	</v-row>
 </template>
 
 <script>
 import { mapGetters } from 'vuex'
+import useStorybridge from '~/mixins/useStorybridge.js'
+// import HomePage from '~/components/HomePage.vue'
+import { sbData } from '~/utils'
 
 export default {
 	name: 'Index',
+	// components: {
+	// 	HomePage
+	// },
+	mixins: [useStorybridge],
+
+	async asyncData(context) {
+		return await sbData({
+			ctx: context,
+			path: '/home'
+		})
+	},
 
 	computed: {
 		...mapGetters('config', ['currentFestival'])
+	},
+
+	mounted() {
+		// console.log('this.story.content:', this.story.content)
 	}
 }
 </script>
