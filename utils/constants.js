@@ -6,14 +6,6 @@ export const siteTitle = {
 	long: 'Wolfweez Openair Festival 2021 | Irslingen | Festival | Live Musik'
 }
 
-// NOTE: same api-call is used inside @/modules/netlifyFilesGenerator
-// -> when updating here, update there, too
-export const queryHistoryYears = {
-	isStartpage: 1,
-	sortBy: 'slug:desc',
-	startsWith: 'historie/'
-}
-
 export const tabTypes = {
 	HISTORY: 'history',
 	LINEUP: 'lineup'

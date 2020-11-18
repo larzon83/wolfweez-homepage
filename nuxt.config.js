@@ -35,21 +35,14 @@ export default async function () {
 			force: true
 		},
 		{
-			from: '/infos/',
-			to: '/infos/anreise/', // TODO: calc this redirect based on first info-item from sb
-			force: true
-		},
-		{
 			from: '/rechtliches/',
 			to: '/rechtliches/agb/',
 			force: true
-		},
-		{
-			from: '/historie/',
-			to: `/historie/${storyblokData.historyRedirectSlug}/`,
-			force: true
 		}
 	]
+
+	netlifyRedirects.push(storyblokData.historyRedirect)
+	netlifyRedirects.push(storyblokData.infoRedirect)
 
 	if (storyblokData.bandsRedirects.length) {
 		netlifyRedirects.push(...storyblokData.bandsRedirects)

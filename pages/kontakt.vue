@@ -151,7 +151,7 @@ export default {
 						axiosConfig
 					)
 					.then(res => {
-						console.log('res:', res.data.body)
+						// console.log('res:', res.data.body)
 						this.$refs.contactForm.reset()
 						this.buttonDisabled = false
 						this.formDisabled = false

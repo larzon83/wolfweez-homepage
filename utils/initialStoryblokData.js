@@ -1,5 +1,25 @@
 import { siteTitle } from './constants'
 
+export const getInfoRedirect = infos => {
+	let to = '/'
+
+	if (infos.length) {
+		to = '/infos/'
+
+		if (infos.includes('allgemein')) {
+			to += 'allgemein/'
+		} else {
+			to += infos[0] + '/'
+		}
+	}
+
+	return {
+		from: '/infos/',
+		to,
+		force: true
+	}
+}
+
 // for use in nuxt.config.js
 export const getInitialStoryblokData = async (client, version) => {
 	// get main festival-config -> extract main meta-description
@@ -14,6 +34,21 @@ export const getInitialStoryblokData = async (client, version) => {
 		sort_by: 'slug:desc',
 		version
 	})
+
+	const historyRedirect = {
+		from: '/historie/',
+		to: `/historie/${historyYears.stories[0].slug}/`,
+		force: true
+	}
+
+	// get all info-pages
+	const { data: infoPages } = await client.get('cdn/stories', {
+		starts_with: 'infos/',
+		is_startpage: 0,
+		version
+	})
+
+	const infoRedirect = getInfoRedirect(infoPages.stories.map(info => info.slug))
 
 	// get all bands, even the ones in historie folders
 	const { data: allBands } = await client.get('cdn/stories', {
@@ -34,13 +69,13 @@ export const getInitialStoryblokData = async (client, version) => {
 
 	// find out, which bands are in historie folder and need a redirect
 	// -> all available bands - current active bands = 'old' bands
-	const redirects = allBands.stories.filter(band => {
+	const filteredBandsRedirects = allBands.stories.filter(band => {
 		const active = activeBands.stories.filter(item => item.uuid === band.uuid)
 		return !active.length
 	})
 
 	// create redirects of 'old' bands for netlify redirects
-	const bandsRedirects = redirects.map(item => {
+	const bandsRedirects = filteredBandsRedirects.map(item => {
 		const to = item.full_slug.substr(0, 14) // -> eg "/historie/2019/"
 		return {
 			from: `/line-up/bands/${item.slug}`,
@@ -51,7 +86,8 @@ export const getInitialStoryblokData = async (client, version) => {
 
 	return {
 		bandsRedirects,
-		historyRedirectSlug: historyYears.stories[0].slug,
+		historyRedirect,
+		infoRedirect,
 		metaDescription: config.story.content.description_meta || siteTitle.long
 	}
 }
