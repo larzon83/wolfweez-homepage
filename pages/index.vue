@@ -141,7 +141,7 @@ export default {
 	async asyncData(context) {
 		return await sbData({
 			ctx: context,
-			path: '/home'
+			path: '/homepage'
 		})
 	},
 

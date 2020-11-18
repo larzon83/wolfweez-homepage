@@ -1,19 +1,15 @@
 <template>
 	<section>
-		<ContentSimple :content="story.content" />
+		<BlokContent :content="story.content" />
 	</section>
 </template>
 
 <script>
-import ContentSimple from '~/components/ContentSimple.vue'
 import useStorybridge from '~/mixins/useStorybridge.js'
 import { sbData } from '~/utils'
 import { createOgImagePath, createSEOMeta } from '~/utils/seo'
 
 export default {
-	components: {
-		ContentSimple
-	},
 	mixins: [useStorybridge],
 
 	head() {
@@ -33,7 +29,7 @@ export default {
 	async asyncData(context) {
 		return await sbData({
 			ctx: context,
-			path: `/rechtliches/${context.params.right}`
+			path: `/infos/${context.params.info}`
 		})
 	}
 }

@@ -81,13 +81,13 @@ export default {
 	async asyncData(context) {
 		const historyTimetable = await sbData({
 			ctx: context,
-			path: `/historie/${context.params.slug}/timetable`,
+			path: `/historie/${context.params.historie}/timetable`,
 			resolveLinks: 'story'
 		})
 
 		const historyYear = await sbData({
 			ctx: context,
-			path: `/historie/${context.params.slug}`,
+			path: `/historie/${context.params.historie}`,
 			isStartpage: 1
 		})
 

@@ -8,7 +8,7 @@
 						:key="`section-${sectionIndex}`"
 						class="py-4"
 						cols="6"
-						md="4"
+						md="3"
 					>
 						<v-card flat tile color="transparent">
 							<v-subheader class="text-button font-weight-regular pl-0">{{
@@ -54,6 +54,15 @@ export default {
 		copy: siteTitle.short,
 		sections: [
 			{
+				title: 'Infos',
+				links: [
+					{
+						title: 'Anreise',
+						to: '/infos/anreise/'
+					}
+				]
+			},
+			{
 				title: 'Line-Up',
 				links: [
 					{
@@ -78,6 +87,10 @@ export default {
 			{
 				title: 'Rechtliches',
 				links: [
+					{
+						title: 'Kontakt',
+						to: '/kontakt/'
+					},
 					{
 						title: 'AGB',
 						to: '/rechtliches/agb/'
