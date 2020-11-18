@@ -35,6 +35,11 @@ export default async function () {
 			force: true
 		},
 		{
+			from: '/infos/',
+			to: '/infos/anreise/', // TODO: calc this redirect based on first info-item from sb
+			force: true
+		},
+		{
 			from: '/rechtliches/',
 			to: '/rechtliches/agb/',
 			force: true
