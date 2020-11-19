@@ -1,6 +1,6 @@
 <template>
 	<section>
-		<!-- <TabsNavigation :type="tabType" /> -->
+		<TabsNavigation :type="tabType" />
 	</section>
 </template>
 
@@ -27,7 +27,7 @@ export default {
 
 	data() {
 		return {
-			tabType: tabTypes.HISTORY
+			tabType: tabTypes.INFOS
 		}
 	},
 

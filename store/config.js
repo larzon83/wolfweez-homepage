@@ -3,6 +3,7 @@ import { getInfoRedirect } from '~/utils/initialStoryblokData'
 
 export const state = () => ({
 	festivals: [],
+	infos: [],
 	infoRedirect: {
 		title: '',
 		to: '/'
@@ -19,10 +20,16 @@ export const mutations = {
 		state.festivals = payload
 	},
 
-	SET_INFO_REDIRECT(state, payload) {
+	SET_INFOS(state, payload) {
 		const infoRedirect = getInfoRedirect(payload)
 		state.infoRedirect.title = infoRedirect.title
 		state.infoRedirect.to = infoRedirect.rule.to
+		state.infos = payload.map(info => {
+			return {
+				full_slug: info.full_slug,
+				title: info.content.headline
+			}
+		})
 	}
 }
 
@@ -57,7 +64,7 @@ export const actions = {
 			})
 	},
 
-	loadInfoRedirect({ commit }, { version }) {
+	loadInfos({ commit }, { version }) {
 		return this.$storyapi
 			.get(`cdn/stories`, {
 				starts_with: 'infos/',
@@ -65,7 +72,7 @@ export const actions = {
 				version
 			})
 			.then(res => {
-				commit('SET_INFO_REDIRECT', res.data.stories)
+				commit('SET_INFOS', res.data.stories)
 			})
 	}
 }

@@ -1,5 +1,6 @@
 <template>
 	<section>
+		<TabsNavigation :type="tabType" />
 		<BlokContent :content="story.content" />
 	</section>
 </template>
@@ -7,6 +8,7 @@
 <script>
 import useStorybridge from '~/mixins/useStorybridge.js'
 import { sbData } from '~/utils'
+import { tabTypes } from '~/utils/constants'
 import { createOgImagePath, createSEOMeta } from '~/utils/seo'
 
 export default {
@@ -23,6 +25,12 @@ export default {
 				title,
 				url: this.$route.path
 			})
+		}
+	},
+
+	data() {
+		return {
+			tabType: tabTypes.INFOS
 		}
 	},
 

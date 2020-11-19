@@ -8,6 +8,6 @@ export default async function ({ isDev, query, store }) {
 				: 'published'
 
 		await store.dispatch('config/loadConfig', { version })
-		await store.dispatch('config/loadInfoRedirect', { version })
+		await store.dispatch('config/loadInfos', { version })
 	}
 }

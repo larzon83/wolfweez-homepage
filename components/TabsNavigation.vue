@@ -17,7 +17,7 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+import { mapGetters, mapState } from 'vuex'
 import useFormatting from '~/mixins/useFormatting.js'
 import { tabTypes } from '~/utils/constants'
 
@@ -33,6 +33,7 @@ export default {
 	},
 
 	computed: {
+		...mapState('config', ['infos']),
 		...mapGetters('config', ['historicFestivals']),
 
 		tabItems() {
@@ -54,6 +55,15 @@ export default {
 					return {
 						title: festival.content.year,
 						to: this.$_slashify(festival.full_slug)
+					}
+				})
+			}
+
+			if (this.type === tabTypes.INFOS) {
+				return this.infos.map(info => {
+					return {
+						title: info.title,
+						to: this.$_slashify(info.full_slug)
 					}
 				})
 			}
