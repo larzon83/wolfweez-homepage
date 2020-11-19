@@ -1,7 +1,12 @@
 import { sortAssetsByName } from '~/utils'
+import { getInfoRedirect } from '~/utils/initialStoryblokData'
 
 export const state = () => ({
-	festivals: []
+	festivals: [],
+	infoRedirect: {
+		title: '',
+		to: '/'
+	}
 })
 
 export const mutations = {
@@ -12,6 +17,12 @@ export const mutations = {
 			}
 		})
 		state.festivals = payload
+	},
+
+	SET_INFO_REDIRECT(state, payload) {
+		const infoRedirect = getInfoRedirect(payload)
+		state.infoRedirect.title = infoRedirect.title
+		state.infoRedirect.to = infoRedirect.rule.to
 	}
 }
 
@@ -43,6 +54,18 @@ export const actions = {
 			})
 			.then(res => {
 				commit('SET_CONFIG', res.data.stories)
+			})
+	},
+
+	loadInfoRedirect({ commit }, { version }) {
+		return this.$storyapi
+			.get(`cdn/stories`, {
+				starts_with: 'infos/',
+				is_startpage: 0,
+				version
+			})
+			.then(res => {
+				commit('SET_INFO_REDIRECT', res.data.stories)
 			})
 	}
 }

@@ -1,10 +1,12 @@
 <template>
-	<section></section>
+	<section>
+		<!-- <TabsNavigation :type="tabType" /> -->
+	</section>
 </template>
 
 <script>
-import { sbData } from '~/utils'
-import { getInfoRedirect } from '~/utils/initialStoryblokData'
+import { mapState } from 'vuex'
+import { tabTypes } from '~/utils/constants'
 import { createOgImagePath, createSEOMeta } from '~/utils/seo'
 
 export default {
@@ -23,24 +25,20 @@ export default {
 		}
 	},
 
-	async asyncData(context) {
-		const infoPages = await sbData({
-			ctx: context,
-			startsWith: 'infos/',
-			isStartpage: 0
-		})
+	data() {
+		return {
+			tabType: tabTypes.HISTORY
+		}
+	},
 
-		const infoRedirect = getInfoRedirect(
-			infoPages.stories.map(info => info.slug)
-		)
-
-		return { infoRedirect }
+	computed: {
+		...mapState('config', ['infoRedirect'])
 	},
 
 	// route to calculated "main" info-page on page-load
 	// NOTE: in code, the "main" info-page is defined as "allgemein"
 	// - if someone renames or deletes this page in sb, it will use the top-most info-page in sb
-	// - if there are no info-pages in sb, "/" will be used
+	// - if there are no info-pages at all in sb, "/" will be used
 	created() {
 		this.$router.push(this.infoRedirect.to)
 	}

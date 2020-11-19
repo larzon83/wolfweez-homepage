@@ -42,7 +42,7 @@ export default async function () {
 	]
 
 	netlifyRedirects.push(storyblokData.historyRedirect)
-	netlifyRedirects.push(storyblokData.infoRedirect)
+	netlifyRedirects.push(storyblokData.infoRedirect.rule)
 
 	if (storyblokData.bandsRedirects.length) {
 		netlifyRedirects.push(...storyblokData.bandsRedirects)

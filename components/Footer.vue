@@ -47,66 +47,74 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
 import { siteTitle } from '~/utils/constants'
 
 export default {
 	data: () => ({
-		copy: siteTitle.short,
-		sections: [
-			{
-				title: 'Infos',
-				links: [
-					{
-						title: 'Anreise',
-						to: '/infos/anreise/'
-					}
-				]
-			},
-			{
-				title: 'Line-Up',
-				links: [
-					{
-						title: 'Bands',
-						to: '/line-up/bands/'
-					},
-					{
-						title: 'Timetable',
-						to: '/line-up/timetable/'
-					}
-				]
-			},
-			{
-				title: 'Medien',
-				links: [
-					{
-						title: 'Fotogalerie',
-						to: '/fotogalerie/'
-					}
-				]
-			},
-			{
-				title: 'Rechtliches',
-				links: [
-					{
-						title: 'Kontakt',
-						to: '/kontakt/'
-					},
-					{
-						title: 'AGB',
-						to: '/rechtliches/agb/'
-					},
-					{
-						title: 'Datenschutz',
-						to: '/rechtliches/datenschutz/'
-					},
-					{
-						title: 'Impressum',
-						to: '/rechtliches/impressum/'
-					}
-				]
-			}
-		]
-	})
+		copy: siteTitle.short
+	}),
+
+	computed: {
+		...mapState('config', ['infoRedirect']),
+
+		sections() {
+			return [
+				{
+					title: 'Infos',
+					links: [
+						{
+							title: this.infoRedirect.title,
+							to: this.infoRedirect.to
+						}
+					]
+				},
+				{
+					title: 'Line-Up',
+					links: [
+						{
+							title: 'Bands',
+							to: '/line-up/bands/'
+						},
+						{
+							title: 'Timetable',
+							to: '/line-up/timetable/'
+						}
+					]
+				},
+				{
+					title: 'Medien',
+					links: [
+						{
+							title: 'Fotogalerie',
+							to: '/fotogalerie/'
+						}
+					]
+				},
+				{
+					title: 'Rechtliches',
+					links: [
+						{
+							title: 'Kontakt',
+							to: '/kontakt/'
+						},
+						{
+							title: 'AGB',
+							to: '/rechtliches/agb/'
+						},
+						{
+							title: 'Datenschutz',
+							to: '/rechtliches/datenschutz/'
+						},
+						{
+							title: 'Impressum',
+							to: '/rechtliches/impressum/'
+						}
+					]
+				}
+			]
+		}
+	}
 }
 </script>
 

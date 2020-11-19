@@ -8,5 +8,6 @@ export const siteTitle = {
 
 export const tabTypes = {
 	HISTORY: 'history',
+	INFOS: 'infos',
 	LINEUP: 'lineup'
 }

@@ -2,21 +2,29 @@ import { siteTitle } from './constants'
 
 export const getInfoRedirect = infos => {
 	let to = '/'
+	let title = 'Infos'
 
 	if (infos.length) {
 		to = '/infos/'
 
-		if (infos.includes('allgemein')) {
+		const infoAllgemein = infos.filter(info => info.slug === 'allgemein')
+
+		if (infoAllgemein.length) {
+			title = infoAllgemein[0].content.headline
 			to += 'allgemein/'
 		} else {
-			to += infos[0] + '/'
+			title = infos[0].content.headline
+			to += infos[0].slug + '/'
 		}
 	}
 
 	return {
-		from: '/infos/',
-		to,
-		force: true
+		title,
+		rule: {
+			from: '/infos/',
+			to,
+			force: true
+		}
 	}
 }
 
@@ -48,7 +56,7 @@ export const getInitialStoryblokData = async (client, version) => {
 		version
 	})
 
-	const infoRedirect = getInfoRedirect(infoPages.stories.map(info => info.slug))
+	const infoRedirect = getInfoRedirect(infoPages.stories)
 
 	// get all bands, even the ones in historie folders
 	const { data: allBands } = await client.get('cdn/stories', {
