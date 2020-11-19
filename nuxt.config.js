@@ -105,6 +105,7 @@ export default async function () {
 			],
 			link: [
 				{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+				{ rel: 'preconnect', href: 'https://fonts.gstatic.com' },
 				// {
 				// 	rel: 'stylesheet',
 				// 	href: 'https://fonts.googleapis.com/css?family=Open+Sans:300,400,600'
