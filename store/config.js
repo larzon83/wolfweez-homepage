@@ -11,7 +11,7 @@ export const state = () => ({
 })
 
 export const mutations = {
-	SET_CONFIG(state, payload) {
+	SET_CONFIGS(state, payload) {
 		payload.forEach(item => {
 			if (item.content.gallery.length > 0) {
 				item.content.gallery = sortAssetsByName(item.content.gallery)
@@ -48,7 +48,7 @@ export const getters = {
 }
 
 export const actions = {
-	loadConfig({ commit }, { version }) {
+	loadConfigs({ commit }, { version }) {
 		return this.$storyapi
 			.get(`cdn/stories`, {
 				filter_query: {
@@ -60,7 +60,7 @@ export const actions = {
 				version
 			})
 			.then(res => {
-				commit('SET_CONFIG', res.data.stories)
+				commit('SET_CONFIGS', res.data.stories)
 			})
 	},
 

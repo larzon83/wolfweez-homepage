@@ -2,7 +2,7 @@
 	<v-app v-scroll="onScroll">
 		<Toolbar :swap-toolbar="swapToolbar" />
 		<v-main>
-			<v-container class="pt-0">
+			<v-container class="pt-0 pb-16">
 				<nuxt />
 			</v-container>
 			<Footer />

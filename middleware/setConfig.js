@@ -7,7 +7,7 @@ export default async function ({ isDev, query, store }) {
 				? 'draft'
 				: 'published'
 
-		await store.dispatch('config/loadConfig', { version })
+		await store.dispatch('config/loadConfigs', { version })
 		await store.dispatch('config/loadInfos', { version })
 	}
 }
