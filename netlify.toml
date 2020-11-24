@@ -1,4 +1,6 @@
 [build]
+  # https://www.netlify.com/blog/2020/04/27/ignore-unnecessary-builds-to-optimize-your-build-times/
+  ignore = "git diff —quiet HEAD^ HEAD sub_dir/"
   functions = "functions/"
 
 [dev]
