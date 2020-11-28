@@ -16,6 +16,14 @@
 				<!-- max-width="220" -->
 			</div>
 			<v-card color="#666">
+				<client-only>
+					<div>
+						<flip-countdown
+							deadline="2021-07-02 20:00:00"
+							:labels="timerLabels"
+						></flip-countdown>
+					</div>
+				</client-only>
 				<v-card-title class="headline">
 					Welcome to the Vuetify + Nuxt.js template!
 				</v-card-title>
@@ -127,16 +135,29 @@
 
 <script>
 import { mapGetters } from 'vuex'
+import FlipCountdown from 'vue2-flip-countdown'
 import useStorybridge from '~/mixins/useStorybridge.js'
 // import HomePage from '~/components/HomePage.vue'
 import { sbData } from '~/utils'
 
 export default {
 	name: 'Index',
-	// components: {
-	// 	HomePage
-	// },
+	components: {
+		// HomePage
+		FlipCountdown
+	},
 	mixins: [useStorybridge],
+
+	data() {
+		return {
+			timerLabels: {
+				days: 'Tage',
+				hours: 'Stunden',
+				minutes: 'Min.',
+				seconds: 'Sek.'
+			}
+		}
+	},
 
 	async asyncData(context) {
 		return await sbData({
@@ -154,3 +175,30 @@ export default {
 	}
 }
 </script>
+
+<style lang="scss" scoped>
+.flip-clock ::v-deep {
+	.flip-card__top,
+	.flip-card__bottom,
+	.flip-card__back-bottom,
+	.flip-card__back::before,
+	.flip-card__back::after {
+		border-radius: 3px;
+	}
+	.flip-card__top {
+		background: var(--v-primary-base);
+		color: #ebebee;
+	}
+	.flip-card__bottom,
+	.flip-card__back-bottom {
+		background: var(--v-primary-base);
+		color: #ebebee;
+		border-top-color: rgba(0, 0, 0, 0.15);
+	}
+	.flip-card__back::before,
+	.flip-card__back::after {
+		background: #cc5555;
+		color: #d1d1d4;
+	}
+}
+</style>
