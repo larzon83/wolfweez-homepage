@@ -61,9 +61,12 @@
 			<v-btn
 				v-if="$vuetify.breakpoint.mdAndDown"
 				icon
+				:dark="swapToolbar"
+				:light="!swapToolbar"
 				@click="drawer = !drawer"
 			>
-				<img :src="menuIcon" width="25" height="14" alt="Menü öffnen" />
+				<!-- <img :src="menuIcon" width="25" height="14" alt="Menü öffnen" /> -->
+				<v-icon>$menu</v-icon>
 			</v-btn>
 
 			<!-- <template v-slot:extension>
@@ -114,14 +117,14 @@ export default {
 			],
 			toolbarTitle: 'WW'
 		}
-	},
-
-	computed: {
-		menuIcon() {
-			const fileAddition = this.swapToolbar ? 'light' : 'dark'
-			return require(`~/assets/icons/menu-${fileAddition}.svg`)
-		}
 	}
+
+	// computed: {
+	// 	menuIcon() {
+	// 		const fileAddition = this.swapToolbar ? 'light' : 'dark'
+	// 		return require(`~/assets/icons/menu-${fileAddition}.svg`)
+	// 	}
+	// }
 }
 </script>
 
