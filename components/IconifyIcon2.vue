@@ -16,9 +16,10 @@ export default {
 			type: Object,
 			required: true
 		}
-	},
-	mounted() {
-		console.log('heyyyyyyyyyy: ', this.icon)
 	}
+
+	// mounted() {
+	// 	console.log('heyyyyyyyyyy: ', this.icon)
+	// }
 }
 </script>
