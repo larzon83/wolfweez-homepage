@@ -47,7 +47,7 @@
 		"@commitlint/cli": "11.0.0",
 		"@commitlint/config-conventional": "11.0.0",
 		"@epegzz/sass-vars-loader": "6.0.0",
-		"@iconify/iconify": "^2.0.0-rc.2",
+		"@iconify/iconify": "^2.0.0-rc.4",
 		"@iconify/icons-bx": "^1.1.0",
 		"@iconify/icons-mdi-light": "^1.1.0",
 		"@iconify/vue": "^1.0.6",
