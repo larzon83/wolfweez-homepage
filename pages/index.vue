@@ -18,9 +18,11 @@
 			<v-card color="#666">
 				<div>
 					<v-btn icon>
-						<v-icon large>$aperture</v-icon>
+						<v-icon large color="#ff0000">$aperture</v-icon>
 					</v-btn>
-					<!-- <v-icon>mdi-light:home</v-icon> -->
+					<v-btn icon>
+						<v-icon color="#ff0000">$airplay</v-icon>
+					</v-btn>
 				</div>
 				<!-- <client-only>
 					<IconifyIcon icon="home" />
@@ -199,6 +201,7 @@ export default {
 	.flip-card__back::before,
 	.flip-card__back::after {
 		border-radius: 3px;
+		width: 2.45em;
 	}
 	.flip-card__top {
 		background: var(--v-primary-base);

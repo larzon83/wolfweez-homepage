@@ -1,3 +1,5 @@
+import IconAirplay from '@/components/IconAirplay'
+
 import IconifyIcon2 from '@/components/IconifyIcon2'
 // import IconifyIcon3 from '@/components/IconifyIcon3'
 // import homeIconData from '@iconify-icons/mdi-light/home'
@@ -49,6 +51,9 @@ export default {
 				props: {
 					icon: iconMenu
 				}
+			},
+			airplay: {
+				component: IconAirplay
 			}
 		}
 	}
