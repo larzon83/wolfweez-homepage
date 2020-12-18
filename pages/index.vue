@@ -16,17 +16,11 @@
 				<!-- max-width="220" -->
 			</div>
 			<v-card color="#666">
-				<div>
+				<!-- <div>
 					<v-btn icon>
-						<v-icon large color="#ff0000">$aperture</v-icon>
+						<v-icon color="#ff0000">$menu</v-icon>
 					</v-btn>
-					<v-btn icon>
-						<v-icon color="#ff0000">$airplay</v-icon>
-					</v-btn>
-				</div>
-				<!-- <client-only>
-					<IconifyIcon icon="home" />
-				</client-only> -->
+				</div> -->
 				<client-only>
 					<div>
 						<flip-countdown
@@ -146,9 +140,6 @@
 
 <script>
 import { mapGetters } from 'vuex'
-// import IconifyIcon from '@iconify/vue'
-// import autoIconData from '@iconify-icons/clarity/auto-solid'
-// import homeIconData from '@iconify-icons/mdi-light/home'
 import FlipCountdown from 'vue2-flip-countdown'
 import useStorybridge from '~/mixins/useStorybridge.js'
 // import HomePage from '~/components/HomePage.vue'
@@ -160,7 +151,6 @@ export default {
 	name: 'Index',
 	components: {
 		// HomePage
-		// IconifyIcon,
 		FlipCountdown
 	},
 	mixins: [useStorybridge],

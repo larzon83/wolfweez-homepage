@@ -47,14 +47,9 @@
 		"@commitlint/cli": "11.0.0",
 		"@commitlint/config-conventional": "11.0.0",
 		"@epegzz/sass-vars-loader": "6.0.0",
-		"@iconify/iconify": "2.0.0-rc.4",
-		"@iconify/icons-bx": "1.1.0",
-		"@iconify/icons-mdi": "1.1.2",
-		"@iconify/icons-mdi-light": "1.1.0",
-		"@iconify/vue": "1.0.6",
 		"@nuxtjs/eslint-config": "5.0.0",
 		"@nuxtjs/eslint-module": "3.0.2",
-		"@nuxtjs/html-validator": "0.1.4",
+		"@nuxtjs/html-validator": "0.1.5",
 		"@nuxtjs/netlify-files": "1.2.0",
 		"@nuxtjs/pwa": "3.3.2",
 		"@nuxtjs/vuetify": "1.11.2",
@@ -75,6 +70,7 @@
 		"nuxt-canonical": "1.0.6",
 		"prettier": "2.2.1",
 		"storyblok-migrate": "0.3.4",
+		"vue-feather-icons": "5.1.0",
 		"vue-jest": "4.0.0-rc.1",
 		"vuetify": "2.4.0-beta.0"
 	}

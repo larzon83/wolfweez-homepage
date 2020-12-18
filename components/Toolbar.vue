@@ -8,23 +8,31 @@
 			temporary
 			width="100vw"
 			height="auto"
-			style="padding-bottom: 100px"
+			style="padding-bottom: 64px"
 		>
-			<v-list>
+			<!-- icon for closin open burger menu -->
+			<div style="min-height: 64px" class="v-toolbar__content py-0">
+				<v-spacer />
+				<v-btn aria-label="Menü schließen" icon @click="drawer = !drawer">
+					<v-icon>$close</v-icon>
+				</v-btn>
+			</div>
+
+			<v-list class="pa-0">
 				<v-list-item
 					v-for="(item, i) in items"
 					:key="i"
 					:to="item.to"
-					router
-					exact
+					nuxt
+					:ripple="false"
 				>
-					<v-list-item-action></v-list-item-action>
-					<v-list-item-content>
+					<v-list-item-content class="text-center">
 						<v-list-item-title v-text="item.title" />
 					</v-list-item-content>
 				</v-list-item>
 			</v-list>
 		</v-navigation-drawer>
+
 		<v-app-bar
 			app
 			:absolute="!swapToolbar"
@@ -37,9 +45,7 @@
 				elevate: swapToolbar
 			}"
 		>
-			<!-- <v-toolbar-title v-text="toolbarTitle" /> -->
 			<v-spacer />
-			<!-- <v-app-bar-nav-icon @click.stop="drawer = !drawer" /> -->
 
 			<v-btn
 				v-for="(item, i) in items"
@@ -47,7 +53,7 @@
 				:ripple="false"
 				:to="item.to"
 				nuxt
-				active-class="aaa"
+				active-class="nav-active"
 				text
 				tile
 				color="#202020"
@@ -60,13 +66,13 @@
 
 			<v-btn
 				v-if="$vuetify.breakpoint.mdAndDown"
+				aria-label="Menü öffnen"
 				icon
 				:dark="swapToolbar"
 				:light="!swapToolbar"
 				@click="drawer = !drawer"
 			>
-				<!-- <img :src="menuIcon" width="25" height="14" alt="Menü öffnen" /> -->
-				<v-icon>$menu</v-icon>
+				<v-icon class="menu">$menu</v-icon>
 			</v-btn>
 
 			<!-- <template v-slot:extension>
@@ -114,17 +120,9 @@ export default {
 					title: 'Historie',
 					to: '/historie/'
 				}
-			],
-			toolbarTitle: 'WW'
+			]
 		}
 	}
-
-	// computed: {
-	// 	menuIcon() {
-	// 		const fileAddition = this.swapToolbar ? 'light' : 'dark'
-	// 		return require(`~/assets/icons/menu-${fileAddition}.svg`)
-	// 	}
-	// }
 }
 </script>
 
@@ -133,7 +131,7 @@ export default {
 	box-shadow: 0 0 40px -20px rgba(0, 0, 0, 0.8) !important;
 }
 
-.aaa {
+.nav-active {
 	color: #fff !important;
 	background: var(--v-primary-base);
 
@@ -142,8 +140,27 @@ export default {
 	}
 }
 
+.menu {
+	transform: rotate(-90deg);
+}
+
 .v-navigation-drawer--close.v-navigation-drawer--temporary {
 	transform: translateY(-13vw) !important;
+}
+
+.v-list-item--link {
+	font-weight: 500;
+	text-transform: uppercase;
+
+	&.v-list-item--active {
+		color: white;
+		background-color: var(--v-primary-base);
+
+		&:hover::before,
+		&::before {
+			opacity: 0;
+		}
+	}
 }
 
 // .v-app-bar ::v-deep .v-toolbar__content {
