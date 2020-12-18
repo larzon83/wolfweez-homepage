@@ -54,7 +54,7 @@
 		"@iconify/vue": "1.0.6",
 		"@nuxtjs/eslint-config": "5.0.0",
 		"@nuxtjs/eslint-module": "3.0.2",
-		"@nuxtjs/html-validator": "0.1.4",
+		"@nuxtjs/html-validator": "0.1.5",
 		"@nuxtjs/netlify-files": "1.2.0",
 		"@nuxtjs/pwa": "3.3.2",
 		"@nuxtjs/vuetify": "1.11.2",
