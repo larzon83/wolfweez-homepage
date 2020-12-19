@@ -144,8 +144,7 @@ import FlipCountdown from 'vue2-flip-countdown'
 import useStorybridge from '~/mixins/useStorybridge.js'
 // import HomePage from '~/components/HomePage.vue'
 import { sbData } from '~/utils'
-
-// IconifyIcon.addIcon('home', homeIconData)
+import { createSEOMeta } from '~/utils/seo'
 
 export default {
 	name: 'Index',
@@ -154,6 +153,17 @@ export default {
 		FlipCountdown
 	},
 	mixins: [useStorybridge],
+
+	head() {
+		const title = this.currentFestival.content.title_meta
+		return {
+			title,
+			meta: createSEOMeta({
+				description: this.currentFestival.content.description_meta,
+				title
+			})
+		}
+	},
 
 	data() {
 		return {

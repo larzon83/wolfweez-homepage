@@ -45,6 +45,28 @@ export const sbData = ({
 		})
 }
 
+export const getInfoRedirect = infos => {
+	let to = '/'
+
+	if (infos.length) {
+		to = '/infos/'
+
+		const infoAllgemein = infos.filter(info => info.slug === 'allgemein')
+
+		if (infoAllgemein.length) {
+			to += 'allgemein/'
+		} else {
+			to += infos[0].slug + '/'
+		}
+	}
+
+	return {
+		from: '/infos/',
+		to,
+		force: true
+	}
+}
+
 export const getNiceDate = date => {
 	const splitted = date.substr(0, 10).split('-')
 	return `${splitted[2]}.${splitted[1]}.${splitted[0]}`

@@ -1,13 +1,9 @@
-import { sortAssetsByName } from '~/utils'
-import { getInfoRedirect } from '~/utils/initialStoryblokData'
+import { getInfoRedirect, sortAssetsByName } from '~/utils'
 
 export const state = () => ({
 	festivals: [],
 	infos: [],
-	infoRedirect: {
-		title: '',
-		to: '/'
-	}
+	infoRedirect: '/'
 })
 
 export const mutations = {
@@ -21,9 +17,7 @@ export const mutations = {
 	},
 
 	SET_INFOS(state, payload) {
-		const infoRedirect = getInfoRedirect(payload)
-		state.infoRedirect.title = infoRedirect.title
-		state.infoRedirect.to = infoRedirect.rule.to
+		state.infoRedirect = getInfoRedirect(payload).to
 		state.infos = payload.map(info => {
 			return {
 				full_slug: info.full_slug,

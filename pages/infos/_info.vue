@@ -15,7 +15,7 @@ export default {
 	mixins: [useStorybridge],
 
 	head() {
-		const title = this.story.content.headline
+		const title = `${this.story.content.headline} | Infos`
 		return {
 			title,
 			meta: createSEOMeta({

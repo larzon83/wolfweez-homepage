@@ -1,12 +1,8 @@
 <template>
-	<section>
-		<TabsNavigation :type="tabType" />
-	</section>
+	<section></section>
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
-import { tabTypes } from '~/utils/constants'
 import { createOgImagePath, createSEOMeta } from '~/utils/seo'
 
 export default {
@@ -25,22 +21,13 @@ export default {
 		}
 	},
 
-	data() {
-		return {
-			tabType: tabTypes.HISTORY
-		}
-	},
-
-	computed: {
-		...mapGetters('config', ['historicFestivals'])
-	},
-
-	// route to the latest history on page-load
-	created() {
-		const destination = this.historicFestivals.length
-			? this.historicFestivals[0].slug + '/'
+	// redirect to the latest historic festival
+	middleware({ redirect, store }) {
+		const historicFestivals = store.getters['config/historicFestivals']
+		const destination = historicFestivals.length
+			? '/' + historicFestivals[0].full_slug
 			: '/'
-		this.$router.push(destination)
+		redirect(301, destination)
 	}
 }
 </script>

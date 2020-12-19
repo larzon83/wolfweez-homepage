@@ -21,8 +21,8 @@ export default {
 		}
 	},
 
-	middleware(context) {
-		context.redirect(301, '/rechtliches/agb/')
+	middleware({ redirect }) {
+		redirect(301, '/rechtliches/agb/')
 	}
 }
 </script>

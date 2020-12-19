@@ -56,18 +56,18 @@ export default {
 	}),
 
 	computed: {
-		...mapState('config', ['infoRedirect']),
+		...mapState('config', ['infos']),
 
 		sections() {
 			return [
 				{
 					title: 'Infos',
-					links: [
-						{
-							title: this.infoRedirect.title,
-							to: this.infoRedirect.to
+					links: this.infos.map(info => {
+						return {
+							title: info.title,
+							to: `/${info.full_slug}/`
 						}
-					]
+					})
 				},
 				{
 					title: 'Line-Up',
