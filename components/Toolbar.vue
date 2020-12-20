@@ -45,6 +45,25 @@
 				elevate: swapToolbar
 			}"
 		>
+			<v-btn
+				v-if="swapToolbar"
+				aria-label="Zur Startseite"
+				icon
+				nuxt
+				to="/"
+				class="nav-wolf"
+			>
+				<v-img
+					:src="require('~/assets/icons/wolf.svg')"
+					:alt="'Logo'"
+					aspect-ratio="1.0805"
+					eager
+					height="34"
+					position="center center"
+					contain
+				></v-img>
+			</v-btn>
+
 			<v-spacer />
 
 			<v-btn
@@ -53,11 +72,11 @@
 				:ripple="false"
 				:to="item.to"
 				nuxt
-				active-class="nav-active"
+				active-class="nav-btn-active"
 				text
 				tile
 				color="#202020"
-				class="ma-0"
+				class="nav-btn ma-0"
 				:class="{
 					'white--text': swapToolbar
 				}"
@@ -65,14 +84,14 @@
 			>
 
 			<v-btn
-				v-if="$vuetify.breakpoint.mdAndDown"
 				aria-label="Menü öffnen"
 				icon
 				:dark="swapToolbar"
 				:light="!swapToolbar"
+				class="menu-btn"
 				@click="drawer = !drawer"
 			>
-				<v-icon class="menu">$menu</v-icon>
+				<v-icon class="menu-icon">$menu</v-icon>
 			</v-btn>
 
 			<!-- <template v-slot:extension>
@@ -131,7 +150,15 @@ export default {
 	box-shadow: 0 0 40px -20px rgba(0, 0, 0, 0.8) !important;
 }
 
-.nav-active {
+.v-btn:not(.v-btn--text):not(.v-btn--outlined).v-btn--active:before {
+	opacity: 0;
+}
+
+.nav-wolf {
+	margin-left: -5px !important;
+}
+
+.nav-btn-active {
 	color: #fff !important;
 	background: var(--v-primary-base);
 
@@ -140,7 +167,19 @@ export default {
 	}
 }
 
-.menu {
+@media #{map-get($display-breakpoints, 'md-and-down')} {
+	.nav-btn {
+		display: none;
+	}
+}
+
+@media #{map-get($display-breakpoints, 'lg-and-up')} {
+	.menu-btn {
+		display: none;
+	}
+}
+
+.menu-icon {
 	transform: rotate(-90deg);
 }
 
