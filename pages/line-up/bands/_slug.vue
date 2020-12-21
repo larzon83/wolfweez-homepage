@@ -7,6 +7,7 @@
 
 <script>
 import BandDetail from '~/components/BandDetail.vue'
+import savePagetitleToVuex from '~/mixins/savePagetitleToVuex.js'
 import useStorybridge from '~/mixins/useStorybridge.js'
 import { getPlayTime, sbData } from '~/utils'
 import { tabTypes } from '~/utils/constants'
@@ -16,7 +17,7 @@ export default {
 	components: {
 		BandDetail
 	},
-	mixins: [useStorybridge],
+	mixins: [savePagetitleToVuex, useStorybridge],
 
 	head() {
 		const title = `${this.story.content.name} | Bands`
@@ -70,6 +71,12 @@ export default {
 		}
 
 		return { ...band, time }
+	},
+
+	computed: {
+		pageTitle() {
+			return this.story.content.name
+		}
 	}
 }
 </script>

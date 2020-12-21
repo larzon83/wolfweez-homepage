@@ -141,6 +141,7 @@
 <script>
 import { mapGetters } from 'vuex'
 import FlipCountdown from 'vue2-flip-countdown'
+import savePagetitleToVuex from '~/mixins/savePagetitleToVuex.js'
 import useStorybridge from '~/mixins/useStorybridge.js'
 // import HomePage from '~/components/HomePage.vue'
 import { sbData } from '~/utils'
@@ -152,7 +153,7 @@ export default {
 		// HomePage
 		FlipCountdown
 	},
-	mixins: [useStorybridge],
+	mixins: [savePagetitleToVuex, useStorybridge],
 
 	head() {
 		const title = this.currentFestival.content.title_meta
@@ -167,6 +168,7 @@ export default {
 
 	data() {
 		return {
+			pageTitle: 'Home',
 			timerLabels: {
 				days: 'Tage',
 				hours: 'Stunden',

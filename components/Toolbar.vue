@@ -64,6 +64,19 @@
 				></v-img>
 			</v-btn>
 
+			<template v-if="swapToolbar">
+				<v-spacer v-if="currentPageTitle" />
+				<v-toolbar-title
+					v-if="currentPageTitle"
+					class="toolbar-headline"
+					:class="{
+						'is-visible': swapToolbar
+					}"
+				>
+					<b>{{ currentPageTitle }}</b>
+				</v-toolbar-title>
+			</template>
+
 			<v-spacer />
 
 			<v-btn
@@ -106,6 +119,8 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
+
 export default {
 	name: 'Toolbar',
 	props: {
@@ -141,6 +156,10 @@ export default {
 				}
 			]
 		}
+	},
+
+	computed: {
+		...mapState('central', ['currentPageTitle'])
 	}
 }
 </script>
@@ -148,6 +167,28 @@ export default {
 <style lang="scss" scoped>
 .elevate {
 	box-shadow: 0 0 40px -20px rgba(0, 0, 0, 0.8) !important;
+}
+
+.toolbar-headline {
+	font-size: 1.0625rem;
+	line-height: 1.5rem;
+}
+
+.toolbar-headline.is-visible {
+	animation: fade-in-toolbar-headline 0.4s cubic-bezier(0.39, 0.575, 0.565, 1)
+		both;
+}
+
+@keyframes fade-in-toolbar-headline {
+	0% {
+		opacity: 0;
+		transform: translateY(9px);
+	}
+
+	100% {
+		opacity: 1;
+		transform: translateY(0px);
+	}
 }
 
 .v-btn:not(.v-btn--text):not(.v-btn--outlined).v-btn--active:before {

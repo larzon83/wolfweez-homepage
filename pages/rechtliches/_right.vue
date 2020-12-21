@@ -6,6 +6,7 @@
 
 <script>
 import ContentSimple from '~/components/ContentSimple.vue'
+import savePagetitleToVuex from '~/mixins/savePagetitleToVuex.js'
 import useStorybridge from '~/mixins/useStorybridge.js'
 import { sbData } from '~/utils'
 import { createOgImagePath, createSEOMeta } from '~/utils/seo'
@@ -14,7 +15,7 @@ export default {
 	components: {
 		ContentSimple
 	},
-	mixins: [useStorybridge],
+	mixins: [savePagetitleToVuex, useStorybridge],
 
 	head() {
 		const title = this.story.content.headline
@@ -35,6 +36,12 @@ export default {
 			ctx: context,
 			path: `/rechtliches/${context.params.right}`
 		})
+	},
+
+	computed: {
+		pageTitle() {
+			return this.story.content.headline
+		}
 	}
 }
 </script>

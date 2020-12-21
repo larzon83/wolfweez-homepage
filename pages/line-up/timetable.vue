@@ -40,18 +40,21 @@
 </template>
 
 <script>
+import savePagetitleToVuex from '~/mixins/savePagetitleToVuex.js'
 import useFormatting from '~/mixins/useFormatting.js'
 import useStorybridge from '~/mixins/useStorybridge.js'
 import { sbData } from '~/utils'
 import { tabTypes } from '~/utils/constants'
 import { createOgImagePath, createSEOMeta } from '~/utils/seo'
 
+const pageTitle = 'Timetable'
+
 export default {
-	name: 'Timetable',
-	mixins: [useFormatting, useStorybridge],
+	name: pageTitle,
+	mixins: [savePagetitleToVuex, useFormatting, useStorybridge],
 
 	head() {
-		const title = 'Timetable'
+		const title = pageTitle
 		return {
 			title,
 			meta: createSEOMeta({
@@ -66,6 +69,7 @@ export default {
 
 	data() {
 		return {
+			pageTitle,
 			tabType: tabTypes.LINEUP
 		}
 	},

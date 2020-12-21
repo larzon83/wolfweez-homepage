@@ -30,16 +30,19 @@
 </template>
 
 <script>
+import savePagetitleToVuex from '~/mixins/savePagetitleToVuex.js'
 import useFormatting from '~/mixins/useFormatting.js'
 import { sbData } from '~/utils'
 import { createOgImagePath, createSEOMeta } from '~/utils/seo'
 
+const pageTitle = 'News'
+
 export default {
 	name: 'NewsOverview',
-	mixins: [useFormatting],
+	mixins: [savePagetitleToVuex, useFormatting],
 
 	head() {
-		const title = 'News'
+		const title = pageTitle
 		return {
 			title,
 			meta: createSEOMeta({
@@ -49,6 +52,12 @@ export default {
 				title,
 				url: this.$route.path
 			})
+		}
+	},
+
+	data() {
+		return {
+			pageTitle
 		}
 	},
 

@@ -6,6 +6,7 @@
 
 <script>
 import NewsDetail from '~/components/NewsDetail.vue'
+import savePagetitleToVuex from '~/mixins/savePagetitleToVuex.js'
 import useFormatting from '~/mixins/useFormatting.js'
 import useStorybridge from '~/mixins/useStorybridge.js'
 import { sbData } from '~/utils'
@@ -15,7 +16,7 @@ export default {
 	components: {
 		NewsDetail
 	},
-	mixins: [useFormatting, useStorybridge],
+	mixins: [savePagetitleToVuex, useFormatting, useStorybridge],
 
 	head() {
 		const title = `${this.story.content.headline} | News`
@@ -36,6 +37,12 @@ export default {
 			ctx: context,
 			path: `/news/${context.params.news}`
 		})
+	},
+
+	computed: {
+		pageTitle() {
+			return this.story.content.headline
+		}
 	}
 }
 </script>

@@ -82,13 +82,17 @@
 </template>
 
 <script>
+import savePagetitleToVuex from '~/mixins/savePagetitleToVuex.js'
 import { createOgImagePath, createSEOMeta } from '~/utils/seo'
 
+const pageTitle = 'Kontakt'
+
 export default {
-	name: 'Kontakt',
+	name: pageTitle,
+	mixins: [savePagetitleToVuex],
 
 	head() {
-		const title = 'Kontakt'
+		const title = pageTitle
 		return {
 			title,
 			meta: createSEOMeta({
@@ -101,6 +105,7 @@ export default {
 	},
 
 	data: () => ({
+		pageTitle,
 		buttonDisabled: false,
 		formDisabled: false,
 		showSuccess: false,

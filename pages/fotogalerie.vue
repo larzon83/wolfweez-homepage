@@ -7,14 +7,18 @@
 
 <script>
 import { mapState } from 'vuex'
+import savePagetitleToVuex from '~/mixins/savePagetitleToVuex.js'
 import { sbData } from '~/utils'
 import { createOgImagePath, createSEOMeta } from '~/utils/seo'
 
+const pageTitle = 'Fotogalerie'
+
 export default {
-	name: 'Fotogalerie',
+	name: pageTitle,
+	mixins: [savePagetitleToVuex],
 
 	head() {
-		const title = 'Fotogalerie'
+		const title = pageTitle
 		return {
 			title,
 			meta: createSEOMeta({
@@ -24,6 +28,12 @@ export default {
 				title,
 				url: this.$route.path
 			})
+		}
+	},
+
+	data() {
+		return {
+			pageTitle
 		}
 	},
 

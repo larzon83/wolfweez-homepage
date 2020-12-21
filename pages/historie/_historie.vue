@@ -49,6 +49,7 @@
 </template>
 
 <script>
+import savePagetitleToVuex from '~/mixins/savePagetitleToVuex.js'
 import useFormatting from '~/mixins/useFormatting.js'
 import useStorybridge from '~/mixins/useStorybridge.js'
 import { sbData, sortAssetsByName } from '~/utils'
@@ -56,7 +57,7 @@ import { siteTitle, tabTypes } from '~/utils/constants'
 import { createOgImagePath, createSEOMeta } from '~/utils/seo'
 
 export default {
-	mixins: [useFormatting, useStorybridge],
+	mixins: [savePagetitleToVuex, useFormatting, useStorybridge],
 
 	head() {
 		const title = `${this.story.slug} | Historie`
@@ -104,6 +105,10 @@ export default {
 	computed: {
 		headlinePage() {
 			return `${siteTitle.short} ${this.story.slug}`
+		},
+
+		pageTitle() {
+			return `Festival ${this.story.slug}`
 		},
 
 		galleries() {
