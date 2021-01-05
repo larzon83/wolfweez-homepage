@@ -29,7 +29,7 @@
 	},
 	"dependencies": {
 		"@marvr/storyblok-rich-text-vue-renderer": "2.0.1",
-		"@nuxtjs/axios": "5.12.4",
+		"@nuxtjs/axios": "5.12.5",
 		"@nuxtjs/proxy": "2.1.0",
 		"@vue/composition-api": "1.0.0-beta.22",
 		"access-log": "0.4.1",
