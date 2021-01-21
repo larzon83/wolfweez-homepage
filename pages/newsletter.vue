@@ -1,10 +1,12 @@
 <template>
-	<div class="mt-4">
-		<script
-			async
-			data-uid="ff9c7b47c6"
-			src="https://cheerful-motivator-7522.ck.page/ff9c7b47c6/index.js"
-		></script>
+	<div id="ckForm" class="mt-4">
+		<!-- <client-only>
+			<script
+				async
+				data-uid="ff9c7b47c6"
+				src="https://cheerful-motivator-7522.ck.page/ff9c7b47c6/index.js"
+			></script>
+		</client-only> -->
 	</div>
 </template>
 
@@ -29,6 +31,15 @@ export default {
 				title,
 				url: this.$route.path
 			})
+			// script: [
+			// 	{
+			// 		src: 'https://cheerful-motivator-7522.ck.page/ff9c7b47c6/index.js',
+			// 		'data-uid': 'ff9c7b47c6',
+			// 		async: true,
+			// 		body: true
+			// 		// type: 'text/javascript',
+			// 	}
+			// ]
 		}
 	},
 
@@ -36,6 +47,18 @@ export default {
 		return {
 			pageTitle
 		}
+	},
+
+	mounted() {
+		const ckEmbed = document.createElement('script')
+		const ckForm = document.getElementById('ckForm')
+		ckEmbed.setAttribute(
+			'src',
+			'https://cheerful-motivator-7522.ck.page/ff9c7b47c6/index.js'
+		)
+		ckEmbed.setAttribute('data-uid', 'ff9c7b47c6')
+		ckEmbed.async = true
+		ckForm.appendChild(ckEmbed)
 	}
 }
 </script>
