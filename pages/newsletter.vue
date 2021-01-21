@@ -1,13 +1,5 @@
 <template>
-	<div id="ckForm" class="mt-4">
-		<!-- <client-only>
-			<script
-				async
-				data-uid="ff9c7b47c6"
-				src="https://cheerful-motivator-7522.ck.page/ff9c7b47c6/index.js"
-			></script>
-		</client-only> -->
-	</div>
+	<div id="ckForm" class="mt-4"></div>
 </template>
 
 <script>
@@ -31,15 +23,6 @@ export default {
 				title,
 				url: this.$route.path
 			})
-			// script: [
-			// 	{
-			// 		src: 'https://cheerful-motivator-7522.ck.page/ff9c7b47c6/index.js',
-			// 		'data-uid': 'ff9c7b47c6',
-			// 		async: true,
-			// 		body: true
-			// 		// type: 'text/javascript',
-			// 	}
-			// ]
 		}
 	},
 
