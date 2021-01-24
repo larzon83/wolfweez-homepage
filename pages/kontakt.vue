@@ -16,7 +16,7 @@
 				<div hidden aria-hidden="true">
 					Don’t fill this out if you're human: <input name="bot-field" />
 				</div>
-				<v-row>
+				<v-row class="my-0">
 					<v-col cols="12" md="6">
 						<v-text-field
 							v-model="name"
@@ -38,7 +38,7 @@
 					</v-col>
 				</v-row>
 
-				<v-row>
+				<v-row class="my-0">
 					<v-col cols="12" md="6">
 						<v-textarea
 							v-model="message"
@@ -53,7 +53,7 @@
 					</v-col>
 				</v-row>
 
-				<v-row>
+				<v-row class="my-0">
 					<v-col cols="12" md="4">
 						<v-col cols="12" md="4">
 							<v-btn

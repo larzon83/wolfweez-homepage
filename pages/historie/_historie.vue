@@ -20,7 +20,7 @@
 		></v-img>
 
 		<!-- Line-Up -->
-		<v-row v-if="timetable">
+		<v-row v-if="timetable" class="my-0">
 			<v-col cols="12" class="py-0">
 				<h2>Line-Up</h2>
 			</v-col>

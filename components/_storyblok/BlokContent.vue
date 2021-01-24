@@ -13,7 +13,7 @@
 			<v-row
 				justify="center"
 				:class="blok.containerFlexDirection"
-				class="flex-column-reverse"
+				class="flex-column-reverse my-0"
 			>
 				<v-col
 					v-if="blok.hasPics"
@@ -21,7 +21,7 @@
 					:md="blok.containerImgCols"
 					:class="{ 'pt-0': $vuetify.breakpoint.smAndDown }"
 				>
-					<v-row justify="start" :class="blok.picsFlexDirection">
+					<v-row justify="start" :class="blok.picsFlexDirection" class="my-0">
 						<v-col
 							v-for="pic in blok.pics"
 							:key="`blok-pic-${pic.id}`"

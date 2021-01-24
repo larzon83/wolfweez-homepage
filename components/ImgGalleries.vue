@@ -4,7 +4,7 @@
 			v-for="(gallery, galleryIndex) in galleries"
 			:key="`gallery-${galleryIndex}`"
 		>
-			<v-row :class="marginTopClass">
+			<v-row :class="marginTopClass" class="mb-0">
 				<v-col cols="12" class="py-0">
 					<h2>
 						<span v-if="headline">{{ headline }}</span>
@@ -75,7 +75,7 @@ export default {
 
 	computed: {
 		marginTopClass() {
-			return this.galleries.length > 1 ? 'mt-12' : ''
+			return this.galleries.length > 1 ? 'mt-12' : 'mt-0'
 		},
 
 		dynamicElements() {

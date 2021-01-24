@@ -1,7 +1,7 @@
 <template>
 	<section>
 		<TabsNavigation :type="tabType" />
-		<v-row fill-height>
+		<v-row fill-height class="my-0">
 			<v-col
 				v-for="band in bandsAll"
 				:key="band.content._uid"
