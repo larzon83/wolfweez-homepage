@@ -72,6 +72,6 @@
 		"storyblok-migrate": "0.3.4",
 		"vue-feather-icons": "5.1.0",
 		"vue-jest": "4.0.0-rc.1",
-		"vuetify": "2.4.2"
+		"vuetify": "2.3.23"
 	}
 }
