@@ -68,7 +68,7 @@
 				<v-spacer v-if="currentPageTitle" />
 				<v-toolbar-title
 					v-if="currentPageTitle"
-					class="toolbar-headline"
+					class="toolbar-headline d-lg-none"
 					:class="{
 						'is-visible': swapToolbar
 					}"

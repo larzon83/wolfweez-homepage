@@ -2,7 +2,7 @@
 	<v-row justify="center" align="center" style="margin-top: -25px" no-gutters>
 		<!-- <v-col cols="12" sm="8" md="6"> -->
 		<v-col cols="12">
-			<div class="text-center">
+			<!-- <div class="text-center">
 				<v-img
 					:src="require('~/assets/img/logo.png')"
 					:alt="'Logo'"
@@ -13,9 +13,9 @@
 					position="top center"
 					contain
 				></v-img>
-				<!-- max-width="220" -->
-			</div>
-			<v-card color="#666">
+			</div> -->
+			<!-- max-width="220" -->
+			<v-card color="#323435">
 				<!-- <div>
 					<v-btn icon>
 						<v-icon color="#ff0000">$menu</v-icon>
