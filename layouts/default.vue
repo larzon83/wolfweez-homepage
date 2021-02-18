@@ -111,9 +111,10 @@ export default {
 	// background-size: auto 520px;
 	// background-position: center -20px;
 	background-size: auto 220px, auto 520px, auto 520px;
+	// NOTE: calc(0px) bc nuxt makes "0px" to "0" when building for prod which is invalid CSS
 	background-position: center min(calc(max(65vw, 350px) - 220px), 300px),
-		center min(calc(max(65vw, 350px) - 520px), 0px),
-		center min(calc(max(65vw, 350px) - 520px), 0px);
+		center min(calc(max(65vw, 350px) - 520px), calc(0px)),
+		center min(calc(max(65vw, 350px) - 520px), calc(0px));
 
 	// transform: translateZ(-100px) scale(2);
 	z-index: -1;
