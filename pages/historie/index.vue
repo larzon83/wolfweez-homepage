@@ -6,10 +6,10 @@
 
 <script>
 import { mapGetters } from 'vuex'
-import { tabTypes } from '~/utils/constants'
+import { routeMeta, tabTypes } from '~/utils/constants'
 import { createOgImagePath, createSEOMeta } from '~/utils/seo'
 
-const pageTitle = 'Historie'
+const pageTitle = routeMeta.HISTORIE.title
 
 export default {
 	name: 'HistoryOverview',
@@ -54,12 +54,7 @@ export default {
 	// }
 
 	middleware({ store }) {
-		const crumbs = [
-			{
-				title: pageTitle,
-				to: '/historie/'
-			}
-		]
+		const crumbs = [{ ...routeMeta.HISTORIE }]
 		store.commit('central/SET_CRUMBS', crumbs)
 	}
 }

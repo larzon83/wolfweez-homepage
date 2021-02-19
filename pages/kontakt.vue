@@ -83,9 +83,10 @@
 
 <script>
 import savePagetitleToVuex from '~/mixins/savePagetitleToVuex.js'
+import { routeMeta } from '~/utils/constants'
 import { createOgImagePath, createSEOMeta } from '~/utils/seo'
 
-const pageTitle = 'Kontakt'
+const pageTitle = routeMeta.RECHTLICHES__KONTAKT.title
 
 export default {
 	name: pageTitle,
@@ -173,12 +174,7 @@ export default {
 	},
 
 	middleware({ store }) {
-		const crumbs = [
-			{
-				title: pageTitle,
-				to: '/kontakt/'
-			}
-		]
+		const crumbs = [{ ...routeMeta.RECHTLICHES__KONTAKT }]
 		store.commit('central/SET_CRUMBS', crumbs)
 	}
 }

@@ -51,10 +51,10 @@
 import savePagetitleToVuex from '~/mixins/savePagetitleToVuex.js'
 import useFormatting from '~/mixins/useFormatting.js'
 import { sbData } from '~/utils'
-import { tabTypes } from '~/utils/constants'
+import { routeMeta, tabTypes } from '~/utils/constants'
 import { createOgImagePath, createSEOMeta } from '~/utils/seo'
 
-const pageTitle = 'Bands'
+const pageTitle = routeMeta.LINEUP__BANDS.title
 
 export default {
 	name: 'BandsOverview',
@@ -102,16 +102,7 @@ export default {
 	},
 
 	middleware({ store }) {
-		const crumbs = [
-			{
-				title: 'Line-up',
-				to: '/line-up/'
-			},
-			{
-				title: pageTitle,
-				to: '/line-up/bands/'
-			}
-		]
+		const crumbs = [{ ...routeMeta.LINEUP }, { ...routeMeta.LINEUP__BANDS }]
 		store.commit('central/SET_CRUMBS', crumbs)
 	}
 }

@@ -70,5 +70,10 @@ export const routeMeta = {
 	MEDIEN__FOTOGALERIE: {
 		title: 'Fotogalerie',
 		to: '/fotogalerie/'
+	},
+
+	NEWSLETTER: {
+		title: 'Newsletter',
+		to: '/newsletter/'
 	}
 }

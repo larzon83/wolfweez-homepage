@@ -1,6 +1,6 @@
 <template>
 	<section>
-		<h1>Fotogalerie</h1>
+		<h1>{{ pageTitle }}</h1>
 		<ImgGalleries :galleries="galleries" />
 	</section>
 </template>
@@ -9,9 +9,10 @@
 import { mapState } from 'vuex'
 import savePagetitleToVuex from '~/mixins/savePagetitleToVuex.js'
 import { sbData } from '~/utils'
+import { routeMeta } from '~/utils/constants'
 import { createOgImagePath, createSEOMeta } from '~/utils/seo'
 
-const pageTitle = 'Fotogalerie'
+const pageTitle = routeMeta.MEDIEN__FOTOGALERIE.title
 
 export default {
 	name: pageTitle,
@@ -61,12 +62,7 @@ export default {
 	},
 
 	middleware({ store }) {
-		const crumbs = [
-			{
-				title: pageTitle,
-				to: '/fotogalerie/'
-			}
-		]
+		const crumbs = [{ ...routeMeta.MEDIEN__FOTOGALERIE }]
 		store.commit('central/SET_CRUMBS', crumbs)
 	}
 }

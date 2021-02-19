@@ -12,18 +12,14 @@
 </template>
 
 <script>
+import { routeMeta } from '~/utils/constants'
+
 export default {
 	name: 'Breadcrumbs',
 
 	computed: {
 		items() {
-			return [
-				{
-					title: 'Home',
-					to: '/'
-				},
-				...this.$store.state.central.crumbs
-			]
+			return [{ ...routeMeta.HOME }, ...this.$store.state.central.crumbs]
 		}
 	}
 }

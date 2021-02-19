@@ -19,7 +19,7 @@
 <script>
 import { mapGetters, mapState } from 'vuex'
 import useFormatting from '~/mixins/useFormatting.js'
-import { tabTypes } from '~/utils/constants'
+import { routeMeta, tabTypes } from '~/utils/constants'
 
 export default {
 	name: 'TabsNavigation',
@@ -39,14 +39,8 @@ export default {
 		tabItems() {
 			if (this.type === tabTypes.LINEUP) {
 				return [
-					{
-						title: 'Bands',
-						to: '/line-up/bands/'
-					},
-					{
-						title: 'Timetable',
-						to: '/line-up/timetable/'
-					}
+					{ ...routeMeta.LINEUP__BANDS },
+					{ ...routeMeta.LINEUP__TIMETABLE }
 				]
 			}
 

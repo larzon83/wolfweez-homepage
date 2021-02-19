@@ -145,6 +145,7 @@ import savePagetitleToVuex from '~/mixins/savePagetitleToVuex.js'
 import useStorybridge from '~/mixins/useStorybridge.js'
 // import HomePage from '~/components/HomePage.vue'
 import { sbData } from '~/utils'
+import { routeMeta } from '~/utils/constants'
 import { createSEOMeta } from '~/utils/seo'
 
 export default {
@@ -168,7 +169,7 @@ export default {
 
 	data() {
 		return {
-			pageTitle: 'Home',
+			pageTitle: routeMeta.HOME.title,
 			timerLabels: {
 				days: 'Tage',
 				hours: 'Stunden',

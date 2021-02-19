@@ -33,9 +33,10 @@
 import savePagetitleToVuex from '~/mixins/savePagetitleToVuex.js'
 import useFormatting from '~/mixins/useFormatting.js'
 import { sbData } from '~/utils'
+import { routeMeta } from '~/utils/constants'
 import { createOgImagePath, createSEOMeta } from '~/utils/seo'
 
-const pageTitle = 'News'
+const pageTitle = routeMeta.NEWS.title
 
 export default {
 	name: 'NewsOverview',
@@ -83,12 +84,7 @@ export default {
 	},
 
 	middleware({ store }) {
-		const crumbs = [
-			{
-				title: pageTitle,
-				to: '/news/'
-			}
-		]
+		const crumbs = [{ ...routeMeta.NEWS }]
 		store.commit('central/SET_CRUMBS', crumbs)
 	}
 }

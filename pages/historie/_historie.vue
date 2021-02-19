@@ -53,14 +53,14 @@ import savePagetitleToVuex from '~/mixins/savePagetitleToVuex.js'
 import useFormatting from '~/mixins/useFormatting.js'
 import useStorybridge from '~/mixins/useStorybridge.js'
 import { sbData, sortAssetsByName } from '~/utils'
-import { siteTitle, tabTypes } from '~/utils/constants'
+import { routeMeta, siteTitle, tabTypes } from '~/utils/constants'
 import { createOgImagePath, createSEOMeta } from '~/utils/seo'
 
 export default {
 	mixins: [savePagetitleToVuex, useFormatting, useStorybridge],
 
 	head() {
-		const title = `${this.story.slug} | Historie`
+		const title = `${this.story.slug} | ${routeMeta.HISTORIE.title}`
 		return {
 			title,
 			meta: createSEOMeta({
@@ -97,13 +97,10 @@ export default {
 		)
 
 		const crumbs = [
-			{
-				title: 'Historie',
-				to: '/historie/'
-			},
+			{ ...routeMeta.HISTORIE },
 			{
 				title: historyYear.story.slug,
-				to: `/historie/${context.params.historie}/`
+				to: `${routeMeta.HISTORIE.to}${context.params.historie}/`
 			}
 		]
 		context.store.commit('central/SET_CRUMBS', crumbs)

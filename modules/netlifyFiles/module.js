@@ -1,17 +1,18 @@
 import StoryblokClient from 'storyblok-js-client'
 import { getInfoRedirect } from './../../utils/index'
+import { routeMeta } from './../../utils/constants'
 
 export default function () {
 	this.nuxt.hook('generate:before', async context => {
 		const netlifyRedirects = [
 			{
-				from: '/line-up/',
-				to: '/line-up/bands/',
+				from: routeMeta.LINEUP.to,
+				to: routeMeta.LINEUP__BANDS.to,
 				force: true
 			},
 			{
-				from: '/rechtliches/',
-				to: '/rechtliches/agb/',
+				from: routeMeta.RECHTLICHES.to,
+				to: routeMeta.RECHTLICHES__AGB.to,
 				force: true
 			}
 		]
@@ -51,8 +52,8 @@ export default function () {
 			})
 
 			const historyRedirect = {
-				from: '/historie/',
-				to: `/historie/${historyYears.stories[0].slug}/`,
+				from: routeMeta.HISTORIE.to,
+				to: `${routeMeta.HISTORIE.to}${historyYears.stories[0].slug}/`,
 				force: true
 			}
 
@@ -101,7 +102,7 @@ export default function () {
 			const bandsRedirects = filteredBandsRedirects.map(item => {
 				const to = item.full_slug.substr(0, 14) // -> eg "/historie/2019/"
 				return {
-					from: `/line-up/bands/${item.slug}`,
+					from: `${routeMeta.LINEUP__BANDS.to}${item.slug}`,
 					to: `/${to}`,
 					force: true
 				}

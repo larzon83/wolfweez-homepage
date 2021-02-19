@@ -44,10 +44,10 @@ import savePagetitleToVuex from '~/mixins/savePagetitleToVuex.js'
 import useFormatting from '~/mixins/useFormatting.js'
 import useStorybridge from '~/mixins/useStorybridge.js'
 import { sbData } from '~/utils'
-import { tabTypes } from '~/utils/constants'
+import { routeMeta, tabTypes } from '~/utils/constants'
 import { createOgImagePath, createSEOMeta } from '~/utils/seo'
 
-const pageTitle = 'Timetable'
+const pageTitle = routeMeta.LINEUP__TIMETABLE.title
 
 export default {
 	name: pageTitle,
@@ -83,16 +83,7 @@ export default {
 	},
 
 	middleware({ store }) {
-		const crumbs = [
-			{
-				title: 'Line-up',
-				to: '/line-up/'
-			},
-			{
-				title: pageTitle,
-				to: '/line-up/timetable/'
-			}
-		]
+		const crumbs = [{ ...routeMeta.LINEUP }, { ...routeMeta.LINEUP__TIMETABLE }]
 		store.commit('central/SET_CRUMBS', crumbs)
 	}
 }

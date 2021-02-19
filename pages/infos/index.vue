@@ -3,13 +3,16 @@
 </template>
 
 <script>
+import { routeMeta } from '~/utils/constants'
 import { createOgImagePath, createSEOMeta } from '~/utils/seo'
 
+const pageTitle = routeMeta.INFOS.title
+
 export default {
-	name: 'Infos',
+	name: pageTitle,
 
 	head() {
-		const title = 'Infos'
+		const title = pageTitle
 		return {
 			title,
 			meta: createSEOMeta({

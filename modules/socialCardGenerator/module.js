@@ -12,23 +12,32 @@ const hookName = isTest ? 'build:before' : 'generate:done'
 const dirStatic = `./static/${ogImagesDir}`
 let dir = dirStatic
 let allRoutes = [
-	'/historie/',
+	'/infos/',
 	'/line-up/',
+	'/kontakt/',
+	'/rechtliches/',
+	'/newsletter/',
+	'/historie/',
 	'/news/',
+	'/fotogalerie/',
 	'/line-up/bands/',
 	'/line-up/timetable/',
-	'/',
-	'/line-up/bands/brainstorm/',
-	'/line-up/bands/grave-digger/',
-	'/line-up/bands/foobar/',
-	'/line-up/bands/the-prophecy-23/',
-	'/line-up/bands/voltbeat/',
-	'/line-up/bands/super-duper/',
+	'/rechtliches/agb/',
+	'/rechtliches/impressum/',
+	'/rechtliches/datenschutz/',
 	'/news/third-one/',
+	'/infos/allgemein/',
+	'/infos/anreise/',
 	'/news/second-news/',
 	'/news/first-news-ever/',
+	'/line-up/bands/grave-digger/',
 	'/historie/2019/',
-	'/historie/2018/'
+	'/line-up/bands/super-duper/',
+	'/line-up/bands/brainstorm/',
+	'/line-up/bands/foobar/',
+	'/line-up/bands/voltbeat/',
+	'/historie/2018/',
+	'/line-up/bands/the-prophecy-23/'
 ]
 
 const imageSrc = resolve(

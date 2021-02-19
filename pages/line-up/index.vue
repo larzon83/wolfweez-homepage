@@ -3,13 +3,16 @@
 </template>
 
 <script>
+import { routeMeta } from '~/utils/constants'
 import { createOgImagePath, createSEOMeta } from '~/utils/seo'
+
+const pageTitle = routeMeta.LINEUP.title
 
 export default {
 	name: 'LineUp',
 
 	head() {
-		const title = 'Line-Up'
+		const title = pageTitle
 		return {
 			title,
 			meta: createSEOMeta({
@@ -22,7 +25,7 @@ export default {
 	},
 
 	middleware({ redirect }) {
-		redirect(301, '/line-up/bands/')
+		redirect(301, routeMeta.LINEUP__BANDS.to)
 	}
 }
 </script>

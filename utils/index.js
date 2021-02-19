@@ -1,3 +1,5 @@
+import { routeMeta } from './constants'
+
 // Get Data From Storyblok -> for use with asyncData
 export const sbData = ({
 	ctx,
@@ -49,7 +51,7 @@ export const getInfoRedirect = infos => {
 	let to = '/'
 
 	if (infos.length) {
-		to = '/infos/'
+		to = routeMeta.INFOS.to
 
 		const infoAllgemein = infos.filter(info => info.slug === 'allgemein')
 
@@ -61,7 +63,7 @@ export const getInfoRedirect = infos => {
 	}
 
 	return {
-		from: '/infos/',
+		from: routeMeta.INFOS.to,
 		to,
 		force: true
 	}

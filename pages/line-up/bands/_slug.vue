@@ -10,7 +10,7 @@ import BandDetail from '~/components/BandDetail.vue'
 import savePagetitleToVuex from '~/mixins/savePagetitleToVuex.js'
 import useStorybridge from '~/mixins/useStorybridge.js'
 import { getPlayTime, sbData } from '~/utils'
-import { tabTypes } from '~/utils/constants'
+import { routeMeta, tabTypes } from '~/utils/constants'
 import { createSEOMeta } from '~/utils/seo'
 
 export default {
@@ -20,7 +20,7 @@ export default {
 	mixins: [savePagetitleToVuex, useStorybridge],
 
 	head() {
-		const title = `${this.story.content.name} | Bands`
+		const title = `${this.story.content.name} | ${routeMeta.LINEUP__BANDS.title}`
 		return {
 			title,
 			meta: createSEOMeta({
@@ -71,17 +71,11 @@ export default {
 		}
 
 		const crumbs = [
-			{
-				title: 'Line-up',
-				to: '/line-up/'
-			},
-			{
-				title: 'Bands',
-				to: '/line-up/bands/'
-			},
+			{ ...routeMeta.LINEUP },
+			{ ...routeMeta.LINEUP__BANDS },
 			{
 				title: band.story.content.name,
-				to: `/line-up/bands/${context.params.slug}/`
+				to: `${routeMeta.LINEUP__BANDS.to}${context.params.slug}/`
 			}
 		]
 		context.store.commit('central/SET_CRUMBS', crumbs)

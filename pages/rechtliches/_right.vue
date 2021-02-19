@@ -9,6 +9,7 @@ import ContentSimple from '~/components/ContentSimple.vue'
 import savePagetitleToVuex from '~/mixins/savePagetitleToVuex.js'
 import useStorybridge from '~/mixins/useStorybridge.js'
 import { sbData } from '~/utils'
+import { routeMeta } from '~/utils/constants'
 import { createOgImagePath, createSEOMeta } from '~/utils/seo'
 
 export default {
@@ -38,13 +39,10 @@ export default {
 		})
 
 		const crumbs = [
-			{
-				title: 'Rechtliches',
-				to: '/rechtliches/'
-			},
+			{ ...routeMeta.RECHTLICHES },
 			{
 				title: result.story.content.headline,
-				to: `/rechtliches/${context.params.right}/`
+				to: `${routeMeta.RECHTLICHES.to}${context.params.right}/`
 			}
 		]
 		context.store.commit('central/SET_CRUMBS', crumbs)

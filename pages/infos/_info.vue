@@ -9,14 +9,14 @@
 import savePagetitleToVuex from '~/mixins/savePagetitleToVuex.js'
 import useStorybridge from '~/mixins/useStorybridge.js'
 import { sbData } from '~/utils'
-import { tabTypes } from '~/utils/constants'
+import { routeMeta, tabTypes } from '~/utils/constants'
 import { createOgImagePath, createSEOMeta } from '~/utils/seo'
 
 export default {
 	mixins: [savePagetitleToVuex, useStorybridge],
 
 	head() {
-		const title = `${this.story.content.headline} | Infos`
+		const title = `${this.story.content.headline} | ${routeMeta.INFOS.title}`
 		return {
 			title,
 			meta: createSEOMeta({
@@ -42,13 +42,10 @@ export default {
 		})
 
 		const crumbs = [
-			{
-				title: 'Infos',
-				to: '/infos/'
-			},
+			{ ...routeMeta.INFOS },
 			{
 				title: result.story.content.headline,
-				to: `/infos/${context.params.info}/`
+				to: `${routeMeta.INFOS.to}${context.params.info}/`
 			}
 		]
 		context.store.commit('central/SET_CRUMBS', crumbs)

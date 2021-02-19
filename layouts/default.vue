@@ -4,6 +4,7 @@
 		<v-parallax
 			class="header-wrapper"
 			height="520"
+			alt=""
 			:src="require('~/assets/img/trans2.png')"
 		>
 			<div class="container py-0 mt-xl-10 mt-lg-13 mt-4">
