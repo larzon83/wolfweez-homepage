@@ -9,11 +9,13 @@ import { mapGetters } from 'vuex'
 import { tabTypes } from '~/utils/constants'
 import { createOgImagePath, createSEOMeta } from '~/utils/seo'
 
+const pageTitle = 'Historie'
+
 export default {
 	name: 'HistoryOverview',
 
 	head() {
-		const title = 'Historie'
+		const title = pageTitle
 		return {
 			title,
 			meta: createSEOMeta({
@@ -41,7 +43,8 @@ export default {
 			? '/' + this.historicFestivals[0].full_slug
 			: '/'
 		this.$router.push(destination)
-	}
+	},
+
 	// middleware({ redirect, store }) {
 	// 	const historicFestivals = store.getters['config/historicFestivals']
 	// 	const destination = historicFestivals.length
@@ -49,5 +52,15 @@ export default {
 	// 		: '/'
 	// 	redirect(301, destination)
 	// }
+
+	middleware({ store }) {
+		const crumbs = [
+			{
+				title: pageTitle,
+				to: '/historie/'
+			}
+		]
+		store.commit('central/SET_CRUMBS', crumbs)
+	}
 }
 </script>

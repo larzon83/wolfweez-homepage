@@ -80,6 +80,16 @@ export default {
 			newsAll,
 			metaDescription: newsMeta[0].content.description_meta
 		}
+	},
+
+	middleware({ store }) {
+		const crumbs = [
+			{
+				title: pageTitle,
+				to: '/news/'
+			}
+		]
+		store.commit('central/SET_CRUMBS', crumbs)
 	}
 }
 </script>

@@ -99,6 +99,20 @@ export default {
 			bandsAll,
 			metaDescription: bandsMeta[0].content.description_meta
 		}
+	},
+
+	middleware({ store }) {
+		const crumbs = [
+			{
+				title: 'Line-up',
+				to: '/line-up/'
+			},
+			{
+				title: pageTitle,
+				to: '/line-up/bands/'
+			}
+		]
+		store.commit('central/SET_CRUMBS', crumbs)
 	}
 }
 </script>

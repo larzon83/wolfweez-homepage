@@ -120,6 +120,7 @@
 
 <script>
 import { mapState } from 'vuex'
+import { routeMeta } from '~/utils/constants'
 
 export default {
 	name: 'Toolbar',
@@ -134,26 +135,11 @@ export default {
 		return {
 			drawer: false,
 			items: [
-				{
-					title: 'Home',
-					to: '/'
-				},
-				{
-					title: 'News',
-					to: '/news/'
-				},
-				{
-					title: 'Infos',
-					to: '/infos/'
-				},
-				{
-					title: 'Line-up',
-					to: '/line-up/'
-				},
-				{
-					title: 'Historie',
-					to: '/historie/'
-				}
+				{ ...routeMeta.HOME },
+				{ ...routeMeta.NEWS },
+				{ ...routeMeta.INFOS },
+				{ ...routeMeta.LINEUP },
+				{ ...routeMeta.HISTORIE }
 			]
 		}
 	},

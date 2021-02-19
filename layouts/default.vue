@@ -39,6 +39,7 @@
 		</v-parallax>
 		<v-main>
 			<v-container class="pt-0 pb-16">
+				<Breadcrumbs />
 				<nuxt />
 			</v-container>
 			<Footer />

@@ -96,6 +96,18 @@ export default {
 			historyYear.story.content.gallery
 		)
 
+		const crumbs = [
+			{
+				title: 'Historie',
+				to: '/historie/'
+			},
+			{
+				title: historyYear.story.slug,
+				to: `/historie/${context.params.historie}/`
+			}
+		]
+		context.store.commit('central/SET_CRUMBS', crumbs)
+
 		return {
 			timetable: historyTimetable.story.content.entry,
 			...historyYear

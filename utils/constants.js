@@ -11,3 +11,64 @@ export const tabTypes = {
 	INFOS: 'infos',
 	LINEUP: 'lineup'
 }
+
+export const routeMeta = {
+	HOME: {
+		title: 'Home',
+		to: '/'
+	},
+
+	NEWS: {
+		title: 'News',
+		to: '/news/'
+	},
+
+	INFOS: {
+		title: 'Infos',
+		to: '/infos/'
+	},
+
+	LINEUP: {
+		title: 'Line-up',
+		to: '/line-up/'
+	},
+	LINEUP__BANDS: {
+		title: 'Bands',
+		to: '/line-up/bands/'
+	},
+	LINEUP__TIMETABLE: {
+		title: 'Timetable',
+		to: '/line-up/timetable/'
+	},
+
+	HISTORIE: {
+		title: 'Historie',
+		to: '/historie/'
+	},
+
+	RECHTLICHES: {
+		title: 'Rechtliches',
+		to: '/rechtliches/'
+	},
+	RECHTLICHES__KONTAKT: {
+		title: 'Kontakt',
+		to: '/kontakt/'
+	},
+	RECHTLICHES__AGB: {
+		title: 'AGB',
+		to: '/rechtliches/agb/'
+	},
+	RECHTLICHES__DATENSCHUTZ: {
+		title: 'Datenschutz',
+		to: '/rechtliches/datenschutz/'
+	},
+	RECHTLICHES__IMPRESSUM: {
+		title: 'Impressum',
+		to: '/rechtliches/impressum/'
+	},
+
+	MEDIEN__FOTOGALERIE: {
+		title: 'Fotogalerie',
+		to: '/fotogalerie/'
+	}
+}

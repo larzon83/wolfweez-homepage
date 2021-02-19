@@ -80,6 +80,20 @@ export default {
 			path: '/line-up/timetable',
 			resolveLinks: 'story'
 		})
+	},
+
+	middleware({ store }) {
+		const crumbs = [
+			{
+				title: 'Line-up',
+				to: '/line-up/'
+			},
+			{
+				title: pageTitle,
+				to: '/line-up/timetable/'
+			}
+		]
+		store.commit('central/SET_CRUMBS', crumbs)
 	}
 }
 </script>

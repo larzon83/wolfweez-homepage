@@ -42,6 +42,16 @@ export default {
 		ckEmbed.setAttribute('data-uid', 'ff9c7b47c6')
 		ckEmbed.async = true
 		ckForm.appendChild(ckEmbed)
+	},
+
+	middleware({ store }) {
+		const crumbs = [
+			{
+				title: pageTitle,
+				to: '/newsletter/'
+			}
+		]
+		store.commit('central/SET_CRUMBS', crumbs)
 	}
 }
 </script>

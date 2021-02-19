@@ -70,6 +70,22 @@ export default {
 			}
 		}
 
+		const crumbs = [
+			{
+				title: 'Line-up',
+				to: '/line-up/'
+			},
+			{
+				title: 'Bands',
+				to: '/line-up/bands/'
+			},
+			{
+				title: band.story.content.name,
+				to: `/line-up/bands/${context.params.slug}/`
+			}
+		]
+		context.store.commit('central/SET_CRUMBS', crumbs)
+
 		return { ...band, time }
 	},
 

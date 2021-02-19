@@ -36,10 +36,24 @@ export default {
 	},
 
 	async asyncData(context) {
-		return await sbData({
+		const result = await sbData({
 			ctx: context,
 			path: `/infos/${context.params.info}`
 		})
+
+		const crumbs = [
+			{
+				title: 'Infos',
+				to: '/infos/'
+			},
+			{
+				title: result.story.content.headline,
+				to: `/infos/${context.params.info}/`
+			}
+		]
+		context.store.commit('central/SET_CRUMBS', crumbs)
+
+		return { ...result }
 	},
 
 	computed: {

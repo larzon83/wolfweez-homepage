@@ -48,7 +48,7 @@
 
 <script>
 import { mapState } from 'vuex'
-import { siteTitle } from '~/utils/constants'
+import { routeMeta, siteTitle } from '~/utils/constants'
 
 export default {
 	data: () => ({
@@ -61,7 +61,7 @@ export default {
 		sections() {
 			return [
 				{
-					title: 'Infos',
+					title: routeMeta.INFOS.title,
 					links: this.infos.map(info => {
 						return {
 							title: info.title,
@@ -70,46 +70,23 @@ export default {
 					})
 				},
 				{
-					title: 'Line-Up',
+					title: routeMeta.LINEUP.title,
 					links: [
-						{
-							title: 'Bands',
-							to: '/line-up/bands/'
-						},
-						{
-							title: 'Timetable',
-							to: '/line-up/timetable/'
-						}
+						{ ...routeMeta.LINEUP__BANDS },
+						{ ...routeMeta.LINEUP__TIMETABLE }
 					]
 				},
 				{
 					title: 'Medien',
-					links: [
-						{
-							title: 'Fotogalerie',
-							to: '/fotogalerie/'
-						}
-					]
+					links: [{ ...routeMeta.MEDIEN__FOTOGALERIE }]
 				},
 				{
-					title: 'Rechtliches',
+					title: routeMeta.RECHTLICHES.title,
 					links: [
-						{
-							title: 'Kontakt',
-							to: '/kontakt/'
-						},
-						{
-							title: 'AGB',
-							to: '/rechtliches/agb/'
-						},
-						{
-							title: 'Datenschutz',
-							to: '/rechtliches/datenschutz/'
-						},
-						{
-							title: 'Impressum',
-							to: '/rechtliches/impressum/'
-						}
+						{ ...routeMeta.RECHTLICHES__KONTAKT },
+						{ ...routeMeta.RECHTLICHES__AGB },
+						{ ...routeMeta.RECHTLICHES__DATENSCHUTZ },
+						{ ...routeMeta.RECHTLICHES__IMPRESSUM }
 					]
 				}
 			]

@@ -170,6 +170,16 @@ export default {
 					})
 			}
 		}
+	},
+
+	middleware({ store }) {
+		const crumbs = [
+			{
+				title: pageTitle,
+				to: '/kontakt/'
+			}
+		]
+		store.commit('central/SET_CRUMBS', crumbs)
 	}
 }
 </script>

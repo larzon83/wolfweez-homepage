@@ -179,10 +179,14 @@ export default {
 	},
 
 	async asyncData(context) {
-		return await sbData({
+		const homepage = await sbData({
 			ctx: context,
 			path: '/homepage'
 		})
+
+		context.store.commit('central/RESET_CRUMBS')
+
+		return { ...homepage }
 	},
 
 	computed: {
