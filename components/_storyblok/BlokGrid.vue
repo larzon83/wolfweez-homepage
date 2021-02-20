@@ -1,6 +1,5 @@
 <template>
 	<ul v-editable="pageBlok" class="flex py-8 mb-6">
-		asaaaaaa
 		<li
 			v-for="blokGrid in pageBlok.columns"
 			:key="`blok-grid-${blokGrid._uid}`"
