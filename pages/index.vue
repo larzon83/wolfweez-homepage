@@ -1,5 +1,6 @@
 <template>
-	<v-row justify="center" align="center" style="margin-top: -25px" no-gutters>
+	<!-- <v-row justify="center" align="center" style="margin-top: -25px" no-gutters> -->
+	<v-row justify="center" align="center" no-gutters>
 		<!-- <v-col cols="12" sm="8" md="6"> -->
 		<v-col cols="12">
 			<!-- <div class="text-center">

@@ -81,7 +81,8 @@ export default {
 	plugins: [
 		'~/plugins/composition-api.js',
 		'~/plugins/rich-text-renderer.js',
-		{ src: '~/plugins/lightgallery.js', mode: 'client' }
+		{ src: '~/plugins/lightgallery.js', mode: 'client' },
+		{ src: '~~/node_modules/vue-rellax/lib/nuxt-plugin', mode: 'client' }
 	],
 
 	// Auto import components (https://go.nuxtjs.dev/config-components)

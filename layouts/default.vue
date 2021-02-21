@@ -1,7 +1,7 @@
 <template>
 	<v-app v-scroll="onScroll">
 		<Toolbar :swap-toolbar="swapToolbar" />
-		<v-parallax
+		<!-- <v-parallax
 			class="header-wrapper"
 			height="520"
 			alt=""
@@ -16,7 +16,6 @@
 						02. - 04. Juli<br />
 						<b>2021</b>
 					</v-col>
-					<!-- TODO: create a class -->
 					<v-col class="text-center" cols="9" md="6" style="max-width: 500px">
 						<v-img
 							:src="require('~/assets/img/logo.png')"
@@ -37,8 +36,10 @@
 					</v-col>
 				</v-row>
 			</div>
-		</v-parallax>
+		</v-parallax> -->
+
 		<v-main>
+			<Header />
 			<v-container class="pt-0 pb-16">
 				<Breadcrumbs />
 				<nuxt />
