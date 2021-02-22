@@ -10,7 +10,8 @@ export default {
 		themes: {
 			dark: {
 				anchor: '#e05e5e',
-				primary: '#e05e5e'
+				primary: '#e05e5e',
+				dark: '#212121'
 			}
 		}
 	},

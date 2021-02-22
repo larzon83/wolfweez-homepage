@@ -9,7 +9,6 @@
 			active-class="aaa"
 			text
 			tile
-			color="#202020"
 			class="ma-0"
 			>{{ tab.title }}</v-tab
 		>

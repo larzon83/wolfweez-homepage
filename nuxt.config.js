@@ -140,8 +140,8 @@ export default {
 			name: siteTitle.short,
 			short_name: 'Wolfweez',
 			description: siteTitle.long,
-			background_color: '#202020',
-			theme_color: '#000', // TODO:
+			background_color: '#212121',
+			theme_color: '#212121', // TODO:
 			lang: 'de-DE',
 			orientation: 'portrait-primary'
 		},

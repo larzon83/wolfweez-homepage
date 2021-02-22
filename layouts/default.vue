@@ -147,7 +147,7 @@ export default {
 // 	// max-height: max(65vw, 350px);
 
 // 	background-image: url('~assets/img/trees.svg'),
-// 		linear-gradient(#202020 0%, #202020 100%);
+// 		linear-gradient(var(--v-dark-base) 0%, var(--v-dark-base) 100%);
 // 	background-repeat: repeat-x;
 // 	// background-size: auto 520px;
 // 	// background-position: center -20px;
