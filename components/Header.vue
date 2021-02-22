@@ -143,16 +143,16 @@ export default {
 	// 		center min(calc(max(50.5vw, 350px) - 520px), var(--null-px));
 	// }
 
-	// .container {
-	// 	@media (min-width: 540px) {
-	// 		max-width: unset;
-	// 	}
+	.container {
+		@media (min-width: 540px) {
+			max-width: unset;
+		}
 
-	// 	.byline {
-	// 		font-size: 1.25rem; // 18px
-	// 		line-height: 1.3;
-	// 		text-shadow: 2px -1px 0px rgba(0, 0, 0, 0.55);
-	// 	}
-	// }
+		.byline {
+			font-size: 1.25rem; // 18px
+			line-height: 1.3;
+			text-shadow: 2px -1px 0px rgba(0, 0, 0, 0.55);
+		}
+	}
 }
 </style>
