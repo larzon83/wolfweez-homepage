@@ -151,7 +151,10 @@ export default {
 		.byline {
 			font-size: 1.25rem; // 18px
 			line-height: 1.3;
-			text-shadow: 2px -1px 0px rgba(0, 0, 0, 0.55);
+			font-family: 'Titillium Web', 'Inter', sans-serif;
+			// text-shadow: 2px -1px 0px rgba(0, 0, 0, 0.55);
+			text-shadow: 0px 2px 6px rgba(0, 0, 0, 0.14),
+				0px 0px 2px rgba(0, 0, 0, 0.25);
 		}
 	}
 }
