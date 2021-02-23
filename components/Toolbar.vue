@@ -88,7 +88,7 @@
 				active-class="nav-btn-active"
 				text
 				tile
-				color="dark"
+				color="var(--v-dark-base)"
 				class="nav-btn ma-0"
 				:class="{
 					'white--text': swapToolbar
