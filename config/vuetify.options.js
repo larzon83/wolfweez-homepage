@@ -11,6 +11,7 @@ export default {
 			dark: {
 				anchor: '#e05e5e',
 				primary: '#e05e5e',
+				bright: '#ebebee',
 				dark: '#212121'
 			}
 		}

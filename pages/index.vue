@@ -213,12 +213,12 @@ export default {
 	}
 	.flip-card__top {
 		background: var(--v-primary-base);
-		color: #ebebee;
+		color: var(--v-bright-base);
 	}
 	.flip-card__bottom,
 	.flip-card__back-bottom {
 		background: var(--v-primary-base);
-		color: #ebebee;
+		color: var(--v-bright-base);
 		border-top-color: rgba(0, 0, 0, 0.15);
 	}
 	.flip-card__back::before,
