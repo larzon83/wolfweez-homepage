@@ -39,7 +39,7 @@
 			:fixed="swapToolbar"
 			tile
 			:flat="!swapToolbar"
-			:color="swapToolbar ? 'dark' : 'transparent'"
+			:color="swapToolbar ? '#212121' : 'transparent'"
 			height="64"
 			:class="{
 				elevate: swapToolbar
@@ -88,7 +88,7 @@
 				active-class="nav-btn-active"
 				text
 				tile
-				color="var(--v-dark-base)"
+				color="#212121"
 				class="nav-btn ma-0"
 				:class="{
 					'white--text': swapToolbar
