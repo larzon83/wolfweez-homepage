@@ -1,7 +1,7 @@
 <template>
 	<section>
 		<TabsNavigation :type="tabType" />
-		<BlokContent :content="story.content" />
+		<StoryblokBlokContent :content="story.content" />
 	</section>
 </template>
 
