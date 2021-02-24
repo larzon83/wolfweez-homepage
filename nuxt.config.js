@@ -1,5 +1,6 @@
 import { baseUrl, siteTitle } from './utils/constants'
 import { createSEOMeta } from './utils/seo'
+import { splashscreens } from './splashes'
 
 // const proxyOptionsDev = {
 // 	axiosProxy: false,
@@ -64,8 +65,9 @@ export default {
 			}
 		],
 		link: [
-			{ rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg' }
 			// { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
+			{ rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg' },
+			...splashscreens
 			// { rel: 'preconnect', href: 'https://fonts.gstatic.com' },
 			// {
 			// 	rel: 'stylesheet',
