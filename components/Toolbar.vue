@@ -211,7 +211,7 @@ export default {
 }
 
 .v-navigation-drawer--close.v-navigation-drawer--temporary {
-	transform: translateY(-13vw) !important;
+	transform: translateY(-600px) !important;
 }
 
 .v-list-item--link {
