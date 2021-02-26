@@ -139,6 +139,7 @@ export default {
 				{ ...routeMeta.NEWS },
 				{ ...routeMeta.INFOS },
 				{ ...routeMeta.LINEUP },
+				{ ...routeMeta.TICKETS },
 				{ ...routeMeta.HISTORIE }
 			]
 		}

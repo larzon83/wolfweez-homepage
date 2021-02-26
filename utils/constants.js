@@ -67,6 +67,11 @@ export const routeMeta = {
 		to: '/rechtliches/impressum/'
 	},
 
+	TICKETS: {
+		title: 'Tickets',
+		to: '/tickets/'
+	},
+
 	MEDIEN__FOTOGALERIE: {
 		title: 'Fotogalerie',
 		to: '/fotogalerie/'

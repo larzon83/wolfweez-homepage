@@ -123,8 +123,14 @@ export default {
 	modules: [
 		// https://go.nuxtjs.dev/axios
 		'@nuxtjs/axios',
-		'@nuxtjs/proxy'
+		'@nuxtjs/proxy',
+		'nuxt-stripejs'
 	],
+
+	stripe: {
+		publishableKey:
+			'pk_test_51IP7XYBfAFuG6uOs5pu8crgpe5Z6OUfreIGvoM6Vdz66XQnGN4H4RR9qoy2uwQv0meyYfxV4YsmAS2ZKbsOrxbTc00CET6X6bc'
+	},
 
 	// Axios module configuration (https://go.nuxtjs.dev/config-axios)
 	axios: { proxy: true },
