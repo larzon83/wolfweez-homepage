@@ -46,7 +46,7 @@
 				"backgroundColor": "#A21A56"
 			}
 		],
-		"todo-tree.tree.showInExplorer": false,
+		"todo-tree.highlights.enabled": false,
 		"todo-tree.highlights.customHighlight": {
 			"TODO": {
 				"iconColour": "#FCB021"
@@ -75,7 +75,8 @@
 		"diffEditor.ignoreTrimWhitespace": true,
 		"files.associations": {
 			".env-cmdrc.example": "json",
-			".env-cmdrc": "json"
+			".env-cmdrc": "json",
+			".releaserc": "json"
 		}
 	}
 }
