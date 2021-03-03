@@ -28,9 +28,9 @@
 		}
 	},
 	"dependencies": {
-		"@fontsource/inter": "4.2.1",
-		"@fontsource/jost": "4.2.1",
-		"@fontsource/titillium-web": "4.2.1",
+		"@fontsource/inter": "4.2.2",
+		"@fontsource/jost": "4.2.2",
+		"@fontsource/titillium-web": "4.2.2",
 		"@marvr/storyblok-rich-text-vue-renderer": "2.0.1",
 		"@nuxtjs/axios": "5.13.1",
 		"@nuxtjs/proxy": "2.1.0",
