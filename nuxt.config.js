@@ -196,5 +196,25 @@ export default {
 	// Build Configuration (https://go.nuxtjs.dev/config-build)
 	build: {
 		// analyze: true
+		extractCSS: true,
+
+		filenames: {
+			app: ({ isDev, isModern }) =>
+				isDev
+					? `[name]${isModern ? '.modern' : ''}.js`
+					: `[name].[contenthash:7]${isModern ? '.modern' : ''}.js`,
+			chunk: ({ isDev, isModern }) =>
+				isDev
+					? `[name]${isModern ? '.modern' : ''}.js`
+					: `[name].[contenthash:7]${isModern ? '.modern' : ''}.js`,
+			// If extractCSS is true (see above), name the css files:
+			css: ({ isDev }) =>
+				isDev ? '[name].css' : 'css/[name].[contenthash:7].css'
+		},
+
+		/*
+		 ** You can extend webpack config here
+		 */
+		extend(config, ctx) {}
 	}
 }
