@@ -216,16 +216,16 @@ export default {
 		 ** You can extend webpack config here
 		 */
 		extend(config, ctx) {}
-	},
-
-	render: {
-		bundleRenderer: {
-			shouldPreload: (file, type) => {
-				if (type === 'font') {
-					// only preload woff2 fonts
-					return /\.woff2$/.test(file)
-				}
-			}
-		}
 	}
+
+	// render: {
+	// 	bundleRenderer: {
+	// 		shouldPreload: (file, type) => {
+	// 			if (type === 'font') {
+	// 				// only preload woff2 fonts
+	// 				return /\.woff2$/.test(file)
+	// 			}
+	// 		}
+	// 	}
+	// }
 }
