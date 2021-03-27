@@ -75,11 +75,6 @@ export default {
 }
 </script>
 
-<style lang="scss">
-@import '../assets/style/fonts.scss';
-@import '../assets/style/main.scss';
-</style>
-
 <style lang="scss" scoped>
 // body {
 // 	// content: '';

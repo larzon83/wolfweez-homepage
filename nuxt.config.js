@@ -78,8 +78,7 @@ export default {
 	},
 
 	// Global CSS (https://go.nuxtjs.dev/config-css)
-	// files are being imported in default.vue because of registerStylesSSR - see below
-	// css: ['@/assets/style/fonts.scss', '~/assets/style/main.scss'],
+	css: ['@/assets/style/fonts.scss', '~/assets/style/main.scss'],
 
 	// Plugins to run before rendering page (https://go.nuxtjs.dev/config-plugins)
 	plugins: [
@@ -173,14 +172,7 @@ export default {
 	vuetify: {
 		customVariables: ['~/assets/style/variables.scss'],
 		optionsPath: './config/vuetify.options.js',
-		// https://github.com/vuetifyjs/vuetify-loader#registerstylesssr
-		// https://github.com/nuxt-community/vuetify-module/issues/208#issuecomment-806074756
-		treeShake: {
-			loaderOptions: {
-				registerStylesSSR: true
-			}
-		},
-		// treeShake: true,
+		treeShake: true,
 		defaultAssets: false
 		// defaultAssets: {
 		// 	font: false
@@ -204,12 +196,7 @@ export default {
 	// Build Configuration (https://go.nuxtjs.dev/config-build)
 	build: {
 		// analyze: true
-		// extractCSS: true,
-
-		// see above -> vuetify.loader.registerStylesSSR
-		loaders: {
-			vueStyle: { manualInject: true }
-		},
+		extractCSS: true,
 
 		filenames: {
 			app: ({ isDev, isModern }) =>
