@@ -221,6 +221,9 @@ export default {
 	render: {
 		bundleRenderer: {
 			shouldPreload: (file, type) => {
+				if (type === 'style') {
+					return true
+				}
 				if (type === 'font') {
 					// only preload woff2 fonts
 					return /\.woff2$/.test(file)
