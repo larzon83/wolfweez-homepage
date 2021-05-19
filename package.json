@@ -32,7 +32,7 @@
 		"@fontsource/jost": "4.2.2",
 		"@fontsource/titillium-web": "4.2.2",
 		"@marvr/storyblok-rich-text-vue-renderer": "2.0.1",
-		"@nuxtjs/axios": "5.13.1",
+		"@nuxtjs/axios": "5.13.4",
 		"@nuxtjs/proxy": "2.1.0",
 		"@vue/composition-api": "1.0.0-rc.7",
 		"access-log": "0.4.1",
