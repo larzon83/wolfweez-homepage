@@ -185,6 +185,7 @@ export default {
 	},
 
 	router: {
+		prefetchLinks: false,
 		middleware: 'setConfig',
 		trailingSlash:
 			process.env.NUXT_ENV_IS_SPA === 'true' ||
