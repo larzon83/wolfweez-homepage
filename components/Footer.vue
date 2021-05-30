@@ -14,7 +14,7 @@
 							<v-subheader class="text-button font-weight-regular pl-0">{{
 								section.title
 							}}</v-subheader>
-							<!-- <v-list dense flat tile color="transparent" class="pt-0">
+							<v-list dense flat tile color="transparent" class="pt-0">
 								<v-list-item
 									v-for="(link, linkIndex) in section.links"
 									:key="`link-${linkIndex}`"
@@ -29,7 +29,7 @@
 										>
 									</v-list-item-content>
 								</v-list-item>
-							</v-list> -->
+							</v-list>
 						</v-card>
 					</v-col>
 				</v-row>

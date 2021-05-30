@@ -44,7 +44,7 @@
 				<Breadcrumbs />
 				<nuxt />
 			</v-container>
-			<Footer />
+			<!-- <Footer /> -->
 		</v-main>
 	</v-app>
 </template>
