@@ -25,9 +25,8 @@ export default {
 
 				event.story.content.entry.forEach((day, _indexDay) => {
 					day.entry.forEach((band, _indexBand) => {
-						const currentBand = this.story.content.entry[_indexDay].entry[
-							_indexBand
-						].band
+						const currentBand =
+							this.story.content.entry[_indexDay].entry[_indexBand].band
 
 						// another band was selected in dropdown
 						if (band.band.id !== currentBand.id) {
