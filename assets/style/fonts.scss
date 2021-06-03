@@ -1,29 +1,10 @@
 // https://fontsource.org/#inter
 
-// @import '~@fontsource/inter/scss/mixins';
+@import "~@fontsource/inter/scss/mixins";
 
-// $weights: (300, 400, 500, 600, 700, 800, 900);
+@include fontFaceVariableCustom();
 
-// @each $w in $weights {
-// 	@font-face {
-// 		font-family: 'Inter';
-// 		font-style: normal;
-// 		font-display: swap;
-// 		font-weight: $w;
-// 		src: url('#{$fontDir}/#{$fontId}-latin-#{$w}-normal.woff2') format('woff2'),
-// 			url('#{$fontDir}/#{$fontId}-latin-#{$w}-normal.woff') format('woff');
-// 	}
-// }
 
-// @import '@fontsource/inter/latin-300.css';
-@import '@fontsource/inter/latin-400.css';
-@import '@fontsource/inter/latin-500.css';
-// @import '@fontsource/inter/latin-600.css';
-@import '@fontsource/inter/latin-700.css';
-// @import '@fontsource/inter/latin-800.css';
-// @import '@fontsource/inter/latin-900.css';
-
-// @import '@fontsource/jost/latin-300.css';
 // @import '@fontsource/jost/latin-400.css';
 // @import '@fontsource/jost/latin-500.css';
 // @import '@fontsource/jost/latin-600.css';
