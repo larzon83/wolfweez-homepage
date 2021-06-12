@@ -332,7 +332,7 @@ export default {
 	}
 }
 
-@media (min-width: 1264px) {
+@media #{map-get($display-breakpoints, 'xl-only')} {
 	.item {
 		width: calc((100% - (2 * 24px)) / 3);
 	}

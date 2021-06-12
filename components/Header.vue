@@ -144,7 +144,7 @@ export default {
 	// }
 
 	.container {
-		@media (min-width: 540px) {
+		@media #{map-get($display-breakpoints, 'md-and-up')} {
 			max-width: unset;
 		}
 

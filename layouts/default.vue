@@ -125,7 +125,7 @@ export default {
 	z-index: -1;
 }
 
-@media (min-width: 540px) {
+@media #{map-get($display-breakpoints, 'md-and-up')} {
 	.header-wrapper .container {
 		max-width: unset;
 	}
