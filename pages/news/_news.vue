@@ -1,5 +1,6 @@
 <template>
 	<section>
+		<Breadcrumbs />
 		<NewsDetail :news="story.content" :time="$_niceDate(story.created_at)" />
 	</section>
 </template>

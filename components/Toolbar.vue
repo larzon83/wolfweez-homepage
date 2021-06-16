@@ -79,22 +79,22 @@
 
 			<v-spacer />
 
-			<v-btn
-				v-for="(item, i) in items"
-				:key="`nav-btn-${i}`"
-				:ripple="false"
-				:to="item.to"
-				nuxt
-				active-class="nav-btn-active"
-				text
-				tile
-				color="#212121"
-				class="nav-btn ma-0"
-				:class="{
-					'white--text': swapToolbar
-				}"
-				>{{ item.title }}</v-btn
-			>
+			<template v-if="swapToolbar">
+				<v-btn
+					v-for="(item, i) in items"
+					:key="`toolbar-nav-btn-${i}`"
+					:ripple="false"
+					:to="item.to"
+					nuxt
+					active-class="nav-btn-active"
+					text
+					tile
+					color="#212121"
+					class="nav-btn ma-0 white--text"
+				>
+					{{ item.title }}
+				</v-btn>
+			</template>
 
 			<v-btn
 				aria-label="Menü öffnen"
@@ -106,14 +106,6 @@
 			>
 				<v-icon class="menu-icon">$menu</v-icon>
 			</v-btn>
-
-			<!-- <template v-slot:extension>
-				<v-tabs align-with-title>
-					<v-tab>Tab 1</v-tab>
-					<v-tab>Tab 2</v-tab>
-					<v-tab>Tab 3</v-tab>
-				</v-tabs>
-			</template> -->
 		</v-app-bar>
 	</div>
 </template>

@@ -1,6 +1,7 @@
 <template>
 	<section>
 		<TabsNavigation :type="tabType" />
+		<Breadcrumbs />
 		<v-row fill-height class="my-0">
 			<v-col
 				v-for="band in bandsAll"
@@ -9,9 +10,10 @@
 				md="6"
 				lg="4"
 			>
+				<!-- color="#212322" -->
 				<v-card
 					v-if="band.content"
-					color="#212322"
+					color="#2a2c2d"
 					href
 					nuxt
 					height="100%"

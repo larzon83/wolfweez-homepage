@@ -1,5 +1,8 @@
 <template>
-	<div id="ckForm" class="mt-4"></div>
+	<div>
+		<Breadcrumbs />
+		<div id="ckForm" class="mt-4"></div>
+	</div>
 </template>
 
 <script>

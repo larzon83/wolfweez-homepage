@@ -1,6 +1,7 @@
 <template>
 	<section>
 		<TabsNavigation :type="tabType" />
+		<Breadcrumbs />
 	</section>
 </template>
 

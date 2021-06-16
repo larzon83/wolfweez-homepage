@@ -1,5 +1,6 @@
 <template>
 	<section>
+		<Breadcrumbs />
 		<ul class="flex py-6 mb-6">
 			<li
 				v-for="news in newsAll"

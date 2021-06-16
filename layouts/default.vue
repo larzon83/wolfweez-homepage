@@ -40,8 +40,21 @@
 
 		<v-main>
 			<Header />
+			<!-- <MainNav /> -->
 			<v-container class="pt-0 pb-16">
-				<Breadcrumbs />
+				<!-- <v-row justify="start" align="center" no-gutters class="tmp py-2">
+					<div>HOME</div>
+					<div>NEWS</div>
+					<div class="active">INFOS</div>
+					<div>LINE-UP</div>
+					<div>TICKETS</div>
+					<div>HISTORIE</div>
+				</v-row> -->
+				<MainNav />
+				<!-- <TabsNavigation :type="subNavigation" /> -->
+				<!-- subNavigation: {{ subNavigation }} -->
+				<!-- route: {{ $route }} -->
+				<!-- <Breadcrumbs /> -->
 				<nuxt />
 			</v-container>
 			<Footer />
@@ -50,7 +63,9 @@
 </template>
 
 <script>
+// import { mapState } from 'vuex'
 import Toolbar from '~/components/Toolbar'
+import { routeMeta, tabTypes } from '~/utils/constants'
 
 export default {
 	name: 'Default',
@@ -65,12 +80,38 @@ export default {
 		}
 	},
 
+	computed: {
+		subNavigation() {
+			let nav = ''
+			if (this.$route.path.includes(routeMeta.LINEUP.to)) {
+				nav = tabTypes.LINEUP
+			}
+			if (this.$route.path.includes(routeMeta.INFOS.to)) {
+				nav = tabTypes.INFOS
+			}
+			return nav
+		}
+		// ...mapState('central', ['subNavigation'])
+	},
+
+	created() {
+		// console.log('$route:', this.$route)
+		// console.log(
+		// 	'this.$nuxt.$options.context.route.meta:',
+		// 	this.$nuxt.$options.context.route.meta
+		// )
+	},
+
 	methods: {
 		onScroll(e) {
 			this.offsettop = window.pageYOffset
 			if (this.offsettop > 105) this.swapToolbar = true
 			else this.swapToolbar = false
 		}
+	},
+
+	middleware({ route }) {
+		// console.log('route:', route)
 	}
 }
 </script>
@@ -186,4 +227,47 @@ export default {
 // 		center -20px, center -20px;
 // 	// background-attachment: fixed;
 // }
+.tmp {
+	color: rgba(235, 235, 238, 0.35);
+	// color: rgba(235, 235, 238, 0.58);
+	// background: #2a2c2d;
+	// background: var(--v-primary-base);
+	height: 54px;
+	font-size: 20px;
+	font-weight: 500;
+	letter-spacing: 0.0125em;
+	// padding-left: 16px;
+	// border-radius: $border-radius-root;
+	border-top-left-radius: $border-radius-root;
+	border-top-right-radius: $border-radius-root;
+	border-bottom: 3px solid rgba(235, 235, 238, 0.35);
+	// border-bottom: 3px solid var(--v-primary-base);
+	margin-bottom: 30px;
+
+	div {
+		// display: flex;
+		// align-items: center;
+		// justify-content: center;
+		// height: 46px;
+		min-width: 14px;
+		margin: 0px 12px;
+
+		&.active {
+			position: relative;
+			color: var(--v-bright-base);
+			// color: var(--v-primary-base);
+			font-weight: 900;
+
+			&:after {
+				position: absolute;
+				content: '';
+				bottom: -13px;
+				left: 0;
+				background: var(--v-bright-base);
+				width: 100%;
+				height: 3px;
+			}
+		}
+	}
+}
 </style>

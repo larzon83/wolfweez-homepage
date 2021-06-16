@@ -1,6 +1,6 @@
 <template>
 	<!-- <v-row justify="center" align="center" style="margin-top: -25px" no-gutters> -->
-	<v-row justify="center" align="center" no-gutters>
+	<v-row justify="center" align="center" no-gutters class="mt-lg-5 mt-0">
 		<v-col cols="12">
 			<vue-horizontal
 				ref="horizontal"
@@ -11,8 +11,8 @@
 					v-for="band in bands.stories"
 					:key="band.content._uid"
 					:alt="band.content.name"
-					:src="band.content.image.filename"
-					:lazy-src="$_transformImage(band.content.image.filename, '300x0')"
+					:src="$_transformImage(band.content.image.filename, '530x0')"
+					:lazy-src="$_transformImage(band.content.image.filename, '100x0')"
 					class="item"
 					aspect-ratio="1.9048"
 					eager
@@ -50,7 +50,8 @@
 				></v-img>
 			</div> -->
 			<!-- max-width="220" -->
-			<v-card color="#323435">
+			<!-- color="#323435" -->
+			<v-card color="#2a2c2d">
 				<!-- <div>
 					<v-btn icon>
 						<v-icon color="#ff0000">$menu</v-icon>

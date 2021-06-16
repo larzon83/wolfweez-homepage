@@ -1,6 +1,7 @@
 <template>
 	<section>
 		<TabsNavigation :type="tabType" />
+		<Breadcrumbs />
 		<BandDetail :band="story.content" :time="time" />
 	</section>
 </template>

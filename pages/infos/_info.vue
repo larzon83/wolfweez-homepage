@@ -1,6 +1,7 @@
 <template>
 	<section>
 		<TabsNavigation :type="tabType" />
+		<Breadcrumbs />
 		<StoryblokBlokContent :content="story.content" />
 	</section>
 </template>

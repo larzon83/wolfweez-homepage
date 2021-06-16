@@ -1,12 +1,19 @@
 <template>
-	<v-tabs v-if="tabItems" optional background-color="transparent" class="mb-10">
+	<v-tabs
+		v-if="tabItems.length"
+		optional
+		background-color="transparent"
+		class="tabs-navigation"
+		active-class="tabs-navigation-active"
+		slider-size="2"
+		color="bright"
+	>
 		<v-tab
 			v-for="(tab, i) in tabItems"
 			:key="`${type}-tab-${i}`"
 			:ripple="false"
 			:to="tab.to"
 			nuxt
-			active-class="aaa"
 			text
 			tile
 			class="ma-0"
@@ -66,3 +73,13 @@ export default {
 	}
 }
 </script>
+
+<style lang="scss" scoped>
+.tabs-navigation {
+	box-shadow: inset 0 -2px 0 rgba(235, 235, 238, 0.06);
+
+	.tabs-navigation-active {
+		font-weight: 700;
+	}
+}
+</style>

@@ -1,5 +1,6 @@
 <template>
 	<section>
+		<Breadcrumbs />
 		<v-form
 			ref="contactForm"
 			v-model="valid"

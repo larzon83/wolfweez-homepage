@@ -4,7 +4,7 @@
 			v-rellax="{
 				speed: -2
 			}"
-			class="container py-0 mt-xl-10 mt-lg-13 mt-4"
+			class="container py-0 mt-lg-7 mt-4"
 		>
 			<v-row align="end" justify="center" no-gutters>
 				<v-col class="byline text-right pr-3 d-none d-md-block" cols="3">

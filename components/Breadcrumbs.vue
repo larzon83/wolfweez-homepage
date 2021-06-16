@@ -2,7 +2,7 @@
 	<v-breadcrumbs
 		v-if="$route.name !== 'index'"
 		:items="items"
-		class="px-0 pt-1 crumbs"
+		class="px-0 pt-11 crumbs"
 	>
 		<template #divider>
 			<v-icon size="13">$chevronRight</v-icon>

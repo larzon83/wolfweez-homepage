@@ -1,5 +1,6 @@
 <template>
 	<section>
+		<Breadcrumbs />
 		<h1>{{ pageTitle }}</h1>
 		<ImgGalleries :galleries="galleries" />
 	</section>

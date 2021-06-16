@@ -1,6 +1,7 @@
 <template>
 	<section v-editable="story.content">
 		<TabsNavigation :type="tabType" />
+		<Breadcrumbs />
 		<h1>{{ headlinePage }}</h1>
 		<b>{{ story.content.date }} {{ story.content.year }}</b>
 		<br /><br />
