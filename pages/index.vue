@@ -200,7 +200,21 @@ export default {
 			meta: createSEOMeta({
 				description: this.currentFestival.content.description_meta,
 				title
-			})
+			}),
+			link: [
+				{ rel: 'preconnect', href: 'https://a.storyblok.com' },
+				{ rel: 'preconnect', href: 'https://img2.storyblok.com' },
+				{
+					rel: 'preload',
+					as: 'image',
+					href: this.$_transformImage(
+						this.bands.stories[0].content.image.filename,
+						'530x0'
+					)
+					// imagesrcset: this.heroSrcset.srcset,
+					// imagesizes: this.heroSrcset.sizes
+				}
+			]
 		}
 	},
 
