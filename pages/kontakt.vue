@@ -15,7 +15,7 @@
 			<v-container>
 				<input type="hidden" name="form-name" value="contact" />
 				<div hidden aria-hidden="true">
-					Don’t fill this out if you're human: <input name="bot-field" />
+					Don't fill this out if you're human: <input name="bot-field" />
 				</div>
 				<v-row class="my-0">
 					<v-col cols="12" md="6">
