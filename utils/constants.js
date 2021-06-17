@@ -82,3 +82,12 @@ export const routeMeta = {
 		to: '/newsletter/'
 	}
 }
+
+export const mainNavItems = [
+	{ ...routeMeta.HOME },
+	{ ...routeMeta.NEWS },
+	{ ...routeMeta.INFOS },
+	{ ...routeMeta.LINEUP },
+	{ ...routeMeta.TICKETS },
+	{ ...routeMeta.HISTORIE }
+]

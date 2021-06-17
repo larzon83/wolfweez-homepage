@@ -20,14 +20,14 @@
 
 			<v-list class="pa-0">
 				<v-list-item
-					v-for="(item, i) in items"
+					v-for="(navItem, i) in mainNavItems"
 					:key="i"
-					:to="item.to"
+					:to="navItem.to"
 					nuxt
 					:ripple="false"
 				>
 					<v-list-item-content class="text-center">
-						<v-list-item-title v-text="item.title" />
+						<v-list-item-title v-text="navItem.title" />
 					</v-list-item-content>
 				</v-list-item>
 			</v-list>
@@ -81,10 +81,10 @@
 
 			<template v-if="swapToolbar">
 				<v-btn
-					v-for="(item, i) in items"
+					v-for="(navItem, i) in mainNavItems"
 					:key="`toolbar-nav-btn-${i}`"
 					:ripple="false"
-					:to="item.to"
+					:to="navItem.to"
 					nuxt
 					active-class="nav-btn-active"
 					text
@@ -92,7 +92,7 @@
 					color="#212121"
 					class="nav-btn ma-0 white--text"
 				>
-					{{ item.title }}
+					{{ navItem.title }}
 				</v-btn>
 			</template>
 
@@ -112,7 +112,7 @@
 
 <script>
 import { mapState } from 'vuex'
-import { routeMeta } from '~/utils/constants'
+import { mainNavItems } from '~/utils/constants'
 
 export default {
 	name: 'Toolbar',
@@ -126,14 +126,7 @@ export default {
 	data() {
 		return {
 			drawer: false,
-			items: [
-				{ ...routeMeta.HOME },
-				{ ...routeMeta.NEWS },
-				{ ...routeMeta.INFOS },
-				{ ...routeMeta.LINEUP },
-				{ ...routeMeta.TICKETS },
-				{ ...routeMeta.HISTORIE }
-			]
+			mainNavItems
 		}
 	},
 
@@ -178,9 +171,18 @@ export default {
 	margin-left: -5px !important;
 }
 
+.nav-btn {
+	letter-spacing: $main-nav-letter-spacing;
+
+	&:not(.nav-btn-active) ::v-deep .v-btn__content {
+		color: rgba(235, 235, 238, 0.6);
+	}
+}
+
 .nav-btn-active {
-	color: #fff !important;
 	background: var(--v-primary-base);
+	color: var(--v-bright-base) !important;
+	font-weight: 800;
 
 	&:before {
 		opacity: 0 !important;
@@ -210,10 +212,16 @@ export default {
 .v-list-item--link {
 	font-weight: 500;
 	text-transform: uppercase;
+	letter-spacing: $main-nav-letter-spacing;
+
+	&:not(.v-list-item--active) ::v-deep .v-list-item__title {
+		color: rgba(235, 235, 238, 0.6);
+	}
 
 	&.v-list-item--active {
-		color: white;
-		background-color: var(--v-primary-base);
+		background: var(--v-primary-base);
+		color: var(--v-bright-base) !important;
+		font-weight: 800;
 
 		&:hover::before,
 		&::before {

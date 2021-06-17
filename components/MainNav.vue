@@ -1,37 +1,30 @@
 <template>
 	<v-row justify="center" align="start" no-gutters class="navbar">
 		<v-btn
-			v-for="(item, i) in items"
+			v-for="(navItem, i) in mainNavItems"
 			:key="`main-nav-btn-${i}`"
 			:ripple="false"
-			:to="item.to"
+			:to="navItem.to"
 			height="40"
 			nuxt
 			active-class="nav-btn-active"
 			text
 			tile
 			class="nav-btn"
-			>{{ item.title }}</v-btn
+			>{{ navItem.title }}</v-btn
 		>
 	</v-row>
 </template>
 
 <script>
-import { routeMeta } from '~/utils/constants'
+import { mainNavItems } from '~/utils/constants'
 
 export default {
 	name: 'MainNav',
 
 	data() {
 		return {
-			items: [
-				{ ...routeMeta.HOME },
-				{ ...routeMeta.NEWS },
-				{ ...routeMeta.INFOS },
-				{ ...routeMeta.LINEUP },
-				{ ...routeMeta.TICKETS },
-				{ ...routeMeta.HISTORIE }
-			]
+			mainNavItems
 		}
 	}
 }
@@ -53,7 +46,7 @@ export default {
 
 .nav-btn {
 	font-size: 1.25rem; // 20px
-	letter-spacing: 0.0125em;
+	letter-spacing: $main-nav-letter-spacing;
 
 	&:not(.nav-btn-active) ::v-deep .v-btn__content {
 		color: rgba(235, 235, 238, 0.6);
