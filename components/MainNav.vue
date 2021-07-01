@@ -32,11 +32,8 @@ export default {
 
 <style lang="scss" scoped>
 .navbar {
-	background: $c-dark;
 	height: 54px;
-	// border-bottom: 3px solid rgba(235, 235, 238, 0.18);
 	border-bottom: 2px solid rgba(235, 235, 238, 0.06);
-	// margin-bottom: 30px;
 
 	@media #{map-get($display-breakpoints, 'md-and-down')} {
 		display: none;

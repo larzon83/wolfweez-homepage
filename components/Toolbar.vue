@@ -229,9 +229,4 @@ export default {
 		}
 	}
 }
-
-// .v-app-bar ::v-deep .v-toolbar__content {
-// 	align-items: flex-start;
-// 	padding-top: 10px;
-// }
 </style>
