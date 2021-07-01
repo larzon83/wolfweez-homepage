@@ -142,7 +142,7 @@ export default {
 }
 
 .toolbar-headline {
-	font-size: 1.0625rem;
+	font-size: $size17;
 	line-height: 1.5rem;
 }
 

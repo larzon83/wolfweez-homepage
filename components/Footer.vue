@@ -104,7 +104,7 @@ export default {
 	a {
 		color: white;
 		text-decoration: none;
-		font-size: 0.9375rem; // 15px
+		font-size: $size15;
 	}
 }
 </style>

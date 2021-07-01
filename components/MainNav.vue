@@ -44,7 +44,7 @@ export default {
 }
 
 .nav-btn {
-	font-size: 1.25rem; // 20px
+	font-size: $size20;
 	letter-spacing: $main-nav-letter-spacing;
 
 	&:not(.nav-btn-active) ::v-deep .v-btn__content {

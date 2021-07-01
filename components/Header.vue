@@ -149,7 +149,7 @@ export default {
 		}
 
 		.byline {
-			font-size: 1.25rem; // 18px
+			font-size: $size18;
 			line-height: 1.3;
 			font-family: 'Titillium Web', 'Inter', sans-serif;
 			// text-shadow: 2px -1px 0px rgba(0, 0, 0, 0.55);

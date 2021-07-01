@@ -31,6 +31,6 @@ export default {
 
 <style lang="scss" scoped>
 .crumbs li {
-	font-size: 0.8125rem; // 13px
+	font-size: $size13;
 }
 </style>

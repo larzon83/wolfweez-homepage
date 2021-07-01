@@ -173,7 +173,7 @@ export default {
 }
 
 .header-byline {
-	font-size: 1.25rem; // 18px
+	font-size: $size18;
 	line-height: 1.3;
 	text-shadow: 2px -1px 0px rgba(0, 0, 0, 0.55);
 }
@@ -233,7 +233,7 @@ export default {
 	// background: #2a2c2d;
 	// background: var(--v-primary-base);
 	height: 54px;
-	font-size: 20px;
+	font-size: $size20;
 	font-weight: 500;
 	letter-spacing: 0.0125em;
 	// padding-left: 16px;

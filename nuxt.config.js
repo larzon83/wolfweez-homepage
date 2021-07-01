@@ -1,3 +1,4 @@
+import { resolve } from 'path'
 import { baseUrl, siteTitle } from './utils/constants'
 import { createSEOMeta } from './utils/seo'
 import { splashscreens } from './splashes'
@@ -66,12 +67,6 @@ export default {
 			// { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
 			{ rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg' },
 			...splashscreens
-			// { rel: 'preconnect', href: 'https://fonts.gstatic.com' },
-			// {
-			// 	rel: 'stylesheet',
-			// 	href:
-			// 		'https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap'
-			// }
 		]
 	},
 
@@ -119,12 +114,7 @@ export default {
 	],
 
 	// Modules (https://go.nuxtjs.dev/config-modules)
-	modules: [
-		// https://go.nuxtjs.dev/axios
-		'@nuxtjs/axios',
-		'@nuxtjs/proxy',
-		'nuxt-stripejs'
-	],
+	modules: ['@nuxtjs/axios', '@nuxtjs/proxy', 'nuxt-stripejs'],
 
 	stripe: {
 		publishableKey:
@@ -172,10 +162,6 @@ export default {
 		optionsPath: './config/vuetify.options.js',
 		treeShake: true,
 		defaultAssets: false
-		// defaultAssets: {
-		// 	font: false
-		// 	// icons: 'md'
-		// }
 	},
 
 	generate: {
@@ -183,7 +169,6 @@ export default {
 	},
 
 	router: {
-		// prefetchLinks: false,
 		middleware: 'setConfig',
 		trailingSlash:
 			process.env.NUXT_ENV_IS_SPA === 'true' ||
@@ -214,7 +199,17 @@ export default {
 		/*
 		 ** You can extend webpack config here
 		 */
-		extend(config, ctx) {}
+		extend(config, ctx) {
+			config.module.rules.push({
+				test: /\.scss$/,
+				loader: '@epegzz/sass-vars-loader',
+				exclude: /(node_modules)/,
+				options: {
+					syntax: 'scss',
+					files: [resolve(__dirname, `./config/font-sizes.js`)]
+				}
+			})
+		}
 	},
 
 	render: {
