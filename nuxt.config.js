@@ -21,8 +21,6 @@ export default {
 	ssr: process.env.NUXT_ENV_IS_SPA !== 'true',
 	target: process.env.NUXT_ENV_IS_SPA === 'true' ? 'server' : 'static',
 
-	// serverMiddleware: ['~/server-middleware/log.js'],
-
 	// Global page headers (https://go.nuxtjs.dev/config-head)
 	head: {
 		titleTemplate: `%s - ${siteTitle.short}`,
