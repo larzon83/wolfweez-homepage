@@ -3,7 +3,7 @@
 		<slot />
 	</router-link>
 	<a v-else-if="linkType === 'email'" :href="`mailto:${href}`"><slot /></a>
-	<a v-else :href="href" :target="target"><slot /></a>
+	<a v-else :href="href" :target="target" rel="noreferrer"><slot /></a>
 </template>
 
 <script lang="ts">
