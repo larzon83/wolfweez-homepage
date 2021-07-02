@@ -53,15 +53,7 @@
 				to="/"
 				class="nav-wolf"
 			>
-				<v-img
-					:src="require('~/assets/icons/wolf.svg')"
-					:alt="'Logo'"
-					aspect-ratio="1.0805"
-					eager
-					height="34"
-					position="center center"
-					contain
-				></v-img>
+				<v-icon large>$wolf</v-icon>
 			</v-btn>
 
 			<template v-if="swapToolbar">

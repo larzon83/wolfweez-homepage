@@ -5,6 +5,7 @@ import {
 	InstagramIcon,
 	XIcon
 } from 'vue-feather-icons'
+import IconWolf from '@/components/IconWolf'
 
 export default {
 	theme: {
@@ -48,6 +49,9 @@ export default {
 			},
 			menu: {
 				component: BarChart2Icon
+			},
+			wolf: {
+				component: IconWolf
 			}
 		}
 	}
