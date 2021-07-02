@@ -40,21 +40,8 @@
 
 		<v-main>
 			<Header />
-			<!-- <MainNav /> -->
 			<v-container class="pt-0 pb-16">
-				<!-- <v-row justify="start" align="center" no-gutters class="tmp py-2">
-					<div>HOME</div>
-					<div>NEWS</div>
-					<div class="active">INFOS</div>
-					<div>LINE-UP</div>
-					<div>TICKETS</div>
-					<div>HISTORIE</div>
-				</v-row> -->
 				<MainNav />
-				<!-- <TabsNavigation :type="subNavigation" /> -->
-				<!-- subNavigation: {{ subNavigation }} -->
-				<!-- route: {{ $route }} -->
-				<!-- <Breadcrumbs /> -->
 				<nuxt />
 			</v-container>
 			<Footer />
@@ -63,7 +50,6 @@
 </template>
 
 <script>
-// import { mapState } from 'vuex'
 import Toolbar from '~/components/Toolbar'
 import { routeMeta, tabTypes } from '~/utils/constants'
 
@@ -91,15 +77,6 @@ export default {
 			}
 			return nav
 		}
-		// ...mapState('central', ['subNavigation'])
-	},
-
-	created() {
-		// console.log('$route:', this.$route)
-		// console.log(
-		// 	'this.$nuxt.$options.context.route.meta:',
-		// 	this.$nuxt.$options.context.route.meta
-		// )
 	},
 
 	methods: {
@@ -108,29 +85,11 @@ export default {
 			if (this.offsettop > 105) this.swapToolbar = true
 			else this.swapToolbar = false
 		}
-	},
-
-	middleware({ route }) {
-		// console.log('route:', route)
 	}
 }
 </script>
 
 <style lang="scss" scoped>
-// body {
-// 	// content: '';
-// 	// position: absolute;
-// 	// left: 0;
-// 	// top: 0;
-// 	// bottom: 0;
-// 	// right: 0;
-// 	perspective: 100px;
-// 	transform-style: preserve-3d;
-// 	height: 100vh;
-// 	overflow-x: hidden;
-// 	overflow-y: scroll;
-// }
-
 .header-wrapper {
 	height: max(min(50.5vw, 520px), 220px) !important;
 }

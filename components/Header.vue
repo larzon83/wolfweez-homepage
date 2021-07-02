@@ -8,8 +8,8 @@
 		>
 			<v-row align="end" justify="center" no-gutters>
 				<v-col class="byline text-right pr-3 d-none d-md-block" cols="3">
-					02. - 04. Juli<br />
-					<b>2021</b>
+					{{ currentFestival.content.date }}<br />
+					<b>{{ currentFestival.content.year }}</b>
 				</v-col>
 				<!-- TODO: create a class -->
 				<v-col class="text-center" cols="9" md="6" style="max-width: 500px">
@@ -53,8 +53,14 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
+
 export default {
-	name: 'Header'
+	name: 'Header',
+
+	computed: {
+		...mapGetters('config', ['currentFestival'])
+	}
 }
 </script>
 
@@ -151,8 +157,7 @@ export default {
 		.byline {
 			font-size: $size18;
 			line-height: 1.3;
-			font-family: 'Titillium Web', 'Inter', sans-serif;
-			// text-shadow: 2px -1px 0px rgba(0, 0, 0, 0.55);
+			font-family: 'Titillium Web', 'InterVariable', sans-serif;
 			text-shadow: 0px 2px 6px rgba(0, 0, 0, 0.14),
 				0px 0px 2px rgba(0, 0, 0, 0.25);
 		}

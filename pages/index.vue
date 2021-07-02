@@ -60,7 +60,7 @@
 				<client-only>
 					<div>
 						<flip-countdown
-							deadline="2021-07-02 20:00:00"
+							deadline="2022-07-01 20:00:00"
 							:labels="timerLabels"
 						></flip-countdown>
 					</div>
@@ -303,18 +303,11 @@ export default {
 	}
 }
 
-// .item {
-// 	color: #212121;
-// 	background: #f3f3f3;
-// 	border-radius: 3px;
-// 	padding: 16px 16px;
-// }
-
 .item {
 	border-radius: 7px;
 	// border: 3px solid var(--v-primary-base);
 	// padding: 16px 24px;
-	color: #212121;
+	color: var(--v-dark-base);
 	// background: #f3f3f3;
 	width: 100%;
 	margin-right: 24px;
