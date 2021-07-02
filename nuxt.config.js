@@ -1,5 +1,5 @@
 import { resolve } from 'path'
-import { baseUrl, siteTitle } from './utils/constants'
+import { baseUrl, siteDescription, siteTitle } from './utils/constants'
 import { createSEOMeta } from './utils/seo'
 import { splashscreens } from './splashes'
 
@@ -50,17 +50,17 @@ export default {
 			{
 				hid: 'description',
 				name: 'description',
-				content: siteTitle.long
+				content: siteDescription
 			},
 			{
 				hid: 'og:description',
 				name: 'og:description',
-				content: siteTitle.long
+				content: siteDescription
 			},
 			{
 				hid: 'twitter:description',
 				name: 'twitter:description',
-				content: siteTitle.long
+				content: siteDescription
 			}
 		],
 		link: [
@@ -141,7 +141,7 @@ export default {
 		manifest: {
 			name: siteTitle.short,
 			short_name: 'Wolfweez',
-			description: siteTitle.long,
+			description: siteDescription,
 			background_color: '#212121',
 			theme_color: '#212121', // TODO:
 			lang: 'de-DE',

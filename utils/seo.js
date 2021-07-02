@@ -6,7 +6,7 @@ const defaults = {
 	image: '/wolfweez-open-air-festival.png',
 	imageWidth: '1200',
 	imageHeight: '630',
-	title: siteTitle.long + ' - ' + siteTitle.short,
+	title: siteTitle.long,
 	type: 'website'
 }
 

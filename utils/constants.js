@@ -3,8 +3,11 @@ export const baseUrl = process.env.URL || 'http://localhost:3000'
 
 export const siteTitle = {
 	short: 'Wolfweez Openair Festival',
-	long: 'Wolfweez Openair Festival 2021 | Irslingen | Festival | Live Musik'
+	long: 'Wolfweez Openair Festival | Irslingen | Festival | Live Musik'
 }
+
+export const siteDescription =
+	'Das Wolfweez Openair Festival in Irslingen bei Rottweil – alle Infos zum Festival, Line-up, Tickets, Fotos & News. 3 Tage Rock, Metal & Blasmusik vom Feinsten!'
 
 export const tabTypes = {
 	HISTORY: 'history',
