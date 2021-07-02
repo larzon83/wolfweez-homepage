@@ -1,4 +1,10 @@
-import { BarChart2Icon, ChevronRightIcon, XIcon } from 'vue-feather-icons'
+import {
+	BarChart2Icon,
+	ChevronRightIcon,
+	FacebookIcon,
+	InstagramIcon,
+	XIcon
+} from 'vue-feather-icons'
 
 export default {
 	theme: {
@@ -28,14 +34,20 @@ export default {
 
 	icons: {
 		values: {
-			menu: {
-				component: BarChart2Icon
-			},
 			chevronRight: {
 				component: ChevronRightIcon
 			},
 			close: {
 				component: XIcon
+			},
+			facebook: {
+				component: FacebookIcon
+			},
+			instagram: {
+				component: InstagramIcon
+			},
+			menu: {
+				component: BarChart2Icon
 			}
 		}
 	}

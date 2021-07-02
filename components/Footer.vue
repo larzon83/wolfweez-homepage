@@ -33,13 +33,36 @@
 						</v-card>
 					</v-col>
 				</v-row>
+				<v-row justify="center" no-gutters>
+					<v-btn
+						:ripple="false"
+						:aria-label="`${siteTitle} auf Facebook`"
+						href="https://www.facebook.com/WolfweezOpenAir/"
+						icon
+						rel="noreferrer"
+						target="_blank"
+						class="mr-1"
+					>
+						<v-icon>$facebook</v-icon>
+					</v-btn>
+					<v-btn
+						:ripple="false"
+						:aria-label="`${siteTitle} auf Instagram`"
+						href="https://www.instagram.com/wolfweez_openair_/"
+						icon
+						rel="noreferrer"
+						target="_blank"
+					>
+						<v-icon>$instagram</v-icon>
+					</v-btn>
+				</v-row>
 			</v-container>
 		</v-footer>
 		<v-footer dark padless>
 			<v-card flat tile color="transparent" class="text-center" width="100%">
 				<v-divider></v-divider>
 				<v-card-text>
-					{{ new Date().getFullYear() }} — <strong>{{ copy }}</strong>
+					{{ new Date().getFullYear() }} — <strong>{{ siteTitle }}</strong>
 				</v-card-text>
 			</v-card>
 		</v-footer>
@@ -51,8 +74,9 @@ import { mapState } from 'vuex'
 import { routeMeta, siteTitle } from '~/utils/constants'
 
 export default {
+	name: 'Footer',
 	data: () => ({
-		copy: siteTitle.short
+		siteTitle: siteTitle.short
 	}),
 
 	computed: {
