@@ -118,6 +118,7 @@ export default function () {
 			{
 				mergeSecurityHeaders: false, // to be able to override X-Frame-Options
 				redirects: netlifyRedirects,
+				// TODO: only add sb headers for spa
 				headers: {
 					'/*': [
 						// default headers, the module sets
