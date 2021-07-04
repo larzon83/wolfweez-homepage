@@ -1,5 +1,20 @@
 <template>
-	<v-row justify="center" align="start" no-gutters class="navbar">
+	<v-row
+		justify="center"
+		align="start"
+		no-gutters
+		class="navbar"
+		:class="{ 'd-none d-lg-flex': $route.name === 'index' }"
+	>
+		<v-btn
+			:ripple="false"
+			height="42"
+			text
+			tile
+			class="nav-btn nav-btn-active d-lg-none"
+			tag="h1"
+			>{{ mobileHeadline }}</v-btn
+		>
 		<v-btn
 			v-for="(navItem, i) in mainNavItems"
 			:key="`main-nav-btn-${i}`"
@@ -8,23 +23,49 @@
 			height="42"
 			nuxt
 			active-class="nav-btn-active"
+			class="nav-btn d-none d-lg-flex"
 			text
 			tile
-			class="nav-btn"
 			>{{ navItem.title }}</v-btn
 		>
 	</v-row>
 </template>
 
 <script>
-import { mainNavItems } from '~/utils/constants'
+import useFormatting from '~/mixins/useFormatting.js'
+import { mainNavItems, routeMeta } from '~/utils/constants'
 
 export default {
 	name: 'MainNav',
+	mixins: [useFormatting],
 
 	data() {
 		return {
 			mainNavItems
+		}
+	},
+
+	computed: {
+		mobileHeadline() {
+			let headline = ''
+			const currentPath = this.$_slashify(this.$route.path)
+			const mainNavItemsWithoutHome = [...this.mainNavItems].splice(1)
+			const foundInMainNavItems = mainNavItemsWithoutHome.find(p =>
+				currentPath.includes(p.to)
+			)
+
+			if (foundInMainNavItems) {
+				headline = foundInMainNavItems.title
+			} else {
+				for (const route of Object.values(routeMeta)) {
+					if (route.to !== '/' && route.to === currentPath) {
+						headline = route.title
+						break
+					}
+				}
+			}
+
+			return headline
 		}
 	}
 }
@@ -34,10 +75,6 @@ export default {
 .navbar {
 	height: 54px;
 	border-bottom: 2px solid rgba(235, 235, 238, 0.06);
-
-	@media #{map-get($display-breakpoints, 'md-and-down')} {
-		display: none;
-	}
 }
 
 .nav-btn {

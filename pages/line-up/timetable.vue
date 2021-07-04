@@ -2,7 +2,7 @@
 	<section>
 		<TabsNavigation :type="tabType" />
 		<Breadcrumbs />
-		<v-row v-if="story.content.entry" class="timetable my-0">
+		<v-row v-if="story.content.entry" class="timetable my-0 px-4">
 			<v-col
 				v-for="day in story.content.entry"
 				:key="day._uid"

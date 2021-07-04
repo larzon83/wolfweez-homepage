@@ -1,13 +1,13 @@
 <template>
 	<div v-editable="content" class="mx-auto">
-		<div class="pb-6">
+		<!-- <div class="pb-6">
 			<h1>{{ content.headline }}</h1>
-		</div>
+		</div> -->
 
 		<div
 			v-for="(blok, index) in computedBlocks"
 			:key="`blok-content-${blok._uid}`"
-			:class="[index === 0 && blok.headline_inset ? 'mt-9' : 'mt-12']"
+			:class="[index === 0 && blok.headline_inset ? 'mt-n3' : 'mt-0']"
 		>
 			<h2 v-if="blok.headline && !blok.headline_inset">{{ blok.headline }}</h2>
 			<v-row
