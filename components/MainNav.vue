@@ -12,7 +12,7 @@
 			text
 			tile
 			class="nav-btn nav-btn-active d-lg-none"
-			tag="h1"
+			tag="div"
 			>{{ mobileHeadline }}</v-btn
 		>
 		<v-btn
