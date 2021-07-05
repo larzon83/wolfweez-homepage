@@ -14,8 +14,6 @@
 			:ripple="false"
 			:to="tab.to"
 			nuxt
-			text
-			tile
 			class="ma-0"
 			>{{ tab.title }}</v-tab
 		>
