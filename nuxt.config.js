@@ -28,7 +28,7 @@ export default {
 		title: siteTitle.long,
 		meta: [
 			...createSEOMeta(),
-			{ charset: 'utf-8' },
+			{ hid: 'charset', charset: 'utf-8' },
 			// { name: 'viewport', content: 'width=device-width, initial-scale=1' },
 			{
 				name: 'viewport',
