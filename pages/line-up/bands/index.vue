@@ -2,7 +2,7 @@
 	<section>
 		<TabsNavigation :type="tabType" />
 		<Breadcrumbs />
-		<v-row fill-height class="my-0">
+		<v-row class="my-0">
 			<v-col
 				v-for="band in bandsAll"
 				:key="band.content._uid"
