@@ -35,6 +35,13 @@ export default {
 				content:
 					'width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0, minimal-ui, viewport-fit=cover'
 			},
+			// pwa.meta.mobileAppIOS set to false, therefor set this manually
+			// https://github.com/nuxt-community/pwa-module/issues/443
+			{
+				hid: 'apple-mobile-web-app-capable',
+				name: 'apple-mobile-web-app-capable',
+				content: 'yes'
+			},
 			{
 				hid: 'og:site_name',
 				property: 'og:site_name',
@@ -149,8 +156,10 @@ export default {
 		},
 
 		meta: {
-			// will generate "apple-mobile-web-app-capable"
-			mobileAppIOS: true,
+			// don't make mobileAppIOS true, because pwa-module will then produce wrong splashscreens (at all)
+			// mobileAppIOS is (normally) responsible to produce "apple-mobile-web-app-capable" meta-tag -> has to be set manually, see above
+			// https://github.com/nuxt-community/pwa-module/issues/443
+			// mobileAppIOS: true,
 			// 'black' => black background with white text. 'default' is the opposite
 			appleStatusBarStyle: 'black'
 		}
