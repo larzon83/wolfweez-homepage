@@ -11,17 +11,8 @@
 					{{ currentFestival.content.date }}<br />
 					<b>{{ currentFestival.content.year }}</b>
 				</v-col>
-				<!-- TODO: create a class -->
-				<v-col class="text-center" cols="9" md="6" style="max-width: 500px">
-					<v-img
-						:src="require('~/assets/img/logo.png')"
-						:alt="'Logo'"
-						aspect-ratio="2.7106"
-						eager
-						min-height="100"
-						position="top center"
-						contain
-					></v-img>
+				<v-col class="logo-wrapper text-center" cols="9" md="6">
+					<WolfweezLogo />
 				</v-col>
 				<v-col class="byline text-left pl-3 d-none d-md-block" cols="3">
 					<b>IRSLINGEN</b><br />
@@ -152,6 +143,10 @@ export default {
 	.container {
 		@media #{map-get($display-breakpoints, 'md-and-up')} {
 			max-width: unset;
+		}
+
+		.logo-wrapper {
+			max-width: 500px;
 		}
 
 		.byline {
