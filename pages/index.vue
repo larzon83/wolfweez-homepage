@@ -19,7 +19,10 @@
 					position="top center"
 					contain
 				>
-					<nuxt-link :to="$_slashify(band.full_slug)" />
+					<nuxt-link
+						:aria-label="band.content.name"
+						:to="$_slashify(band.full_slug)"
+					/>
 				</v-img>
 			</vue-horizontal>
 			<div class="pagination">
