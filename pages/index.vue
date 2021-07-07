@@ -57,14 +57,16 @@
 						<v-icon color="#ff0000">$menu</v-icon>
 					</v-btn>
 				</div> -->
-				<client-only>
-					<div>
-						<flip-countdown
-							deadline="2022-07-01 20:00:00"
-							:labels="timerLabels"
-						></flip-countdown>
-					</div>
-				</client-only>
+				<div class="countdown-wrapper">
+					<client-only>
+						<div>
+							<flip-countdown
+								deadline="2022-07-01 20:00:00"
+								:labels="timerLabels"
+							></flip-countdown>
+						</div>
+					</client-only>
+				</div>
 				<v-card-title class="headline">
 					Welcome to the Vuetify + Nuxt.js template!
 				</v-card-title>
@@ -277,7 +279,30 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.countdown-wrapper {
+	min-height: 100px;
+
+	@media (min-width: 360px) {
+		min-height: 107px;
+	}
+	@media (min-width: 460px) {
+		min-height: 117px;
+	}
+	@media (min-width: 1000px) {
+		min-height: 140px;
+	}
+}
+
 .flip-clock ::v-deep {
+	.flip-card {
+		@media (max-width: 459px) {
+			font-size: 1.8rem !important;
+		}
+		@media (max-width: 359px) {
+			font-size: 1.5rem !important;
+		}
+	}
+
 	.flip-card__top,
 	.flip-card__bottom,
 	.flip-card__back-bottom,
@@ -367,6 +392,7 @@ export default {
 	display: flex;
 	justify-content: center;
 	margin-top: 16px;
+	height: 18px;
 }
 
 .dot {
