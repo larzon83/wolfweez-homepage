@@ -120,6 +120,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.v-footer {
+	box-shadow: none !important;
+}
+
 .v-list ::v-deep {
 	.v-list-item__content > * {
 		line-height: 1.4;
