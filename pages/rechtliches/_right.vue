@@ -1,5 +1,5 @@
 <template>
-	<section>
+	<section class="right">
 		<Breadcrumbs />
 		<ContentSimple :content="story.content" />
 	</section>

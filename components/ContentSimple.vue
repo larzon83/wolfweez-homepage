@@ -16,3 +16,15 @@ export default {
 	}
 }
 </script>
+
+<style lang="scss" scoped>
+.right {
+	h4 {
+		text-decoration: underline;
+	}
+	a {
+		word-break: break-word;
+		overflow-wrap: break-word;
+	}
+}
+</style>
