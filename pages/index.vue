@@ -66,6 +66,7 @@
 							<flip-countdown
 								deadline="2022-07-01 20:00:00"
 								:labels="timerLabels"
+								class="px-2"
 							></flip-countdown>
 						</div>
 					</client-only>
@@ -283,10 +284,10 @@ export default {
 
 <style lang="scss" scoped>
 .countdown-wrapper {
-	min-height: 100px;
+	min-height: 103px;
 
 	@media (min-width: 360px) {
-		min-height: 107px;
+		min-height: 110px;
 	}
 	@media (min-width: 460px) {
 		min-height: 117px;
@@ -299,10 +300,10 @@ export default {
 .flip-clock ::v-deep {
 	.flip-card {
 		@media (max-width: 459px) {
-			font-size: 1.8rem !important;
+			font-size: 1.9rem !important;
 		}
 		@media (max-width: 359px) {
-			font-size: 1.5rem !important;
+			font-size: 1.6rem !important;
 		}
 	}
 
