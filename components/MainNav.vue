@@ -1,10 +1,11 @@
 <template>
+	<!-- eslint-disable vue/no-v-html -->
 	<v-row
 		justify="center"
 		align="start"
 		no-gutters
 		class="navbar"
-		:class="{ 'd-none d-lg-flex': $route.name === 'index' }"
+		:class="{ 'is-home hidden-md-only': $route.name === 'index' }"
 	>
 		<v-btn
 			:ripple="false"
@@ -13,7 +14,11 @@
 			tile
 			class="nav-btn nav-btn-active d-lg-none"
 			tag="div"
-			>{{ mobileHeadline }}</v-btn
+		>
+			<template #default>
+				<span v-html="mobileHeadline"></span>
+			</template>
+			{{ mobileHeadline }}</v-btn
 		>
 		<v-btn
 			v-for="(navItem, i) in mainNavItems"
@@ -32,6 +37,7 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 import useFormatting from '~/mixins/useFormatting.js'
 import { mainNavItems, routeMeta } from '~/utils/constants'
 
@@ -46,6 +52,8 @@ export default {
 	},
 
 	computed: {
+		...mapGetters('config', ['currentFestival']),
+
 		mobileHeadline() {
 			let headline = ''
 			const currentPath = this.$_slashify(this.$route.path)
@@ -56,9 +64,11 @@ export default {
 
 			if (foundInMainNavItems) {
 				headline = foundInMainNavItems.title
+			} else if (currentPath === '/') {
+				headline = `${this.currentFestival.content.date} &nbsp;·&nbsp; Irslingen`
 			} else {
 				for (const route of Object.values(routeMeta)) {
-					if (route.to !== '/' && route.to === currentPath) {
+					if (route.to === currentPath) {
 						headline = route.title
 						break
 					}
@@ -75,6 +85,17 @@ export default {
 .navbar {
 	height: 54px;
 	border-bottom: 2px solid rgba(235, 235, 238, 0.06);
+
+	&.is-home {
+		border-bottom: none;
+		margin-bottom: 20px;
+
+		@media (max-width: 340px) {
+			.nav-btn {
+				width: 100%;
+			}
+		}
+	}
 }
 
 .nav-btn {
