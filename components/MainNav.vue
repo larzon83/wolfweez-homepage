@@ -65,7 +65,7 @@ export default {
 			if (foundInMainNavItems) {
 				headline = foundInMainNavItems.title
 			} else if (currentPath === '/') {
-				headline = `${this.currentFestival.content.date} &nbsp;·&nbsp; Irslingen`
+				headline = `${this.currentFestival.content.date} ${this.currentFestival.content.year} &nbsp;·&nbsp; Irslingen`
 			} else {
 				for (const route of Object.values(routeMeta)) {
 					if (route.to === currentPath) {
@@ -90,8 +90,18 @@ export default {
 		border-bottom: none;
 		margin-bottom: 20px;
 
-		@media (max-width: 340px) {
-			.nav-btn {
+		.nav-btn {
+			@media (max-width: 399px) {
+				/*
+					min: 16px (1rem)
+					max: 20px (1.25rem)
+					preferred examples:
+						- viewport width 400px => 400 / 100 * 5 = 20px
+						- viewport width 380px => 380 / 100 * 5 = 19px
+				*/
+				font-size: clamp(1rem, 5vw, 1.25rem);
+			}
+			@media #{map-get($display-breakpoints, 'xs-only')} {
 				width: 100%;
 			}
 		}
