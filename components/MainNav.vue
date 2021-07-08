@@ -99,6 +99,8 @@ export default {
 						- viewport width 400px => 400 / 100 * 5 = 20px
 						- viewport width 380px => 380 / 100 * 5 = 19px
 				*/
+				// TODO: improve vw after Header is done
+				// Maybe even remove "Irslingen"?
 				font-size: clamp(1rem, 5vw, 1.25rem);
 			}
 			@media #{map-get($display-breakpoints, 'xs-only')} {
