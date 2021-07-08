@@ -12,7 +12,13 @@
 					<b>{{ currentFestival.content.year }}</b>
 				</v-col>
 				<v-col class="logo-wrapper text-center" cols="9" md="6">
-					<WolfweezLogo />
+					<nuxt-link
+						aria-label="Zur Startseite"
+						class="logo-link d-block"
+						to="/"
+					>
+						<WolfweezLogo />
+					</nuxt-link>
 				</v-col>
 				<v-col class="byline text-left pl-3 d-none d-md-block" cols="3">
 					<b>IRSLINGEN</b><br />
@@ -147,6 +153,13 @@ export default {
 
 		.logo-wrapper {
 			max-width: 500px;
+
+			.logo-link {
+				&:active {
+					opacity: 0.96;
+					transform: scale(0.99);
+				}
+			}
 		}
 
 		.byline {
