@@ -362,7 +362,7 @@ export default {
 	}
 }
 
-@media (min-width: 640px) {
+@media #{map-get($display-breakpoints, 'md-and-up')} {
 	.item {
 		width: calc((100% - (24px)) / 2);
 	}
