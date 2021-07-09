@@ -101,8 +101,11 @@ export default {
 					]
 				},
 				{
-					title: 'Medien',
-					links: [{ ...routeMeta.MEDIEN__FOTOGALERIE }]
+					title: 'Dies & Das',
+					links: [
+						{ ...routeMeta.MEDIEN__FOTOGALERIE },
+						{ ...routeMeta.SPONSOREN }
+					]
 				},
 				{
 					title: routeMeta.RECHTLICHES.title,

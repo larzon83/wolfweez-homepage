@@ -70,6 +70,11 @@ export const routeMeta = {
 		to: '/rechtliches/impressum/'
 	},
 
+	SPONSOREN: {
+		title: 'Sponsoren',
+		to: '/sponsoren/'
+	},
+
 	TICKETS: {
 		title: 'Tickets',
 		to: '/tickets/'
