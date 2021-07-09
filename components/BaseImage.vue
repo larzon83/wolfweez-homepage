@@ -1,7 +1,7 @@
 <template>
 	<v-img
 		v-if="pic.filename"
-		:alt="pic.alt"
+		:alt="alt || pic.alt"
 		:src="$_transformImage(pic.filename, `${width}x0`)"
 		:lazy-src="
 			$_transformImage(
@@ -28,6 +28,10 @@ export default {
 		pic: {
 			type: Object,
 			required: true
+		},
+		alt: {
+			type: String,
+			default: ''
 		},
 		width: {
 			type: String,
