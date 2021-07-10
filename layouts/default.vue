@@ -51,7 +51,6 @@
 
 <script>
 import Toolbar from '~/components/Toolbar'
-import { routeMeta, tabTypes } from '~/utils/constants'
 
 export default {
 	name: 'Default',
@@ -63,19 +62,6 @@ export default {
 		return {
 			offsettop: 0,
 			swapToolbar: false
-		}
-	},
-
-	computed: {
-		subNavigation() {
-			let nav = ''
-			if (this.$route.path.includes(routeMeta.LINEUP.to)) {
-				nav = tabTypes.LINEUP
-			}
-			if (this.$route.path.includes(routeMeta.INFOS.to)) {
-				nav = tabTypes.INFOS
-			}
-			return nav
 		}
 	},
 
