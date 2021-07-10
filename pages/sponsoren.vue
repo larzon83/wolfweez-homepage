@@ -52,12 +52,15 @@ export default {
 		return {
 			title,
 			meta: createSEOMeta({
-				// description: this.story.content.description_meta, // TODO:
 				image: createOgImagePath(this.$route.path),
 				imageAlt: title,
 				title,
 				url: this.$route.path
-			})
+			}),
+			link: [
+				{ rel: 'preconnect', href: 'https://a.storyblok.com' },
+				{ rel: 'preconnect', href: 'https://img2.storyblok.com' }
+			]
 		}
 	},
 
