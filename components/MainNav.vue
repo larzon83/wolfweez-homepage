@@ -55,24 +55,31 @@ export default {
 		...mapGetters('config', ['currentFestival']),
 
 		mobileHeadline() {
-			let headline = ''
 			const currentPath = this.$_slashify(this.$route.path)
+
+			if (currentPath === '/') {
+				return `${this.currentFestival.content.date} ${this.currentFestival.content.year} &nbsp;·&nbsp; Irslingen`
+			}
+
 			const mainNavItemsWithoutHome = [...this.mainNavItems].splice(1)
 			const foundInMainNavItems = mainNavItemsWithoutHome.find(p =>
 				currentPath.includes(p.to)
 			)
 
 			if (foundInMainNavItems) {
-				headline = foundInMainNavItems.title
-			} else if (currentPath === '/') {
-				headline = `${this.currentFestival.content.date} ${this.currentFestival.content.year} &nbsp;·&nbsp; Irslingen`
-			} else {
-				for (const route of Object.values(routeMeta)) {
-					if (route.to === currentPath) {
-						headline = route.title
-						break
-					}
+				return foundInMainNavItems.title
+			}
+
+			let headline = ''
+			for (const route of Object.values(routeMeta)) {
+				if (route.to === currentPath) {
+					headline = route.title
+					break
 				}
+			}
+
+			if (!headline && process.client && this.$nuxt.context.nuxtState.error) {
+				headline = 'shizzle'
 			}
 
 			return headline
