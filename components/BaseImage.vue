@@ -3,12 +3,7 @@
 		v-if="pic.filename"
 		:alt="alt || pic.alt"
 		:src="$_transformImage(pic.filename, `${width}x0`)"
-		:lazy-src="
-			$_transformImage(
-				pic.filename,
-				`${Math.ceil(4 * $_aspectRatio(pic.filename))}x0`
-			)
-		"
+		:lazy-src="lazyPic"
 		:aspect-ratio="$_aspectRatio(pic.filename)"
 		:eager="eager"
 		:max-width="maxWidth"
@@ -41,6 +36,10 @@ export default {
 			type: String,
 			default: '300'
 		},
+		lazySrc: {
+			type: Boolean,
+			default: true
+		},
 		eager: {
 			type: Boolean,
 			default: true
@@ -56,6 +55,17 @@ export default {
 		cover: {
 			type: Boolean,
 			default: false
+		}
+	},
+
+	computed: {
+		lazyPic() {
+			if (!this.lazySrc) return undefined
+
+			return this.$_transformImage(
+				this.pic.filename,
+				`${Math.ceil(4 * this.$_aspectRatio(this.pic.filename))}x0`
+			)
 		}
 	}
 }
