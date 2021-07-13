@@ -52,7 +52,7 @@
 						</div>
 					</client-only>
 				</div>
-				<v-card-title class="headline">
+				<v-card-title>
 					Welcome to the Vuetify + Nuxt.js template!
 				</v-card-title>
 				<v-card-text>
@@ -71,8 +71,7 @@
 							href="https://vuetifyjs.com"
 							target="_blank"
 							rel="noopener noreferrer"
-						>
-							documentation </a
+							>documentation</a
 						>.
 					</p>
 					<p>
@@ -83,7 +82,7 @@
 							rel="noopener noreferrer"
 							title="chat"
 						>
-							discord </a
+							discord</a
 						>.
 					</p>
 					<p>
@@ -94,7 +93,7 @@
 							rel="noopener noreferrer"
 							title="contribute"
 						>
-							issue board </a
+							issue board</a
 						>.
 					</p>
 					<p>

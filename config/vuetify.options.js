@@ -16,7 +16,7 @@ export default {
 		dark: true,
 		themes: {
 			dark: {
-				anchor: '#e05e5e',
+				anchor: '#ec6969',
 				primary: '#e05e5e',
 				bright: '#ebebee',
 				dark: '#212121',
