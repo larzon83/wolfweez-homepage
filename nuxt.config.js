@@ -121,7 +121,12 @@ export default {
 	],
 
 	// Modules (https://go.nuxtjs.dev/config-modules)
-	modules: ['@nuxtjs/axios', '@nuxtjs/proxy', 'nuxt-stripejs'],
+	modules: [
+		'nuxt-client-init-module',
+		'@nuxtjs/axios',
+		'@nuxtjs/proxy',
+		'nuxt-stripejs'
+	],
 
 	stripe: {
 		publishableKey:
