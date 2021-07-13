@@ -40,26 +40,7 @@
 
 		<!-- <v-col cols="12" sm="8" md="6"> -->
 		<v-col cols="12" class="mt-12">
-			<!-- <div class="text-center">
-				<v-img
-					:src="require('~/assets/img/logo.png')"
-					:alt="'Logo'"
-					aspect-ratio="2.4294"
-					eager
-					class="px-8"
-					min-height="100"
-					position="top center"
-					contain
-				></v-img>
-			</div> -->
-			<!-- max-width="220" -->
-			<!-- color="#323435" -->
 			<v-card color="darkish" flat>
-				<!-- <div>
-					<v-btn icon>
-						<v-icon color="#ff0000">$menu</v-icon>
-					</v-btn>
-				</div> -->
 				<div class="countdown-wrapper">
 					<client-only>
 						<div>
