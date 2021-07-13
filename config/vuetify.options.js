@@ -19,7 +19,8 @@ export default {
 				anchor: '#e05e5e',
 				primary: '#e05e5e',
 				bright: '#ebebee',
-				dark: '#212121'
+				dark: '#212121',
+				darkish: '#2a2c2d'
 			}
 		}
 	},
