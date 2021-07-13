@@ -175,7 +175,7 @@ export default {
 .tmp {
 	color: rgba(235, 235, 238, 0.35);
 	// color: rgba(235, 235, 238, 0.58);
-	// background: #2a2c2d;
+	// background: var(--v-darkish-base);
 	// background: var(--v-primary-base);
 	height: 54px;
 	font-size: $size20;

@@ -54,7 +54,7 @@
 			</div> -->
 			<!-- max-width="220" -->
 			<!-- color="#323435" -->
-			<v-card color="#2a2c2d">
+			<v-card color="darkish" flat>
 				<!-- <div>
 					<v-btn icon>
 						<v-icon color="#ff0000">$menu</v-icon>
