@@ -19,7 +19,7 @@
 					v-if="blok.hasPics"
 					cols="12"
 					:md="blok.containerImgCols"
-					:class="{ 'pt-0': $vuetify.breakpoint.smAndDown }"
+					class="pt-0 pt-md-3"
 				>
 					<v-row justify="start" :class="blok.picsFlexDirection" class="my-0">
 						<v-col
@@ -32,7 +32,7 @@
 								'pt-0': blok.pics_arrangement === 'bottom'
 							}"
 						>
-							<BaseImage :pic="pic" max-width="auto" />
+							<SbImage :pic="pic" :preset="presetInfo" />
 						</v-col>
 					</v-row>
 				</v-col>
@@ -40,10 +40,9 @@
 					v-if="blok.text"
 					cols="12"
 					:md="blok.containerTextCols"
-					:class="{
-						'pb-0': blok.pics_arrangement === 'bottom',
-						'pb-0': $vuetify.breakpoint.smAndDown
-					}"
+					:class="[
+						blok.pics_arrangement === 'bottom' ? 'pb-0' : 'pb-0 pb-md-3'
+					]"
 				>
 					<h2 v-if="blok.headline && blok.headline_inset" class="pb-3">
 						{{ blok.headline }}
@@ -57,6 +56,7 @@
 
 <script>
 import useFormatting from '~/mixins/useFormatting.js'
+import { presetNames } from '~/utils/responsive-images'
 
 export default {
 	name: 'BlokContent',
@@ -82,6 +82,10 @@ export default {
 				return blok
 			})
 		}
+	},
+
+	created() {
+		this.presetInfo = presetNames.INFO
 	},
 
 	methods: {

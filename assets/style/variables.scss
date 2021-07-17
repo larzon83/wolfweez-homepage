@@ -1,5 +1,5 @@
-$c-primary: #e05e5e;
-$c-dark: #212121;
+// duplicate theme colors, to be able to use with rgba()
+$c-bright: #ebebee;
 
 $main-nav-letter-spacing: 0.0125em;
 
@@ -12,8 +12,8 @@ $container-padding-x: 16px;
 $material-dark: (
 	'background': none,
 	'text': (
-		'primary': #ebebee
-		// 'secondary': rgba($vuetify_main_font_bright_color, $vuetify_main_font_bright_percent)
+		'primary': #ebebee,
+		'secondary': #ebebee
 	),
 	'secondary-text-percent': 1
 );
@@ -32,6 +32,8 @@ $container-max-widths: (
 	'xl': 976px
 );
 
+@import '~vuetify/src/styles/styles.sass';
+
 // ::: vuetify component overrides :::
 // VBtn
 // $btn-active-opacity: 0;
@@ -42,9 +44,14 @@ $btn-font-sizes: (
 );
 
 // VCard
-$card-shaped-border-radius: $border-radius-root;
-$card-title-font-size: 0.9375rem; // 15px
-$card-text-font-size: 0.9375rem; // 15px
+$card-text-font-size: map-deep-get($headings, 'body-1', 'size');
+$card-text-letter-spacing: normal;
+$card-text-line-height: map-deep-get($headings, 'body-1', 'line-height');
+$card-title-font-size: map-deep-get($headings, 'h5', 'size');
+$card-title-font-weight: 700;
+$card-title-letter-spacing: map-deep-get($headings, 'h5', 'letter-spacing');
+$card-title-line-height: map-deep-get($headings, 'h5', 'line-height');
+$card-subtitle-padding: 20px;
 
 // VLabel
 $label-font-size: 0.9375rem; // 15px
@@ -56,5 +63,3 @@ $list-item-title-subtitle-line-height: 1.28;
 $list-item-content-padding: 17px 0;
 $list-item-icon-margin: 18px 0;
 $list-item-padding: 0 8px;
-
-@import '~vuetify/src/styles/styles.sass';

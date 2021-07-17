@@ -1,5 +1,5 @@
 body {
-	background: $c-dark;
+	background: var(--v-dark-base);
 
 	@media all and (display-mode: standalone) {
 		user-select: none;

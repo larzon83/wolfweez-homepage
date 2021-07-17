@@ -10,15 +10,15 @@
 				md="6"
 				lg="4"
 			>
-				<!-- color="#212322" -->
 				<v-card
 					v-if="band.content"
-					color="#2a2c2d"
-					href
-					nuxt
-					height="100%"
 					:ripple="false"
 					:to="$_slashify(band.full_slug)"
+					color="darkish"
+					flat
+					height="100%"
+					href
+					nuxt
 				>
 					<v-img
 						v-if="band.content.image.filename"
@@ -27,11 +27,9 @@
 						:lazy-src="$_transformImage(band.content.image.filename, '300x0')"
 						aspect-ratio="1.9048"
 						eager
-						class="py-3"
-						position="top center"
-						contain
 					></v-img>
-					<v-card-title class="text-h4 text-md-h6 text-xl-h5">
+					<!-- TODO: use different sizes per breakpoint: text-h4 text-md-h6 text-xl-h5 -->
+					<v-card-title>
 						{{ band.content.name }}
 					</v-card-title>
 					<v-card-text>

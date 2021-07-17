@@ -188,8 +188,6 @@ export default {
 				title
 			}),
 			link: [
-				{ rel: 'preconnect', href: 'https://a.storyblok.com' },
-				{ rel: 'preconnect', href: 'https://img2.storyblok.com' },
 				{
 					rel: 'preload',
 					as: 'image',

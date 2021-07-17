@@ -11,7 +11,7 @@
 						md="3"
 					>
 						<v-card flat tile color="transparent">
-							<v-subheader class="text-button font-weight-regular pl-0">{{
+							<v-subheader class="sub-headline text-button pl-0">{{
 								section.title
 							}}</v-subheader>
 							<v-list dense flat tile color="transparent" class="pt-0">
@@ -33,7 +33,37 @@
 						</v-card>
 					</v-col>
 				</v-row>
-				<v-row justify="center" no-gutters>
+				<v-row
+					align="center"
+					no-gutters
+					class="powered-by justify-center justify-md-start mt-5"
+				>
+					<v-subheader
+						class="
+							sub-headline
+							text-button
+							justify-center justify-md-start
+							pl-0
+							pr-0 pr-md-4
+						"
+						>Powered by</v-subheader
+					>
+					<SponsorItem
+						v-for="sponsor in mainSponsors.story.content.sponsors_list"
+						:key="`footer-sponsor-${sponsor._uid}`"
+						v-editable="sponsor"
+						:preset="presetSponsorMainFooter"
+						:sponsor="sponsor"
+					/>
+					<!-- <v-col
+						v-for="sponsor in mainSponsors.stories"
+						:key="`${sponsor.id}-${sponsor.slug}`"
+						v-editable="sponsor.content"
+					>
+						<SponsorItem :sponsor="sponsor" pic-height="55" />
+					</v-col> -->
+				</v-row>
+				<v-row justify="center" no-gutters class="mt-6 mt-md-11">
 					<v-btn
 						:ripple="false"
 						:aria-label="`${siteTitle} auf Facebook`"
@@ -72,14 +102,13 @@
 <script>
 import { mapState } from 'vuex'
 import { routeMeta, siteTitle } from '~/utils/constants'
+import { presetNames } from '~/utils/responsive-images'
 
 export default {
 	name: 'Footer',
-	data: () => ({
-		siteTitle: siteTitle.short
-	}),
 
 	computed: {
+		...mapState(['mainSponsors']),
 		...mapState('config', ['infos']),
 
 		sections() {
@@ -118,6 +147,11 @@ export default {
 				}
 			]
 		}
+	},
+
+	created() {
+		this.presetSponsorMainFooter = presetNames.SPONSORS_MAIN_FOOTER
+		this.siteTitle = siteTitle.short
 	}
 }
 </script>
@@ -125,6 +159,25 @@ export default {
 <style lang="scss" scoped>
 .v-footer {
 	box-shadow: none !important;
+
+	.sub-headline {
+		color: rgba($c-bright, 0.64);
+		font-weight: 700;
+
+		@media #{map-get($display-breakpoints, 'md-and-down')} {
+			width: 100%;
+		}
+	}
+
+	.powered-by {
+		column-gap: 25px;
+
+		.sub-headline {
+			@media #{map-get($display-breakpoints, 'md-and-down')} {
+				width: 100%;
+			}
+		}
+	}
 }
 
 .v-list ::v-deep {

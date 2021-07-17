@@ -1,4 +1,3 @@
-// FIXME:
 // test trianglify for generating polygon background
 
 const fs = require('fs')
