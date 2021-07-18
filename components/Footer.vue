@@ -163,10 +163,6 @@ export default {
 	.sub-headline {
 		color: rgba($c-bright, 0.64);
 		font-weight: 700;
-
-		@media #{map-get($display-breakpoints, 'md-and-down')} {
-			width: 100%;
-		}
 	}
 
 	.powered-by {
