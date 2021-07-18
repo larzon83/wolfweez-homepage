@@ -222,7 +222,11 @@ export default {
 				exclude: /(node_modules)/,
 				options: {
 					syntax: 'scss',
-					files: [resolve(__dirname, `./config/font-sizes.js`)]
+					files: [
+						resolve(__dirname, './assets/style/colors.json'),
+						resolve(__dirname, `./config/font-sizes.js`),
+						resolve(__dirname, './assets/style/_functions.scss')
+					]
 				}
 			})
 		}

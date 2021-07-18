@@ -7,6 +7,13 @@ import {
 } from 'vue-feather-icons'
 import IconWolf from '@/components/IconWolf'
 
+const colors = require('@/assets/style/colors.json').clientcolors
+
+const themeColors = {}
+Object.entries(colors).forEach(([key, value]) => {
+	themeColors[key] = value
+})
+
 export default {
 	theme: {
 		options: {
@@ -15,13 +22,14 @@ export default {
 		},
 		dark: true,
 		themes: {
-			dark: {
-				anchor: '#ec6969',
-				primary: '#e05e5e',
-				bright: '#ebebee',
-				dark: '#212121',
-				darkish: '#2a2c2d'
-			}
+			dark: themeColors
+			// dark: {
+			// 	anchor: '#ec6969',
+			// 	primary: '#e05e5e',
+			// 	bright: '#ebebee',
+			// 	dark: '#212121',
+			// 	darkish: '#2a2c2d'
+			// }
 		}
 	},
 

@@ -1,5 +1,17 @@
+@mixin rgb-values-as-css-vars {
+	@each $name, $color in $clientcolors {
+		--rgb_#{$name}: #{red($color)}, #{green($color)}, #{blue($color)};
+	}
+}
+
+:root {
+	@include rgb-values-as-css-vars;
+}
+
 body {
-	background: $c-dark;
+	// background: $c-dark;
+	background: getcolor('dark');
+	// background: var(--v-dark-base);
 
 	@media all and (display-mode: standalone) {
 		user-select: none;
@@ -15,6 +27,10 @@ body.lg-on {
 .lg-outer .lg-thumb-item.active,
 .lg-outer .lg-thumb-item:hover {
 	border-color: var(--v-primary-base) !important;
+}
+
+.theme--dark.v-card {
+	background-color: getcolor('darkish') !important;
 }
 
 // .v-application {
