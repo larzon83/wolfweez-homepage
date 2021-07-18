@@ -73,7 +73,9 @@ export default {
 		link: [
 			// { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
 			{ rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg' },
-			...splashscreens
+			...splashscreens,
+			{ rel: 'preconnect', href: 'https://a.storyblok.com' },
+			{ rel: 'preconnect', href: 'https://img2.storyblok.com' }
 		]
 	},
 
@@ -155,7 +157,7 @@ export default {
 			short_name: 'Wolfweez',
 			description: siteDescription,
 			background_color: '#212121',
-			theme_color: '#212121', // TODO:
+			theme_color: '#212121',
 			lang: 'de-DE',
 			orientation: 'portrait-primary'
 		},
