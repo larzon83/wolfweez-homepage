@@ -40,8 +40,12 @@ export default {
 		}
 	},
 
-	computed: {
-		exactHeight() {
+	created() {
+		this.exactHeight = this.getExactHeight()
+	},
+
+	methods: {
+		getExactHeight() {
 			let height
 
 			if (this.preset === presetNames.SPONSORS_MAIN_FOOTER) {
