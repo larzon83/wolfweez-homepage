@@ -55,13 +55,6 @@
 						:preset="presetSponsorMainFooter"
 						:sponsor="sponsor"
 					/>
-					<!-- <v-col
-						v-for="sponsor in mainSponsors.stories"
-						:key="`${sponsor.id}-${sponsor.slug}`"
-						v-editable="sponsor.content"
-					>
-						<SponsorItem :sponsor="sponsor" pic-height="55" />
-					</v-col> -->
 				</v-row>
 				<v-row justify="center" no-gutters class="mt-6 mt-md-11">
 					<v-btn
