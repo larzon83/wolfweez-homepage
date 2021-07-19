@@ -4,7 +4,7 @@
 		:href="sponsor.link"
 		rel="noreferrer"
 		target="_blank"
-		class="d-block mb-5 mb-md-0"
+		class="d-block"
 	>
 		<SbImage
 			:alt="sponsor.name"

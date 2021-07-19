@@ -20,7 +20,7 @@
 						<SponsorItem :sponsor="sponsor" :preset="presetSponsorMain" />
 					</v-col>
 					<v-col cols="12" md="8" offset-md="1">
-						<h3 class="pb-1 mt-8 mt-md-0">{{ sponsor.name }}</h3>
+						<h3 class="pb-1 mt-10 mt-md-0">{{ sponsor.name }}</h3>
 						<rich-text-renderer :document="sponsor.description" />
 						<p v-if="sponsor.link">
 							<a :href="sponsor.link" rel="noreferrer" target="_blank">{{
