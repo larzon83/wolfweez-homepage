@@ -175,7 +175,7 @@ export default {
 	}
 
 	a {
-		color: white;
+		color: getcolor('bright');
 		text-decoration: none;
 		font-size: $size15;
 	}

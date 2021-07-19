@@ -315,7 +315,6 @@ export default {
 	// border: 3px solid getcolor('prime');
 	// padding: 16px 24px;
 	color: getcolor('dark');
-	// background: #f3f3f3;
 	width: 100%;
 	margin-right: 24px;
 
