@@ -9,7 +9,7 @@
 			:loading="loading"
 			:disabled="loading"
 			class="mt-3"
-			color="primary"
+			color="prime"
 			role="link"
 			@click="checkout"
 			>Kombi Ticket kaufen</v-btn

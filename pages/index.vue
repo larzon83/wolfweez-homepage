@@ -294,13 +294,13 @@ export default {
 		width: 2.45em;
 	}
 	.flip-card__top {
-		background: var(--v-primary-base);
-		color: var(--v-bright-base);
+		background: getcolor('prime');
+		color: getcolor('bright');
 	}
 	.flip-card__bottom,
 	.flip-card__back-bottom {
-		background: var(--v-primary-base);
-		color: var(--v-bright-base);
+		background: getcolor('prime');
+		color: getcolor('bright');
 		border-top-color: rgba(0, 0, 0, 0.15);
 	}
 	.flip-card__back::before,
@@ -312,9 +312,9 @@ export default {
 
 .item {
 	border-radius: 7px;
-	// border: 3px solid var(--v-primary-base);
+	// border: 3px solid getcolor('prime');
 	// padding: 16px 24px;
-	color: var(--v-dark-base);
+	color: getcolor('dark');
 	// background: #f3f3f3;
 	width: 100%;
 	margin-right: 24px;
@@ -328,15 +328,15 @@ export default {
 		right: 0;
 		bottom: 0;
 		border-radius: 6px;
-		border: 3px solid var(--v-primary-base);
+		border: 3px solid getcolor('prime');
 		transition: all 0.14s ease-in-out;
 	}
 	@media (hover: hover) {
 		a:hover {
-			// border: 3px solid var(--v-bright-base);
-			// background: var(--v-primary-base);
+			// border: 3px solid getcolor('bright');
+			// background: getcolor('prime');
 			// opacity: 0.3;
-			background: rgba(224, 94, 94, 0.3);
+			background: getcolor('prime', 0.3);
 		}
 	}
 }
@@ -358,14 +358,14 @@ export default {
 	padding: 4px;
 	height: 30px;
 	width: 30px;
-	color: var(--v-dark-base);
-	background: var(--v-primary-base);
+	color: getcolor('dark');
+	background: getcolor('prime');
 	box-shadow: none;
 	transition: color 0.14s ease-in-out;
 
 	@media (hover: hover) {
 		&:hover {
-			color: var(--v-bright-base);
+			color: getcolor('bright');
 		}
 	}
 }
@@ -386,15 +386,15 @@ export default {
 	border-radius: 10px;
 	width: 10px;
 	height: 10px;
-	background: rgba(255, 255, 255, 0.2);
+	background: getcolor('bright', 0.23);
 	transition: background 0.1s ease;
 }
 
 .dot:hover > div {
-	background: rgba(255, 255, 255, 0.6);
+	background: getcolor('bright', 0.6);
 }
 
 .dot.current > div {
-	background: var(--v-primary-base);
+	background: getcolor('prime');
 }
 </style>

@@ -154,7 +154,7 @@ export default {
 	box-shadow: none !important;
 
 	.sub-headline {
-		color: rgba($c-bright, 0.64);
+		color: getcolor('bright', 0.64);
 		font-weight: 700;
 	}
 

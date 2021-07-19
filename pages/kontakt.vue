@@ -60,7 +60,7 @@
 							<v-btn
 								:disabled="buttonDisabled"
 								class="mr-4"
-								color="primary"
+								color="prime"
 								type="submit"
 								>Submit</v-btn
 							>

@@ -133,7 +133,7 @@ export default {
 // 	// max-height: max(65vw, 350px);
 
 // 	background-image: url('~assets/img/trees.svg'),
-// 		linear-gradient($c-dark 0%, $c-dark 100%);
+// 		linear-gradient(getcolor('dark') 0%, getcolor('dark') 100%);
 // 	background-repeat: repeat-x;
 // 	// background-size: auto 520px;
 // 	// background-position: center -20px;
@@ -175,8 +175,8 @@ export default {
 .tmp {
 	color: rgba(235, 235, 238, 0.35);
 	// color: rgba(235, 235, 238, 0.58);
-	// background: var(--v-darkish-base);
-	// background: var(--v-primary-base);
+	// background: getcolor('darkish');
+	// background: getcolor('prime');
 	height: 54px;
 	font-size: $size20;
 	font-weight: 500;
@@ -186,7 +186,7 @@ export default {
 	border-top-left-radius: $border-radius-root;
 	border-top-right-radius: $border-radius-root;
 	border-bottom: 3px solid rgba(235, 235, 238, 0.35);
-	// border-bottom: 3px solid var(--v-primary-base);
+	// border-bottom: 3px solid getcolor('prime');
 	margin-bottom: 30px;
 
 	div {
@@ -199,8 +199,8 @@ export default {
 
 		&.active {
 			position: relative;
-			color: var(--v-bright-base);
-			// color: var(--v-primary-base);
+			color: getcolor('bright');
+			// color: getcolor('prime');
 			font-weight: 900;
 
 			&:after {
@@ -208,7 +208,7 @@ export default {
 				content: '';
 				bottom: -13px;
 				left: 0;
-				background: var(--v-bright-base);
+				background: getcolor('bright');
 				width: 100%;
 				height: 3px;
 			}

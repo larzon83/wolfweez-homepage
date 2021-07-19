@@ -166,13 +166,12 @@ export default {
 	letter-spacing: $main-nav-letter-spacing;
 
 	&:not(.nav-btn-active) ::v-deep .v-btn__content {
-		color: rgba(235, 235, 238, 0.6);
+		color: getcolor('bright', 0.6);
 	}
 }
 
 .nav-btn-active {
-	background: var(--v-primary-base);
-	color: var(--v-bright-base) !important;
+	background: getcolor('prime');
 	font-weight: 800;
 
 	&:before {
@@ -206,12 +205,11 @@ export default {
 	letter-spacing: $main-nav-letter-spacing;
 
 	&:not(.v-list-item--active) ::v-deep .v-list-item__title {
-		color: rgba(235, 235, 238, 0.6);
+		color: getcolor('bright', 0.6);
 	}
 
 	&.v-list-item--active {
-		background: var(--v-primary-base);
-		color: var(--v-bright-base) !important;
+		background: getcolor('prime');
 		font-weight: 800;
 
 		&:hover::before,

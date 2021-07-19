@@ -3,26 +3,18 @@
 		// value of given $colorname
 		$color: map-get($clientcolors, $colorname);
 
-		// save RGB values of given $color to an variable
-		// -> returns something like this -> "255, 0, 0"
-		// $rgb: #{red($color)}, #{green($color)}, #{blue($color)};
-
 		// alpha is given
 		@if $shade {
 			// return rgba(...)
 			// the RGB values are set as a CSS custom property. This property is being set in main.scss
-			// -> eg: main.scss defines "--rgb_primary: 255, 0, 0"
-			// -> if you would use this in real css, eg -> color: var(--rgb_primary); -> output would be -> color: 255, 0, 0;
+			// -> eg: main.scss defines "--rgb_COLORNAME: 255, 0, 0"
+			// -> if you would use this in real css, eg -> color: var(--rgb_COLORNAME); -> output would be -> color: 255, 0, 0;
 			// -> but we're building an rgba outside of it -> rgba(CSSVARIABLE, 0.5); -> output would be a valid rgba -> rgba(255, 0, 0, 0.5);
 			// #{$rgb} is a fallback, should the CSS Variable not be defined or malformed
 			@return rgba(var(--rgb_#{$colorname}), $shade);
 		}
-		// no alpha given
-		// -> return rgba width opactity of 1
-		// -> eg: rgba(255, 0, 0, 0.5)
 		@else {
-			// @return var(--v-#{$colorname}-base, $color);
-			@return rgba(var(--rgb_#{$colorname}), 1);
+			@return var(--#{$colorname});
 		}
 	}
 

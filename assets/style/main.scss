@@ -1,6 +1,7 @@
 @mixin rgb-values-as-css-vars {
 	@each $name, $color in $clientcolors {
 		--rgb_#{$name}: #{red($color)}, #{green($color)}, #{blue($color)};
+		--#{$name}: #{$color};
 	}
 }
 
@@ -8,10 +9,29 @@
 	@include rgb-values-as-css-vars;
 }
 
+// replicate vuetify colors with own names
+// copied and adapted from node_modules/vuetify/src/styles/generic/_colors.scss
+@mixin bg-color($color_value) {
+	background-color: $color_value !important;
+	border-color: $color_value !important;
+}
+@mixin txt-color($color_value) {
+	color: $color_value !important;
+	caret-color: $color_value !important;
+}
+
+@each $color_name, $color_value in $clientcolors {
+	.v-application .#{$color_name} {
+		@include bg-color($color_value);
+	}
+
+	.v-application .#{$color_name}--text {
+		@include txt-color($color_value);
+	}
+}
+
 body {
-	// background: $c-dark;
 	background: getcolor('dark');
-	// background: var(--v-dark-base);
 
 	@media all and (display-mode: standalone) {
 		user-select: none;
@@ -26,11 +46,12 @@ body.lg-on {
 
 .lg-outer .lg-thumb-item.active,
 .lg-outer .lg-thumb-item:hover {
-	border-color: var(--v-primary-base) !important;
+	border-color: getcolor('prime') !important;
 }
 
-.theme--dark.v-card {
-	background-color: getcolor('darkish') !important;
+// default link color
+.v-application a {
+	color: getcolor('ahref');
 }
 
 // .v-application {
@@ -85,8 +106,8 @@ body.lg-on {
 
 // 	background-image: url('~assets/img/trees.svg'),
 // 		linear-gradient(
-// 			$c-dark 0%,
-// 			$c-dark 100%
+// 			getcolor('dark') 0%,
+// 			getcolor('dark') 100%
 // 		);
 // 	background-repeat: repeat-x;
 // 	// background-size: auto 520px;

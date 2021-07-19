@@ -4,7 +4,7 @@
 		<h1>{{ pageTitle }}</h1>
 
 		<!-- MAIN sponsors -->
-		<v-card flat class="mt-5 pb-4">
+		<v-card color="darkish" flat class="mt-5 pb-4">
 			<!-- TODO: make this a h2 or h3 -->
 			<v-card-title>{{ mainSponsors.story.content.title }}</v-card-title>
 			<v-card-text>
@@ -49,7 +49,7 @@
 				cols="6"
 				lg="4"
 			>
-				<v-card flat>
+				<v-card color="darkish" flat>
 					<v-card-text class="pa-3 pa-md-5 pa-lg-3 pa-xl-5">
 						<SponsorItem :sponsor="sponsor" :preset="presetSponsorNormal" />
 					</v-card-text>

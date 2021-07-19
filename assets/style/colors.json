@@ -1,9 +1,9 @@
 {
 	"clientcolors": {
-		"anchor":								"#ec6969",
+		"ahref":								"#ec6969",
 		"bright":								"#ebebee",
 		"dark":									"#212121",
 		"darkish":							"#2a2c2d",
-		"primary":							"#e05e5e"
+		"prime":								"#e05e5e"
 	}
 }

@@ -91,7 +91,7 @@ export default {
 <style lang="scss" scoped>
 .navbar {
 	height: 54px;
-	border-bottom: 2px solid rgba(235, 235, 238, 0.06);
+	border-bottom: 2px solid getcolor('bright', 0.06);
 
 	&.is-home {
 		border-bottom: none;
@@ -122,13 +122,13 @@ export default {
 	letter-spacing: $main-nav-letter-spacing;
 
 	&:not(.nav-btn-active) ::v-deep .v-btn__content {
-		color: rgba(235, 235, 238, 0.6);
+		color: getcolor('bright', 0.6);
 	}
 }
 
 .nav-btn-active {
-	background: var(--v-primary-base);
-	color: var(--v-bright-base) !important;
+	background: getcolor('prime');
+	color: getcolor('bright') !important;
 	font-weight: 800;
 
 	&:before {

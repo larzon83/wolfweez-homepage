@@ -3,8 +3,7 @@
 		v-if="tabItems.length"
 		optional
 		background-color="transparent"
-		class="tabs-navigation"
-		active-class="tabs-navigation-active"
+		class="tabbar"
 		slider-size="2"
 		color="bright"
 	>
@@ -14,7 +13,8 @@
 			:ripple="false"
 			:to="tab.to"
 			nuxt
-			class="ma-0"
+			active-class="tab-btn-active"
+			class="tab-btn ma-0"
 			>{{ tab.title }}</v-tab
 		>
 	</v-tabs>
@@ -73,11 +73,17 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.tabs-navigation {
-	box-shadow: inset 0 -2px 0 rgba(235, 235, 238, 0.06);
+.tabbar {
+	box-shadow: inset 0 -2px 0 getcolor('bright', 0.06);
 
-	.tabs-navigation-active {
-		font-weight: 700;
+	.tab-btn {
+		&.tab-btn-active {
+			font-weight: 700;
+		}
+
+		&:not(.tab-btn-active) {
+			color: getcolor('bright', 0.6) !important;
+		}
 	}
 }
 </style>
