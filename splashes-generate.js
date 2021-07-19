@@ -6,13 +6,14 @@
 const { resolve } = require('path')
 const fse = require('fs-extra')
 const pwaAssetGenerator = require('pwa-asset-generator')
+const colors = require('./assets/style/colors.json').clientcolors
 
 ;(async () => {
 	const { savedImages } = await pwaAssetGenerator.generateImages(
 		'./static/icon-splashscreen.svg',
 		'./static/splashscreens',
 		{
-			background: '#212121',
+			background: colors.dark,
 			padding: 'calc(50vh - 17%) calc(50vw - 30%)',
 			pathOverride: '/splashscreens',
 			singleQuotes: true,

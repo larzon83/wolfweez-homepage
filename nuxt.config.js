@@ -2,6 +2,7 @@ import { resolve } from 'path'
 import { baseUrl, siteDescription, siteTitle } from './utils/constants'
 import { createSEOMeta } from './utils/seo'
 import { splashscreens } from './splashes'
+import colors from './assets/style/colors.json'
 
 // const proxyOptionsDev = {
 // 	axiosProxy: false,
@@ -160,8 +161,8 @@ export default {
 			name: siteTitle.short,
 			short_name: 'Wolfweez',
 			description: siteDescription,
-			background_color: '#212121',
-			theme_color: '#212121',
+			background_color: colors.clientcolors.dark,
+			theme_color: colors.clientcolors.dark,
 			lang: 'de-DE',
 			orientation: 'portrait-primary'
 		},
