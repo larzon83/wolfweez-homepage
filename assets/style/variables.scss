@@ -1,3 +1,7 @@
+// NOTE: this alias resolves to '_vuetify-additional-vars.scss' file in the build-dir.
+// It's created by our own 'vuetifyAdditionalVars' nuxt-module.
+@import '~vuetifyAdditionalVars';
+
 $main-nav-letter-spacing: 0.0125em;
 
 $color-pack: false;
@@ -37,11 +41,11 @@ $container-max-widths: (
 // $btn-focus-opacity: 0;
 $btn-letter-spacing: 0.02em;
 $btn-font-sizes: (
-  'default': 0.9375rem // 15px
+  'default': $font_size15
 );
 
 // VBreadcrumbs
-$breadcrumbs-item-font-size: 0.8125rem; // 13px
+$breadcrumbs-item-font-size: $font_size13;
 $breadcrumbs-padding: 16px 0 48px;
 
 // VCard
@@ -55,11 +59,11 @@ $card-title-line-height: map-deep-get($headings, 'h5', 'line-height');
 $card-subtitle-padding: 20px;
 
 // VLabel
-$label-font-size: 0.9375rem; // 15px
+$label-font-size: $font_size15;
 
 // VList
-$list-item-title-font-size: 0.9375rem; // 15px
-$list-item-subtitle-font-size: 0.9375rem; // 15px
+$list-item-title-font-size: $font_size15;
+$list-item-subtitle-font-size: $font_size15;
 $list-item-title-subtitle-line-height: 1.28;
 $list-item-content-padding: 17px 0;
 $list-item-icon-margin: 18px 0;

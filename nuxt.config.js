@@ -94,6 +94,9 @@ export default {
 	// Auto import components (https://go.nuxtjs.dev/config-components)
 	components: true,
 
+	// TODO: how to get watch working to trigger "vuetifyAdditionalVars" module?
+	// watch: ['~/config/font-sizes.js'],
+
 	// Modules for dev and build (recommended) (https://go.nuxtjs.dev/config-modules)
 	buildModules: [
 		// [
@@ -107,6 +110,7 @@ export default {
 		// 		}
 		// 	}
 		// ],
+		'@/modules/vuetifyAdditionalVars',
 		'@nuxtjs/eslint-module',
 		'@nuxtjs/pwa',
 		'@nuxtjs/vuetify',

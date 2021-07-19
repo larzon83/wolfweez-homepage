@@ -91,6 +91,7 @@ sw.*
 
 .env-cmdrc
 /static/og-images
+modules/vuetifyAdditionalVars/**/*.scss
 
 # Local Netlify folder
 .netlify
