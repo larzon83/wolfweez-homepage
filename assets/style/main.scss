@@ -33,6 +33,11 @@
 body {
 	background: getcolor('dark');
 
+	// default link color
+	.v-application a {
+		color: getcolor('ahref');
+	}
+
 	@media all and (display-mode: standalone) {
 		user-select: none;
 	}
@@ -48,74 +53,3 @@ body.lg-on {
 .lg-outer .lg-thumb-item:hover {
 	border-color: getcolor('prime') !important;
 }
-
-// default link color
-body .v-application a {
-	color: getcolor('ahref');
-}
-
-// .v-application {
-// 	font-size: $size15;
-// }
-
-// .v-application {
-// 	perspective: 100px;
-// 	transform-style: preserve-3d;
-// 	height: 100vh;
-// 	overflow-x: hidden;
-// 	overflow-y: scroll;
-// }
-
-// .v-application:before {
-// 	content: '';
-// 	position: absolute;
-// 	left: 0;
-// 	top: 0;
-// 	bottom: 0;
-// 	right: 0;
-// 	// max-height: max(65vw, 350px);
-
-// 	background-image: url('~assets/img/trees.svg'),
-// 		radial-gradient(
-// 			circle,
-// 			rgb(184 192 194 / 88%) 0%,
-// 			rgb(184 192 194 / 88%) 100%
-// 		),
-// 		url('~assets/img/bg.svg');
-// 	background-repeat: repeat-x;
-// 	// background-size: auto 520px;
-// 	// background-position: center -20px;
-// 	background-size: auto 220px, auto 520px, auto 520px;
-// 	background-position:
-// 		center min(calc(max(65vw, 350px) - 220px), 300px),
-// 		center min(calc(65vw - 520px), -20px),
-// 		center min(calc(65vw - 520px), -20px);
-
-// 	transform: translateZ(-100px) scale(2);
-// 	z-index: -1;
-// }
-
-// .v-application:after {
-// 	content: '';
-// 	position: absolute;
-// 	left: 0;
-// 	top: 0;
-// 	bottom: 0;
-// 	right: 0;
-// 	// max-height: max(65vw, 350px);
-
-// 	background-image: url('~assets/img/trees.svg'),
-// 		linear-gradient(
-// 			getcolor('dark') 0%,
-// 			getcolor('dark') 100%
-// 		);
-// 	background-repeat: repeat-x;
-// 	// background-size: auto 520px;
-// 	// background-position: center -20px;
-// 	background-size: auto 220px, auto 220px;
-// 	background-position:
-// 		center min(calc(max(65vw, 350px) - 220px), 300px),
-// 		center min(calc(max(65vw, 350px)), 520px);
-
-// 	z-index: -1;
-// }

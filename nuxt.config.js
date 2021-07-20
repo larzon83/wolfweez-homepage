@@ -30,7 +30,6 @@ export default {
 		meta: [
 			...createSEOMeta(),
 			{ hid: 'charset', charset: 'utf-8' },
-			// { name: 'viewport', content: 'width=device-width, initial-scale=1' },
 			{
 				name: 'viewport',
 				content:

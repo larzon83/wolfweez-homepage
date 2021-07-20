@@ -1,6 +1,6 @@
 import { routeMeta } from './constants'
 
-// Get Data From Storyblok -> for use with asyncData
+// Get Data From Storyblok
 export const sbData = ({
 	ctx,
 	isStartpage = null,

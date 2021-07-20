@@ -113,7 +113,6 @@ export default {
 	.bg {
 		@include pos-absolute;
 		z-index: -4;
-
 		background-image: radial-gradient(
 				circle,
 				rgb(184 192 194 / 88%) 0%,
@@ -126,25 +125,6 @@ export default {
 				min(calc(max(50.5vw, 350px) - 520px), var(--null-px)),
 			center min(calc(max(50.5vw, 350px) - 520px), var(--null-px));
 	}
-
-	// .bg-old {
-	// 	@include pos-absolute;
-	// 	z-index: -2;
-
-	// 	background-image: url('~assets/img/trees.svg'),
-	// 		radial-gradient(
-	// 			circle,
-	// 			rgb(184 192 194 / 88%) 0%,
-	// 			rgb(184 192 194 / 88%) 100%
-	// 		),
-	// 		url('~assets/img/bg.svg');
-	// 	background-repeat: repeat-x;
-	// 	background-size: auto 220px, auto 520px, auto 520px;
-	// 	background-position: center
-	// 			max(min(calc(50.5vw - 220px), 300px), var(--null-px)),
-	// 		center min(calc(max(50.5vw, 350px) - 520px), var(--null-px)),
-	// 		center min(calc(max(50.5vw, 350px) - 520px), var(--null-px));
-	// }
 
 	.container {
 		@media #{map-get($display-breakpoints, 'md-and-up')} {

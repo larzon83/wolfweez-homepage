@@ -1,5 +1,4 @@
 <template>
-	<!-- <v-row justify="center" align="center" style="margin-top: -25px" no-gutters> -->
 	<v-row justify="center" align="center" no-gutters class="mt-lg-5 mt-0">
 		<v-col cols="12">
 			<vue-horizontal
@@ -13,7 +12,7 @@
 					:alt="band.content.name"
 					:src="$_transformImage(band.content.image.filename, '530x0')"
 					:lazy-src="$_transformImage(band.content.image.filename, '100x0')"
-					class="item"
+					class="slider-item"
 					aspect-ratio="1.9048"
 					eager
 					position="top center"
@@ -38,7 +37,6 @@
 			</div>
 		</v-col>
 
-		<!-- <v-col cols="12" sm="8" md="6"> -->
 		<v-col cols="12" class="mt-12">
 			<v-card color="darkish" flat>
 				<div class="countdown-wrapper">
@@ -238,10 +236,6 @@ export default {
 		...mapGetters('config', ['currentFestival'])
 	},
 
-	mounted() {
-		// console.log('this.story.content:', this.story.content)
-	},
-
 	methods: {
 		onScrollDebounce({ scrollWidth, width, left }) {
 			this.width = width
@@ -310,15 +304,12 @@ export default {
 	}
 }
 
-.item {
+.slider-item {
 	border-radius: 7px;
-	// border: 3px solid getcolor('prime');
-	// padding: 16px 24px;
 	color: getcolor('dark');
 	width: 100%;
 	margin-right: 24px;
 
-	// &::after {
 	a {
 		content: '';
 		position: absolute;
@@ -330,24 +321,18 @@ export default {
 		border: 3px solid getcolor('prime');
 		transition: all 0.14s ease-in-out;
 	}
+
 	@media (hover: hover) {
 		a:hover {
-			// border: 3px solid getcolor('bright');
-			// background: getcolor('prime');
-			// opacity: 0.3;
 			background: getcolor('prime', 0.3);
 		}
 	}
-}
 
-@media #{map-get($display-breakpoints, 'md-and-up')} {
-	.item {
+	@media #{map-get($display-breakpoints, 'md-and-up')} {
 		width: calc((100% - (24px)) / 2);
 	}
-}
 
-@media #{map-get($display-breakpoints, 'xl-only')} {
-	.item {
+	@media #{map-get($display-breakpoints, 'xl-only')} {
 		width: calc((100% - (2 * 24px)) / 3);
 	}
 }

@@ -39,9 +39,6 @@
 						/>
 					</v-card-text>
 				</v-card>
-				<p v-else class="px-4 py-2 text-white bg-red-700 text-center rounded">
-					This content loads on save. <strong>Save the entry & reload.</strong>
-				</p>
 			</v-col>
 		</v-row>
 	</section>
