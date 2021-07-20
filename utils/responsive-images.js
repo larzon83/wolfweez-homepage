@@ -1,4 +1,5 @@
 export const presetNames = {
+	HOME_SLIDER: 'home-slider',
 	SPONSORS_MAIN: 'sponsors-main',
 	SPONSORS_MAIN_FOOTER: 'sponsors-main-footer',
 	SPONSORS_NORMAL: 'sponsors-normal',
@@ -42,6 +43,26 @@ export const presets = {
 	 - maxWidth: Number
 	 */
 
+	[presetNames.HOME_SLIDER]: {
+		bgPosition: presetOptions.BG_POSITION_TOP,
+		widths: generateWidths([
+			253, 288, 300, 308, 328, 339, 343, 350, 367, 400, 467, 567
+		]),
+		sizes: removeClutter(`
+					(max-width: 320px) 288px,
+					(max-width: 340px) 308px,
+					(max-width: 360px) 328px,
+					(max-width: 375px) 343px,
+					(max-width: 382px) 350px,
+					(max-width: 399px) 367px,
+					(max-width: 432px) 400px,
+					(max-width: 499px) 467px,
+					(max-width: 599px) 567px,
+					(max-width: 783px) 253px,
+					(max-width: 1139px) 339px,
+					300px
+					`)
+	},
 	[presetNames.SPONSORS_MAIN]: {
 		disableLazySrc: true,
 		maxWidth: 300,

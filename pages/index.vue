@@ -6,23 +6,19 @@
 				class="horizontal"
 				@scroll-debounce="onScrollDebounce"
 			>
-				<v-img
+				<SbImage
 					v-for="band in bands.stories"
 					:key="band.content._uid"
 					:alt="band.content.name"
-					:src="$_transformImage(band.content.image.filename, '530x0')"
-					:lazy-src="$_transformImage(band.content.image.filename, '100x0')"
+					:pic="band.content.image"
+					:preset="presetHomeSlider"
 					class="slider-item"
-					aspect-ratio="1.9048"
-					eager
-					position="top center"
-					contain
 				>
 					<nuxt-link
 						:aria-label="band.content.name"
 						:to="$_slashify(band.full_slug)"
 					/>
-				</v-img>
+				</SbImage>
 			</vue-horizontal>
 			<div class="pagination">
 				<div
@@ -167,6 +163,7 @@ import useFormatting from '~/mixins/useFormatting.js'
 import useStorybridge from '~/mixins/useStorybridge.js'
 import { sbData } from '~/utils'
 import { routeMeta } from '~/utils/constants'
+import { presetNames } from '~/utils/responsive-images'
 import { createSEOMeta } from '~/utils/seo'
 
 export default {
@@ -234,6 +231,10 @@ export default {
 
 	computed: {
 		...mapGetters('config', ['currentFestival'])
+	},
+
+	created() {
+		this.presetHomeSlider = presetNames.HOME_SLIDER
 	},
 
 	methods: {

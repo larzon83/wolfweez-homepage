@@ -13,7 +13,14 @@
 		:sizes="defs.sizes"
 		:src="defs.defaultSrc"
 		:width="defs.width"
-	></v-img>
+	>
+		<template #placeholder>
+			<slot name="placeholder" />
+		</template>
+		<template #default>
+			<slot name="default" />
+		</template>
+	</v-img>
 </template>
 
 <script>
