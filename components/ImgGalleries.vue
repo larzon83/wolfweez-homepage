@@ -22,7 +22,6 @@
 						:src="$_transformImage(img.filename, '500x500')"
 						:lazy-src="$_transformImage(img.filename, '6x6')"
 						aspect-ratio="1"
-						class="grey lighten-2"
 						style="cursor: pointer"
 						@click="openGallery(imgIndex, galleryIndex)"
 					>
@@ -30,7 +29,7 @@
 							<v-row class="fill-height ma-0" align="center" justify="center">
 								<v-progress-circular
 									indeterminate
-									color="grey lighten-5"
+									color="ahref"
 								></v-progress-circular>
 							</v-row>
 						</template>
