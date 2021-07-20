@@ -40,10 +40,12 @@ export const presets = {
 	 - bgPosition: String
 	 - contain: Boolean
 	 - disableLazySrc: Boolean
+	 - lazySrcMultiplier: Number
 	 - maxWidth: Number
 	 */
 
 	[presetNames.HOME_SLIDER]: {
+		lazySrcMultiplier: 52,
 		widths: generateWidths([
 			253, 288, 300, 308, 328, 339, 343, 350, 367, 400, 467, 567
 		]),

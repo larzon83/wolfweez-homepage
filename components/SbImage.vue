@@ -94,7 +94,11 @@ export default {
 				return undefined
 			}
 
-			const lazyWidth = Math.ceil(4 * this.$_aspectRatio(this.pic.filename))
+			const multiplier = this.currentPreset.lazySrcMultiplier || 4
+
+			const lazyWidth = Math.ceil(
+				multiplier * this.$_aspectRatio(this.pic.filename)
+			)
 			return this.$_getSbImageUrl(this.pic.filename, lazyWidth)
 		},
 
