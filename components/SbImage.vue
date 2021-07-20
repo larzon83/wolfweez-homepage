@@ -4,7 +4,7 @@
 		:alt="alt || pic.alt"
 		:aspect-ratio="defs.aspectRatio"
 		:contain="isContain"
-		:eager="eager"
+		:eager="defs.eager"
 		:height="defs.height"
 		:lazy-src="lazySrc"
 		:max-width="defs.maxWidth"
@@ -49,7 +49,7 @@ export default {
 		},
 		eager: {
 			type: Boolean,
-			default: true
+			default: undefined
 		},
 		exactHeight: {
 			type: [Number, String],
@@ -131,6 +131,7 @@ export default {
 					this.aspectRatio ||
 					this.currentPreset.aspectRatio ||
 					this.$_aspectRatio(this.pic.filename),
+				eager: this.eager || this.currentPreset.eager || false,
 				maxWidth: this.maxWidth || this.currentPreset.maxWidth,
 				position:
 					this.position ||

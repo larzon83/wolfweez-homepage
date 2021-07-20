@@ -40,11 +40,13 @@ export const presets = {
 	 - bgPosition: String
 	 - contain: Boolean
 	 - disableLazySrc: Boolean
+	 - eager: Boolean
 	 - lazySrcMultiplier: Number
 	 - maxWidth: Number
 	 */
 
 	[presetNames.HOME_SLIDER]: {
+		eager: true,
 		lazySrcMultiplier: 52,
 		widths: generateWidths([
 			253, 288, 300, 308, 328, 339, 343, 350, 367, 400, 467, 567
@@ -77,7 +79,8 @@ export const presets = {
 					`)
 	},
 	[presetNames.SPONSORS_MAIN_FOOTER]: {
-		disableLazySrc: true
+		disableLazySrc: true,
+		eager: true
 	},
 	[presetNames.SPONSORS_NORMAL]: {
 		aspectRatio: 1,
