@@ -4,6 +4,24 @@ import { routeMeta } from './../../utils/constants'
 
 export default function () {
 	this.nuxt.hook('generate:before', async context => {
+		const securityHeaders = [
+			// default headers copied from "@aceforth/nuxt-netlify" module
+			'Referrer-Policy: origin',
+			'X-Content-Type-Options: nosniff',
+			'X-XSS-Protection: 1; mode=block'
+		]
+
+		if (process.env.NUXT_ENV_IS_SPA === 'true') {
+			securityHeaders.push(
+				'X-Frame-Options: ALLOW-FROM https://app.storyblok.com/'
+			)
+			securityHeaders.push(
+				'Content-Security-Policy: frame-ancestors https://app.storyblok.com'
+			)
+		} else {
+			securityHeaders.push('X-Frame-Options: DENY')
+		}
+
 		const netlifyRedirects = [
 			{
 				from: routeMeta.LINEUP.to,
@@ -118,18 +136,8 @@ export default function () {
 			{
 				mergeSecurityHeaders: false, // to be able to override X-Frame-Options
 				redirects: netlifyRedirects,
-				// TODO: only add sb headers for spa
 				headers: {
-					'/*': [
-						// default headers, the module sets
-						'Referrer-Policy: origin',
-						'X-Content-Type-Options: nosniff',
-						'X-XSS-Protection: 1; mode=block',
-						// custom X-Frame-Options
-						'X-Frame-Options: ALLOW-FROM https://app.storyblok.com/',
-						// other custom headers
-						'Content-Security-Policy: frame-ancestors https://app.storyblok.com'
-					]
+					'/*': securityHeaders
 				}
 			}
 		])
