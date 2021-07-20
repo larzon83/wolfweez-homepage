@@ -70,7 +70,7 @@
 			</v-container>
 		</v-form>
 
-		<v-snackbar v-model="showSuccess" timeout="2000" color="success">
+		<v-snackbar v-model="showSuccess" timeout="2000" color="good">
 			Nachricht erfolgreich gesendet.
 
 			<template #action="{ attrs }">
