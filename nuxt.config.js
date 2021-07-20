@@ -229,7 +229,8 @@ export default {
 					files: [
 						resolve(__dirname, './assets/style/colors.json'),
 						resolve(__dirname, `./config/font-sizes.js`),
-						resolve(__dirname, './assets/style/_functions.scss')
+						resolve(__dirname, './assets/style/_functions.scss'),
+						resolve(__dirname, './assets/style/_mixins.scss')
 					]
 				}
 			})

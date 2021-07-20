@@ -62,14 +62,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@mixin pos-absolute {
-	position: absolute;
-	left: 0;
-	top: 0;
-	bottom: 0;
-	right: 0;
-}
-
 @mixin tree {
 	background-repeat: repeat-x;
 	background-size: auto 220px;

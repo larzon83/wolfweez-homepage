@@ -311,12 +311,8 @@ export default {
 	margin-right: 24px;
 
 	a {
+		@include pos-absolute;
 		content: '';
-		position: absolute;
-		top: 0;
-		left: 0;
-		right: 0;
-		bottom: 0;
 		border-radius: 6px;
 		border: 3px solid getcolor('prime');
 		transition: all 0.14s ease-in-out;
