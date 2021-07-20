@@ -163,7 +163,7 @@ import useFormatting from '~/mixins/useFormatting.js'
 import useStorybridge from '~/mixins/useStorybridge.js'
 import { sbData } from '~/utils'
 import { routeMeta } from '~/utils/constants'
-import { presetNames } from '~/utils/responsive-images'
+import { presetNames, presets } from '~/utils/responsive-images'
 import { createSEOMeta } from '~/utils/seo'
 
 export default {
@@ -186,12 +186,11 @@ export default {
 				{
 					rel: 'preload',
 					as: 'image',
-					href: this.$_transformImage(
+					imagesrcset: this.$_generateSrcsetEntries(
 						this.bands.stories[0].content.image.filename,
-						'530x0'
-					)
-					// imagesrcset: this.heroSrcset.srcset,
-					// imagesizes: this.heroSrcset.sizes
+						presets[presetNames.HOME_SLIDER].widths.srcset
+					),
+					imagesizes: presets[presetNames.HOME_SLIDER].sizes
 				}
 			]
 		}
