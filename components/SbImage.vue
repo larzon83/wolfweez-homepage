@@ -95,7 +95,7 @@ export default {
 			}
 
 			const lazyWidth = Math.ceil(4 * this.$_aspectRatio(this.pic.filename))
-			return this.getSbUrl(lazyWidth)
+			return this.$_getSbImageUrl(this.pic.filename, lazyWidth)
 		},
 
 		defs() {
@@ -109,11 +109,17 @@ export default {
 				width = Math.round(
 					this.$_aspectRatio(this.pic.filename) * this.exactHeight
 				)
-				srcset = this.generateDpiSrcsetEntries(width)
-				defaultSrc = this.getSbUrl(width)
+				srcset = this.$_generateDpiSrcsetEntries(this.pic.filename, width)
+				defaultSrc = this.$_getSbImageUrl(this.pic.filename, width)
 			} else {
-				srcset = this.generateSrcsetEntries(this.currentPreset.widths.srcset)
-				defaultSrc = this.getSbUrl(this.currentPreset.widths.defaultSrc)
+				srcset = this.$_generateSrcsetEntries(
+					this.pic.filename,
+					this.currentPreset.widths.srcset
+				)
+				defaultSrc = this.$_getSbImageUrl(
+					this.pic.filename,
+					this.currentPreset.widths.defaultSrc
+				)
 			}
 
 			return {
@@ -132,28 +138,6 @@ export default {
 				width,
 				height
 			}
-		}
-	},
-
-	methods: {
-		getSbUrl(width) {
-			return this.$_transformImage(this.pic.filename, `${width.toString()}x0`)
-		},
-
-		generateSrcsetEntries(widths) {
-			return widths.reduce((acc, currWidth, index) => {
-				const divider = index < widths.length - 1 ? ',' : ''
-				const url = this.getSbUrl(currWidth)
-				const entry = `${url} ${currWidth.toString()}w`
-				return acc + entry + divider
-			}, '')
-		},
-
-		generateDpiSrcsetEntries(width) {
-			const size1 = this.getSbUrl(width)
-			const size2 = this.getSbUrl(width * 2)
-			const size3 = this.getSbUrl(width * 3)
-			return `${size1} 1x, ${size2} 2x, ${size3} 3x`
 		}
 	}
 }
