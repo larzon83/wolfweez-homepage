@@ -44,7 +44,6 @@ export const presets = {
 	 */
 
 	[presetNames.HOME_SLIDER]: {
-		bgPosition: presetOptions.BG_POSITION_TOP,
 		widths: generateWidths([
 			253, 288, 300, 308, 328, 339, 343, 350, 367, 400, 467, 567
 		]),
