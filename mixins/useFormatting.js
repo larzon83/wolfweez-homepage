@@ -1,4 +1,5 @@
 import { getNiceDate, getPlayTime } from '~/utils'
+import { presets } from '~/utils/responsive-images'
 
 export default {
 	methods: {
@@ -56,6 +57,21 @@ export default {
 			const size2 = this.$_getSbImageUrl(filename, width * 2)
 			const size3 = this.$_getSbImageUrl(filename, width * 3)
 			return `${size1} 1x, ${size2} 2x, ${size3} 3x`
+		},
+
+		$_getPreloadImageHeadEntry(filename, preset) {
+			if (!filename) return undefined
+			if (!preset) return undefined
+
+			return {
+				rel: 'preload',
+				as: 'image',
+				imagesrcset: this.$_generateSrcsetEntries(
+					filename,
+					presets[preset].widths.srcset
+				),
+				imagesizes: presets[preset].sizes
+			}
 		}
 	}
 }

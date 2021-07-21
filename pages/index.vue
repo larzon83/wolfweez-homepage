@@ -163,7 +163,7 @@ import useFormatting from '~/mixins/useFormatting.js'
 import useStorybridge from '~/mixins/useStorybridge.js'
 import { sbData } from '~/utils'
 import { routeMeta } from '~/utils/constants'
-import { presetNames, presets } from '~/utils/responsive-images'
+import { presetNames } from '~/utils/responsive-images'
 import { createSEOMeta } from '~/utils/seo'
 
 export default {
@@ -176,23 +176,20 @@ export default {
 
 	head() {
 		const title = this.currentFestival.content.title_meta
+		const linkEntries = []
+		const preloadImage = this.$_getPreloadImageHeadEntry(
+			this.bands.stories[0].content.image.filename,
+			this.presetHomeSlider
+		)
+		if (preloadImage) linkEntries.push(preloadImage)
+
 		return {
 			title,
 			meta: createSEOMeta({
 				description: this.currentFestival.content.description_meta,
 				title
 			}),
-			link: [
-				{
-					rel: 'preload',
-					as: 'image',
-					imagesrcset: this.$_generateSrcsetEntries(
-						this.bands.stories[0].content.image.filename,
-						presets[presetNames.HOME_SLIDER].widths.srcset
-					),
-					imagesizes: presets[presetNames.HOME_SLIDER].sizes
-				}
-			]
+			link: [...linkEntries]
 		}
 	},
 

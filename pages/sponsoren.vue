@@ -66,7 +66,7 @@ import useFormatting from '~/mixins/useFormatting.js'
 import useStorybridge from '~/mixins/useStorybridge.js'
 import { sbData } from '~/utils'
 import { routeMeta } from '~/utils/constants'
-import { presetNames, presets } from '~/utils/responsive-images'
+import { presetNames } from '~/utils/responsive-images'
 import { createOgImagePath, createSEOMeta } from '~/utils/seo'
 
 const pageTitle = routeMeta.SPONSOREN.title
@@ -77,6 +77,13 @@ export default {
 
 	head() {
 		const title = pageTitle
+		const linkEntries = []
+		const preloadImage = this.$_getPreloadImageHeadEntry(
+			this.mainSponsors.story.content.sponsors_list[0].logo.filename,
+			this.presetSponsorMain
+		)
+		if (preloadImage) linkEntries.push(preloadImage)
+
 		return {
 			title,
 			meta: createSEOMeta({
@@ -85,17 +92,7 @@ export default {
 				title,
 				url: this.$route.path
 			}),
-			link: [
-				{
-					rel: 'preload',
-					as: 'image',
-					imagesrcset: this.$_generateSrcsetEntries(
-						this.mainSponsors.story.content.sponsors_list[0].logo.filename,
-						presets[presetNames.SPONSORS_MAIN].widths.srcset
-					),
-					imagesizes: presets[presetNames.SPONSORS_MAIN].sizes
-				}
-			]
+			link: [...linkEntries]
 		}
 	},
 
