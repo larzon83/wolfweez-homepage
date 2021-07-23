@@ -1,6 +1,5 @@
 <template>
 	<section>
-		<Breadcrumbs />
 		<h1>{{ pageTitle }}</h1>
 		<ImgGalleries :galleries="galleries" />
 	</section>
@@ -47,10 +46,11 @@ export default {
 	},
 
 	computed: {
-		...mapState('config', ['festivals']),
+		...mapState(['currentFestival', 'historicFestivals']),
 
 		galleries() {
-			const festivalsWithGalleries = this.festivals.filter(
+			const festivals = [{ ...this.currentFestival }, ...this.historicFestivals]
+			const festivalsWithGalleries = festivals.filter(
 				festival => festival.content.gallery.length > 0
 			)
 			return festivalsWithGalleries.map(festival => {

@@ -116,13 +116,16 @@ export default {
 
 	data() {
 		return {
-			drawer: false,
-			mainNavItems
+			drawer: false
 		}
 	},
 
 	computed: {
 		...mapState('central', ['currentPageTitle'])
+	},
+
+	created() {
+		this.mainNavItems = mainNavItems
 	}
 }
 </script>

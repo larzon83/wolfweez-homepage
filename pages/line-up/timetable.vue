@@ -1,7 +1,5 @@
 <template>
 	<section>
-		<TabsNavigation :type="tabType" />
-		<Breadcrumbs />
 		<v-row v-if="story.content.entry" class="timetable my-0 px-4">
 			<v-col
 				v-for="day in story.content.entry"
@@ -45,7 +43,7 @@ import savePagetitleToVuex from '~/mixins/savePagetitleToVuex.js'
 import useFormatting from '~/mixins/useFormatting.js'
 import useStorybridge from '~/mixins/useStorybridge.js'
 import { sbData } from '~/utils'
-import { routeMeta, tabTypes } from '~/utils/constants'
+import { routeMeta } from '~/utils/constants'
 import { createOgImagePath, createSEOMeta } from '~/utils/seo'
 
 const pageTitle = routeMeta.LINEUP__TIMETABLE.title
@@ -70,8 +68,7 @@ export default {
 
 	data() {
 		return {
-			pageTitle,
-			tabType: tabTypes.LINEUP
+			pageTitle
 		}
 	},
 

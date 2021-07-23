@@ -1,14 +1,10 @@
-import { getNiceDate, getPlayTime } from '~/utils'
+import { getNiceDate, getPlayTime, slashify } from '~/utils'
 import { presets } from '~/utils/responsive-images'
 
 export default {
 	methods: {
 		$_slashify(path, { startSlash = true } = {}) {
-			let slash1 = ''
-			if (startSlash) slash1 = path.substr(0, 1) !== '/' ? '/' : ''
-
-			const slash2 = path.substr(-1) !== '/' ? '/' : ''
-			return slash1 + path + slash2
+			return slashify(path, { startSlash })
 		},
 
 		$_niceDate(dateString) {
@@ -66,6 +62,8 @@ export default {
 			return {
 				rel: 'preload',
 				as: 'image',
+				// TODO:
+				// href: '',
 				imagesrcset: this.$_generateSrcsetEntries(
 					filename,
 					presets[preset].widths.srcset

@@ -50,13 +50,13 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+import { mapState } from 'vuex'
 
 export default {
 	name: 'Header',
 
 	computed: {
-		...mapGetters('config', ['currentFestival'])
+		...mapState(['currentFestival'])
 	}
 }
 </script>

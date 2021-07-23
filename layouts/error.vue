@@ -13,6 +13,7 @@
 <script>
 export default {
 	layout: 'empty',
+
 	head() {
 		const title =
 			this.error.statusCode === 404 ? this.pageNotFound : this.otherError
@@ -20,17 +21,17 @@ export default {
 			title
 		}
 	},
+
 	props: {
 		error: {
 			type: Object,
 			default: null
 		}
 	},
-	data() {
-		return {
-			pageNotFound: '404 - Seite nicht gefunden',
-			otherError: 'Ein Fehler ist aufgetreten'
-		}
+
+	created() {
+		this.pageNotFound = '404 - Seite nicht gefunden'
+		this.otherError = 'Ein Fehler ist aufgetreten'
 	}
 }
 </script>

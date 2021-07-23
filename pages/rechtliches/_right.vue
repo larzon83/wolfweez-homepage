@@ -1,6 +1,5 @@
 <template>
 	<section class="right">
-		<Breadcrumbs />
 		<ContentSimple :content="story.content" />
 	</section>
 </template>
@@ -42,7 +41,7 @@ export default {
 		const crumbs = [
 			{ ...routeMeta.RECHTLICHES },
 			{
-				title: result.story.content.headline,
+				title: result?.story.content.headline,
 				to: `${routeMeta.RECHTLICHES.to}${context.params.right}/`
 			}
 		]

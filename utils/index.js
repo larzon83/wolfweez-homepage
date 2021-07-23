@@ -4,6 +4,7 @@ import { routeMeta } from './constants'
 export const sbData = ({
 	ctx,
 	isStartpage = null,
+	filterQuery = null,
 	path = '',
 	resolveLinks = null,
 	resolveRelations = null,
@@ -20,6 +21,7 @@ export const sbData = ({
 	return ctx.app.$storyapi
 		.get(`cdn/stories${path}`, {
 			is_startpage: isStartpage,
+			filter_query: filterQuery,
 			resolve_links: resolveLinks,
 			resolve_relations: resolveRelations,
 			sort_by: sortBy,
@@ -47,23 +49,38 @@ export const sbData = ({
 		})
 }
 
+export const slashify = (path, { startSlash = true } = {}) => {
+	let slash1 = ''
+	if (startSlash) slash1 = path.substr(0, 1) !== '/' ? '/' : ''
+
+	const slash2 = path.substr(-1) !== '/' ? '/' : ''
+	return slash1 + path + slash2
+}
+
 export const getInfoRedirect = infos => {
 	let to = '/'
 
 	if (infos.length) {
-		to = routeMeta.INFOS.to
+		const infoAllgemein = infos.find(info => info.slug === 'allgemein')
 
-		const infoAllgemein = infos.filter(info => info.slug === 'allgemein')
-
-		if (infoAllgemein.length) {
-			to += 'allgemein/'
+		if (infoAllgemein) {
+			to = slashify(infoAllgemein.full_slug)
 		} else {
-			to += infos[0].slug + '/'
+			to = slashify(infos[0].full_slug)
 		}
 	}
 
 	return {
 		from: routeMeta.INFOS.to,
+		to,
+		force: true
+	}
+}
+
+export const getHistoryRedirect = histories => {
+	const to = histories.length ? slashify(histories[0].full_slug) : '/'
+	return {
+		from: routeMeta.HISTORIE.to,
 		to,
 		force: true
 	}

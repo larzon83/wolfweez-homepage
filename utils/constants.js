@@ -94,8 +94,8 @@ export const routeMeta = {
 export const mainNavItems = [
 	{ ...routeMeta.HOME },
 	{ ...routeMeta.NEWS },
-	{ ...routeMeta.INFOS },
-	{ ...routeMeta.LINEUP },
+	{ ...routeMeta.INFOS, tabType: tabTypes.INFOS },
+	{ ...routeMeta.LINEUP, tabType: tabTypes.LINEUP },
 	{ ...routeMeta.TICKETS },
-	{ ...routeMeta.HISTORIE }
+	{ ...routeMeta.HISTORIE, tabType: tabTypes.HISTORY }
 ]

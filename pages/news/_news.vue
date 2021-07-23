@@ -1,12 +1,10 @@
 <template>
 	<section>
-		<Breadcrumbs />
 		<NewsDetail :news="story.content" :time="$_niceDate(story.created_at)" />
 	</section>
 </template>
 
 <script>
-import NewsDetail from '~/components/NewsDetail.vue'
 import savePagetitleToVuex from '~/mixins/savePagetitleToVuex.js'
 import useFormatting from '~/mixins/useFormatting.js'
 import useStorybridge from '~/mixins/useStorybridge.js'
@@ -15,9 +13,6 @@ import { routeMeta } from '~/utils/constants'
 import { createOgImagePath, createSEOMeta } from '~/utils/seo'
 
 export default {
-	components: {
-		NewsDetail
-	},
 	mixins: [savePagetitleToVuex, useFormatting, useStorybridge],
 
 	head() {
@@ -43,7 +38,7 @@ export default {
 		const crumbs = [
 			{ ...routeMeta.NEWS },
 			{
-				title: result.story.content.headline,
+				title: result?.story.content.headline,
 				to: `${routeMeta.NEWS.to}${context.params.news}/`
 			}
 		]

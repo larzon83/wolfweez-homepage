@@ -1,7 +1,5 @@
 <template>
 	<section>
-		<TabsNavigation :type="tabType" />
-		<Breadcrumbs />
 		<BandDetail :band="story.content" :time="time" />
 	</section>
 </template>
@@ -11,7 +9,7 @@ import BandDetail from '~/components/BandDetail.vue'
 import savePagetitleToVuex from '~/mixins/savePagetitleToVuex.js'
 import useStorybridge from '~/mixins/useStorybridge.js'
 import { getPlayTime, sbData } from '~/utils'
-import { routeMeta, tabTypes } from '~/utils/constants'
+import { routeMeta } from '~/utils/constants'
 import { createSEOMeta } from '~/utils/seo'
 
 export default {
@@ -31,12 +29,6 @@ export default {
 				title,
 				url: this.$route.path
 			})
-		}
-	},
-
-	data() {
-		return {
-			tabType: tabTypes.LINEUP
 		}
 	},
 
@@ -75,7 +67,7 @@ export default {
 			{ ...routeMeta.LINEUP },
 			{ ...routeMeta.LINEUP__BANDS },
 			{
-				title: band.story.content.name,
+				title: band?.story.content.name,
 				to: `${routeMeta.LINEUP__BANDS.to}${context.params.slug}/`
 			}
 		]

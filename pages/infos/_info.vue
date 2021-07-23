@@ -1,7 +1,5 @@
 <template>
 	<section>
-		<TabsNavigation :type="tabType" />
-		<Breadcrumbs />
 		<StoryblokBlokContent :content="story.content" />
 	</section>
 </template>
@@ -10,7 +8,7 @@
 import savePagetitleToVuex from '~/mixins/savePagetitleToVuex.js'
 import useStorybridge from '~/mixins/useStorybridge.js'
 import { sbData } from '~/utils'
-import { routeMeta, tabTypes } from '~/utils/constants'
+import { routeMeta } from '~/utils/constants'
 import { createOgImagePath, createSEOMeta } from '~/utils/seo'
 
 export default {
@@ -30,12 +28,6 @@ export default {
 		}
 	},
 
-	data() {
-		return {
-			tabType: tabTypes.INFOS
-		}
-	},
-
 	async asyncData(context) {
 		const result = await sbData({
 			ctx: context,
@@ -45,7 +37,7 @@ export default {
 		const crumbs = [
 			{ ...routeMeta.INFOS },
 			{
-				title: result.story.content.headline,
+				title: result?.story.content.headline,
 				to: `${routeMeta.INFOS.to}${context.params.info}/`
 			}
 		]

@@ -155,7 +155,7 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+import { mapState } from 'vuex'
 import FlipCountdown from 'vue2-flip-countdown'
 import VueHorizontal from 'vue-horizontal'
 import savePagetitleToVuex from '~/mixins/savePagetitleToVuex.js'
@@ -226,7 +226,7 @@ export default {
 	},
 
 	computed: {
-		...mapGetters('config', ['currentFestival'])
+		...mapState(['currentFestival'])
 	},
 
 	created() {

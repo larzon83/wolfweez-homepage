@@ -94,24 +94,23 @@
 
 <script>
 import { mapState } from 'vuex'
-import { routeMeta, siteTitle } from '~/utils/constants'
+import { routeMeta, siteTitle, tabTypes } from '~/utils/constants'
 import { presetNames } from '~/utils/responsive-images'
 
 export default {
 	name: 'Footer',
 
 	computed: {
-		...mapState(['mainSponsors']),
-		...mapState('config', ['infos']),
+		...mapState(['mainSponsors', 'subNavItems']),
 
 		sections() {
 			return [
 				{
 					title: routeMeta.INFOS.title,
-					links: this.infos.map(info => {
+					links: this.subNavItems[tabTypes.INFOS].map(info => {
 						return {
 							title: info.title,
-							to: `/${info.full_slug}/`
+							to: info.full_slug
 						}
 					})
 				},

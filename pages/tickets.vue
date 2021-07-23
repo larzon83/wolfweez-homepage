@@ -1,6 +1,5 @@
 <template>
 	<section>
-		<Breadcrumbs />
 		<h1>{{ pageTitle }}</h1>
 		<div class="mt-6 pa-4" style="background: rgba(255, 255, 255, 0.1)">
 			<div ref="stripeElements" />
@@ -62,20 +61,22 @@ export default {
 	// 	})
 	// },
 
-	computed: {
-		// ...mapState('config', ['festivals']),
-		// galleries() {
-		// 	const festivalsWithGalleries = this.festivals.filter(
-		// 		festival => festival.content.gallery.length > 0
-		// 	)
-		// 	return festivalsWithGalleries.map(festival => {
-		// 		return {
-		// 			year: festival.content.year,
-		// 			imgs: festival.content.gallery
-		// 		}
-		// 	})
-		// }
-	},
+	// computed: {
+	// 	...mapState(['currentFestival', 'historicFestivals']),
+
+	// 	galleries() {
+	// 		const festivals = [{ ...this.currentFestival }, ...this.historicFestivals]
+	// 		const festivalsWithGalleries = festivals.filter(
+	// 			festival => festival.content.gallery.length > 0
+	// 		)
+	// 		return festivalsWithGalleries.map(festival => {
+	// 			return {
+	// 				year: festival.content.year,
+	// 				imgs: festival.content.gallery
+	// 			}
+	// 		})
+	// 	}
+	// },
 
 	// async mounted() {
 	// 	const stripe = await this.$stripe()

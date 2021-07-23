@@ -66,12 +66,6 @@ export default {
 		}
 	},
 
-	data() {
-		return {
-			galleryName: siteTitle.short
-		}
-	},
-
 	computed: {
 		marginTopClass() {
 			return this.galleries.length > 1 ? 'mt-12' : 'mt-0'
@@ -114,6 +108,10 @@ export default {
 		// Go to third slide
 		// Index starts from 0
 		// window.lgData[el.getAttribute('lg-uid')].slide(1)
+	},
+
+	created() {
+		this.galleryName = siteTitle.short
 	},
 
 	methods: {

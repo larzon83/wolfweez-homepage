@@ -1,12 +1,8 @@
 <template>
-	<section>
-		<TabsNavigation :type="tabType" />
-		<Breadcrumbs />
-	</section>
+	<section></section>
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
 import { routeMeta, tabTypes } from '~/utils/constants'
 import { createOgImagePath, createSEOMeta } from '~/utils/seo'
 
@@ -28,35 +24,8 @@ export default {
 		}
 	},
 
-	data() {
-		return {
-			tabType: tabTypes.HISTORY
-		}
-	},
-
-	computed: {
-		...mapGetters('config', ['historicFestivals'])
-	},
-
-	// redirect to the latest historic festival
-	created() {
-		const destination = this.historicFestivals.length
-			? '/' + this.historicFestivals[0].full_slug
-			: '/'
-		this.$router.push(destination)
-	},
-
-	// middleware({ redirect, store }) {
-	// 	const historicFestivals = store.getters['config/historicFestivals']
-	// 	const destination = historicFestivals.length
-	// 		? '/' + historicFestivals[0].full_slug
-	// 		: '/'
-	// 	redirect(301, destination)
-	// }
-
-	middleware({ store }) {
-		const crumbs = [{ ...routeMeta.HISTORIE }]
-		store.commit('central/SET_CRUMBS', crumbs)
+	middleware({ redirect, store }) {
+		redirect(301, store.state.redirects[tabTypes.HISTORY].to)
 	}
 }
 </script>

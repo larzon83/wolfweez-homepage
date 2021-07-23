@@ -1,7 +1,5 @@
 <template>
 	<section v-editable="story.content">
-		<TabsNavigation :type="tabType" />
-		<Breadcrumbs />
 		<h1>{{ headlinePage }}</h1>
 		<b>{{ story.content.date }} {{ story.content.year }}</b>
 		<br /><br />
@@ -54,7 +52,7 @@ import savePagetitleToVuex from '~/mixins/savePagetitleToVuex.js'
 import useFormatting from '~/mixins/useFormatting.js'
 import useStorybridge from '~/mixins/useStorybridge.js'
 import { sbData, sortAssetsByName } from '~/utils'
-import { routeMeta, siteTitle, tabTypes } from '~/utils/constants'
+import { routeMeta, siteTitle } from '~/utils/constants'
 import { createOgImagePath, createSEOMeta } from '~/utils/seo'
 
 export default {
@@ -74,12 +72,6 @@ export default {
 		}
 	},
 
-	data() {
-		return {
-			tabType: tabTypes.HISTORY
-		}
-	},
-
 	async asyncData(context) {
 		const historyTimetable = await sbData({
 			ctx: context,
@@ -93,21 +85,23 @@ export default {
 			isStartpage: 1
 		})
 
-		historyYear.story.content.gallery = sortAssetsByName(
-			historyYear.story.content.gallery
-		)
+		if (historyYear) {
+			historyYear.story.content.gallery = sortAssetsByName(
+				historyYear.story.content.gallery
+			)
+		}
 
 		const crumbs = [
 			{ ...routeMeta.HISTORIE },
 			{
-				title: historyYear.story.slug,
+				title: historyYear?.story.slug,
 				to: `${routeMeta.HISTORIE.to}${context.params.historie}/`
 			}
 		]
 		context.store.commit('central/SET_CRUMBS', crumbs)
 
 		return {
-			timetable: historyTimetable.story.content.entry,
+			timetable: historyTimetable?.story.content.entry,
 			...historyYear
 		}
 	},

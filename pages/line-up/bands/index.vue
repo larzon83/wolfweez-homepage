@@ -1,7 +1,5 @@
 <template>
 	<section>
-		<TabsNavigation :type="tabType" />
-		<Breadcrumbs />
 		<v-row class="my-0">
 			<v-col
 				v-for="band in bandsAll"
@@ -48,7 +46,7 @@
 import savePagetitleToVuex from '~/mixins/savePagetitleToVuex.js'
 import useFormatting from '~/mixins/useFormatting.js'
 import { sbData } from '~/utils'
-import { routeMeta, tabTypes } from '~/utils/constants'
+import { routeMeta } from '~/utils/constants'
 import { createOgImagePath, createSEOMeta } from '~/utils/seo'
 
 const pageTitle = routeMeta.LINEUP__BANDS.title
@@ -73,8 +71,7 @@ export default {
 
 	data() {
 		return {
-			pageTitle,
-			tabType: tabTypes.LINEUP
+			pageTitle
 		}
 	},
 

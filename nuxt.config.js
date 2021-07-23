@@ -95,7 +95,7 @@ export default {
 	components: true,
 
 	// TODO: how to get watch working to trigger "vuetifyAdditionalVars" module?
-	// watch: ['~/config/font-sizes.js'],
+	watch: ['~/config/**/font-sizes.js'],
 
 	// Modules for dev and build (recommended) (https://go.nuxtjs.dev/config-modules)
 	buildModules: [
@@ -189,7 +189,6 @@ export default {
 	},
 
 	router: {
-		middleware: 'setConfig',
 		trailingSlash:
 			process.env.NUXT_ENV_IS_SPA === 'true' ||
 			process.env.NODE_ENV === 'development'

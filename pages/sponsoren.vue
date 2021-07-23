@@ -1,6 +1,5 @@
 <template>
 	<section>
-		<Breadcrumbs />
 		<h1>{{ pageTitle }}</h1>
 
 		<!-- MAIN sponsors -->

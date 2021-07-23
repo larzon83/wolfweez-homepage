@@ -1,6 +1,6 @@
 <template>
 	<v-tabs
-		v-if="tabItems.length"
+		v-show="tabItems"
 		optional
 		background-color="transparent"
 		class="tabbar"
@@ -11,7 +11,7 @@
 			v-for="(tab, i) in tabItems"
 			:key="`${type}-tab-${i}`"
 			:ripple="false"
-			:to="tab.to"
+			:to="tab.full_slug || tab.to"
 			nuxt
 			active-class="tab-btn-active"
 			class="tab-btn ma-0"
@@ -21,26 +21,35 @@
 </template>
 
 <script>
-import { mapGetters, mapState } from 'vuex'
+import { mapState } from 'vuex'
 import useFormatting from '~/mixins/useFormatting.js'
-import { routeMeta, tabTypes } from '~/utils/constants'
+import { mainNavItems, routeMeta, tabTypes } from '~/utils/constants'
 
 export default {
 	name: 'TabsNavigation',
 	mixins: [useFormatting],
 
-	props: {
-		type: {
-			type: String,
-			default: ''
-		}
-	},
-
 	computed: {
-		...mapState('config', ['infos']),
-		...mapGetters('config', ['historicFestivals']),
+		...mapState(['subNavItems']),
+
+		type() {
+			const currentPath = this.$_slashify(this.$route.path)
+
+			const mainNavItemsWithoutHome = [...mainNavItems].splice(1)
+			const foundInMainNavItems = mainNavItemsWithoutHome.find(p =>
+				currentPath.includes(p.to)
+			)
+
+			if (foundInMainNavItems?.tabType) {
+				return foundInMainNavItems.tabType
+			}
+
+			return undefined
+		},
 
 		tabItems() {
+			if (!this.type) return undefined
+
 			if (this.type === tabTypes.LINEUP) {
 				return [
 					{ ...routeMeta.LINEUP__BANDS },
@@ -48,25 +57,11 @@ export default {
 				]
 			}
 
-			if (this.type === tabTypes.HISTORY) {
-				return this.historicFestivals.map(festival => {
-					return {
-						title: festival.content.year,
-						to: this.$_slashify(festival.full_slug)
-					}
-				})
+			if (this.subNavItems[this.type]) {
+				return this.subNavItems[this.type]
 			}
 
-			if (this.type === tabTypes.INFOS) {
-				return this.infos.map(info => {
-					return {
-						title: info.title,
-						to: this.$_slashify(info.full_slug)
-					}
-				})
-			}
-
-			return []
+			return undefined
 		}
 	}
 }

@@ -5,6 +5,8 @@
 			<Header />
 			<v-container class="pt-0 pb-16">
 				<MainNav />
+				<TabsNavigation />
+				<Breadcrumbs />
 				<nuxt />
 			</v-container>
 			<Footer />

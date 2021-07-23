@@ -18,8 +18,7 @@
 			<template #default>
 				<span v-html="mobileHeadline"></span>
 			</template>
-			{{ mobileHeadline }}</v-btn
-		>
+		</v-btn>
 		<v-btn
 			v-for="(navItem, i) in mainNavItems"
 			:key="`main-nav-btn-${i}`"
@@ -37,7 +36,7 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+import { mapState } from 'vuex'
 import useFormatting from '~/mixins/useFormatting.js'
 import { mainNavItems, routeMeta } from '~/utils/constants'
 
@@ -45,14 +44,8 @@ export default {
 	name: 'MainNav',
 	mixins: [useFormatting],
 
-	data() {
-		return {
-			mainNavItems
-		}
-	},
-
 	computed: {
-		...mapGetters('config', ['currentFestival']),
+		...mapState(['currentFestival']),
 
 		mobileHeadline() {
 			const currentPath = this.$_slashify(this.$route.path)
@@ -84,6 +77,10 @@ export default {
 
 			return headline
 		}
+	},
+
+	created() {
+		this.mainNavItems = mainNavItems
 	}
 }
 </script>

@@ -1,6 +1,5 @@
 <template>
 	<div>
-		<Breadcrumbs />
 		<div id="ckForm" class="mt-4"></div>
 	</div>
 </template>
