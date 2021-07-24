@@ -35,7 +35,7 @@
 
 		<v-col cols="12" class="mt-12">
 			<v-card color="darkish" flat>
-				<!-- <div class="countdown-wrapper">
+				<div class="countdown-wrapper">
 					<client-only>
 						<div>
 							<flip-countdown
@@ -45,7 +45,7 @@
 							></flip-countdown>
 						</div>
 					</client-only>
-				</div> -->
+				</div>
 				<v-card-title>
 					Welcome to the Vuetify + Nuxt.js template!
 				</v-card-title>
@@ -156,7 +156,7 @@
 
 <script>
 import { mapState } from 'vuex'
-// import FlipCountdown from 'vue2-flip-countdown'
+import FlipCountdown from 'vue2-flip-countdown'
 import VueHorizontal from 'vue-horizontal'
 import savePagetitleToVuex from '~/mixins/savePagetitleToVuex.js'
 import useFormatting from '~/mixins/useFormatting.js'
@@ -169,7 +169,7 @@ import { createSEOMeta } from '~/utils/seo'
 export default {
 	name: 'Index',
 	components: {
-		// FlipCountdown,
+		FlipCountdown,
 		VueHorizontal
 	},
 	mixins: [savePagetitleToVuex, useFormatting, useStorybridge],
