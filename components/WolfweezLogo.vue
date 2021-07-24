@@ -7,7 +7,6 @@
 		viewBox="0 0 5461 2011"
 		style="width: 100%; height: 100%"
 		class="d-block"
-		title="Wolfweez Logo"
 	>
 		<defs>
 			<style>
