@@ -46,12 +46,9 @@ export const presets = {
 	 */
 
 	[presetNames.HOME_SLIDER]: {
-		disableLazySrc: true,
 		eager: true,
-		// lazySrcMultiplier: 52,
-		widths: generateWidths([
-			253, 288, 300, 308, 328, 339, 343, 350, 367, 400, 467, 567
-		]),
+		lazySrcMultiplier: 52,
+		widths: generateWidths([253]),
 		sizes: removeClutter(`
 					(max-width: 320px) 288px,
 					(max-width: 340px) 308px,
