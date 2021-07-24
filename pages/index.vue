@@ -1,6 +1,6 @@
 <template>
 	<v-row justify="center" align="center" no-gutters class="mt-lg-5 mt-0">
-		<v-col cols="12">
+		<!-- <v-col cols="12">
 			<vue-horizontal
 				ref="horizontal"
 				class="horizontal"
@@ -31,7 +31,7 @@
 					<div></div>
 				</div>
 			</div>
-		</v-col>
+		</v-col> -->
 
 		<v-col cols="12" class="mt-12">
 			<v-card color="darkish" flat>
@@ -157,7 +157,7 @@
 <script>
 import { mapState } from 'vuex'
 import FlipCountdown from 'vue2-flip-countdown'
-import VueHorizontal from 'vue-horizontal'
+// import VueHorizontal from 'vue-horizontal'
 import savePagetitleToVuex from '~/mixins/savePagetitleToVuex.js'
 import useFormatting from '~/mixins/useFormatting.js'
 import useStorybridge from '~/mixins/useStorybridge.js'
@@ -169,8 +169,8 @@ import { createSEOMeta } from '~/utils/seo'
 export default {
 	name: 'Index',
 	components: {
-		FlipCountdown,
-		VueHorizontal
+		FlipCountdown
+		// VueHorizontal
 	},
 	mixins: [savePagetitleToVuex, useFormatting, useStorybridge],
 
