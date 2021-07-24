@@ -11,9 +11,13 @@
 					:key="band.content._uid"
 					:aria-label="band.content.name"
 					:to="$_slashify(band.full_slug)"
-					class="slider-item"
+					class="slider-item d-block"
 				>
 					<img
+						style="width: 100%; height: auto"
+						class="d-block"
+						width="1200"
+						height="630"
 						src="https://img2.storyblok.com/567x0/f/95378/1200x630/711a310ab2/voltbeat.jpg"
 						srcset="
 							https://img2.storyblok.com/253x0/f/95378/1200x630/711a310ab2/voltbeat.jpg   253w,
