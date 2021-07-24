@@ -219,7 +219,6 @@ export default {
 			startsWith: 'line-up/bands/',
 			isStartpage: 0
 		})
-		bands.stories.length = 1
 
 		context.store.commit('central/RESET_CRUMBS')
 
