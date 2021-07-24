@@ -41,7 +41,7 @@ export default {
 
 		$_generateSrcsetEntries(filename, widths) {
 			return widths.reduce((acc, currWidth, index) => {
-				const divider = index < widths.length - 1 ? ',' : ''
+				const divider = index < widths.length - 1 ? ', ' : ''
 				const url = this.$_getSbImageUrl(filename, currWidth)
 				const entry = `${url} ${currWidth.toString()}w`
 				return acc + entry + divider
@@ -62,8 +62,6 @@ export default {
 			return {
 				rel: 'preload',
 				as: 'image',
-				// TODO:
-				// href: '',
 				imagesrcset: this.$_generateSrcsetEntries(
 					filename,
 					presets[preset].widths.srcset

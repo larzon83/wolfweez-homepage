@@ -26,7 +26,7 @@ const generateWidths = rawWidths => {
 }
 
 const removeClutter = text => {
-	return text.replace(/\s+/g, '') // remove whitespaces and line-breaks
+	return text.replace(/\s+/g, ' ').trim() // remove whitespaces and line-breaks
 }
 
 export const presets = {
@@ -67,7 +67,7 @@ export const presets = {
 					`)
 	},
 	[presetNames.SPONSORS_MAIN]: {
-		disableLazySrc: true,
+		disableLazySrc: true, // TODO: maybe remove?
 		maxWidth: 300,
 		widths: generateWidths([123, 166, 226, 250, 300]),
 		sizes: removeClutter(`
