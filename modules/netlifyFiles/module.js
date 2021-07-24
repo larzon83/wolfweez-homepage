@@ -1,5 +1,9 @@
 import StoryblokClient from 'storyblok-js-client'
-import { getInfoRedirect } from './../../utils/index'
+import {
+	getHistoryRedirect,
+	getInfoRedirect,
+	slashify
+} from './../../utils/index'
 import { routeMeta } from './../../utils/constants'
 
 export default function () {
@@ -13,27 +17,14 @@ export default function () {
 
 		if (process.env.NUXT_ENV_IS_SPA === 'true') {
 			securityHeaders.push(
-				'X-Frame-Options: ALLOW-FROM https://app.storyblok.com/'
-			)
-			securityHeaders.push(
+				'X-Frame-Options: ALLOW-FROM https://app.storyblok.com/',
 				'Content-Security-Policy: frame-ancestors https://app.storyblok.com'
 			)
 		} else {
 			securityHeaders.push('X-Frame-Options: DENY')
 		}
 
-		const netlifyRedirects = [
-			{
-				from: routeMeta.LINEUP.to,
-				to: routeMeta.LINEUP__BANDS.to,
-				force: true
-			},
-			{
-				from: routeMeta.RECHTLICHES.to,
-				to: routeMeta.RECHTLICHES__AGB.to,
-				force: true
-			}
-		]
+		const netlifyRedirects = []
 
 		if (process.env.NUXT_ENV_IS_SPA === 'true') {
 			netlifyRedirects.push({
@@ -53,33 +44,41 @@ export default function () {
 					? 'draft'
 					: 'published'
 
-			// get main festival-config -> extract main meta-description
-			// const { data: config } = await client.get('cdn/stories/config', {
-			// 	version
-			// })
-			// metaDescription: config.story.content.description_meta || siteTitle.long
+			// --------------------------------------------------------------
+
+			// known, up-front redirects
+			netlifyRedirects.push(
+				{
+					from: routeMeta.LINEUP.to,
+					to: routeMeta.LINEUP__BANDS.to,
+					force: true
+				},
+				{
+					from: routeMeta.RECHTLICHES.to,
+					to: routeMeta.RECHTLICHES__AGB.to,
+					force: true
+				}
+			)
 
 			// --------------------------------------------------------------
 
-			// get all history years -> most recend one will be used in netlify redirects
-			const { data: historyYears } = await client.get('cdn/stories', {
-				starts_with: 'historie/',
+			// history redirect
+			const { data: historicFestivals } = await client.get('cdn/stories', {
+				filter_query: {
+					component: {
+						in: 'config'
+					}
+				},
 				is_startpage: 1,
 				sort_by: 'slug:desc',
 				version
 			})
 
-			const historyRedirect = {
-				from: routeMeta.HISTORIE.to,
-				to: `${routeMeta.HISTORIE.to}${historyYears.stories[0].slug}/`,
-				force: true
-			}
-
-			netlifyRedirects.push(historyRedirect)
+			netlifyRedirects.push(getHistoryRedirect(historicFestivals.stories))
 
 			// --------------------------------------------------------------
 
-			// get all info-pages
+			// info redirect
 			const { data: infoPages } = await client.get('cdn/stories', {
 				starts_with: 'infos/',
 				is_startpage: 0,
@@ -90,7 +89,7 @@ export default function () {
 
 			// --------------------------------------------------------------
 
-			// get all bands, even the ones in historie folders
+			// get all bands, even the ones in "historie" folder
 			const { data: allBands } = await client.get('cdn/stories', {
 				filter_query: {
 					component: {
@@ -100,28 +99,27 @@ export default function () {
 				version
 			})
 
-			// get bands of the current festival
+			// get bands of current festival
 			const { data: activeBands } = await client.get('cdn/stories', {
 				starts_with: 'line-up/bands/',
 				is_startpage: 0,
 				version
 			})
 
-			// find out, which bands are in historie folder and need a redirect
-			// -> all available bands - current active bands = 'old' bands
-			const filteredBandsRedirects = allBands.stories.filter(band => {
-				const active = activeBands.stories.filter(
-					item => item.uuid === band.uuid
-				)
-				return !active.length
+			// find out, which bands are in "historie" folder and need a redirect
+			// -> all available bands - current active bands === "old" bands
+			const oldBands = allBands.stories.filter(band => {
+				const active = activeBands.stories.find(item => item.uuid === band.uuid)
+				return !active
 			})
 
-			// create redirects of 'old' bands for netlify redirects
-			const bandsRedirects = filteredBandsRedirects.map(item => {
-				const to = item.full_slug.substr(0, 14) // -> eg "/historie/2019/"
+			// redirects for "old" bands
+			const bandsRedirects = oldBands.map(item => {
+				const from = `${routeMeta.LINEUP__BANDS.to}${item.slug}`
+				const to = item.full_slug.substr(0, 14) // eg "historie/2019/bands/slayer" -> "historie/2019/"
 				return {
-					from: `${routeMeta.LINEUP__BANDS.to}${item.slug}`,
-					to: `/${to}`,
+					from: slashify(from),
+					to: slashify(to),
 					force: true
 				}
 			})
