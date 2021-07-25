@@ -6,51 +6,54 @@
 				class="horizontal"
 				@scroll-debounce="onScrollDebounce"
 			>
-				<nuxt-link
+				<!-- <div
 					v-for="band in bands.stories"
 					:key="band.content._uid"
-					:aria-label="band.content.name"
-					:to="$_slashify(band.full_slug)"
-					class="slider-item d-block"
+					class="slider-item"
 				>
-					<img
-						style="width: 100%; height: auto"
-						class="d-block"
-						width="1200"
-						height="630"
-						src="https://img2.storyblok.com/567x0/f/95378/1200x630/711a310ab2/voltbeat.jpg"
-						srcset="
-							https://img2.storyblok.com/253x0/f/95378/1200x630/711a310ab2/voltbeat.jpg   253w,
-							https://img2.storyblok.com/288x0/f/95378/1200x630/711a310ab2/voltbeat.jpg   288w,
-							https://img2.storyblok.com/300x0/f/95378/1200x630/711a310ab2/voltbeat.jpg   300w,
-							https://img2.storyblok.com/308x0/f/95378/1200x630/711a310ab2/voltbeat.jpg   308w,
-							https://img2.storyblok.com/328x0/f/95378/1200x630/711a310ab2/voltbeat.jpg   328w,
-							https://img2.storyblok.com/339x0/f/95378/1200x630/711a310ab2/voltbeat.jpg   339w,
-							https://img2.storyblok.com/343x0/f/95378/1200x630/711a310ab2/voltbeat.jpg   343w,
-							https://img2.storyblok.com/350x0/f/95378/1200x630/711a310ab2/voltbeat.jpg   350w,
-							https://img2.storyblok.com/367x0/f/95378/1200x630/711a310ab2/voltbeat.jpg   367w,
-							https://img2.storyblok.com/400x0/f/95378/1200x630/711a310ab2/voltbeat.jpg   400w,
-							https://img2.storyblok.com/467x0/f/95378/1200x630/711a310ab2/voltbeat.jpg   467w,
-							https://img2.storyblok.com/506x0/f/95378/1200x630/711a310ab2/voltbeat.jpg   506w,
-							https://img2.storyblok.com/567x0/f/95378/1200x630/711a310ab2/voltbeat.jpg   567w,
-							https://img2.storyblok.com/576x0/f/95378/1200x630/711a310ab2/voltbeat.jpg   576w,
-							https://img2.storyblok.com/600x0/f/95378/1200x630/711a310ab2/voltbeat.jpg   600w,
-							https://img2.storyblok.com/616x0/f/95378/1200x630/711a310ab2/voltbeat.jpg   616w,
-							https://img2.storyblok.com/656x0/f/95378/1200x630/711a310ab2/voltbeat.jpg   656w,
-							https://img2.storyblok.com/678x0/f/95378/1200x630/711a310ab2/voltbeat.jpg   678w,
-							https://img2.storyblok.com/686x0/f/95378/1200x630/711a310ab2/voltbeat.jpg   686w,
-							https://img2.storyblok.com/700x0/f/95378/1200x630/711a310ab2/voltbeat.jpg   700w,
-							https://img2.storyblok.com/734x0/f/95378/1200x630/711a310ab2/voltbeat.jpg   734w,
-							https://img2.storyblok.com/800x0/f/95378/1200x630/711a310ab2/voltbeat.jpg   800w,
-							https://img2.storyblok.com/934x0/f/95378/1200x630/711a310ab2/voltbeat.jpg   934w,
-							https://img2.storyblok.com/1134x0/f/95378/1200x630/711a310ab2/voltbeat.jpg 1134w
-						"
-						sizes="(max-width: 320px) 288px, (max-width: 340px) 308px, (max-width: 360px) 328px, (max-width: 375px) 343px, (max-width: 382px) 350px, (max-width: 399px) 367px, (max-width: 432px) 400px, (max-width: 499px) 467px, (max-width: 599px) 567px, (max-width: 783px) 253px, (max-width: 1139px) 339px, 300px"
-						:alt="band.content.name"
-					/>
-				</nuxt-link>
+					<nuxt-link
+						:aria-label="band.content.name"
+						:to="$_slashify(band.full_slug)"
+					>
+						<img
+							style="width: 100%; height: auto"
+							class="d-block"
+							width="1200"
+							height="630"
+							src="https://img2.storyblok.com/567x0/f/95378/1200x630/711a310ab2/voltbeat.jpg"
+							srcset="
+								https://img2.storyblok.com/253x0/f/95378/1200x630/711a310ab2/voltbeat.jpg   253w,
+								https://img2.storyblok.com/288x0/f/95378/1200x630/711a310ab2/voltbeat.jpg   288w,
+								https://img2.storyblok.com/300x0/f/95378/1200x630/711a310ab2/voltbeat.jpg   300w,
+								https://img2.storyblok.com/308x0/f/95378/1200x630/711a310ab2/voltbeat.jpg   308w,
+								https://img2.storyblok.com/328x0/f/95378/1200x630/711a310ab2/voltbeat.jpg   328w,
+								https://img2.storyblok.com/339x0/f/95378/1200x630/711a310ab2/voltbeat.jpg   339w,
+								https://img2.storyblok.com/343x0/f/95378/1200x630/711a310ab2/voltbeat.jpg   343w,
+								https://img2.storyblok.com/350x0/f/95378/1200x630/711a310ab2/voltbeat.jpg   350w,
+								https://img2.storyblok.com/367x0/f/95378/1200x630/711a310ab2/voltbeat.jpg   367w,
+								https://img2.storyblok.com/400x0/f/95378/1200x630/711a310ab2/voltbeat.jpg   400w,
+								https://img2.storyblok.com/467x0/f/95378/1200x630/711a310ab2/voltbeat.jpg   467w,
+								https://img2.storyblok.com/506x0/f/95378/1200x630/711a310ab2/voltbeat.jpg   506w,
+								https://img2.storyblok.com/567x0/f/95378/1200x630/711a310ab2/voltbeat.jpg   567w,
+								https://img2.storyblok.com/576x0/f/95378/1200x630/711a310ab2/voltbeat.jpg   576w,
+								https://img2.storyblok.com/600x0/f/95378/1200x630/711a310ab2/voltbeat.jpg   600w,
+								https://img2.storyblok.com/616x0/f/95378/1200x630/711a310ab2/voltbeat.jpg   616w,
+								https://img2.storyblok.com/656x0/f/95378/1200x630/711a310ab2/voltbeat.jpg   656w,
+								https://img2.storyblok.com/678x0/f/95378/1200x630/711a310ab2/voltbeat.jpg   678w,
+								https://img2.storyblok.com/686x0/f/95378/1200x630/711a310ab2/voltbeat.jpg   686w,
+								https://img2.storyblok.com/700x0/f/95378/1200x630/711a310ab2/voltbeat.jpg   700w,
+								https://img2.storyblok.com/734x0/f/95378/1200x630/711a310ab2/voltbeat.jpg   734w,
+								https://img2.storyblok.com/800x0/f/95378/1200x630/711a310ab2/voltbeat.jpg   800w,
+								https://img2.storyblok.com/934x0/f/95378/1200x630/711a310ab2/voltbeat.jpg   934w,
+								https://img2.storyblok.com/1134x0/f/95378/1200x630/711a310ab2/voltbeat.jpg 1134w
+							"
+							sizes="(max-width: 320px) 288px, (max-width: 340px) 308px, (max-width: 360px) 328px, (max-width: 375px) 343px, (max-width: 382px) 350px, (max-width: 399px) 367px, (max-width: 432px) 400px, (max-width: 499px) 467px, (max-width: 599px) 567px, (max-width: 783px) 253px, (max-width: 1139px) 339px, 300px"
+							:alt="band.content.name"
+						/>
+					</nuxt-link>
+				</div> -->
 
-				<!-- <SbImage
+				<SbImage
 					v-for="band in bands.stories"
 					:key="band.content._uid"
 					:alt="band.content.name"
@@ -62,7 +65,7 @@
 						:aria-label="band.content.name"
 						:to="$_slashify(band.full_slug)"
 					/>
-				</SbImage> -->
+				</SbImage>
 			</vue-horizontal>
 			<div class="pagination">
 				<div
@@ -264,8 +267,6 @@ export default {
 			isStartpage: 0
 		})
 
-		bands.stories.length = 1
-
 		context.store.commit('central/RESET_CRUMBS')
 
 		return { ...homepage, bands }
@@ -354,8 +355,8 @@ export default {
 	margin-right: 24px;
 
 	a {
-		@include pos-absolute;
-		content: '';
+		@include pos-absolute; // NOTE: remove for pure img
+		content: ''; // NOTE: remove for pure img
 		border-radius: 6px;
 		border: 3px solid getcolor('prime');
 		transition: all 0.14s ease-in-out;
