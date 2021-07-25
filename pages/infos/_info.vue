@@ -7,7 +7,7 @@
 <script>
 import savePagetitleToVuex from '~/mixins/savePagetitleToVuex.js'
 import useStorybridge from '~/mixins/useStorybridge.js'
-import { sbData } from '~/utils'
+import { sbData, slashify } from '~/utils'
 import { routeMeta } from '~/utils/constants'
 import { createOgImagePath, createSEOMeta } from '~/utils/seo'
 
@@ -38,7 +38,7 @@ export default {
 			{ ...routeMeta.INFOS },
 			{
 				title: result?.story.content.headline,
-				to: `${routeMeta.INFOS.to}${context.params.info}/`
+				to: slashify(`${routeMeta.INFOS.to}${context.params.info}`)
 			}
 		]
 		context.store.commit('central/SET_CRUMBS', crumbs)

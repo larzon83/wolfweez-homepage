@@ -51,7 +51,7 @@
 import savePagetitleToVuex from '~/mixins/savePagetitleToVuex.js'
 import useFormatting from '~/mixins/useFormatting.js'
 import useStorybridge from '~/mixins/useStorybridge.js'
-import { sbData, sortAssetsByName } from '~/utils'
+import { sbData, sortAssetsByName, slashify } from '~/utils'
 import { routeMeta, siteTitle } from '~/utils/constants'
 import { createOgImagePath, createSEOMeta } from '~/utils/seo'
 
@@ -95,7 +95,7 @@ export default {
 			{ ...routeMeta.HISTORIE },
 			{
 				title: historyYear?.story.slug,
-				to: `${routeMeta.HISTORIE.to}${context.params.historie}/`
+				to: slashify(`${routeMeta.HISTORIE.to}${context.params.historie}`)
 			}
 		]
 		context.store.commit('central/SET_CRUMBS', crumbs)

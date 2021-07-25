@@ -8,7 +8,7 @@
 import BandDetail from '~/components/BandDetail.vue'
 import savePagetitleToVuex from '~/mixins/savePagetitleToVuex.js'
 import useStorybridge from '~/mixins/useStorybridge.js'
-import { getPlayTime, sbData } from '~/utils'
+import { getPlayTime, sbData, slashify } from '~/utils'
 import { routeMeta } from '~/utils/constants'
 import { createSEOMeta } from '~/utils/seo'
 
@@ -68,7 +68,7 @@ export default {
 			{ ...routeMeta.LINEUP__BANDS },
 			{
 				title: band?.story.content.name,
-				to: `${routeMeta.LINEUP__BANDS.to}${context.params.slug}/`
+				to: slashify(`${routeMeta.LINEUP__BANDS.to}${context.params.slug}`)
 			}
 		]
 		context.store.commit('central/SET_CRUMBS', crumbs)
