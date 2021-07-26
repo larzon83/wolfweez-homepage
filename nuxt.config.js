@@ -248,12 +248,7 @@ export default {
 				}
 				if (type === 'image') {
 					// only preload important images
-					return (
-						file === 'assets/img/bg.svg' ||
-						file === 'assets/img/trees1.svg' ||
-						file === 'assets/img/trees2.svg' ||
-						file === 'assets/img/trees3.svg'
-					)
+					return /img\/trees.*svg/.test(file) || /img\/bg.*svg/.test(file)
 				}
 			}
 		}
