@@ -8,7 +8,7 @@
 		"build": "NUXT_ENV_STORYBLOK_PREVIEW='true' NUXT_ENV_IS_SPA='true' nuxt build",
 		"local:build:preview": "env-cmd -e target_preview,spa nuxt build",
 		"local:build:prod": "env-cmd -e target_prod,spa nuxt build",
-		"generate": "NUXT_ENV_STORYBLOK_PREVIEW='false' nuxt generate --modern",
+		"generate": "NUXT_ENV_STORYBLOK_PREVIEW='false' nuxt generate",
 		"local:generate:preview": "env-cmd -e target_preview nuxt generate",
 		"local:generate:prod": "env-cmd -e target_prod nuxt generate",
 		"start": "nuxt start",
