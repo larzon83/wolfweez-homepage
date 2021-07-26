@@ -246,6 +246,10 @@ export default {
 					// only preload woff2 fonts
 					return /\.woff2$/.test(file)
 				}
+				if (type === 'image') {
+					// only preload important images
+					return file === 'trees1.svg' || file === 'trees2.svg' || file === 'trees3.svg'
+				}
 			}
 		}
 	}
