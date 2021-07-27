@@ -19,6 +19,7 @@ package = "@netlify/plugin-sitemap"
     '**/historie/index.html',
     '**/line-up/index.html',
     '**/infos/index.html',
+    '**/newsletter/index.html', // TODO: remove when go live
     '**/rechtliches/index.html',
     '**/**/200.html',
     '**/**/404.html'
