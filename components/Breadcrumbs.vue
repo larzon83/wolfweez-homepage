@@ -15,7 +15,11 @@
 			</template>
 		</v-breadcrumbs>
 		<!-- padding on mobile -->
-		<div class="pb-11 d-block d-lg-none" style="height: 0"></div>
+		<div
+			v-if="$route.name !== 'index'"
+			class="pb-11 d-block d-lg-none"
+			style="height: 0"
+		></div>
 	</div>
 </template>
 
