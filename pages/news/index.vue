@@ -66,7 +66,7 @@ export default {
 			sortBy: 'created_at:desc'
 		})
 
-		const newsMeta = newsDir.stories.filter(item => {
+		const newsMeta = newsDir.stories.find(item => {
 			return item.is_startpage
 		})
 
@@ -76,7 +76,7 @@ export default {
 
 		return {
 			newsAll,
-			metaDescription: newsMeta[0].content.description_meta
+			metaDescription: newsMeta?.content?.description_meta
 		}
 	},
 

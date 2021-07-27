@@ -44,10 +44,10 @@ export default {
 
 											// another band was selected in dropdown
 											if (band.band.id !== currentBand.id) {
-												const newBand = bands.stories.filter(
+												const newBand = bands.stories.find(
 													item => item.uuid === band.band.id
 												)
-												band.band.story = newBand[0]
+												band.band.story = newBand
 											} else {
 												band.band = currentBand
 											}

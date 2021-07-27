@@ -120,10 +120,10 @@ export default function () {
 					if (splitted[0] === 'news') {
 						subline = splitted[0].toUpperCase()
 						bodyClass = 'is-news'
-						const headlineFromStoryblok = newsData.filter(news => {
+						const headlineFromStoryblok = newsData.find(news => {
 							return news.slug === splitted[1]
 						})
-						headline = headlineFromStoryblok[0].headline
+						headline = headlineFromStoryblok.headline
 					}
 				} else {
 					headline = route.toUpperCase()

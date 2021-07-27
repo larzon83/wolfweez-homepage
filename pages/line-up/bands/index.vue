@@ -81,7 +81,7 @@ export default {
 			startsWith: 'line-up/bands/'
 		})
 
-		const bandsMeta = bandsDir.stories.filter(item => {
+		const bandsMeta = bandsDir.stories.find(item => {
 			return item.is_startpage
 		})
 
@@ -91,7 +91,7 @@ export default {
 
 		return {
 			bandsAll,
-			metaDescription: bandsMeta[0].content.description_meta
+			metaDescription: bandsMeta?.content?.description_meta
 		}
 	},
 
