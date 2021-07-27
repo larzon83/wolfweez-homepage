@@ -202,6 +202,10 @@ export default {
 	transform: translateY(-600px) !important;
 }
 
+.v-navigation-drawer ::v-deep .v-navigation-drawer__border {
+	width: 0;
+}
+
 .v-list-item--link {
 	font-weight: 500;
 	text-transform: uppercase;
