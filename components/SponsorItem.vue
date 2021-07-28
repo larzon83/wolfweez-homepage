@@ -1,5 +1,5 @@
 <template>
-	<WrapWithLink :href="sponsor.link">
+	<WrapWithLink :href="sponsor.link" class="d-block" :class="wrapperClass">
 		<SbImage
 			:alt="sponsor.name"
 			:exact-height="exactHeight"
@@ -29,6 +29,8 @@ export default {
 
 	created() {
 		this.exactHeight = this.getExactHeight()
+		this.wrapperClass =
+			this.preset === presetNames.SPONSORS_MAIN_FOOTER ? 'mb-5 mb-md-0' : ''
 	},
 
 	methods: {
