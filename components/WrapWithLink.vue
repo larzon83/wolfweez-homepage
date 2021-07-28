@@ -18,6 +18,7 @@ export default {
 					'a',
 					{
 						attrs: {
+							href: props.href,
 							rel: 'noreferrer',
 							target: '_blank',
 							class: 'd-block'
