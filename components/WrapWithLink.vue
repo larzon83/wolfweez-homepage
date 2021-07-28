@@ -12,7 +12,7 @@ export default {
 	// https://vuejs.org/v2/guide/render-function.html#Functional-Components
 	// https://jsfiddle.net/en1zdj5k/
 
-	render(h, { data, props, children, slots }) {
+	render(h, { props, children, slots }) {
 		return props.href
 			? h(
 					'a',
