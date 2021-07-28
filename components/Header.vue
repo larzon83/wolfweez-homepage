@@ -135,11 +135,17 @@ export default {
 		}
 
 		.byline {
-			font-size: $size18;
+			// min: 16px
+			// max: 22px
+			font-size: clamp(1rem, 2.144444444vw, 1.375rem);
 			line-height: 1.3;
 			font-family: 'Titillium Web', 'InterVariable', sans-serif;
 			text-shadow: 0px 2px 6px rgba(0, 0, 0, 0.14),
 				0px 0px 2px rgba(0, 0, 0, 0.25);
+
+			@media (max-width: 720px) {
+				line-height: 1.15;
+			}
 		}
 	}
 }
