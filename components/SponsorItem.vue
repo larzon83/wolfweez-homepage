@@ -1,5 +1,5 @@
 <template>
-	<WrapWithLink :href="sponsor.link" class="d-block" :class="wrapperClass">
+	<WrapWithLink :href="sponsor.link" :css-class="`d-block ${wrapperClass}`">
 		<SbImage
 			:alt="sponsor.name"
 			:exact-height="exactHeight"

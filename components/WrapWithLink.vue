@@ -6,6 +6,10 @@ export default {
 		href: {
 			type: String,
 			default: ''
+		},
+		cssClass: {
+			type: String,
+			default: ''
 		}
 	},
 
@@ -21,7 +25,7 @@ export default {
 							href: props.href,
 							rel: 'noreferrer',
 							target: '_blank',
-							class: 'd-block'
+							class: props.cssClass
 						}
 					},
 					children
