@@ -1,25 +1,12 @@
 <template>
-	<a
-		v-if="sponsor.link"
-		:href="sponsor.link"
-		rel="noreferrer"
-		target="_blank"
-		class="d-block"
-	>
+	<WrapWithLink :href="sponsor.link">
 		<SbImage
 			:alt="sponsor.name"
 			:exact-height="exactHeight"
 			:pic="sponsor.logo"
 			:preset="preset"
 		/>
-	</a>
-	<SbImage
-		v-else
-		:alt="sponsor.name"
-		:exact-height="exactHeight"
-		:pic="sponsor.logo"
-		:preset="preset"
-	/>
+	</WrapWithLink>
 </template>
 
 <script>
