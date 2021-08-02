@@ -112,6 +112,7 @@ export default {
 	.trees2 {
 		@include pos-absolute;
 		@include tree;
+		background-position-y: calc(var(--trees-pos-y) - 5px);
 		z-index: -2;
 		background-image: url('~assets/img/trees2.svg');
 	}
