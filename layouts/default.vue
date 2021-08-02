@@ -1,12 +1,19 @@
 <template>
-	<v-app v-scroll="onScroll">
-		<Toolbar :swap-toolbar="swapToolbar" />
+	<v-app>
+		<Toolbar :swap-toolbar="isIntersecting" />
 		<v-main>
 			<Header />
 			<v-container class="pt-0 pb-16">
 				<MainNav />
 				<TabsNavigation />
-				<Breadcrumbs />
+				<Breadcrumbs
+					v-intersect="{
+						handler: onIntersect,
+						options: {
+							threshold: [0, 0.5, 1.0]
+						}
+					}"
+				/>
 				<nuxt />
 			</v-container>
 			<Footer />
@@ -25,16 +32,14 @@ export default {
 
 	data() {
 		return {
-			offsettop: 0,
-			swapToolbar: false
+			isIntersecting: false
 		}
 	},
 
 	methods: {
-		onScroll(e) {
-			this.offsettop = window.pageYOffset
-			if (this.offsettop > 105) this.swapToolbar = true
-			else this.swapToolbar = false
+		onIntersect(entries, observer) {
+			// https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API
+			this.isIntersecting = entries[0].intersectionRatio < 0.5
 		}
 	}
 }
