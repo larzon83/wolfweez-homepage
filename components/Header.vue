@@ -1,10 +1,10 @@
 <template>
-	<div class="header">
+	<div class="header d-flex flex-column justify-start">
 		<div
 			v-rellax="{
 				speed: -2
 			}"
-			class="container py-0 mt-lg-7 mt-4"
+			class="container py-0 mt-lg-6 mt-4"
 		>
 			<v-row align="end" justify="center" no-gutters>
 				<v-col class="byline text-right pr-3 d-none d-md-block" cols="3">
@@ -64,24 +64,44 @@ export default {
 <style lang="scss" scoped>
 @mixin tree {
 	background-repeat: repeat-x;
-	background-size: auto 220px;
-	background-position: center
-		max(min(calc(50.5vw - 220px), 300px), var(--null-px));
+	background-size: auto var(--trees-height);
+	background-position-x: center;
+	background-position-y: var(--trees-pos-y);
 }
 
 .header {
-	// NOTE: prevent nuxt minifying "0px" to "0" when building for prod which is invalid CSS
-	--null-px: 0px;
+	// at 520px, the logo starts to shrink
+	// -> also, proportionally shrink the height of the header
+	--header-height: 295px; // fallback
+	--header-height: clamp(
+		195px,
+		calc(33.718689789vw + var(--trees-height)),
+		295px
+	);
+	--bg-pos-y: -18px; // fallback
+	--bg-pos-y: clamp(-300px, calc(calc(18vw + var(--trees-height)) * -1), -18px);
+	--trees-pos-y: 175px; // fallback
+	--trees-pos-y: calc(var(--header-height) - var(--trees-height));
+	--trees-height: 120px;
+
+	@media (min-width: 520px) {
+		--header-height: 320px;
+		--bg-pos-y: -18px;
+		--trees-pos-y: 160px;
+		--trees-height: 160px;
+	}
+
+	@media #{map-get($display-breakpoints, 'lg-and-up')} {
+		--header-height: 380px;
+		--trees-pos-y: 200px;
+		--trees-height: 180px;
+	}
 
 	position: relative;
 	overflow: hidden;
 	z-index: 0;
-	height: max(min(50.5vw, 520px), 220px) !important;
+	height: var(--header-height) !important;
 	margin-top: -64px;
-
-	display: flex;
-	flex-direction: column;
-	justify-content: flex-start;
 
 	.trees1 {
 		@include pos-absolute;
@@ -113,18 +133,24 @@ export default {
 			url('~assets/img/bg.svg');
 		background-repeat: repeat-x;
 		background-size: auto 520px, auto 520px;
-		background-position: center
-				min(calc(max(50.5vw, 350px) - 520px), var(--null-px)),
-			center min(calc(max(50.5vw, 350px) - 520px), var(--null-px));
+		background-position-x: center, center;
+		background-position-y: var(--bg-pos-y), var(--bg-pos-y);
 	}
 
 	.container {
-		@media #{map-get($display-breakpoints, 'md-and-up')} {
+		@media #{map-get($display-breakpoints, 'md-only')} {
+			padding: 0;
+			max-width: 598px;
+		}
+		@media #{map-get($display-breakpoints, 'lg-only')} {
+			padding: 0;
+		}
+		@media #{map-get($display-breakpoints, 'xl-only')} {
 			max-width: unset;
 		}
 
 		.logo-wrapper {
-			max-width: 500px;
+			max-width: 367px;
 
 			.logo-link {
 				&:active {
@@ -135,16 +161,15 @@ export default {
 		}
 
 		.byline {
-			// min: 16px
-			// max: 22px
-			font-size: clamp(1rem, 2.144444444vw, 1.375rem);
-			line-height: 1.3;
 			font-family: 'Titillium Web', 'InterVariable', sans-serif;
+			font-size: $size19;
+			line-height: 1.15;
 			text-shadow: 0px 2px 6px rgba(0, 0, 0, 0.14),
 				0px 0px 2px rgba(0, 0, 0, 0.25);
 
-			@media (max-width: 720px) {
-				line-height: 1.15;
+			@media #{map-get($display-breakpoints, 'md-only')} {
+				font-size: $size17;
+				line-height: 1;
 			}
 		}
 	}
