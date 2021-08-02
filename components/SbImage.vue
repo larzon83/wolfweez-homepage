@@ -13,6 +13,7 @@
 		:sizes="defs.sizes"
 		:src="defs.defaultSrc"
 		:width="defs.width"
+		:style="marginTop ? `margin-top: ${marginTop}px` : ''"
 	>
 		<template #placeholder>
 			<slot name="placeholder" />
@@ -52,6 +53,10 @@ export default {
 			default: undefined
 		},
 		exactHeight: {
+			type: [Number, String],
+			default: undefined
+		},
+		marginTop: {
 			type: [Number, String],
 			default: undefined
 		},

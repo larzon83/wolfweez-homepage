@@ -2,9 +2,10 @@
 	<WrapWithLink :href="sponsor.link" :css-class="`d-block ${wrapperClass}`">
 		<SbImage
 			:alt="sponsor.name"
-			:exact-height="exactHeight"
+			:exact-height="sbExtras.exactHeight"
 			:pic="sponsor.logo"
 			:preset="preset"
+			:margin-top="sbExtras.marginTop"
 		/>
 	</WrapWithLink>
 </template>
@@ -28,20 +29,22 @@ export default {
 	},
 
 	created() {
-		this.exactHeight = this.getExactHeight()
+		this.sbExtras = this.getSbExtras()
 		this.wrapperClass =
 			this.preset === presetNames.SPONSORS_MAIN_FOOTER ? 'mb-5 mb-md-0' : ''
 	},
 
 	methods: {
-		getExactHeight() {
-			let height
+		getSbExtras() {
+			let exactHeight
+			let marginTop
 
 			if (this.preset === presetNames.SPONSORS_MAIN_FOOTER) {
-				height = this.sponsor.logo_height || '35'
+				exactHeight = this.sponsor.logo_height || '35'
+				marginTop = this.sponsor.logo_margin_top
 			}
 
-			return height
+			return { exactHeight, marginTop }
 		}
 	}
 }
