@@ -34,7 +34,7 @@
 		"@marvr/storyblok-rich-text-vue-renderer": "2.0.1",
 		"@nuxtjs/axios": "5.13.6",
 		"@nuxtjs/proxy": "2.1.0",
-		"@vue/composition-api": "1.0.4",
+		"@vue/composition-api": "1.0.5",
 		"core-js": "3.15.2",
 		"lg-fullscreen.js": "1.2.0",
 		"lg-thumbnail.js": "1.2.0",
