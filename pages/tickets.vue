@@ -1,6 +1,7 @@
 <template>
 	<section>
-		<h1>{{ pageTitle }}</h1>
+		<!-- TODO: h1 really needed? -->
+		<h1 class="d-none d-lg-flex">{{ pageTitle }}</h1>
 		<div class="mt-6 pa-4" style="background: rgba(255, 255, 255, 0.1)">
 			<div ref="stripeElements" />
 		</div>

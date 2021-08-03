@@ -1,6 +1,6 @@
 <template>
-	<div v-editable="content" class="my-24 mx-auto">
-		<h1>{{ content.headline }}</h1>
+	<div v-editable="content">
+		<h1 class="d-none d-lg-flex">{{ content.headline }}</h1>
 		<rich-text-renderer v-if="content.text" :document="content.text" />
 	</div>
 </template>

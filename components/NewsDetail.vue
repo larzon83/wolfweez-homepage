@@ -1,5 +1,5 @@
 <template>
-	<div v-editable="news" class="prose my-24 mx-auto">
+	<div v-editable="news">
 		<h1>{{ news.headline }}</h1>
 		<h2>{{ time }}</h2>
 		<v-img

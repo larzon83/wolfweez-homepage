@@ -1,5 +1,5 @@
 <template>
-	<div v-if="galleries.length">
+	<div v-if="galleries.length" class="mt-n12 mt-lg-0">
 		<div
 			v-for="(gallery, galleryIndex) in galleries"
 			:key="`gallery-${galleryIndex}`"

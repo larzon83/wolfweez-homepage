@@ -1,5 +1,5 @@
 <template>
-	<div v-editable="content" class="mx-auto">
+	<div v-editable="content">
 		<!-- <div class="pb-6">
 			<h1>{{ content.headline }}</h1>
 		</div> -->

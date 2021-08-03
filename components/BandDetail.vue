@@ -1,5 +1,5 @@
 <template>
-	<div v-editable="band" class="prose my-24 mx-auto">
+	<div v-editable="band">
 		<h1>{{ band.name }}</h1>
 		<h5>{{ time }}</h5>
 		<v-img

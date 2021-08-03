@@ -1,6 +1,6 @@
 <template>
 	<section>
-		<h1>{{ pageTitle }}</h1>
+		<h1 class="d-none d-lg-flex">{{ pageTitle }}</h1>
 		<ImgGalleries :galleries="galleries" />
 	</section>
 </template>

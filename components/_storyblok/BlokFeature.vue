@@ -1,6 +1,6 @@
 <template>
 	<div v-editable="gridBlok" class="py-2">
-		<h1 class="text-lg">{{ gridBlok.name }}</h1>
+		<span class="text-lg">{{ gridBlok.name }}</span>
 	</div>
 </template>
 

@@ -24,9 +24,9 @@
 				<h2>Line-Up</h2>
 			</v-col>
 			<v-col v-for="day in timetable" :key="day._uid" cols="6" class="day">
-				<h4>
+				<h3>
 					{{ day.day_display_name }}
-				</h4>
+				</h3>
 				<div>
 					{{ $_niceDate(day.day) }}
 				</div>

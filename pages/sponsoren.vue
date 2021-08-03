@@ -1,9 +1,9 @@
 <template>
 	<section>
-		<h1>{{ pageTitle }}</h1>
+		<h1 class="d-none d-lg-flex">{{ pageTitle }}</h1>
 
 		<!-- MAIN sponsors -->
-		<v-card color="darkish" flat class="mt-5 pb-4">
+		<v-card color="darkish" flat class="mt-0 mt-lg-5 pb-4">
 			<!-- TODO: make this a h2 or h3 -->
 			<v-card-title>{{ mainSponsors.story.content.title }}</v-card-title>
 			<v-card-text>
