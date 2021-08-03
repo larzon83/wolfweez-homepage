@@ -1,38 +1,49 @@
 <template>
 	<!-- eslint-disable vue/no-v-html -->
-	<v-row
-		justify="center"
-		align="start"
-		no-gutters
-		class="navbar"
-		:class="{ 'is-home hidden-md-only': $route.name === 'index' }"
-	>
-		<v-btn
-			:ripple="false"
-			height="42"
-			text
-			tile
-			class="nav-btn nav-btn-active d-lg-none"
-			tag="div"
+	<div>
+		<v-row
+			v-for="tag in ['div', 'nav']"
+			:key="tag"
+			justify="center"
+			align="start"
+			no-gutters
+			class="navbar"
+			:tag="tag"
+			:class="[
+				{ 'is-home hidden-md-only': $route.name === 'index' },
+				tag === 'div' ? 'd-lg-none' : 'd-none d-lg-flex',
+				`is-${tag}`
+			]"
 		>
-			<template #default>
-				<span v-html="mobileHeadline"></span>
-			</template>
-		</v-btn>
-		<v-btn
-			v-for="(navItem, i) in mainNavItems"
-			:key="`main-nav-btn-${i}`"
-			:ripple="false"
-			:to="navItem.to"
-			height="42"
-			nuxt
-			active-class="nav-btn-active"
-			class="nav-btn d-none d-lg-flex"
-			text
-			tile
-			>{{ navItem.title }}</v-btn
-		>
-	</v-row>
+			<v-btn
+				v-if="tag === 'div'"
+				:ripple="false"
+				height="42"
+				text
+				tile
+				class="nav-btn nav-btn-active"
+				tag="div"
+			>
+				<template #default>
+					<span v-html="mobileHeadline"></span>
+				</template>
+			</v-btn>
+			<v-btn
+				v-for="(navItem, i) in mainNavItems"
+				v-else
+				:key="`main-nav-btn-${i}`"
+				:ripple="false"
+				:to="navItem.to"
+				height="42"
+				nuxt
+				active-class="nav-btn-active"
+				class="nav-btn"
+				text
+				tile
+				>{{ navItem.title }}</v-btn
+			>
+		</v-row>
+	</div>
 </template>
 
 <script>
@@ -94,7 +105,7 @@ export default {
 		border-bottom: none;
 		margin-bottom: 20px;
 
-		.nav-btn {
+		&.is-div .nav-btn {
 			@media (max-width: 399px) {
 				/*
 					min: 16px (1rem)
