@@ -15,6 +15,7 @@
 				`is-${tag}`
 			]"
 		>
+			<!-- mobile -->
 			<v-btn
 				v-if="tag === 'div'"
 				:ripple="false"
@@ -28,20 +29,63 @@
 					<span v-html="mobileHeadline"></span>
 				</template>
 			</v-btn>
-			<v-btn
-				v-for="(navItem, i) in mainNavItems"
-				v-else
-				:key="`main-nav-btn-${i}`"
-				:ripple="false"
-				:to="navItem.to"
-				height="42"
-				nuxt
-				active-class="nav-btn-active"
-				class="nav-btn"
-				text
-				tile
-				>{{ navItem.title }}</v-btn
-			>
+
+			<!-- desktop -->
+			<template v-for="(navItem, i) in mainNavItems" v-else>
+				<!-- button with menu -->
+				<v-menu
+					v-if="navItem.tabType"
+					:key="`main-nav-btn-with-menu-${i}`"
+					open-on-hover
+					attach
+					eager
+					rounded
+					offset-y
+					transition="slide-y-transition"
+				>
+					<template #activator="{ on, attrs }">
+						<v-btn
+							:ripple="false"
+							:to="navItem.to"
+							height="42"
+							nuxt
+							active-class="nav-btn-active"
+							class="nav-btn"
+							text
+							tile
+							v-bind="attrs"
+							v-on="on"
+							>{{ navItem.title }}</v-btn
+						>
+					</template>
+
+					<v-list color="darkish">
+						<v-list-item
+							v-for="(item, index) in menuItems[navItem.tabType]"
+							:key="index"
+							:to="item.full_slug || item.to"
+							nuxt
+							:ripple="false"
+						>
+							<v-list-item-title>{{ item.title }}</v-list-item-title>
+						</v-list-item>
+					</v-list>
+				</v-menu>
+				<!-- just the button -->
+				<v-btn
+					v-else
+					:key="`main-nav-btn-no-menu-${i}`"
+					:ripple="false"
+					:to="navItem.to"
+					height="42"
+					nuxt
+					active-class="nav-btn-active"
+					class="nav-btn"
+					text
+					tile
+					>{{ navItem.title }}</v-btn
+				>
+			</template>
 		</v-row>
 	</div>
 </template>
@@ -49,14 +93,23 @@
 <script>
 import { mapState } from 'vuex'
 import useFormatting from '~/mixins/useFormatting.js'
-import { mainNavItems, routeMeta } from '~/utils/constants'
+import { mainNavItems, routeMeta, tabTypes } from '~/utils/constants'
 
 export default {
 	name: 'MainNav',
 	mixins: [useFormatting],
 
+	data: () => ({
+		items: [
+			{ title: 'Click Me' },
+			{ title: 'Click Me' },
+			{ title: 'Click Me' },
+			{ title: 'Click Me 2 asdasd asd asd as dasd asd' }
+		]
+	}),
+
 	computed: {
-		...mapState(['currentFestival']),
+		...mapState(['currentFestival', 'subNavItems']),
 
 		mobileHeadline() {
 			const currentPath = this.$_slashify(this.$route.path)
@@ -87,6 +140,22 @@ export default {
 			}
 
 			return headline
+		},
+
+		menuItems() {
+			const submenu = {}
+			mainNavItems.forEach(item => {
+				if (item.tabType === tabTypes.LINEUP) {
+					submenu[item.tabType] = [
+						{ ...routeMeta.LINEUP__BANDS },
+						{ ...routeMeta.LINEUP__TIMETABLE }
+					]
+				}
+				if (this.subNavItems[item.tabType]) {
+					submenu[item.tabType] = this.subNavItems[item.tabType]
+				}
+			})
+			return submenu
 		}
 	},
 
