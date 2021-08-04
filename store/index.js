@@ -5,7 +5,7 @@ import {
 	sbData,
 	slashify
 } from '~/utils'
-import { tabTypes } from '~/utils/constants'
+import { routeMeta, tabTypes } from '~/utils/constants'
 
 export const state = () => ({
 	contentFetched: false,
@@ -15,7 +15,11 @@ export const state = () => ({
 	// navItemsMain: [...mainNavItems],
 	subNavItems: {
 		[tabTypes.INFOS]: [],
-		[tabTypes.HISTORY]: []
+		[tabTypes.HISTORY]: [],
+		[tabTypes.LINEUP]: [
+			{ ...routeMeta.LINEUP__BANDS, slug: 'bands' },
+			{ ...routeMeta.LINEUP__TIMETABLE, slug: 'timetable' }
+		]
 	},
 	redirects: {
 		[tabTypes.INFOS]: {},
@@ -32,8 +36,8 @@ export const mutations = {
 		// ::: handle infos :::
 		const subInfos = payload.infos.map(info => {
 			return {
-				full_slug: slashify(info.full_slug),
 				slug: info.slug,
+				to: slashify(info.full_slug),
 				title: info.content.headline
 			}
 		})
@@ -58,8 +62,8 @@ export const mutations = {
 
 		const subHistory = historicFestivals.map(festival => {
 			return {
-				full_slug: slashify(festival.full_slug),
 				slug: festival.slug,
+				to: slashify(festival.full_slug),
 				title: festival.content.year
 			}
 		})

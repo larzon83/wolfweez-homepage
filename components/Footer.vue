@@ -107,19 +107,11 @@ export default {
 			return [
 				{
 					title: routeMeta.INFOS.title,
-					links: this.subNavItems[tabTypes.INFOS].map(info => {
-						return {
-							title: info.title,
-							to: info.full_slug
-						}
-					})
+					links: this.subNavItems[tabTypes.INFOS]
 				},
 				{
 					title: routeMeta.LINEUP.title,
-					links: [
-						{ ...routeMeta.LINEUP__BANDS },
-						{ ...routeMeta.LINEUP__TIMETABLE }
-					]
+					links: this.subNavItems[tabTypes.LINEUP]
 				},
 				{
 					title: 'Dies & Das',

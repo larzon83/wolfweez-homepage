@@ -61,9 +61,9 @@
 
 					<v-list color="darkish">
 						<v-list-item
-							v-for="(item, index) in menuItems[navItem.tabType]"
+							v-for="(item, index) in subNavItems[navItem.tabType]"
 							:key="index"
-							:to="item.full_slug || item.to"
+							:to="item.to"
 							nuxt
 							:ripple="false"
 						>
@@ -93,20 +93,11 @@
 <script>
 import { mapState } from 'vuex'
 import useFormatting from '~/mixins/useFormatting.js'
-import { mainNavItems, routeMeta, tabTypes } from '~/utils/constants'
+import { mainNavItems, routeMeta } from '~/utils/constants'
 
 export default {
 	name: 'MainNav',
 	mixins: [useFormatting],
-
-	data: () => ({
-		items: [
-			{ title: 'Click Me' },
-			{ title: 'Click Me' },
-			{ title: 'Click Me' },
-			{ title: 'Click Me 2 asdasd asd asd as dasd asd' }
-		]
-	}),
 
 	computed: {
 		...mapState(['currentFestival', 'subNavItems']),
@@ -140,22 +131,6 @@ export default {
 			}
 
 			return headline
-		},
-
-		menuItems() {
-			const submenu = {}
-			mainNavItems.forEach(item => {
-				if (item.tabType === tabTypes.LINEUP) {
-					submenu[item.tabType] = [
-						{ ...routeMeta.LINEUP__BANDS },
-						{ ...routeMeta.LINEUP__TIMETABLE }
-					]
-				}
-				if (this.subNavItems[item.tabType]) {
-					submenu[item.tabType] = this.subNavItems[item.tabType]
-				}
-			})
-			return submenu
 		}
 	},
 

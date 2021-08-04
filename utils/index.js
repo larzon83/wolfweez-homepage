@@ -57,6 +57,11 @@ export const slashify = (path, { startSlash = true } = {}) => {
 	return slash1 + path + slash2
 }
 
+const redirectUsesFullslugOrTo = obj => {
+	const destination = obj.to || obj.full_slug
+	return destination || '/'
+}
+
 export const getInfoRedirect = infos => {
 	let to = '/'
 
@@ -64,9 +69,9 @@ export const getInfoRedirect = infos => {
 		const infoAllgemein = infos.find(info => info.slug === 'allgemein')
 
 		if (infoAllgemein) {
-			to = slashify(infoAllgemein.full_slug)
+			to = slashify(redirectUsesFullslugOrTo(infoAllgemein))
 		} else {
-			to = slashify(infos[0].full_slug)
+			to = slashify(redirectUsesFullslugOrTo(infos[0]))
 		}
 	}
 
@@ -78,7 +83,9 @@ export const getInfoRedirect = infos => {
 }
 
 export const getHistoryRedirect = histories => {
-	const to = histories.length ? slashify(histories[0].full_slug) : '/'
+	const to = histories.length
+		? slashify(redirectUsesFullslugOrTo(histories[0]))
+		: '/'
 	return {
 		from: routeMeta.HISTORIE.to,
 		to,

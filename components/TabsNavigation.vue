@@ -11,7 +11,7 @@
 			v-for="(tab, i) in tabItems"
 			:key="`${type}-tab-${i}`"
 			:ripple="false"
-			:to="tab.full_slug || tab.to"
+			:to="tab.to"
 			nuxt
 			active-class="tab-btn-active"
 			class="tab-btn ma-0"
@@ -23,7 +23,7 @@
 <script>
 import { mapState } from 'vuex'
 import useFormatting from '~/mixins/useFormatting.js'
-import { mainNavItems, routeMeta, tabTypes } from '~/utils/constants'
+import { mainNavItems } from '~/utils/constants'
 
 export default {
 	name: 'TabsNavigation',
@@ -49,13 +49,6 @@ export default {
 
 		tabItems() {
 			if (!this.type) return undefined
-
-			if (this.type === tabTypes.LINEUP) {
-				return [
-					{ ...routeMeta.LINEUP__BANDS },
-					{ ...routeMeta.LINEUP__TIMETABLE }
-				]
-			}
 
 			if (this.subNavItems[this.type]) {
 				return this.subNavItems[this.type]
