@@ -30,6 +30,7 @@
 								<v-progress-circular
 									indeterminate
 									color="ahref"
+									aria-label="Fortschritt Bild Download"
 								></v-progress-circular>
 							</v-row>
 						</template>
