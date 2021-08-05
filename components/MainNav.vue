@@ -39,9 +39,9 @@
 					open-on-hover
 					attach
 					eager
-					rounded
+					tile
 					offset-y
-					transition="slide-y-transition"
+					transition="slide-y-reverse-transition"
 				>
 					<template #activator="{ on, attrs }">
 						<v-btn
@@ -59,15 +59,19 @@
 						>
 					</template>
 
-					<v-list color="darkish">
+					<v-list color="darkish" class="subnav">
 						<v-list-item
 							v-for="(item, index) in subNavItems[navItem.tabType]"
 							:key="index"
 							:to="item.to"
 							nuxt
 							:ripple="false"
+							active-class="subnav-item-active"
+							class="subnav-item"
 						>
-							<v-list-item-title>{{ item.title }}</v-list-item-title>
+							<v-list-item-title class="subnav-item-title">
+								{{ item.title }}
+							</v-list-item-title>
 						</v-list-item>
 					</v-list>
 				</v-menu>
@@ -158,8 +162,6 @@ export default {
 						- viewport width 400px => 400 / 100 * 5 = 20px
 						- viewport width 380px => 380 / 100 * 5 = 19px
 				*/
-				// TODO: improve vw after Header is done
-				// Maybe even remove "Irslingen"?
 				font-size: clamp(1rem, 5vw, 1.25rem);
 			}
 			@media #{map-get($display-breakpoints, 'xs-only')} {
@@ -185,6 +187,28 @@ export default {
 
 	&:before {
 		opacity: 0 !important;
+	}
+}
+
+.v-menu__content {
+	box-shadow: 0 0 40px -20px rgba(0, 0, 0, 0.8);
+}
+
+.subnav {
+	.subnav-item {
+		padding: 0 50px 0 16px;
+		color: getcolor('bright', 0.8) !important;
+		text-transform: uppercase;
+		letter-spacing: 0.0125em;
+	}
+
+	.subnav-item-title {
+		font-size: $size14;
+	}
+
+	.subnav-item-active {
+		color: getcolor('bright') !important;
+		font-weight: 700;
 	}
 }
 </style>

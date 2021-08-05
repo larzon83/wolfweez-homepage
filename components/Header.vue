@@ -21,7 +21,7 @@
 					</nuxt-link>
 				</v-col>
 				<v-col class="byline text-left pl-3 d-none d-md-block" cols="3">
-					<b>IRSLINGEN</b><br />
+					<b class="place">Irslingen</b><br />
 					bei Rottweil
 				</v-col>
 			</v-row>
@@ -171,6 +171,10 @@ export default {
 			@media #{map-get($display-breakpoints, 'md-only')} {
 				font-size: $size17;
 				line-height: 1;
+			}
+
+			.place {
+				text-transform: uppercase;
 			}
 		}
 	}
