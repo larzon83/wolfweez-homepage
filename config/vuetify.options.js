@@ -1,4 +1,5 @@
 import {
+	ArrowLeftIcon,
 	BarChart2Icon,
 	ChevronRightIcon,
 	FacebookIcon,
@@ -27,6 +28,9 @@ export default {
 
 	icons: {
 		values: {
+			arrowLeft: {
+				component: ArrowLeftIcon
+			},
 			chevronRight: {
 				component: ChevronRightIcon
 			},
