@@ -1,5 +1,6 @@
 <template>
 	<section>
+		<h1 class="d-none d-lg-flex">{{ pageTitle }}</h1>
 		<ul class="flex py-6 mb-6">
 			<li
 				v-for="news in newsSorted"
