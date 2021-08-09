@@ -2,7 +2,7 @@
 	<section>
 		<ul class="flex py-6 mb-6">
 			<li
-				v-for="news in newsAll"
+				v-for="news in newsSorted"
 				:key="news.content._uid"
 				class="flex-auto px-6"
 				style="min-width: 33%"
@@ -15,7 +15,7 @@
 					<h2 class="pt-2 pb-4 text-2xl font-bold">
 						{{ news.content.headline }}
 					</h2>
-					<h5>{{ $_niceDate(news.created_at) }}</h5>
+					<h5>{{ news.newsDate }}</h5>
 					<rich-text-renderer
 						v-if="news.content.description_short"
 						:document="news.content.description_short"
@@ -29,7 +29,7 @@
 <script>
 import savePagetitleToVuex from '~/mixins/savePagetitleToVuex.js'
 import useFormatting from '~/mixins/useFormatting.js'
-import { sbData } from '~/utils'
+import { getNiceDate, sbData } from '~/utils'
 import { routeMeta } from '~/utils/constants'
 import { createOgImagePath, createSEOMeta } from '~/utils/seo'
 
@@ -62,20 +62,37 @@ export default {
 	async asyncData(context) {
 		const newsDir = await sbData({
 			ctx: context,
-			startsWith: 'news/',
-			sortBy: 'created_at:desc'
+			startsWith: 'news/'
 		})
 
 		const newsMeta = newsDir.stories.find(item => {
 			return item.is_startpage
 		})
 
-		const newsAll = newsDir.stories.filter(item => {
-			return !item.is_startpage
+		const newsAll = newsDir.stories
+			.filter(item => !item.is_startpage)
+			.map(item => {
+				let newsDate = item.created_at
+				if (item.content?.custom_date) {
+					newsDate = item.content.custom_date.replace(' ', 'T') + ':00.000Z'
+				} else if (item.first_published_at) {
+					newsDate = item.first_published_at
+				}
+				return {
+					...item,
+					newsDate: getNiceDate(newsDate),
+					newsDateTimestamp: new Date(newsDate).getTime()
+				}
+			})
+
+		const newsSorted = newsAll.sort((a, b) => {
+			if (a.newsDateTimestamp < b.newsDateTimestamp) return 1
+			if (a.newsDateTimestamp > b.newsDateTimestamp) return -1
+			return 0
 		})
 
 		return {
-			newsAll,
+			newsSorted,
 			metaDescription: newsMeta?.content?.description_meta
 		}
 	},

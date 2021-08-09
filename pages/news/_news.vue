@@ -1,26 +1,27 @@
 <template>
 	<section>
-		<NewsDetail :news="story.content" :time="$_niceDate(story.created_at)" />
+		<NewsDetail :news="story.content" :time="newsDate" />
 	</section>
 </template>
 
 <script>
 import savePagetitleToVuex from '~/mixins/savePagetitleToVuex.js'
-import useFormatting from '~/mixins/useFormatting.js'
 import useStorybridge from '~/mixins/useStorybridge.js'
-import { sbData, slashify } from '~/utils'
+import { getNiceDate, sbData, slashify } from '~/utils'
 import { routeMeta } from '~/utils/constants'
 import { createOgImagePath, createSEOMeta } from '~/utils/seo'
 
 export default {
-	mixins: [savePagetitleToVuex, useFormatting, useStorybridge],
+	mixins: [savePagetitleToVuex, useStorybridge],
 
 	head() {
 		const title = `${this.story.content.headline} | ${routeMeta.NEWS.title}`
 		return {
 			title,
 			meta: createSEOMeta({
-				description: this.story.content.description_meta,
+				description:
+					this.story.content.description_meta ||
+					this.story.content.description_short,
 				image: createOgImagePath(this.$route.path),
 				imageAlt: title,
 				title,
@@ -35,6 +36,12 @@ export default {
 			path: `/news/${context.params.news}`
 		})
 
+		const newsDate = getNiceDate(
+			result.story.content.custom_date ||
+				result.story.first_published_at ||
+				result.story.created_at
+		)
+
 		const crumbs = [
 			{ ...routeMeta.NEWS },
 			{
@@ -44,7 +51,7 @@ export default {
 		]
 		context.store.commit('central/SET_CRUMBS', crumbs)
 
-		return { ...result }
+		return { ...result, newsDate }
 	},
 
 	computed: {
