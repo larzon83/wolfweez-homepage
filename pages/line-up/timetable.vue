@@ -96,9 +96,9 @@ export default {
 // 	justify-content: center;
 // }
 .day {
-	border: 1px solid red;
+	border: 1px solid getcolor('prime');
 }
 .slot {
-	border-top: 1px solid red;
+	border-top: 1px solid getcolor('prime');
 }
 </style>
