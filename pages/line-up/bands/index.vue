@@ -60,7 +60,7 @@ export default {
 		return {
 			title,
 			meta: createSEOMeta({
-				description: this.metaDescription,
+				description: this.metaDescription || title,
 				image: createOgImagePath(this.$route.path),
 				imageAlt: title,
 				title,
