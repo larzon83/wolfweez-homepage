@@ -197,7 +197,11 @@
 			:key="story.content._uid"
 			:blok="story.content"
 		/> -->
-		<HomePage v-if="story.content.component" :blok="story.content" />
+		<HomePage
+			v-if="story.content.component"
+			:blok="story.content"
+			:news-sorted="newsSorted"
+		/>
 	</v-row>
 </template>
 
@@ -208,7 +212,7 @@ import VueHorizontal from 'vue-horizontal'
 import savePagetitleToVuex from '~/mixins/savePagetitleToVuex.js'
 import useFormatting from '~/mixins/useFormatting.js'
 import useStorybridge from '~/mixins/useStorybridge.js'
-import { sbData } from '~/utils'
+import { getNewsSorted, sbData } from '~/utils'
 import { routeMeta } from '~/utils/constants'
 import { presetNames } from '~/utils/responsive-images'
 import { createSEOMeta } from '~/utils/seo'
@@ -267,9 +271,27 @@ export default {
 			isStartpage: 0
 		})
 
+		const homeBody = homepage.story.content.body
+		let newsSorted
+
+		const homeHasNews = homeBody.find(item => item.component === 'HomepageNews')
+
+		if (homeHasNews) {
+			const newsDir = await sbData({
+				ctx: context,
+				startsWith: 'news/'
+			})
+			const news = newsDir.stories.filter(item => !item.is_startpage)
+			newsSorted = getNewsSorted(news).slice(0, 3)
+		}
+
 		context.store.commit('central/RESET_CRUMBS')
 
-		return { ...homepage, bands }
+		return {
+			...homepage,
+			bands,
+			newsSorted
+		}
 	},
 
 	computed: {

@@ -1,5 +1,5 @@
 <template>
-	<div v-editable="blok" class="px-6">
+	<div v-editable="blok">
 		<!-- <Teaser :blok2="blok.body[0]" /> -->
 		<!-- blok: {{ blok }} -->
 
@@ -17,6 +17,7 @@
 			v-for="pageBlok in blok.body"
 			:key="`page-blok-${pageBlok._uid}`"
 			:page-blok="pageBlok"
+			:news-sorted="newsSorted"
 		/>
 	</div>
 </template>
@@ -32,6 +33,10 @@ export default {
 		BlokTeaser: () =>
 			import(
 				/* webpackChunkName: "BlokTeaser" */ '~/components/_storyblok/BlokTeaser'
+			),
+		HomepageNews: () =>
+			import(
+				/* webpackChunkName: "HomepageNews" */ '~/components/_storyblok/HomepageNews'
 			)
 	},
 
@@ -39,6 +44,10 @@ export default {
 		blok: {
 			type: Object,
 			required: true
+		},
+		newsSorted: {
+			type: Array,
+			default: undefined
 		}
 	}
 }
