@@ -24,6 +24,7 @@ export default {
 	opacity: 0.3;
 
 	::v-deep .content {
+		width: auto !important;
 		background-image: radial-gradient(
 			circle,
 			rgb(184 192 194 / 88%) 0%,
