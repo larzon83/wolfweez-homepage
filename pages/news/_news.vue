@@ -12,25 +12,34 @@
 
 <script>
 import savePagetitleToVuex from '~/mixins/savePagetitleToVuex.js'
+import useFormatting from '~/mixins/useFormatting.js'
 import useStorybridge from '~/mixins/useStorybridge.js'
 import { getNiceDate, sbData, slashify } from '~/utils'
 import { routeMeta } from '~/utils/constants'
 import { createOgImagePath, createSEOMeta } from '~/utils/seo'
 
 export default {
-	mixins: [savePagetitleToVuex, useStorybridge],
+	mixins: [savePagetitleToVuex, useFormatting, useStorybridge],
 
 	head() {
 		const title = `${this.story.content.headline} | ${routeMeta.NEWS.title}`
+		let image
+		let imageHeight
+
+		if (this.story.content.image.filename) {
+			image = this.$_transformImage(this.story.content.image.filename, '1200x0')
+			imageHeight = 1200 / this.$_aspectRatio(this.story.content.image.filename)
+		} else {
+			image = createOgImagePath(this.$route.path)
+		}
+
 		return {
 			title,
 			meta: createSEOMeta({
-				description:
-					this.story.content.description_meta ||
-					this.story.content.description_short,
-				// TODO: use news-image
-				image: createOgImagePath(this.$route.path),
+				description: this.story.content.description_meta,
+				image,
 				imageAlt: title,
+				imageHeight,
 				title,
 				url: this.$route.path
 			})
