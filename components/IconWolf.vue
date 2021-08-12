@@ -6,6 +6,7 @@
 		viewBox="0 0 711 658"
 	>
 		<path
+			v-if="showMoon"
 			d="M711 355.5C711 551.837 551.835 711 355.5 711S0 551.837 0 355.5 159.164 0 355.5 0 711 159.163 711 355.5z"
 			fill-rule="evenodd"
 			fill="var(--bright)"
@@ -21,6 +22,12 @@
 
 <script>
 export default {
-	name: 'IconWolf'
+	name: 'IconWolf',
+	props: {
+		showMoon: {
+			type: Boolean,
+			default: true
+		}
+	}
 }
 </script>

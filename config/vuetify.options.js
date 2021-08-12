@@ -48,6 +48,12 @@ export default {
 			},
 			wolf: {
 				component: IconWolf
+			},
+			wolfNoMoon: {
+				component: IconWolf,
+				props: {
+					showMoon: false
+				}
 			}
 		}
 	}
