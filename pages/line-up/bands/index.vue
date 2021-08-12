@@ -81,13 +81,8 @@ export default {
 			startsWith: 'line-up/bands/'
 		})
 
-		const bandsMeta = bandsDir.stories.find(item => {
-			return item.is_startpage
-		})
-
-		const bandsAll = bandsDir.stories.filter(item => {
-			return !item.is_startpage
-		})
+		const bandsMeta = bandsDir.stories.find(item => item.is_startpage)
+		const bandsAll = bandsDir.stories.filter(item => !item.is_startpage)
 
 		return {
 			bandsAll,
