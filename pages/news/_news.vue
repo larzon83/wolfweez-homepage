@@ -6,7 +6,7 @@
 				News
 			</nuxt-link>
 		</div>
-		<NewsDetail :news="story.content" :time="newsDate" />
+		<NewsDetail :news="story.content" :news-date="newsDate" />
 	</section>
 </template>
 
@@ -28,6 +28,7 @@ export default {
 				description:
 					this.story.content.description_meta ||
 					this.story.content.description_short,
+				// TODO: use news-image
 				image: createOgImagePath(this.$route.path),
 				imageAlt: title,
 				title,
