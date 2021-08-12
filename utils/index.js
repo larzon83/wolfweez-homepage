@@ -127,3 +127,25 @@ export const sortAssetsByName = gallery => {
 		return gallery.indexOf(sorted)
 	})
 }
+
+export const getNewsSorted = newsAll => {
+	const newsEnriched = newsAll.map(item => {
+		let newsDate = item.created_at
+		if (item.content.custom_date) {
+			newsDate = item.content.custom_date.replace(' ', 'T') + ':00.000Z'
+		} else if (item.first_published_at) {
+			newsDate = item.first_published_at
+		}
+		return {
+			...item,
+			newsDate: getNiceDate(newsDate),
+			newsDateTimestamp: new Date(newsDate).getTime()
+		}
+	})
+
+	return newsEnriched.sort((a, b) => {
+		if (a.newsDateTimestamp < b.newsDateTimestamp) return 1
+		if (a.newsDateTimestamp > b.newsDateTimestamp) return -1
+		return 0
+	})
+}
