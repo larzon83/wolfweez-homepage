@@ -61,10 +61,6 @@ export default {
 .news-card {
 	transition: transform 300ms;
 
-	&::before {
-		border-radius: $border-radius-root;
-	}
-
 	@media (hover: hover) {
 		&:hover::before {
 			opacity: 0.08;

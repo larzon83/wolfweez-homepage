@@ -86,3 +86,7 @@ body.lg-on {
 .lg-outer .lg-thumb-item:hover {
 	border-color: getcolor('prime') !important;
 }
+
+.v-card::before {
+	border-radius: $border-radius-root;
+}
