@@ -213,7 +213,7 @@ import savePagetitleToVuex from '~/mixins/savePagetitleToVuex.js'
 import useFormatting from '~/mixins/useFormatting.js'
 import useStorybridge from '~/mixins/useStorybridge.js'
 import { getNewsSorted, sbData } from '~/utils'
-import { routeMeta } from '~/utils/constants'
+import { routeMeta, sbHomeBloks } from '~/utils/constants'
 import { presetNames } from '~/utils/responsive-images'
 import { createSEOMeta } from '~/utils/seo'
 
@@ -271,10 +271,10 @@ export default {
 			isStartpage: 0
 		})
 
-		const homeBody = homepage.story.content.body
+		const body = homepage.story.content.body
 		let newsSorted
 
-		const homeHasNews = homeBody.find(item => item.component === 'HomepageNews')
+		const homeHasNews = body.find(item => item.component === sbHomeBloks.NEWS)
 
 		if (homeHasNews) {
 			const newsDir = await sbData({

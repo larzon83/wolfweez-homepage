@@ -15,6 +15,10 @@ export const tabTypes = {
 	LINEUP: 'lineup'
 }
 
+export const sbHomeBloks = {
+	NEWS: 'HomepageNews'
+}
+
 export const routeMeta = {
 	HOME: {
 		title: 'Home',

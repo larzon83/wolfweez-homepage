@@ -17,12 +17,16 @@
 			v-for="pageBlok in blok.body"
 			:key="`page-blok-${pageBlok._uid}`"
 			:page-blok="pageBlok"
-			:news-sorted="newsSorted"
+			:news-sorted="
+				pageBlok.component === sbHomeBloks.NEWS ? newsSorted : undefined
+			"
 		/>
 	</div>
 </template>
 
 <script>
+import { sbHomeBloks } from '~/utils/constants'
+
 export default {
 	name: 'HomePage',
 	components: {
@@ -49,6 +53,10 @@ export default {
 			type: Array,
 			default: undefined
 		}
+	},
+
+	created() {
+		this.sbHomeBloks = sbHomeBloks
 	}
 }
 </script>
