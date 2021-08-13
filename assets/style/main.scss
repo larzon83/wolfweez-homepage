@@ -87,6 +87,9 @@ body.lg-on {
 	border-color: getcolor('prime') !important;
 }
 
+.v-sheet.v-card:not(.v-sheet--outlined) {
+	box-shadow: 0 0 40px -20px rgba(0, 0, 0, 0.8) !important;
+}
 .v-card::before {
 	border-radius: $border-radius-root;
 }
