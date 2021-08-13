@@ -76,6 +76,13 @@ export default {
 		}
 	}
 
+	// hide image when mobile and on homepage
+	@media #{map-get($display-breakpoints, 'sm-and-down')} {
+		&.on-homepage .v-image {
+			display: none;
+		}
+	}
+
 	.news-title {
 		font-weight: 700;
 		line-height: 2.25rem; // 36px

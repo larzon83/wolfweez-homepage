@@ -9,7 +9,7 @@
 				md="6"
 				lg="4"
 			>
-				<NewsCard :news="news" />
+				<NewsCard :news="news" class="on-homepage" />
 			</v-col>
 		</v-row>
 		<v-row align="center" justify="center" no-gutters class="mt-6">
