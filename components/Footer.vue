@@ -106,18 +106,25 @@ export default {
 		sections() {
 			return [
 				{
-					title: routeMeta.INFOS.title,
-					links: this.subNavItems[tabTypes.INFOS]
-				},
-				{
 					title: routeMeta.LINEUP.title,
 					links: this.subNavItems[tabTypes.LINEUP]
+				},
+				{
+					title: 'Festival',
+					links: [
+						{ ...routeMeta.TICKETS },
+						{ ...routeMeta.NEWS },
+						{ ...routeMeta.INFOS },
+						{ ...routeMeta.HISTORIE }
+					]
 				},
 				{
 					title: 'Dies & Das',
 					links: [
 						{ ...routeMeta.MEDIEN__FOTOGALERIE },
 						{ ...routeMeta.SPONSOREN }
+						// TODO: add presse/medien here
+						// TODO: add newsletter here
 					]
 				},
 				{
