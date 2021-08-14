@@ -10,7 +10,8 @@ import { routeMeta, tabTypes } from '~/utils/constants'
 export const state = () => ({
 	contentFetched: false,
 	currentFestival: {},
-	historicFestivals: [],
+	festivalsWithGalleries: [],
+	// historicFestivals: [],
 	mainSponsors: {},
 	// navItemsMain: [...mainNavItems],
 	subNavItems: {
@@ -26,6 +27,14 @@ export const state = () => ({
 		[tabTypes.HISTORY]: {}
 	}
 })
+
+export const getters = {
+	latestGallery(state) {
+		return state.festivalsWithGalleries.length
+			? state.festivalsWithGalleries[0]
+			: undefined
+	}
+}
 
 export const mutations = {
 	SET_CONTENT_FETCHED(state) {
@@ -55,10 +64,21 @@ export const mutations = {
 			}
 		})
 
+		const festivalsWithGalleries = payload.configs.filter(
+			item => item.content.gallery.length > 0
+		)
+		state.festivalsWithGalleries = festivalsWithGalleries.map(festival => {
+			return {
+				slug: festival.slug,
+				year: festival.content.year,
+				imgs: festival.content.gallery
+			}
+		})
+
 		const currentFestival = payload.configs.find(item => !item.is_startpage)
 		const historicFestivals = payload.configs.filter(item => item.is_startpage)
 		state.currentFestival = currentFestival
-		state.historicFestivals = historicFestivals
+		// state.historicFestivals = historicFestivals
 
 		const subHistory = historicFestivals.map(festival => {
 			return {

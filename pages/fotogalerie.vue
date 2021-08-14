@@ -1,7 +1,7 @@
 <template>
 	<section>
 		<h1 class="d-none d-lg-flex">{{ pageTitle }}</h1>
-		<ImgGalleries :galleries="galleries" />
+		<ImgGalleries :galleries="festivalsWithGalleries" />
 	</section>
 </template>
 
@@ -46,20 +46,7 @@ export default {
 	},
 
 	computed: {
-		...mapState(['currentFestival', 'historicFestivals']),
-
-		galleries() {
-			const festivals = [{ ...this.currentFestival }, ...this.historicFestivals]
-			const festivalsWithGalleries = festivals.filter(
-				festival => festival.content.gallery.length > 0
-			)
-			return festivalsWithGalleries.map(festival => {
-				return {
-					year: festival.content.year,
-					imgs: festival.content.gallery
-				}
-			})
-		}
+		...mapState(['festivalsWithGalleries'])
 	},
 
 	middleware({ store }) {
