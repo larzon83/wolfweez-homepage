@@ -59,7 +59,7 @@ export default {
 	mixins: [savePagetitleToVuex, useFormatting, useStorybridge],
 
 	head() {
-		const title = `${this.story.slug} | ${routeMeta.HISTORIE.title}`
+		const title = `${this.story.content.year} | ${routeMeta.HISTORIE.title}`
 		return {
 			title,
 			meta: createSEOMeta({
@@ -94,7 +94,7 @@ export default {
 		const crumbs = [
 			{ ...routeMeta.HISTORIE },
 			{
-				title: historyYear?.story.slug,
+				title: historyYear?.story.content.year,
 				to: slashify(`${routeMeta.HISTORIE.to}${context.params.historie}`)
 			}
 		]
@@ -108,11 +108,11 @@ export default {
 
 	computed: {
 		headlinePage() {
-			return `${siteTitle.short} ${this.story.slug}`
+			return `${siteTitle.short} ${this.story.content.year}`
 		},
 
 		pageTitle() {
-			return `Festival ${this.story.slug}`
+			return `Festival ${this.story.content.year}`
 		},
 
 		galleries() {
