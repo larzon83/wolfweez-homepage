@@ -16,7 +16,9 @@ export const tabTypes = {
 }
 
 export const sbHomeBloks = {
-	NEWS: 'HomepageNews'
+	GALLERIES: 'HomepageGalerie',
+	NEWS: 'HomepageNews',
+	VIDEO: 'HomepageVideo'
 }
 
 export const routeMeta = {
