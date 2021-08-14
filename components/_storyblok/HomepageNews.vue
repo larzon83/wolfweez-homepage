@@ -1,6 +1,6 @@
 <template>
-	<div v-if="newsSorted" v-editable="pageBlok">
-		<h2>Aktuelle News</h2>
+	<div v-if="newsSorted" v-editable="pageBlok" class="mt-16">
+		<h2 v-if="pageBlok.headline">{{ pageBlok.headline }}</h2>
 		<v-row class="mt-2">
 			<v-col
 				v-for="news in newsSorted"
