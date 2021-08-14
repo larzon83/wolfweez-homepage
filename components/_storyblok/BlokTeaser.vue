@@ -1,6 +1,6 @@
 <template>
-	<div v-editable="pageBlok" class="py-8 mb-6 text-5xl font-bold text-center">
-		{{ pageBlok.headline }} kkkkkkkkkkkkk
+	<div v-editable="pageBlok" class="py-8 font-bold mt-16">
+		BlokTeaser: {{ pageBlok.headline }}
 	</div>
 </template>
 
