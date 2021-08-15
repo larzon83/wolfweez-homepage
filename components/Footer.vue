@@ -84,7 +84,7 @@
 		<v-footer dark padless>
 			<v-card flat tile color="transparent" class="text-center" width="100%">
 				<v-divider></v-divider>
-				<v-card-text>
+				<v-card-text class="text-body-2">
 					{{ new Date().getFullYear() }} — <strong>{{ siteTitle }}</strong>
 				</v-card-text>
 			</v-card>
