@@ -1,5 +1,5 @@
 <template>
-	<div v-editable="blok" class="mt-14">
+	<div v-editable="blok" class="mt-16">
 		<!-- <Teaser :blok2="blok.body[0]" /> -->
 		<!-- blok: {{ blok }} -->
 
@@ -37,6 +37,10 @@ export default {
 		BlokTeaser: () =>
 			import(
 				/* webpackChunkName: "BlokTeaser" */ '~/components/_storyblok/BlokTeaser'
+			),
+		HomepageGalerie: () =>
+			import(
+				/* webpackChunkName: "HomepageGalerie" */ '~/components/_storyblok/HomepageGalerie'
 			),
 		HomepageNews: () =>
 			import(

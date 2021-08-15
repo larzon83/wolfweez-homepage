@@ -1,43 +1,43 @@
 <template>
-	<div v-if="galleries.length" class="mt-n12 mt-lg-0">
-		<div
-			v-for="(gallery, galleryIndex) in galleries"
-			:key="`gallery-${galleryIndex}`"
-		>
-			<v-row :class="marginTopClass" class="mb-0">
-				<v-col cols="12" class="py-0">
-					<h2>
-						<span v-if="headline">{{ headline }}</span>
-						<span v-else>{{ galleryName }} {{ gallery.year }}</span>
-					</h2>
-				</v-col>
-				<v-col
-					v-for="(img, imgIndex) in gallery.imgs"
-					:key="`gallery-${galleryIndex}--img-${imgIndex}`"
-					class="d-flex child-flex"
-					cols="4"
-				>
-					<v-img
-						:alt="`${galleryName} ${gallery.year} - Bild ${imgIndex + 1}`"
-						:src="$_transformImage(img.filename, '500x500')"
-						:lazy-src="$_transformImage(img.filename, '6x6')"
-						aspect-ratio="1"
-						style="cursor: pointer"
-						@click="openGallery(imgIndex, galleryIndex)"
+	<div v-if="galleries.length">
+		<template v-for="(gallery, galleryIndex) in galleries">
+			<h2
+				:key="`gallery-headline-${galleryIndex}`"
+				:class="[galleryIndex === 0 ? 'pt-0 pt-lg-12' : 'pt-16']"
+				class="pb-3"
+				v-text="headline ? headline : `${galleryName} ${gallery.year}`"
+			/>
+			<v-row :key="`gallery-${galleryIndex}`">
+				<template v-for="(img, imgIndex) in gallery.imgs">
+					<v-col
+						v-if="!maxPicsToShow || imgIndex < maxPicsToShow"
+						:key="`gallery-${galleryIndex}--img-${imgIndex}`"
+						class="d-flex child-flex"
+						cols="4"
+						:lg="colsLg"
 					>
-						<template #placeholder>
-							<v-row class="fill-height ma-0" align="center" justify="center">
-								<v-progress-circular
-									indeterminate
-									color="ahref"
-									aria-label="Fortschritt Bild Download"
-								></v-progress-circular>
-							</v-row>
-						</template>
-					</v-img>
-				</v-col>
+						<v-img
+							:alt="`${galleryName} ${gallery.year} - Bild ${imgIndex + 1}`"
+							:src="$_transformImage(img.filename, '500x500')"
+							:lazy-src="$_transformImage(img.filename, '6x6')"
+							aspect-ratio="1"
+							style="cursor: pointer"
+							@click="openGallery(imgIndex, galleryIndex)"
+						>
+							<template #placeholder>
+								<v-row class="fill-height ma-0" align="center" justify="center">
+									<v-progress-circular
+										indeterminate
+										color="ahref"
+										aria-label="Fortschritt Bild Download"
+									></v-progress-circular>
+								</v-row>
+							</template>
+						</v-img>
+					</v-col>
+				</template>
 			</v-row>
-		</div>
+		</template>
 
 		<!-- Placeholders for lightgallery -->
 		<div
@@ -64,17 +64,24 @@ export default {
 		headline: {
 			type: String,
 			default: ''
+		},
+		colsLg: {
+			type: String,
+			default: '4'
+		},
+		maxPicsToShow: {
+			type: Number,
+			default: undefined
 		}
 	},
 
 	computed: {
-		marginTopClass() {
-			return this.galleries.length > 1 ? 'mt-12' : 'mt-0'
-		},
-
 		dynamicElements() {
 			const elements = this.galleries.map(gallery => {
-				return gallery.imgs.map((img, index) => {
+				const imgsToLoop = this.maxPicsToShow
+					? gallery.imgs.slice(0, this.maxPicsToShow)
+					: gallery.imgs
+				return imgsToLoop.map((img, index) => {
 					return {
 						downloadUrl: img.filename,
 						subHtml: `${this.galleryName} ${gallery.year}`,
