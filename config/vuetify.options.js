@@ -3,6 +3,7 @@ import {
 	BarChart2Icon,
 	ChevronRightIcon,
 	FacebookIcon,
+	InfoIcon,
 	InstagramIcon,
 	XIcon
 } from 'vue-feather-icons'
@@ -39,6 +40,9 @@ export default {
 			},
 			facebook: {
 				component: FacebookIcon
+			},
+			info: {
+				component: InfoIcon
 			},
 			instagram: {
 				component: InstagramIcon
