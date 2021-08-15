@@ -1,5 +1,5 @@
 <template>
-	<v-row class="mt-0">
+	<v-row>
 		<v-col
 			v-for="news in newsSorted"
 			:key="news.content._uid"
