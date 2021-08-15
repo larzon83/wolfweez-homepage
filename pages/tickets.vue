@@ -111,8 +111,9 @@ export default {
 			resolveRelations: 'tickets_list'
 		})
 
+		// FIXME: remove
 		// console.log('foo:', foo)
-		console.log('foo:', foo.story.content.tickets_list)
+		// console.log('foo:', foo.story.content.tickets_list)
 
 		return foo
 	},
