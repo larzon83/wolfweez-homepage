@@ -13,7 +13,7 @@
 						v-if="!maxPicsToShow || imgIndex < maxPicsToShow"
 						:key="`gallery-${galleryIndex}--img-${imgIndex}`"
 						class="d-flex child-flex"
-						cols="4"
+						cols="3"
 						:lg="colsLg"
 					>
 						<v-img
@@ -67,7 +67,7 @@ export default {
 		},
 		colsLg: {
 			type: String,
-			default: '4'
+			default: undefined
 		},
 		maxPicsToShow: {
 			type: Number,
