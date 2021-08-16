@@ -21,7 +21,8 @@
 							:src="$_transformImage(img.filename, '500x500')"
 							:lazy-src="$_transformImage(img.filename, '6x6')"
 							aspect-ratio="1"
-							style="cursor: pointer"
+							class="gallery-image"
+							content-class="content"
 							@click="openGallery(imgIndex, galleryIndex)"
 						>
 							<template #placeholder>
@@ -174,3 +175,21 @@ export default {
 	}
 }
 </script>
+
+<style lang="scss" scoped>
+.gallery-image {
+	border-radius: $border-radius-root;
+	box-shadow: 0 0 20px -10px rgba(0, 0, 0, 0.6);
+	cursor: pointer;
+
+	@media (hover: hover) {
+		&:hover {
+			::v-deep .content {
+				border-radius: $border-radius-root;
+				border: 3px solid getcolor('prime');
+				background: getcolor('prime', 0.3);
+			}
+		}
+	}
+}
+</style>
