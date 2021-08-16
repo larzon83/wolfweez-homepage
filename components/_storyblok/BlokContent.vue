@@ -71,7 +71,7 @@ export default {
 	computed: {
 		computedBlocks() {
 			return this.content.bloks.map(blok => {
-				const countPics = blok.pics.length
+				const countPics = blok.pics?.length
 				const layout = this.getLayout(countPics, blok.pics_arrangement)
 				blok.containerFlexDirection = layout.containerFlexDirection
 				blok.containerImgCols = layout.containerImgCols
