@@ -1,6 +1,6 @@
 <template>
 	<section>
-		<v-row class="my-0">
+		<v-row>
 			<v-col
 				v-for="band in bandsAll"
 				:key="band.content._uid"
