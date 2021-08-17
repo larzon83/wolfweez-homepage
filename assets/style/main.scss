@@ -90,3 +90,7 @@ body.lg-on {
 .v-card::before {
 	border-radius: $border-radius-root;
 }
+
+.v-application ul li p {
+	margin-bottom: 5px;
+}
