@@ -6,6 +6,9 @@
 		class="tabbar"
 		slider-size="2"
 		color="bright"
+		prev-icon="$chevronLeft"
+		next-icon="$chevronRight"
+		show-arrows
 	>
 		<v-tab
 			v-for="(tab, i) in tabItems"
@@ -63,6 +66,18 @@ export default {
 <style lang="scss" scoped>
 .tabbar {
 	box-shadow: inset 0 -2px 0 getcolor('bright', 0.06);
+
+	::v-deep .v-slide-group__prev,
+	::v-deep .v-slide-group__next {
+		flex-basis: 34px;
+		min-width: 34px;
+	}
+	::v-deep .v-slide-group__prev {
+		justify-content: flex-start;
+	}
+	::v-deep .v-slide-group__next {
+		justify-content: flex-end;
+	}
 
 	.tab-btn {
 		&.tab-btn-active {
