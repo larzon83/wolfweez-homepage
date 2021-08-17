@@ -1,5 +1,5 @@
 <template>
-	<section>
+	<section v-editable="story.content">
 		<v-alert
 			v-if="story.content.show_info_box"
 			type="info"
@@ -69,6 +69,7 @@
 
 <script>
 import savePagetitleToVuex from '~/mixins/savePagetitleToVuex.js'
+import useStorybridge from '~/mixins/useStorybridge.js'
 import { sbData } from '~/utils'
 import { routeMeta } from '~/utils/constants'
 import { createOgImagePath, createSEOMeta } from '~/utils/seo'
@@ -77,7 +78,7 @@ const pageTitle = routeMeta.TICKETS.title
 
 export default {
 	name: pageTitle,
-	mixins: [savePagetitleToVuex],
+	mixins: [savePagetitleToVuex, useStorybridge],
 
 	head() {
 		const title = pageTitle
