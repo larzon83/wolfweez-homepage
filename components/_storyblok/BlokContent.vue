@@ -28,7 +28,7 @@
 								'pt-0': blok.pics_arrangement === 'bottom'
 							}"
 						>
-							<SbImage :pic="pic" :preset="presetInfo" />
+							<SbImage :pic="pic" :preset="$config.presetNames.INFO" />
 						</v-col>
 					</v-row>
 				</v-col>
@@ -51,8 +51,6 @@
 </template>
 
 <script>
-import { presetNames } from '~/utils/responsive-images'
-
 export default {
 	name: 'BlokContent',
 	props: {
@@ -76,10 +74,6 @@ export default {
 				return blok
 			})
 		}
-	},
-
-	created() {
-		this.presetInfo = presetNames.INFO
 	},
 
 	methods: {

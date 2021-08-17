@@ -52,7 +52,7 @@ import savePagetitleToVuex from '~/mixins/savePagetitleToVuex.js'
 import useFormatting from '~/mixins/useFormatting.js'
 import useStorybridge from '~/mixins/useStorybridge.js'
 import { sbData, sortAssetsByName, slashify } from '~/utils'
-import { routeMeta, siteTitle } from '~/utils/constants'
+import { routeMeta } from '~/utils/constants'
 import { createOgImagePath, createSEOMeta } from '~/utils/seo'
 
 export default {
@@ -108,7 +108,7 @@ export default {
 
 	computed: {
 		headlinePage() {
-			return `${siteTitle.short} ${this.story.content.year}`
+			return `${this.$config.siteTitle.short} ${this.story.content.year}`
 		},
 
 		pageTitle() {

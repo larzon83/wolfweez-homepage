@@ -58,7 +58,7 @@
 					:key="band.content._uid"
 					:alt="band.content.name"
 					:pic="band.content.image"
-					:preset="presetHomeSlider"
+					:preset="$config.presetNames.HOME_SLIDER"
 					class="slider-item"
 				>
 					<nuxt-link
@@ -214,7 +214,6 @@ import useFormatting from '~/mixins/useFormatting.js'
 import useStorybridge from '~/mixins/useStorybridge.js'
 import { getNewsSorted, sbData } from '~/utils'
 import { routeMeta, sbHomeBloks } from '~/utils/constants'
-import { presetNames } from '~/utils/responsive-images'
 import { createSEOMeta } from '~/utils/seo'
 
 export default {
@@ -230,7 +229,7 @@ export default {
 		const linkEntries = []
 		const preloadImage = this.$_getPreloadImageHeadEntry(
 			this.bands.stories[0].content.image.filename,
-			this.presetHomeSlider
+			this.$config.presetNames.HOME_SLIDER
 		)
 		if (preloadImage) linkEntries.push(preloadImage)
 
@@ -296,10 +295,6 @@ export default {
 
 	computed: {
 		...mapState(['currentFestival'])
-	},
-
-	created() {
-		this.presetHomeSlider = presetNames.HOME_SLIDER
 	},
 
 	methods: {

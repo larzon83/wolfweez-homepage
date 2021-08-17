@@ -5,7 +5,9 @@
 				:key="`gallery-headline-${galleryIndex}`"
 				:class="[galleryIndex === 0 ? 'pt-0 pt-lg-12' : 'pt-16']"
 				class="pb-3"
-				v-text="headline ? headline : `${galleryName} ${gallery.year}`"
+				v-text="
+					headline ? headline : `${$config.siteTitle.short} ${gallery.year}`
+				"
 			/>
 			<v-row :key="`gallery-${galleryIndex}`">
 				<template v-for="(img, imgIndex) in gallery.imgs">
@@ -17,7 +19,9 @@
 						:lg="colsLg"
 					>
 						<v-img
-							:alt="`${galleryName} ${gallery.year} - Bild ${imgIndex + 1}`"
+							:alt="`${$config.siteTitle.short} ${gallery.year} - Bild ${
+								imgIndex + 1
+							}`"
 							:src="$_transformImage(img.filename, '500x500')"
 							:lazy-src="$_transformImage(img.filename, '6x6')"
 							aspect-ratio="1"
@@ -51,7 +55,6 @@
 
 <script>
 import useFormatting from '~/mixins/useFormatting.js'
-import { siteTitle } from '~/utils/constants'
 
 export default {
 	name: 'ImgGalleries',
@@ -85,8 +88,10 @@ export default {
 				return imgsToLoop.map((img, index) => {
 					return {
 						downloadUrl: img.filename,
-						subHtml: `${this.galleryName} ${gallery.year}`,
-						alt: `${this.galleryName} ${gallery.year} - Bild ${index + 1}`,
+						subHtml: `${this.$config.siteTitle.short} ${gallery.year}`,
+						alt: `${this.$config.siteTitle.short} ${gallery.year} - Bild ${
+							index + 1
+						}`,
 						responsive: `
 									${this.$_transformImage(img.filename, '329x0')} 340,
 									${this.$_transformImage(img.filename, '529x0')} 540,
@@ -117,10 +122,6 @@ export default {
 		// Go to third slide
 		// Index starts from 0
 		// window.lgData[el.getAttribute('lg-uid')].slide(1)
-	},
-
-	created() {
-		this.galleryName = siteTitle.short
 	},
 
 	methods: {

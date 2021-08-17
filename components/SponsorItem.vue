@@ -12,7 +12,6 @@
 
 <script>
 import useFormatting from '~/mixins/useFormatting.js'
-import { presetNames } from '~/utils/responsive-images'
 
 export default {
 	name: 'SponsorItem',
@@ -31,7 +30,9 @@ export default {
 	created() {
 		this.sbExtras = this.getSbExtras()
 		this.wrapperClass =
-			this.preset === presetNames.SPONSORS_MAIN_FOOTER ? 'mb-5 mb-md-0' : ''
+			this.preset === this.$config.presetNames.SPONSORS_MAIN_FOOTER
+				? 'mb-5 mb-md-0'
+				: ''
 	},
 
 	methods: {
@@ -39,7 +40,7 @@ export default {
 			let exactHeight
 			let marginTop
 
-			if (this.preset === presetNames.SPONSORS_MAIN_FOOTER) {
+			if (this.preset === this.$config.presetNames.SPONSORS_MAIN_FOOTER) {
 				exactHeight = this.sponsor.logo_height || '35'
 				marginTop = this.sponsor.logo_margin_top
 			}

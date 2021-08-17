@@ -52,14 +52,14 @@
 						v-for="sponsor in mainSponsors.story.content.sponsors_list"
 						:key="`footer-sponsor-${sponsor._uid}`"
 						v-editable="sponsor"
-						:preset="presetSponsorMainFooter"
+						:preset="$config.presetNames.SPONSORS_MAIN_FOOTER"
 						:sponsor="sponsor"
 					/>
 				</v-row>
 				<v-row justify="center" no-gutters class="mt-6 mt-md-11">
 					<v-btn
 						:ripple="false"
-						:aria-label="`${siteTitle} auf Facebook`"
+						:aria-label="`${$config.siteTitle.short} auf Facebook`"
 						href="https://www.facebook.com/WolfweezOpenAir/"
 						icon
 						rel="noreferrer"
@@ -70,7 +70,7 @@
 					</v-btn>
 					<v-btn
 						:ripple="false"
-						:aria-label="`${siteTitle} auf Instagram`"
+						:aria-label="`${$config.siteTitle.short} auf Instagram`"
 						href="https://www.instagram.com/wolfweez_openair_/"
 						icon
 						rel="noreferrer"
@@ -85,7 +85,8 @@
 			<v-card flat tile color="transparent" class="text-center" width="100%">
 				<v-divider></v-divider>
 				<v-card-text class="text-body-2">
-					{{ new Date().getFullYear() }} — <strong>{{ siteTitle }}</strong>
+					{{ new Date().getFullYear() }} —
+					<strong>{{ $config.siteTitle.short }}</strong>
 				</v-card-text>
 			</v-card>
 		</v-footer>
@@ -94,8 +95,7 @@
 
 <script>
 import { mapState } from 'vuex'
-import { routeMeta, siteTitle, tabTypes } from '~/utils/constants'
-import { presetNames } from '~/utils/responsive-images'
+import { routeMeta, tabTypes } from '~/utils/constants'
 
 export default {
 	name: 'Footer',
@@ -138,11 +138,6 @@ export default {
 				}
 			]
 		}
-	},
-
-	created() {
-		this.presetSponsorMainFooter = presetNames.SPONSORS_MAIN_FOOTER
-		this.siteTitle = siteTitle.short
 	}
 }
 </script>

@@ -1,5 +1,6 @@
 import { resolve } from 'path'
 import { baseUrl, siteDescription, siteTitle } from './utils/constants'
+import { presetNames } from './utils/responsive-images'
 import { createSEOMeta } from './utils/seo'
 import { splashscreens } from './splashes'
 import colors from './assets/style/colors.json'
@@ -22,6 +23,11 @@ import colors from './assets/style/colors.json'
 export default {
 	ssr: process.env.NUXT_ENV_IS_SPA !== 'true',
 	target: process.env.NUXT_ENV_IS_SPA === 'true' ? 'server' : 'static',
+
+	publicRuntimeConfig: {
+		presetNames,
+		siteTitle
+	},
 
 	// Global page headers (https://go.nuxtjs.dev/config-head)
 	head: {

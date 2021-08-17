@@ -16,7 +16,10 @@
 					no-gutters
 				>
 					<v-col cols="12" md="3" class="pt-md-3">
-						<SponsorItem :sponsor="sponsor" :preset="presetSponsorMain" />
+						<SponsorItem
+							:sponsor="sponsor"
+							:preset="$config.presetNames.SPONSORS_MAIN"
+						/>
 					</v-col>
 					<v-col cols="12" md="8" offset-md="1">
 						<h3 class="pb-1 mt-10 mt-md-0">{{ sponsor.name }}</h3>
@@ -50,7 +53,10 @@
 			>
 				<v-card color="darkish" flat>
 					<v-card-text class="pa-3 pa-md-5 pa-lg-3 pa-xl-5">
-						<SponsorItem :sponsor="sponsor" :preset="presetSponsorNormal" />
+						<SponsorItem
+							:sponsor="sponsor"
+							:preset="$config.presetNames.SPONSORS_NORMAL"
+						/>
 					</v-card-text>
 				</v-card>
 			</v-col>
@@ -65,7 +71,6 @@ import useFormatting from '~/mixins/useFormatting.js'
 import useStorybridge from '~/mixins/useStorybridge.js'
 import { sbData } from '~/utils'
 import { routeMeta } from '~/utils/constants'
-import { presetNames } from '~/utils/responsive-images'
 import { createOgImagePath, createSEOMeta } from '~/utils/seo'
 
 const pageTitle = routeMeta.SPONSOREN.title
@@ -113,11 +118,6 @@ export default {
 
 	computed: {
 		...mapState(['mainSponsors'])
-	},
-
-	created() {
-		this.presetSponsorMain = presetNames.SPONSORS_MAIN
-		this.presetSponsorNormal = presetNames.SPONSORS_NORMAL
 	},
 
 	middleware({ store }) {
