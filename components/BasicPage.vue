@@ -1,8 +1,8 @@
 <template>
-	<div v-editable="content">
+	<section v-editable="content">
 		<h1 class="d-none d-lg-flex">{{ content.headline }}</h1>
 		<rich-text-renderer v-if="content.text" :document="content.text" />
-	</div>
+	</section>
 </template>
 
 <script>

@@ -1,7 +1,5 @@
 <template>
-	<section class="right">
-		<BasicPage :content="story.content" />
-	</section>
+	<BasicPage :content="story.content" />
 </template>
 
 <script>
