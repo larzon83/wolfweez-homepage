@@ -1,9 +1,5 @@
 <template>
 	<div v-editable="content">
-		<!-- <div class="pb-6">
-			<h1>{{ content.headline }}</h1>
-		</div> -->
-
 		<div
 			v-for="(blok, index) in computedBlocks"
 			:key="`blok-content-${blok._uid}`"

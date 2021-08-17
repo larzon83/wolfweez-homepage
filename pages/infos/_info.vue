@@ -1,6 +1,13 @@
 <template>
 	<section>
-		<StoryblokBlokContent :content="story.content" />
+		<StoryblokBlokContent
+			v-if="story.content.component === 'info'"
+			:content="story.content"
+		/>
+		<StoryblokBlokSimple
+			v-else-if="story.content.component === 'info_simple'"
+			:content="story.content"
+		/>
 	</section>
 </template>
 
