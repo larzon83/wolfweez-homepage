@@ -80,6 +80,8 @@ export default {
 	}
 
 	.tab-btn {
+		min-width: 44px;
+
 		&.tab-btn-active {
 			font-weight: 700;
 		}
