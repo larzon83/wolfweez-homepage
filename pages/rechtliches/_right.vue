@@ -1,11 +1,10 @@
 <template>
 	<section class="right">
-		<ContentSimple :content="story.content" />
+		<BasicPage :content="story.content" />
 	</section>
 </template>
 
 <script>
-import ContentSimple from '~/components/ContentSimple.vue'
 import savePagetitleToVuex from '~/mixins/savePagetitleToVuex.js'
 import useStorybridge from '~/mixins/useStorybridge.js'
 import { sbData, slashify } from '~/utils'
@@ -13,9 +12,6 @@ import { routeMeta } from '~/utils/constants'
 import { createOgImagePath, createSEOMeta } from '~/utils/seo'
 
 export default {
-	components: {
-		ContentSimple
-	},
 	mixins: [savePagetitleToVuex, useStorybridge],
 
 	head() {

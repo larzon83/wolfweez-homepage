@@ -7,7 +7,7 @@
 
 <script>
 export default {
-	name: 'ContentSimple',
+	name: 'BasicPage',
 	props: {
 		content: {
 			type: Object,
