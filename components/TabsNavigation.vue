@@ -25,18 +25,17 @@
 
 <script>
 import { mapState } from 'vuex'
-import useFormatting from '~/mixins/useFormatting.js'
+import { slashify } from '~/utils'
 import { mainNavItems } from '~/utils/constants'
 
 export default {
 	name: 'TabsNavigation',
-	mixins: [useFormatting],
 
 	computed: {
 		...mapState(['subNavItems']),
 
 		type() {
-			const currentPath = this.$_slashify(this.$route.path)
+			const currentPath = slashify(this.$route.path)
 
 			const mainNavItemsWithoutHome = [...mainNavItems].splice(1)
 			const foundInMainNavItems = mainNavItemsWithoutHome.find(p =>

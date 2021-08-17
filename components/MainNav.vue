@@ -96,18 +96,17 @@
 
 <script>
 import { mapState } from 'vuex'
-import useFormatting from '~/mixins/useFormatting.js'
+import { slashify } from '~/utils'
 import { mainNavItems, routeMeta } from '~/utils/constants'
 
 export default {
 	name: 'MainNav',
-	mixins: [useFormatting],
 
 	computed: {
 		...mapState(['currentFestival', 'subNavItems']),
 
 		mobileHeadline() {
-			const currentPath = this.$_slashify(this.$route.path)
+			const currentPath = slashify(this.$route.path)
 
 			if (currentPath === '/') {
 				return `${this.currentFestival.content.date} ${this.currentFestival.content.year} &nbsp;·&nbsp; Irslingen`
