@@ -55,12 +55,10 @@
 </template>
 
 <script>
-import useFormatting from '~/mixins/useFormatting.js'
 import { presetNames } from '~/utils/responsive-images'
 
 export default {
 	name: 'BlokContent',
-	mixins: [useFormatting],
 	props: {
 		content: {
 			type: Object,
