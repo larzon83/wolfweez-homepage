@@ -1,45 +1,43 @@
 <template>
-	<section>
-		<v-row>
-			<v-col
-				v-for="band in bandsAll"
-				:key="band.content._uid"
-				cols="12"
-				md="6"
-				xl="4"
+	<v-row tag="section">
+		<v-col
+			v-for="band in bandsAll"
+			:key="band.content._uid"
+			cols="12"
+			md="6"
+			xl="4"
+		>
+			<v-card
+				v-if="band.content"
+				:ripple="false"
+				:to="$_slashify(band.full_slug)"
+				color="darkish"
+				flat
+				height="100%"
+				href
+				nuxt
 			>
-				<v-card
-					v-if="band.content"
-					:ripple="false"
-					:to="$_slashify(band.full_slug)"
-					color="darkish"
-					flat
-					height="100%"
-					href
-					nuxt
-				>
-					<v-img
-						v-if="band.content.image.filename"
-						:alt="band.content.name"
-						:src="band.content.image.filename"
-						:lazy-src="$_transformImage(band.content.image.filename, '300x0')"
-						aspect-ratio="1.9048"
-						eager
-					></v-img>
-					<!-- TODO: use different sizes per breakpoint: text-h4 text-md-h6 text-xl-h5 -->
-					<v-card-title>
-						{{ band.content.name }}
-					</v-card-title>
-					<v-card-text>
-						<rich-text-renderer
-							v-if="band.content.description_short"
-							:document="band.content.description_short"
-						/>
-					</v-card-text>
-				</v-card>
-			</v-col>
-		</v-row>
-	</section>
+				<v-img
+					v-if="band.content.image.filename"
+					:alt="band.content.name"
+					:src="band.content.image.filename"
+					:lazy-src="$_transformImage(band.content.image.filename, '300x0')"
+					aspect-ratio="1.9048"
+					eager
+				></v-img>
+				<!-- TODO: use different sizes per breakpoint: text-h4 text-md-h6 text-xl-h5 -->
+				<v-card-title>
+					{{ band.content.name }}
+				</v-card-title>
+				<v-card-text>
+					<rich-text-renderer
+						v-if="band.content.description_short"
+						:document="band.content.description_short"
+					/>
+				</v-card-text>
+			</v-card>
+		</v-col>
+	</v-row>
 </template>
 
 <script>
