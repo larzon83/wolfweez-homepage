@@ -371,6 +371,10 @@ export default {
 	width: 100%;
 	margin-right: 24px;
 
+	&:last-child {
+		margin-right: 0;
+	}
+
 	a {
 		@include pos-absolute; // NOTE: remove for pure img
 		content: ''; // NOTE: remove for pure img
