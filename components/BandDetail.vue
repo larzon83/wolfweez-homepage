@@ -3,7 +3,7 @@
 		<h1>{{ band.name }}</h1>
 		<h5>{{ time }}</h5>
 		<v-img
-			v-if="band.logo.filename"
+			v-if="band.logo && band.logo.filename"
 			:alt="`Logo ${band.name}`"
 			:src="band.logo.filename"
 			:lazy-src="$_transformImage(band.logo.filename, '300x0')"
@@ -14,7 +14,7 @@
 			contain
 		></v-img>
 		<v-img
-			v-if="band.image.filename"
+			v-if="band.image && band.image.filename"
 			:alt="band.name"
 			:src="band.image.filename"
 			:lazy-src="$_transformImage(band.image.filename, '300x0')"
