@@ -228,7 +228,7 @@ export default {
 		const title = this.currentFestival.content.title_meta
 		const linkEntries = []
 		const preloadImage = this.$_getPreloadImageHeadEntry(
-			this.bands.stories[0].content.image.filename,
+			this.bands.stories[0].content.image?.filename,
 			this.$config.presetNames.HOME_SLIDER
 		)
 		if (preloadImage) linkEntries.push(preloadImage)

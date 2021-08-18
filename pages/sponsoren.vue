@@ -83,7 +83,7 @@ export default {
 		const title = pageTitle
 		const linkEntries = []
 		const preloadImage = this.$_getPreloadImageHeadEntry(
-			this.mainSponsors.story.content.sponsors_list[0].logo.filename,
+			this.mainSponsors.story.content.sponsors_list[0].logo?.filename,
 			this.presetSponsorMain
 		)
 		if (preloadImage) linkEntries.push(preloadImage)

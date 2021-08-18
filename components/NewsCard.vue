@@ -11,7 +11,7 @@
 		class="hover-card"
 	>
 		<v-img
-			v-if="news.content.image.filename"
+			v-if="news.content.image && news.content.image.filename"
 			:alt="news.content.headline"
 			:src="news.content.image.filename"
 			:lazy-src="$_transformImage(news.content.image.filename, '300x0')"

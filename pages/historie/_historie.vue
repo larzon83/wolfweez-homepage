@@ -6,7 +6,7 @@
 
 		<!-- Flyer -->
 		<v-img
-			v-if="story.content.flyer.filename"
+			v-if="story.content.flyer && story.content.flyer.filename"
 			:alt="`Flyer ${headlinePage}`"
 			:src="$_transformImage(story.content.flyer.filename, '600x0')"
 			:lazy-src="$_transformImage(story.content.flyer.filename, '150x0')"

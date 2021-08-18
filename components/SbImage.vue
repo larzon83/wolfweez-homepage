@@ -1,6 +1,6 @@
 <template>
 	<v-img
-		v-if="pic.filename"
+		v-if="pic && pic.filename"
 		:alt="alt || pic.alt"
 		:aspect-ratio="defs.aspectRatio"
 		:contain="isContain"

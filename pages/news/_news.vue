@@ -26,7 +26,7 @@ export default {
 		let image
 		let imageHeight
 
-		if (this.story.content.image.filename) {
+		if (this.story.content.image?.filename) {
 			image = this.$_transformImage(this.story.content.image.filename, '1200x0')
 			imageHeight = 1200 / this.$_aspectRatio(this.story.content.image.filename)
 		} else {

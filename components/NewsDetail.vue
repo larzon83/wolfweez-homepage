@@ -2,7 +2,7 @@
 	<div v-editable="news">
 		<div class="news-image px-md-5 pb-5">
 			<v-img
-				v-if="news.image.filename"
+				v-if="news.image && news.image.filename"
 				:alt="news.headline"
 				:src="news.image.filename"
 				:lazy-src="$_transformImage(news.image.filename, '300x0')"
