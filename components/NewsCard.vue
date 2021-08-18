@@ -8,7 +8,7 @@
 		height="100%"
 		href
 		nuxt
-		class="news-card"
+		class="hover-card"
 	>
 		<v-img
 			v-if="news.content.image.filename"
@@ -56,39 +56,15 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import '~/assets/style/__partials/_hover-card.scss';
 @import '~/assets/style/__partials/_news.scss';
 
-.news-card {
-	transition: transform 300ms;
-
-	@media (hover: hover) {
-		&:hover::before {
-			opacity: 0.08;
-		}
-		@media #{map-get($display-breakpoints, 'lg-and-up')} {
-			&:hover {
-				transform: scale(1.02);
-			}
-		}
-	}
-
+.hover-card {
 	// hide image when mobile and on homepage
 	@media #{map-get($display-breakpoints, 'sm-and-down')} {
 		&.on-homepage .v-image {
 			display: none;
 		}
-	}
-
-	.news-title {
-		font-weight: 700;
-		line-height: 2.25rem; // 36px
-		word-break: normal;
-
-		text-decoration: underline;
-		text-decoration-color: getcolor('prime');
-		text-decoration-skip: none;
-		text-decoration-skip-ink: none;
-		text-decoration-thickness: 5px;
 	}
 }
 </style>
