@@ -6,7 +6,7 @@
 				:key="band.content._uid"
 				cols="12"
 				md="6"
-				lg="4"
+				xl="4"
 			>
 				<v-card
 					v-if="band.content"
