@@ -14,7 +14,9 @@ export default {
 				() => {
 					const { StoryblokBridge } = window
 
-					const storyblokInstance = new StoryblokBridge()
+					const storyblokInstance = new StoryblokBridge({
+						resolveRelations: ['tickets.tickets_list']
+					})
 
 					storyblokInstance.on(
 						['input', 'published', 'change'],
