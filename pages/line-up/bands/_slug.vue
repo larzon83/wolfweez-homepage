@@ -7,25 +7,46 @@
 <script>
 import BandDetail from '~/components/BandDetail.vue'
 import savePagetitleToVuex from '~/mixins/savePagetitleToVuex.js'
+import useFormatting from '~/mixins/useFormatting.js'
 import useStorybridge from '~/mixins/useStorybridge.js'
 import { getPlayTime, sbData, slashify } from '~/utils'
 import { routeMeta } from '~/utils/constants'
-import { createSEOMeta } from '~/utils/seo'
+import { createOgImagePath, createSEOMeta } from '~/utils/seo'
 
 export default {
 	components: {
 		BandDetail
 	},
-	mixins: [savePagetitleToVuex, useStorybridge],
+	mixins: [savePagetitleToVuex, useFormatting, useStorybridge],
 
 	head() {
 		const title = `${this.story.content.name} | ${routeMeta.LINEUP__BANDS.title}`
+		let image
+		let imageHeight
+
+		if (this.story.content.image_social?.filename) {
+			const ogImage = this.$_generateOgImageEntry(
+				this.story.content.image_social.filename
+			)
+			image = ogImage.image
+			imageHeight = ogImage.imageHeight
+		} else if (this.story.content.image?.filename) {
+			const ogImage = this.$_generateOgImageEntry(
+				this.story.content.image.filename
+			)
+			image = ogImage.image
+			imageHeight = ogImage.imageHeight
+		} else {
+			image = createOgImagePath(this.$route.path)
+		}
+
 		return {
 			title,
 			meta: createSEOMeta({
 				description: this.story.content.description_meta,
-				image: this.story.content.image?.filename,
+				image,
 				imageAlt: title,
+				imageHeight,
 				title,
 				url: this.$route.path
 			})

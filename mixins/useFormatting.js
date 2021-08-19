@@ -39,6 +39,12 @@ export default {
 			return this.$_transformImage(filename, `${width.toString()}x0`)
 		},
 
+		$_generateOgImageEntry(filename) {
+			const image = this.$_transformImage(filename, '1200x0')
+			const imageHeight = Math.round(1200 / this.$_aspectRatio(filename))
+			return { image, imageHeight }
+		},
+
 		$_generateSrcsetEntries(filename, widths) {
 			return widths.reduce((acc, currWidth, index) => {
 				const divider = index < widths.length - 1 ? ', ' : ''

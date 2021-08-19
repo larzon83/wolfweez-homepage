@@ -27,8 +27,11 @@ export default {
 		let imageHeight
 
 		if (this.story.content.image?.filename) {
-			image = this.$_transformImage(this.story.content.image.filename, '1200x0')
-			imageHeight = 1200 / this.$_aspectRatio(this.story.content.image.filename)
+			const ogImage = this.$_generateOgImageEntry(
+				this.story.content.image.filename
+			)
+			image = ogImage.image
+			imageHeight = ogImage.imageHeight
 		} else {
 			image = createOgImagePath(this.$route.path)
 		}
