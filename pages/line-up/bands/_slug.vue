@@ -5,7 +5,6 @@
 </template>
 
 <script>
-import BandDetail from '~/components/BandDetail.vue'
 import savePagetitleToVuex from '~/mixins/savePagetitleToVuex.js'
 import useFormatting from '~/mixins/useFormatting.js'
 import useStorybridge from '~/mixins/useStorybridge.js'
@@ -14,9 +13,6 @@ import { routeMeta } from '~/utils/constants'
 import { createOgImagePath, createSEOMeta } from '~/utils/seo'
 
 export default {
-	components: {
-		BandDetail
-	},
 	mixins: [savePagetitleToVuex, useFormatting, useStorybridge],
 
 	head() {
