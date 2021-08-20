@@ -1,7 +1,7 @@
 <template>
 	<v-row v-editable="content" class="pt-0">
 		<v-col
-			v-for="blok in computedBlocks"
+			v-for="(blok, index) in computedBlocks"
 			:key="`blok-simple-${blok._uid}`"
 			cols="12"
 			:lg="blok.columnColdLg"
@@ -17,6 +17,10 @@
 			<div v-else-if="blok.component === 'BlokFaq'">
 				<h2>{{ blok.question }}</h2>
 				<rich-text-renderer :document="blok.answer" />
+				<v-divider
+					v-if="index !== computedBlocks.length - 1"
+					class="mt-11 mt-md-13 pb-5 pb-md-7"
+				/>
 			</div>
 		</v-col>
 	</v-row>
