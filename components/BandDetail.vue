@@ -5,7 +5,7 @@
 		<v-img
 			v-if="band.logo && band.logo.filename"
 			:alt="`Logo ${band.name}`"
-			:src="band.logo.filename"
+			:src="$_transformImage(band.logo.filename, '600x0')"
 			:lazy-src="$_transformImage(band.logo.filename, '300x0')"
 			eager
 			class="py-3"
@@ -16,7 +16,7 @@
 		<v-img
 			v-if="band.image && band.image.filename"
 			:alt="band.name"
-			:src="band.image.filename"
+			:src="$_transformImage(band.image.filename, '600x0')"
 			:lazy-src="$_transformImage(band.image.filename, '300x0')"
 			aspect-ratio="1.9048"
 			eager
