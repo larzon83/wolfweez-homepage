@@ -1,5 +1,6 @@
 <template>
 	<section>
+		<GoBackHeader :route="bandsOverviewRoute" label="alle Bands" />
 		<BandDetail :band="story.content" :time="time" />
 	</section>
 </template>
@@ -97,6 +98,10 @@ export default {
 		pageTitle() {
 			return this.story.content.name
 		}
+	},
+
+	created() {
+		this.bandsOverviewRoute = routeMeta.LINEUP__BANDS.to
 	}
 }
 </script>

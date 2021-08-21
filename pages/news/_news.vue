@@ -1,11 +1,6 @@
 <template>
 	<section>
-		<div class="pb-4">
-			<nuxt-link :to="newsOverviewRoute" class="on-hover">
-				<v-icon size="15" color="prime" class="mr-1">$arrowLeft</v-icon>alle
-				News
-			</nuxt-link>
-		</div>
+		<GoBackHeader :route="newsOverviewRoute" label="alle News" />
 		<NewsDetail :news="story.content" :news-date="newsDate" />
 	</section>
 </template>
