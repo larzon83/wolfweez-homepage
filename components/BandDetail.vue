@@ -18,12 +18,9 @@
 			:alt="band.name"
 			:src="$_transformImage(band.image.filename, '600x0')"
 			:lazy-src="$_transformImage(band.image.filename, '300x0')"
-			aspect-ratio="1.9048"
+			:aspect-ratio="$config.aspectRatios.BAND"
 			eager
-			class="py-3"
-			max-width="300"
-			position="top center"
-			contain
+			:position="$_shiftImagePositionY(band.image_offset)"
 		></v-img>
 		<rich-text-renderer v-if="band.description" :document="band.description" />
 	</div>
