@@ -11,6 +11,10 @@ export const presetOptions = {
 	BG_POSITION_CENTER: 'center center'
 }
 
+export const aspectRatios = {
+	BAND: 1.9048
+}
+
 const generateWidths = rawWidths => {
 	const retinaWidths = []
 	for (const w of rawWidths) {
@@ -36,7 +40,7 @@ export const presets = {
 	 - sizes: String
 
 	 Optional keys:
-	 - aspectRatio
+	 - aspectRatio: Number || String
 	 - bgPosition: String
 	 - contain: Boolean
 	 - disableLazySrc: Boolean
@@ -46,6 +50,8 @@ export const presets = {
 	 */
 
 	[presetNames.HOME_SLIDER]: {
+		aspectRatio: aspectRatios.BAND,
+		contain: false,
 		eager: true,
 		lazySrcMultiplier: 52,
 		widths: generateWidths([
