@@ -4,8 +4,12 @@
 			v-if="story.content.component === 'info'"
 			:content="story.content"
 		/>
-		<StoryblokBlokSimple
+		<StoryblokBlokSimpleOrFaq
 			v-else-if="story.content.component === 'info_simple'"
+			:content="story.content"
+		/>
+		<StoryblokBlokMap
+			v-else-if="story.content.component === 'info_map'"
 			:content="story.content"
 		/>
 	</section>
