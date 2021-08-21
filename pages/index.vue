@@ -53,19 +53,28 @@
 					</nuxt-link>
 				</div> -->
 
-				<SbImage
+				<v-responsive
 					v-for="band in bands.stories"
 					:key="band.content._uid"
-					:alt="band.content.name"
-					:pic="band.content.image"
-					:preset="$config.presetNames.HOME_SLIDER"
+					:aspect-ratio="$config.aspectRatios.BAND"
 					class="slider-item"
 				>
-					<nuxt-link
-						:aria-label="band.content.name"
-						:to="$_slashify(band.full_slug)"
-					/>
-				</SbImage>
+					<SbImage
+						:alt="band.content.name"
+						:pic="band.content.image"
+						:preset="$config.presetNames.HOME_SLIDER"
+						:position="$_shiftImagePositionY(band.content.image_offset)"
+					>
+						<nuxt-link
+							:aria-label="band.content.name"
+							:to="$_slashify(band.full_slug)"
+							class="band-image"
+						/>
+					</SbImage>
+					<nuxt-link :to="$_slashify(band.full_slug)" class="band-name">
+						{{ band.content.name }}
+					</nuxt-link>
+				</v-responsive>
 			</vue-horizontal>
 			<div class="pagination">
 				<div
@@ -366,25 +375,22 @@ export default {
 }
 
 .slider-item {
-	border-radius: 7px;
+	--band-name-height: 34px;
+	border-top-left-radius: 7px;
+	border-top-right-radius: 7px;
+	border-bottom-left-radius: $border-radius-root;
+	border-bottom-right-radius: $border-radius-root;
 	color: getcolor('dark');
 	width: 100%;
 	margin-right: 24px;
+	padding-bottom: var(--band-name-height);
 
 	&:last-child {
 		margin-right: 0;
 	}
 
-	a {
-		@include pos-absolute; // NOTE: remove for pure img
-		content: ''; // NOTE: remove for pure img
-		border-radius: 6px;
-		border: 3px solid getcolor('prime');
-		transition: all 0.14s ease-in-out;
-	}
-
 	@media (hover: hover) {
-		a:hover {
+		&:hover .band-image {
 			background: getcolor('prime', 0.3);
 		}
 	}
@@ -395,6 +401,35 @@ export default {
 
 	@media #{map-get($display-breakpoints, 'xl-only')} {
 		width: calc((100% - (2 * 24px)) / 3);
+	}
+
+	.band-image {
+		@include pos-absolute; // NOTE: remove for pure img
+		content: ''; // NOTE: remove for pure img
+		border-top-left-radius: $border-radius-root;
+		border-top-right-radius: $border-radius-root;
+		border: 3px solid getcolor('prime');
+		border-bottom: none;
+		transition: background 0.14s ease-in-out;
+		display: flex;
+		align-items: flex-end;
+		justify-content: center;
+		flex-wrap: nowrap;
+		text-decoration: none;
+	}
+
+	.band-name {
+		position: absolute;
+		bottom: 0;
+		width: 100%;
+		font-size: $size14;
+		font-weight: 700;
+		background: getcolor('prime');
+		color: getcolor('dark');
+		text-align: center;
+		height: var(--band-name-height);
+		line-height: var(--band-name-height);
+		text-decoration: none;
 	}
 }
 
@@ -420,26 +455,26 @@ export default {
 	justify-content: center;
 	margin-top: 16px;
 	height: 18px;
-}
 
-.dot {
-	padding: 4px;
-	cursor: pointer;
-}
+	.dot {
+		padding: 4px;
+		cursor: pointer;
+	}
 
-.dot > div {
-	border-radius: 10px;
-	width: 10px;
-	height: 10px;
-	background: getcolor('bright', 0.23);
-	transition: background 0.1s ease;
-}
+	.dot > div {
+		border-radius: 10px;
+		width: 10px;
+		height: 10px;
+		background: getcolor('bright', 0.23);
+		transition: background 0.1s ease;
+	}
 
-.dot:hover > div {
-	background: getcolor('bright', 0.6);
-}
+	.dot:hover > div {
+		background: getcolor('bright', 0.6);
+	}
 
-.dot.current > div {
-	background: getcolor('prime');
+	.dot.current > div {
+		background: getcolor('prime');
+	}
 }
 </style>
