@@ -16,25 +16,22 @@
 				height="100%"
 				href
 				nuxt
+				class="hover-card"
 			>
-				<v-img
-					v-if="band.content.image.filename"
-					:alt="band.content.name"
-					:src="band.content.image.filename"
-					:lazy-src="$_transformImage(band.content.image.filename, '300x0')"
-					aspect-ratio="1.9048"
-					eager
-				></v-img>
-				<!-- TODO: use different sizes per breakpoint: text-h4 text-md-h6 text-xl-h5 -->
-				<v-card-title>
-					{{ band.content.name }}
-				</v-card-title>
-				<v-card-text>
-					<rich-text-renderer
-						v-if="band.content.description_short"
-						:document="band.content.description_short"
-					/>
+				<v-card-text class="pt-2 pb-4">
+					<h2 class="text-body-1 news-title text-center">
+						{{ band.content.name }}
+					</h2>
 				</v-card-text>
+				<v-img
+					v-if="band.content.image && band.content.image.filename"
+					:alt="band.content.name"
+					:src="$_transformImage(band.content.image.filename, '600x0')"
+					:lazy-src="$_transformImage(band.content.image.filename, '300x0')"
+					:aspect-ratio="$config.aspectRatios.BAND"
+					eager
+					:position="$_shiftImagePositionY(band.content.image_offset)"
+				></v-img>
 			</v-card>
 		</v-col>
 	</v-row>
@@ -94,3 +91,11 @@ export default {
 	}
 }
 </script>
+
+<style lang="scss" scoped>
+@import '~/assets/style/__partials/_hover-card.scss';
+
+.hover-card .news-title {
+	line-height: 1.8125rem; // 29px
+}
+</style>
