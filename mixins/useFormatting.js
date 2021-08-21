@@ -1,5 +1,5 @@
 import { getNiceDate, getPlayTime, slashify } from '~/utils'
-import { presets } from '~/utils/responsive-images'
+import { presets, presetOptions } from '~/utils/responsive-images'
 
 export default {
 	methods: {
@@ -43,6 +43,21 @@ export default {
 			const image = this.$_transformImage(filename, '1200x0')
 			const imageHeight = Math.round(1200 / this.$_aspectRatio(filename))
 			return { image, imageHeight }
+		},
+
+		$_shiftImagePositionY(offsetPercent = 0) {
+			if (offsetPercent === 0 || offsetPercent === '0') {
+				return presetOptions.BG_POSITION_CENTER
+			}
+
+			const offsetNumber = parseInt(offsetPercent)
+
+			if (isNaN(offsetNumber)) {
+				return presetOptions.BG_POSITION_CENTER
+			} else {
+				const percent = 50 + offsetNumber
+				return `center ${percent.toString()}%`
+			}
 		},
 
 		$_generateSrcsetEntries(filename, widths) {
