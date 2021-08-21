@@ -1,6 +1,6 @@
 import { resolve } from 'path'
 import { baseUrl, siteDescription, siteTitle } from './utils/constants'
-import { presetNames } from './utils/responsive-images'
+import { aspectRatios, presetNames } from './utils/responsive-images'
 import { createSEOMeta } from './utils/seo'
 import { splashscreens } from './splashes'
 import colors from './assets/style/colors.json'
@@ -25,6 +25,7 @@ export default {
 	target: process.env.NUXT_ENV_IS_SPA === 'true' ? 'server' : 'static',
 
 	publicRuntimeConfig: {
+		aspectRatios,
 		presetNames,
 		siteTitle
 	},
