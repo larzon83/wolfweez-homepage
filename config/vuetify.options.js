@@ -3,10 +3,13 @@ import {
 	BarChart2Icon,
 	ChevronLeftIcon,
 	ChevronRightIcon,
+	CompassIcon,
 	FacebookIcon,
 	InfoIcon,
 	InstagramIcon,
-	XIcon
+	TwitterIcon,
+	XIcon,
+	YoutubeIcon
 } from 'vue-feather-icons'
 import IconWolf from '@/components/IconWolf'
 
@@ -39,6 +42,9 @@ export default {
 			chevronRight: {
 				component: ChevronRightIcon
 			},
+			compass: {
+				component: CompassIcon
+			},
 			close: {
 				component: XIcon
 			},
@@ -62,6 +68,12 @@ export default {
 				props: {
 					showMoon: false
 				}
+			},
+			twitter: {
+				component: TwitterIcon
+			},
+			youtube: {
+				component: YoutubeIcon
 			}
 		}
 	}

@@ -1,7 +1,11 @@
 <template>
 	<section>
 		<GoBackHeader :route="bandsOverviewRoute" label="alle Bands" />
-		<BandDetail :band="story.content" :time="time" />
+		<BandDetail
+			:band="story.content"
+			:play-day="playDay"
+			:play-time="playTime"
+		/>
 	</section>
 </template>
 
@@ -61,7 +65,8 @@ export default {
 			path: '/line-up/timetable'
 		})
 
-		let time = ''
+		let playDay
+		let playTime
 
 		if (band) {
 			for (const day of timetable.story.content.entry) {
@@ -70,14 +75,13 @@ export default {
 				for (const slot of day.entry) {
 					if (slot.band.id === band.story.uuid) {
 						found = true
-						time = getPlayTime(slot.time_start, slot.time_end)
+						playDay = day.day_display_name
+						playTime = getPlayTime(slot.time_start, slot.time_end)
 						break
 					}
 				}
 
-				if (found) {
-					break
-				}
+				if (found) break
 			}
 		}
 
@@ -91,7 +95,7 @@ export default {
 		]
 		context.store.commit('central/SET_CRUMBS', crumbs)
 
-		return { ...band, time }
+		return { ...band, playDay, playTime }
 	},
 
 	computed: {

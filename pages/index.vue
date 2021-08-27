@@ -206,11 +206,29 @@
 			:key="story.content._uid"
 			:blok="story.content"
 		/> -->
+
 		<HomePage
 			v-if="story.content.component"
 			:blok="story.content"
 			:news-sorted="newsSorted"
 		/>
+
+		<!-- <v-col v-for="item in foo" :key="item.name" cols="12" class="mt-12">
+			<div v-if="item.name === 'HomepageGalerie'">
+				<v-lazy v-model="item.visible">
+					<LazyStoryblokHomepageGalerie
+						v-if="item.visible"
+						:page-blok="
+							story.content.body.find(el => el.component === item.name)
+						"
+					/>
+				</v-lazy>
+			</div>
+		</v-col> -->
+
+		<!-- <v-lazy v-model="isActive">
+			<LazyGoBackHeader v-if="isActive" label="alle Foobar" />
+		</v-lazy> -->
 	</v-row>
 </template>
 
@@ -254,6 +272,7 @@ export default {
 
 	data() {
 		return {
+			// isActive: false,
 			pageTitle: routeMeta.HOME.title,
 			width: 0,
 			index: 0,
@@ -279,6 +298,14 @@ export default {
 			isStartpage: 0
 		})
 
+		// const foo = homepage.story.content.body.map(item => {
+		// 	return {
+		// 		name: item.component,
+		// 		visible: false
+		// 	}
+		// })
+		// console.log('foo:', foo)
+
 		const body = homepage.story.content.body
 		let newsSorted
 
@@ -297,6 +324,7 @@ export default {
 
 		return {
 			...homepage,
+			// foo,
 			bands,
 			newsSorted
 		}
