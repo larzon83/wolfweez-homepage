@@ -18,7 +18,7 @@ export default {
 
 <style lang="scss" scoped>
 .news-image .v-image {
-	box-shadow: 0 0 40px -20px rgba(0, 0, 0, 0.8);
+	border-radius: $border-radius-root;
 }
 
 .news-image.gradient .v-image {

@@ -155,6 +155,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.v-image {
+	border-radius: $border-radius-root;
+}
+
 .v-card__text {
 	h2 {
 		color: getcolor('bright', 0.6);
