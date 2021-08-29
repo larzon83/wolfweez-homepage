@@ -1,31 +1,5 @@
 <template>
 	<div v-editable="band">
-		<!-- <v-img
-			v-if="band.logo && band.logo.filename"
-			:alt="`Logo ${band.name}`"
-			:src="$_transformImage(band.logo.filename, '600x0')"
-			:lazy-src="$_transformImage(band.logo.filename, '300x0')"
-			eager
-			class="py-3"
-			max-width="300"
-			position="top center"
-			contain
-		></v-img> -->
-		<!-- <DetailImage>
-			<v-img
-				v-if="band.image && band.image.filename"
-				:alt="band.name"
-				:src="$_transformImage(band.image.filename, '600x0')"
-				:lazy-src="$_transformImage(band.image.filename, '300x0')"
-				:aspect-ratio="$config.aspectRatios.BAND"
-				eager
-				:position="$_shiftImagePositionY(band.image_offset)"
-			></v-img>
-		</DetailImage>
-		<h1>{{ band.name }}</h1>
-		<h5>{{ time }}</h5>
-		<rich-text-renderer v-if="band.description" :document="band.description" /> -->
-
 		<h1 class="pb-3">{{ band.name }}</h1>
 		<v-row>
 			<!-- main -->
@@ -38,7 +12,8 @@
 					:aspect-ratio="$config.aspectRatios.BAND"
 					eager
 					:position="$_shiftImagePositionY(band.image_offset)"
-				></v-img>
+					class="rounded"
+				/>
 				<div class="mt-6">
 					<rich-text-renderer
 						v-if="band.description"
@@ -155,10 +130,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.v-image {
-	border-radius: $border-radius-root;
-}
-
 .v-card__text {
 	h2 {
 		color: getcolor('bright', 0.6);

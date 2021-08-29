@@ -8,6 +8,7 @@
 				:lazy-src="$_transformImage(news.image.filename, '300x0')"
 				:aspect-ratio="$_aspectRatio(news.image.filename)"
 				eager
+				class="rounded"
 			/>
 		</DetailImage>
 		<div class="news-date">{{ newsDate }}</div>

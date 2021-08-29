@@ -1,5 +1,5 @@
 <template>
-	<div class="news-image px-md-5 pb-5" :class="{ gradient: gradient }">
+	<div class="px-md-5 pb-5" :class="{ gradient: gradient }">
 		<slot />
 	</div>
 </template>
@@ -17,11 +17,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.news-image .v-image {
-	border-radius: $border-radius-root;
-}
-
-.news-image.gradient .v-image {
+.gradient .v-image {
 	::v-deep .v-responsive__sizer {
 		background-image: linear-gradient(
 			180deg,
