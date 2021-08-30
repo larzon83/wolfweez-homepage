@@ -1,3 +1,5 @@
+@import './__partials/animations.scss';
+
 @mixin rgb-values-as-css-vars {
 	@each $name, $color in $clientcolors {
 		--rgb_#{$name}: #{red($color)}, #{green($color)}, #{blue($color)};
