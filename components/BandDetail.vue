@@ -44,7 +44,7 @@
 								link
 								target="_blank"
 								rel="noopener noreferrer"
-								class="px-2"
+								class="px-2 rounded"
 							>
 								<v-list-item-icon class="align-self-center mr-3">
 									<v-icon color="prime" v-text="link.icon"></v-icon>
