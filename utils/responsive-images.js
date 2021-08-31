@@ -48,6 +48,7 @@ export const presets = {
 	 - eager: Boolean
 	 - lazySrcMultiplier: Number
 	 - maxWidth: Number
+	 - rounded: Boolean
 	 */
 
 	[presetNames.BAND_OVERVIEW]: {
@@ -71,6 +72,30 @@ export const presets = {
 					(max-width: 783px) 253px,
 					(max-width: 1139px) 339px,
 					300px
+					`)
+	},
+	[presetNames.BAND_DETAIL]: {
+		aspectRatio: aspectRatios.BAND,
+		contain: false,
+		eager: true,
+		lazySrcMultiplier: 52,
+		rounded: true,
+		widths: generateWidths([
+			288, 308, 328, 343, 350, 367, 400, 467, 530, 567, 622
+		]),
+		sizes: removeClutter(`
+					(max-width: 320px) 288px,
+					(max-width: 340px) 308px,
+					(max-width: 360px) 328px,
+					(max-width: 375px) 343px,
+					(max-width: 382px) 350px,
+					(max-width: 399px) 367px,
+					(max-width: 432px) 400px,
+					(max-width: 499px) 467px,
+					(max-width: 599px) 567px,
+					(max-width: 783px) 530px,
+					(max-width: 1139px) 400px,
+					622px
 					`)
 	},
 	[presetNames.SPONSORS_MAIN]: {

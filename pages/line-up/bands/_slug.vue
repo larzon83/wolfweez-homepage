@@ -41,6 +41,13 @@ export default {
 			image = createOgImagePath(this.$route.path)
 		}
 
+		const linkEntries = []
+		const preloadImage = this.$_getPreloadImageHeadEntry(
+			this.story.content.image?.filename,
+			this.$config.presetNames.BAND_DETAIL
+		)
+		if (preloadImage) linkEntries.push(preloadImage)
+
 		return {
 			title,
 			meta: createSEOMeta({
@@ -50,7 +57,8 @@ export default {
 				imageHeight,
 				title,
 				url: this.$route.path
-			})
+			}),
+			link: [...linkEntries]
 		}
 	},
 

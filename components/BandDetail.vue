@@ -4,15 +4,12 @@
 		<v-row>
 			<!-- main -->
 			<v-col cols="12" lg="7" xl="8">
-				<v-img
+				<SbImage
 					v-if="band.image && band.image.filename"
 					:alt="band.name"
-					:src="$_transformImage(band.image.filename, '600x0')"
-					:lazy-src="$_transformImage(band.image.filename, '300x0')"
-					:aspect-ratio="$config.aspectRatios.BAND"
-					eager
+					:pic="band.image"
+					:preset="$config.presetNames.BAND_DETAIL"
 					:position="$_shiftImagePositionY(band.image_offset)"
-					class="rounded"
 				/>
 				<div class="mt-6">
 					<rich-text-renderer
