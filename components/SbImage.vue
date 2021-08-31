@@ -13,6 +13,7 @@
 		:sizes="defs.sizes"
 		:src="defs.defaultSrc"
 		:width="defs.width"
+		:class="{ rounded: defs.rounded }"
 		:style="marginTop ? `margin-top: ${marginTop}px` : ''"
 	>
 		<template #placeholder>
@@ -75,6 +76,10 @@ export default {
 		preset: {
 			type: String,
 			required: true
+		},
+		rounded: {
+			type: Boolean,
+			default: undefined
 		},
 		sizes: {
 			type: String,
@@ -142,6 +147,7 @@ export default {
 					this.position ||
 					this.currentPreset.bgPosition ||
 					presetOptions.BG_POSITION_CENTER,
+				rounded: this.rounded || this.currentPreset.rounded || false,
 				sizes: this.sizes || this.currentPreset.sizes, // undefined when exactHeight, bc no "sizes" in preset -> srcset with 1x, 2x is sufficient
 				srcset,
 				defaultSrc,
