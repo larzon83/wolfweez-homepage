@@ -7,6 +7,7 @@ import {
 	FacebookIcon,
 	InfoIcon,
 	InstagramIcon,
+	RefreshCwIcon,
 	TwitterIcon,
 	XIcon,
 	YoutubeIcon
@@ -59,6 +60,9 @@ export default {
 			},
 			menu: {
 				component: BarChart2Icon
+			},
+			refresh: {
+				component: RefreshCwIcon
 			},
 			wolf: {
 				component: IconWolf
