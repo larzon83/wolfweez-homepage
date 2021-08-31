@@ -1,5 +1,6 @@
 export const presetNames = {
-	HOME_SLIDER: 'home-slider',
+	BAND_OVERVIEW: 'band-overview',
+	BAND_DETAIL: 'band-detail',
 	SPONSORS_MAIN: 'sponsors-main',
 	SPONSORS_MAIN_FOOTER: 'sponsors-main-footer',
 	SPONSORS_NORMAL: 'sponsors-normal',
@@ -49,7 +50,7 @@ export const presets = {
 	 - maxWidth: Number
 	 */
 
-	[presetNames.HOME_SLIDER]: {
+	[presetNames.BAND_OVERVIEW]: {
 		aspectRatio: aspectRatios.BAND,
 		contain: false,
 		eager: true,

@@ -62,7 +62,7 @@
 					<SbImage
 						:alt="band.content.name"
 						:pic="band.content.image"
-						:preset="$config.presetNames.HOME_SLIDER"
+						:preset="$config.presetNames.BAND_OVERVIEW"
 						:position="$_shiftImagePositionY(band.content.image_offset)"
 					>
 						<nuxt-link
@@ -256,7 +256,7 @@ export default {
 		const linkEntries = []
 		const preloadImage = this.$_getPreloadImageHeadEntry(
 			this.bands.stories[0].content.image?.filename,
-			this.$config.presetNames.HOME_SLIDER
+			this.$config.presetNames.BAND_OVERVIEW
 		)
 		if (preloadImage) linkEntries.push(preloadImage)
 
