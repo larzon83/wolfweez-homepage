@@ -43,14 +43,15 @@ export default {
 	},
 
 	async mounted() {
-		// FIXME: remove
-		// this.updateBannerVisible = true
-
 		const workbox = await window.$workbox
 
 		if (workbox) {
+			// FIXME: remove console.logs
+			console.log('workbox in window')
 			workbox.addEventListener('installed', event => {
+				console.log('sw: installed')
 				if (event.isUpdate) {
+					console.log('sw: update available')
 					this.updateBannerVisible = true
 				}
 			})
@@ -65,7 +66,6 @@ export default {
 
 		reloadPage() {
 			this.updateBannerVisible = false
-			// window.location.reload() // FIXME: remove
 			this.$nuxt.$router.go({
 				path: this.$nuxt.$router.currentRoute,
 				force: true
