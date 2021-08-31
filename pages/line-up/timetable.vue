@@ -11,37 +11,39 @@
 				<v-card-title class="timetable-header justify-center text-center pb-3">
 					<div class="flex-column justify-center">
 						<h2>{{ day.day_display_name }}</h2>
-						<div
-							class="timetable-header__date text-subtitle-1 font-weight-medium"
-						>
+						<div class="date text-subtitle-1 font-weight-medium">
 							{{ $_niceDate(day.day) }}
 						</div>
 					</div>
 				</v-card-title>
 				<v-card-text class="pt-5">
-					<div
-						v-for="(slot, index) in day.entry"
-						:key="slot._uid"
-						v-editable="slot"
-						class="slot"
-					>
-						<nuxt-link :to="$_slashify(slot.band.story.full_slug)">{{
-							slot.band.story.content.name
-						}}</nuxt-link
-						><br />
-						TIME: {{ $_playTime(slot.time_start, slot.time_end) }}
-						<v-divider v-if="index !== day.entry.length - 1" class="my-8" />
-					</div>
+					<v-list color="transparent" class="py-0 mx-n2">
+						<template v-for="(slot, index) in day.entry">
+							<v-list-item
+								:key="`slot-${slot._uid}`"
+								:to="$_slashify(slot.band.story.full_slug)"
+								:ripple="false"
+								nuxt
+								class="px-3 rounded"
+								:class="{ alternate: index % 2 === 0 }"
+							>
+								<v-list-item-content class="timetable-content">
+									<div class="time mb-1">
+										{{ $_playTime(slot.time_start, slot.time_end) }}
+									</div>
+									<div class="band font-weight-bold">
+										{{ slot.band.story.content.name }}
+									</div>
+								</v-list-item-content>
+							</v-list-item>
+							<v-divider
+								v-if="index !== day.entry.length - 1"
+								:key="`divider-${slot._uid}`"
+								class="my-2 mx-1"
+							/>
+						</template>
+					</v-list>
 				</v-card-text>
-				<!-- <v-img
-					v-if="band.content.image && band.content.image.filename"
-					:alt="band.content.name"
-					:src="$_transformImage(band.content.image.filename, '600x0')"
-					:lazy-src="$_transformImage(band.content.image.filename, '300x0')"
-					:aspect-ratio="$config.aspectRatios.BAND"
-					eager
-					:position="$_shiftImagePositionY(band.content.image_offset)"
-				></v-img> -->
 			</v-card>
 		</v-col>
 	</v-row>
@@ -107,10 +109,25 @@ export default {
 			text-transform: uppercase;
 			border-radius: 0 !important;
 
-			.timetable-header__date {
-				color: getcolor('dark', 0.65);
+			.date {
+				color: getcolor('dark', 0.75);
+			}
+		}
+
+		.timetable-content {
+			.time {
+				font-size: $size15;
+			}
+			.band {
+				color: getcolor('prime');
+				font-size: $size21;
+				line-height: 1.3;
 			}
 		}
 	}
+}
+
+.v-list-item--link::before {
+	border-radius: $border-radius-root;
 }
 </style>
