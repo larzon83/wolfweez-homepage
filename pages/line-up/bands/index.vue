@@ -23,15 +23,13 @@
 						{{ band.content.name }}
 					</h2>
 				</v-card-text>
-				<v-img
+				<SbImage
 					v-if="band.content.image && band.content.image.filename"
 					:alt="band.content.name"
-					:src="$_transformImage(band.content.image.filename, '600x0')"
-					:lazy-src="$_transformImage(band.content.image.filename, '300x0')"
-					:aspect-ratio="$config.aspectRatios.BAND"
-					eager
+					:pic="band.content.image"
+					:preset="$config.presetNames.BAND_OVERVIEW"
 					:position="$_shiftImagePositionY(band.content.image_offset)"
-				></v-img>
+				/>
 			</v-card>
 		</v-col>
 	</v-row>
@@ -52,6 +50,13 @@ export default {
 
 	head() {
 		const title = pageTitle
+		const linkEntries = []
+		const preloadImage = this.$_getPreloadImageHeadEntry(
+			this.bandsAll[0].content.image?.filename,
+			this.$config.presetNames.BAND_OVERVIEW
+		)
+		if (preloadImage) linkEntries.push(preloadImage)
+
 		return {
 			title,
 			meta: createSEOMeta({
@@ -60,7 +65,8 @@ export default {
 				imageAlt: title,
 				title,
 				url: this.$route.path
-			})
+			}),
+			link: [...linkEntries]
 		}
 	},
 
