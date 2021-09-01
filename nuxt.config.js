@@ -121,6 +121,7 @@ export default {
 		'@nuxtjs/eslint-module',
 		'@nuxtjs/pwa',
 		'@nuxtjs/vuetify',
+		'nuxt-purgecss',
 		[
 			'storyblok-nuxt',
 			{
@@ -211,6 +212,31 @@ export default {
 			process.env.NODE_ENV === 'development'
 				? undefined
 				: true
+	},
+
+	purgeCSS: {
+		enabled: true,
+		paths: [
+			// 'node_modules/@nuxtjs/vuetify/**/*.ts',
+			// 'node_modules/@nuxt/vue-app/template/**/*.html',
+			// 'node_modules/@nuxt/vue-app/template/**/*.vue',
+			'node_modules/vuetify/src/**/*.ts'
+		],
+		whitelist: ['v-application', 'v-application--wrap'],
+		whitelistPatterns: () => [
+			/^v-((?!application).)*$/,
+			/^\.theme--light*/,
+			// /^theme--*/,
+			/.*-transition/,
+			/col-*/,
+			/row-*/,
+			/align-*/,
+			/align-self-*/,
+			/justify-*/,
+			/justify-self*/,
+			/flex-*/
+		],
+		whitelistPatternsChildren: [/^v-((?!application).)*$/, /^theme--*/]
 	},
 
 	// Build Configuration (https://go.nuxtjs.dev/config-build)
