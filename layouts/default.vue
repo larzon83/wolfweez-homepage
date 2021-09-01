@@ -17,7 +17,7 @@
 				<nuxt />
 			</v-container>
 			<Footer />
-			<UpdateBanner
+			<LazyUpdateBanner
 				v-if="updateBannerVisible"
 				@doReload="reloadPage"
 				@hideUpdateBanner="updateBannerVisible = false"
