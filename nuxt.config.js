@@ -180,6 +180,16 @@ export default {
 			// mobileAppIOS: true,
 			// 'black' => black background with white text. 'default' is the opposite
 			appleStatusBarStyle: 'black'
+		},
+
+		workbox: {
+			skipWaiting: false,
+			runtimeCaching: [
+				{
+					urlPattern: 'https://img2.storyblok.com/.*',
+					handler: 'StaleWhileRevalidate'
+				}
+			]
 		}
 	},
 
