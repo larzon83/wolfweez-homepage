@@ -1,73 +1,82 @@
 <template>
 	<section>
-		<v-form
-			ref="contactForm"
-			v-model="valid"
-			:disabled="formDisabled"
-			name="contact"
-			method="POST"
-			action="/"
-			data-netlify="true"
-			netlify-honeypot="bot-field"
-			@submit.prevent="handleSubmit"
-		>
-			<v-container>
-				<input type="hidden" name="form-name" value="contact" />
-				<div hidden aria-hidden="true">
-					Don't fill this out if you're human: <input name="bot-field" />
-				</div>
-				<v-row class="my-0">
-					<v-col cols="12" md="6">
-						<v-text-field
-							v-model="name"
-							:rules="nameRules"
-							name="name"
-							label="Name*"
-							required
-						></v-text-field>
-					</v-col>
+		<h1 class="d-none d-lg-flex">{{ pageTitle }}</h1>
 
-					<v-col cols="12" md="6">
-						<v-text-field
-							v-model="email"
-							:rules="emailRules"
-							name="email"
-							label="E-mail*"
-							required
-						></v-text-field>
-					</v-col>
-				</v-row>
-
-				<v-row class="my-0">
-					<v-col cols="12" md="6">
-						<v-textarea
-							v-model="message"
-							:rules="messageRules"
-							name="message"
-							label="Nachricht*"
-							required
-							filled
-							auto-grow
-							height="200"
-						></v-textarea>
-					</v-col>
-				</v-row>
-
-				<v-row class="my-0">
-					<v-col cols="12" md="4">
-						<v-col cols="12" md="4">
-							<v-btn
-								:disabled="buttonDisabled"
-								class="mr-4"
-								color="prime"
-								type="submit"
-								>Submit</v-btn
-							>
+		<v-card color="darkish" flat class="mt-0 mt-lg-5">
+			<v-form
+				ref="contactForm"
+				v-model="valid"
+				:disabled="formDisabled"
+				name="contact"
+				method="POST"
+				action="/"
+				data-netlify="true"
+				netlify-honeypot="bot-field"
+				@submit.prevent="handleSubmit"
+			>
+				<v-container class="pa-5">
+					<input type="hidden" name="form-name" value="contact" />
+					<div hidden aria-hidden="true">
+						Don't fill this out if you're human: <input name="bot-field" />
+					</div>
+					<v-row class="my-0">
+						<v-col cols="12" md="6">
+							<v-text-field
+								v-model="name"
+								:rules="nameRules"
+								name="name"
+								label="Name*"
+								filled
+								outlined
+								required
+							></v-text-field>
 						</v-col>
-					</v-col>
-				</v-row>
-			</v-container>
-		</v-form>
+
+						<v-col cols="12" md="6">
+							<v-text-field
+								v-model="email"
+								:rules="emailRules"
+								name="email"
+								label="E-mail*"
+								filled
+								outlined
+								required
+							></v-text-field>
+						</v-col>
+					</v-row>
+
+					<v-row class="my-0">
+						<v-col cols="12" md="6">
+							<v-textarea
+								v-model="message"
+								:rules="messageRules"
+								name="message"
+								label="Nachricht*"
+								auto-grow
+								filled
+								outlined
+								required
+								height="200"
+							></v-textarea>
+						</v-col>
+					</v-row>
+
+					<v-row class="my-0">
+						<v-col cols="12" md="4">
+							<v-col cols="12" md="4">
+								<v-btn
+									:disabled="buttonDisabled"
+									class="mr-4"
+									color="prime"
+									type="submit"
+									>Submit</v-btn
+								>
+							</v-col>
+						</v-col>
+					</v-row>
+				</v-container>
+			</v-form>
+		</v-card>
 
 		<v-snackbar v-model="showSuccess" timeout="2000" color="good">
 			Nachricht erfolgreich gesendet.
