@@ -111,8 +111,8 @@ export const presets = {
 					`)
 	},
 	[presetNames.SPONSORS_MAIN_FOOTER]: {
-		disableLazySrc: true,
-		eager: true
+		disableLazySrc: true
+		// eager: true // FIXME: re-enable after dropping v-img
 	},
 	[presetNames.SPONSORS_NORMAL]: {
 		aspectRatio: 1,
