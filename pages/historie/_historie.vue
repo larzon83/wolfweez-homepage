@@ -41,9 +41,6 @@
 
 		<!-- Bilder -->
 		<ImgGalleries :galleries="galleries" headline="Bilder" />
-
-		<!-- Placeholder for lightgallery -->
-		<div id="lightgallery"></div>
 	</section>
 </template>
 
