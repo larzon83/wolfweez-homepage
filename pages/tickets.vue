@@ -2,13 +2,12 @@
 	<section v-editable="story.content">
 		<v-alert
 			v-if="story.content.show_info_box"
-			type="info"
 			icon="$info"
 			dense
 			outlined
 			prominent
 			text
-			class="pa-4 mb-10"
+			class="pa-4 mb-10 information--text"
 		>
 			<rich-text-renderer
 				v-if="story.content.info_box"
