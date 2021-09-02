@@ -1,20 +1,26 @@
 <template>
-	<div v-if="galleries.length">
+	<div v-if="galleries.length" class="gallery">
 		<template v-for="(gallery, galleryIndex) in galleries">
 			<h2
 				:key="`gallery-headline-${galleryIndex}`"
-				:class="[galleryIndex === 0 ? 'pt-0 pt-lg-12' : 'pt-16']"
-				class="pb-3"
+				:class="[
+					paddingTopOverride
+						? paddingTopOverride
+						: galleryIndex === 0
+						? 'pt-0 pt-lg-12'
+						: 'pt-16',
+					paddingBottomOverride ? paddingBottomOverride : 'pb-3'
+				]"
 				v-text="
 					headline ? headline : `${$config.siteTitle.short} ${gallery.year}`
 				"
 			/>
-			<v-row :key="`gallery-${galleryIndex}`">
+			<v-row :key="`gallery-${galleryIndex}`" class="gallery-row">
 				<template v-for="(img, imgIndex) in gallery.imgs">
 					<v-col
 						v-if="!maxPicsToShow || imgIndex < maxPicsToShow"
 						:key="`gallery-${galleryIndex}--img-${imgIndex}`"
-						class="d-flex child-flex"
+						class="gallery-col d-flex child-flex"
 						cols="3"
 						:lg="colsLg"
 					>
@@ -68,6 +74,14 @@ export default {
 		headline: {
 			type: String,
 			default: ''
+		},
+		paddingTopOverride: {
+			type: String,
+			default: undefined
+		},
+		paddingBottomOverride: {
+			type: String,
+			default: undefined
 		},
 		colsLg: {
 			type: String,
@@ -178,17 +192,36 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.gallery-image {
-	border-radius: $border-radius-root;
-	box-shadow: 0 0 20px -10px rgba(0, 0, 0, 0.6);
-	cursor: pointer;
+.gallery {
+	--gutter: 12px;
 
-	@media (hover: hover) {
-		&:hover {
-			::v-deep .content {
-				border-radius: $border-radius-root;
-				border: 3px solid getcolor('prime');
-				background: getcolor('prime', 0.3);
+	@media #{map-get($display-breakpoints, 'lg-and-down')} {
+		--gutter: 8px;
+	}
+	@media #{map-get($display-breakpoints, 'md-and-down')} {
+		--gutter: 4px;
+	}
+
+	.gallery-row {
+		margin: calc(var(--gutter) * -1);
+
+		.gallery-col {
+			padding: var(--gutter);
+		}
+	}
+
+	.gallery-image {
+		border-radius: $border-radius-root;
+		box-shadow: 0 0 20px -10px rgba(0, 0, 0, 0.6);
+		cursor: pointer;
+
+		@media (hover: hover) {
+			&:hover {
+				::v-deep .content {
+					border-radius: $border-radius-root;
+					border: 3px solid getcolor('prime');
+					background: getcolor('prime', 0.3);
+				}
 			}
 		}
 	}
