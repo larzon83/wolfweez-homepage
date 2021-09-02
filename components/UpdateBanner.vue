@@ -22,7 +22,6 @@
 						:ripple="false"
 						color="bright"
 						depressed
-						light
 						rounded
 						small
 						class="update-btn ml-sm-1 mt-1 mt-sm-0"

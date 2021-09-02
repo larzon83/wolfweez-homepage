@@ -90,9 +90,8 @@
 			<v-btn
 				aria-label="Menü öffnen"
 				icon
-				:dark="swapToolbar"
-				:light="!swapToolbar"
 				class="menu-btn"
+				:class="{ dimmed: !swapToolbar }"
 				@click="drawer = !drawer"
 			>
 				<v-icon class="menu-icon">$menu</v-icon>
@@ -188,8 +187,12 @@ export default {
 	}
 }
 
-@media #{map-get($display-breakpoints, 'lg-and-up')} {
-	.menu-btn {
+.menu-btn {
+	&.dimmed {
+		color: rgba(0, 0, 0, 0.54);
+	}
+
+	@media #{map-get($display-breakpoints, 'lg-and-up')} {
 		display: none;
 	}
 }

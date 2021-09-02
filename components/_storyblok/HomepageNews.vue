@@ -16,14 +16,15 @@
 			<v-btn
 				:ripple="false"
 				min-width="190"
-				color="bright"
+				color="ahref"
 				large
-				light
-				tile
+				outlined
 				role="link"
+				class="btn-more"
 				:to="newsOverviewRoute"
-				>Alle News</v-btn
 			>
+				Alle News<v-icon right size="15" color="prime">$arrowRight</v-icon>
+			</v-btn>
 		</v-row>
 	</div>
 </template>
@@ -49,3 +50,10 @@ export default {
 	}
 }
 </script>
+
+<style lang="scss" scoped>
+.btn-more {
+	background-color: getcolor('prime', 0.12);
+	border-width: 3px;
+}
+</style>

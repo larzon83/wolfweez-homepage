@@ -5,6 +5,28 @@ import { createSEOMeta } from './utils/seo'
 import { splashscreens } from './splashes'
 import colors from './assets/style/colors.json'
 
+const purgeWhitelistPatterns = [
+	/^v-((?!application).)*$/,
+	/^\.theme--dark*/,
+	// /^theme--*/,
+	/.*-transition/,
+	/offset-*/,
+	/col-*/,
+	/row-*/,
+	/align-*/,
+	/align-self-*/,
+	/justify-*/,
+	/justify-self*/,
+	/flex-*/,
+	/--text$/,
+	/^flip-card*/,
+	/^lg-*/
+]
+
+if (process.env.NODE_ENV === 'development') {
+	purgeWhitelistPatterns.push(/p*-[0-9]/, /m*-[0-9]/, /p*-n[0-9]/, /m*-n[0-9]/)
+}
+
 // const proxyOptionsDev = {
 // 	axiosProxy: false,
 // 	rules: {}
@@ -222,27 +244,35 @@ export default {
 			// 'node_modules/@nuxt/vue-app/template/**/*.vue',
 			'node_modules/vuetify/src/**/*.ts'
 		],
-		whitelist: ['v-application', 'v-application--wrap'],
-		whitelistPatterns: () => [
-			/^v-((?!application).)*$/,
-			/^\.theme--light*/,
-			// /^theme--*/,
-			/.*-transition/,
-			/col-*/,
-			/row-*/,
-			/align-*/,
-			/align-self-*/,
-			/justify-*/,
-			/justify-self*/,
-			/flex-*/
+		whitelist: [
+			'v-application',
+			'v-application--wrap',
+			'nuxt__build_indicator',
+			'flip-clock'
 		],
-		whitelistPatternsChildren: [/^v-((?!application).)*$/, /^theme--*/]
+		whitelistPatterns: purgeWhitelistPatterns,
+		// whitelistPatterns: () => [
+		// /.../
+		// ],
+		whitelistPatternsChildren: [/^v-((?!application).)*$/, /^theme--dark*/]
 	},
 
 	// Build Configuration (https://go.nuxtjs.dev/config-build)
 	build: {
 		// analyze: true
 		extractCSS: true,
+
+		postcss: {
+			plugins: {
+				'css-byebye': {
+					rulesToRemove: [
+						/.*\.v-application--is-rtl.*/,
+						/.*\.theme--light.*/,
+						/.*--shaped.*/
+					]
+				}
+			}
+		},
 
 		filenames: {
 			app: ({ isDev, isModern }) =>
