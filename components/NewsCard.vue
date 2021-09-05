@@ -11,10 +11,10 @@
 		class="hover-card"
 	>
 		<v-img
-			v-if="news.content.image && news.content.image.filename"
+			v-if="news.content.image_social && news.content.image_social.filename"
 			:alt="news.content.headline"
-			:src="news.content.image.filename"
-			:lazy-src="$_transformImage(news.content.image.filename, '300x0')"
+			:src="news.content.image_social.filename"
+			:lazy-src="$_transformImage(news.content.image_social.filename, '300x0')"
 			:aspect-ratio="1.9047619"
 			eager
 		/>

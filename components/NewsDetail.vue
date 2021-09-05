@@ -2,11 +2,11 @@
 	<div v-editable="news">
 		<DetailImage gradient>
 			<v-img
-				v-if="news.image && news.image.filename"
+				v-if="news.image_social && news.image_social.filename"
 				:alt="news.headline"
-				:src="news.image.filename"
-				:lazy-src="$_transformImage(news.image.filename, '300x0')"
-				:aspect-ratio="$_aspectRatio(news.image.filename)"
+				:src="news.image_social.filename"
+				:lazy-src="$_transformImage(news.image_social.filename, '300x0')"
+				:aspect-ratio="$_aspectRatio(news.image_social.filename)"
 				eager
 				class="rounded"
 			/>
