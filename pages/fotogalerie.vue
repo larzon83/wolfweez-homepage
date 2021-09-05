@@ -8,24 +8,32 @@
 <script>
 import { mapState } from 'vuex'
 import savePagetitleToVuex from '~/mixins/savePagetitleToVuex.js'
+import useFormatting from '~/mixins/useFormatting.js'
 import { sbData } from '~/utils'
 import { routeMeta } from '~/utils/constants'
-import { createOgImagePath, createSEOMeta } from '~/utils/seo'
+import { createSEOMeta } from '~/utils/seo'
 
 const pageTitle = routeMeta.MEDIEN__FOTOGALERIE.title
 
 export default {
 	name: pageTitle,
-	mixins: [savePagetitleToVuex],
+	mixins: [savePagetitleToVuex, useFormatting],
 
 	head() {
 		const title = pageTitle
+
+		const { image, imageHeight } = this.$_generateOgImageEntry(
+			this.story.content.image_social?.filename,
+			this.$route.path
+		)
+
 		return {
 			title,
 			meta: createSEOMeta({
 				description: this.story.content.description_meta,
-				image: createOgImagePath(this.$route.path),
+				image,
 				imageAlt: title,
+				imageHeight,
 				title,
 				url: this.$route.path
 			})

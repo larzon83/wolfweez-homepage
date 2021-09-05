@@ -253,6 +253,11 @@ export default {
 
 	head() {
 		const title = this.currentFestival.content.title_meta
+
+		const { image, imageHeight } = this.$_generateOgImageEntry(
+			this.currentFestival.content.image_social?.filename
+		)
+
 		const linkEntries = []
 		const preloadImage = this.$_getPreloadImageHeadEntry(
 			this.bands.stories[0].content.image?.filename,
@@ -264,6 +269,9 @@ export default {
 			title,
 			meta: createSEOMeta({
 				description: this.currentFestival.content.description_meta,
+				image,
+				imageAlt: title,
+				imageHeight,
 				title
 			}),
 			link: [...linkEntries]

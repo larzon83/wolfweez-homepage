@@ -14,24 +14,32 @@
 
 <script>
 import savePagetitleToVuex from '~/mixins/savePagetitleToVuex.js'
+import useFormatting from '~/mixins/useFormatting.js'
 import { getNewsSorted, sbData } from '~/utils'
 import { routeMeta } from '~/utils/constants'
-import { createOgImagePath, createSEOMeta } from '~/utils/seo'
+import { createSEOMeta } from '~/utils/seo'
 
 const pageTitle = routeMeta.NEWS.title
 
 export default {
 	name: 'NewsOverview',
-	mixins: [savePagetitleToVuex],
+	mixins: [savePagetitleToVuex, useFormatting],
 
 	head() {
 		const title = pageTitle
+
+		const { image, imageHeight } = this.$_generateOgImageEntry(
+			this.metaImage,
+			this.$route.path
+		)
+
 		return {
 			title,
 			meta: createSEOMeta({
 				description: this.metaDescription || title,
-				image: createOgImagePath(this.$route.path),
+				image,
 				imageAlt: title,
+				imageHeight,
 				title,
 				url: this.$route.path
 			})
@@ -55,7 +63,8 @@ export default {
 
 		return {
 			newsSorted: getNewsSorted(newsAll),
-			metaDescription: newsMeta?.content?.description_meta
+			metaDescription: newsMeta?.content?.description_meta,
+			metaImage: newsMeta?.content?.image_social?.filename
 		}
 	},
 

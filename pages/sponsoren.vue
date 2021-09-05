@@ -71,7 +71,7 @@ import useFormatting from '~/mixins/useFormatting.js'
 import useStorybridge from '~/mixins/useStorybridge.js'
 import { sbData } from '~/utils'
 import { routeMeta } from '~/utils/constants'
-import { createOgImagePath, createSEOMeta } from '~/utils/seo'
+import { createSEOMeta } from '~/utils/seo'
 
 const pageTitle = routeMeta.SPONSOREN.title
 
@@ -81,6 +81,12 @@ export default {
 
 	head() {
 		const title = pageTitle
+
+		const { image, imageHeight } = this.$_generateOgImageEntry(
+			this.mainSponsors.story.content.image_social?.filename,
+			this.$route.path
+		)
+
 		const linkEntries = []
 		const preloadImage = this.$_getPreloadImageHeadEntry(
 			this.mainSponsors.story.content.sponsors_list[0].logo?.filename,
@@ -91,8 +97,9 @@ export default {
 		return {
 			title,
 			meta: createSEOMeta({
-				image: createOgImagePath(this.$route.path),
+				image,
 				imageAlt: title,
+				imageHeight,
 				title,
 				url: this.$route.path
 			}),

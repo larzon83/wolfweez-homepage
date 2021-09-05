@@ -40,7 +40,7 @@ import savePagetitleToVuex from '~/mixins/savePagetitleToVuex.js'
 import useFormatting from '~/mixins/useFormatting.js'
 import { sbData } from '~/utils'
 import { routeMeta } from '~/utils/constants'
-import { createOgImagePath, createSEOMeta } from '~/utils/seo'
+import { createSEOMeta } from '~/utils/seo'
 
 const pageTitle = routeMeta.LINEUP__BANDS.title
 
@@ -50,6 +50,12 @@ export default {
 
 	head() {
 		const title = pageTitle
+
+		const { image, imageHeight } = this.$_generateOgImageEntry(
+			this.metaImage,
+			this.$route.path
+		)
+
 		const linkEntries = []
 		const preloadImage = this.$_getPreloadImageHeadEntry(
 			this.bandsAll[0].content.image?.filename,
@@ -61,8 +67,9 @@ export default {
 			title,
 			meta: createSEOMeta({
 				description: this.metaDescription || title,
-				image: createOgImagePath(this.$route.path),
+				image,
 				imageAlt: title,
+				imageHeight,
 				title,
 				url: this.$route.path
 			}),
@@ -87,7 +94,8 @@ export default {
 
 		return {
 			bandsAll,
-			metaDescription: bandsMeta?.content?.description_meta
+			metaDescription: bandsMeta?.content?.description_meta,
+			metaImage: bandsMeta?.content?.image_social?.filename
 		}
 	},
 

@@ -68,25 +68,33 @@
 
 <script>
 import savePagetitleToVuex from '~/mixins/savePagetitleToVuex.js'
+import useFormatting from '~/mixins/useFormatting.js'
 import useStorybridge from '~/mixins/useStorybridge.js'
 import { sbData } from '~/utils'
 import { routeMeta } from '~/utils/constants'
-import { createOgImagePath, createSEOMeta } from '~/utils/seo'
+import { createSEOMeta } from '~/utils/seo'
 
 const pageTitle = routeMeta.TICKETS.title
 
 export default {
 	name: pageTitle,
-	mixins: [savePagetitleToVuex, useStorybridge],
+	mixins: [savePagetitleToVuex, useFormatting, useStorybridge],
 
 	head() {
 		const title = pageTitle
+
+		const { image, imageHeight } = this.$_generateOgImageEntry(
+			this.story.content.image_social?.filename,
+			this.$route.path
+		)
+
 		return {
 			title,
 			meta: createSEOMeta({
 				description: this.story.content.description_meta,
-				image: createOgImagePath(this.$route.path),
+				image,
 				imageAlt: title,
+				imageHeight,
 				title,
 				url: this.$route.path
 			})
