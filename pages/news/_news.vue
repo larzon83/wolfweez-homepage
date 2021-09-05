@@ -11,25 +11,20 @@ import useFormatting from '~/mixins/useFormatting.js'
 import useStorybridge from '~/mixins/useStorybridge.js'
 import { getNiceDate, sbData, slashify } from '~/utils'
 import { routeMeta } from '~/utils/constants'
-import { createOgImagePath, createSEOMeta } from '~/utils/seo'
+import { createSEOMeta } from '~/utils/seo'
 
 export default {
 	mixins: [savePagetitleToVuex, useFormatting, useStorybridge],
 
 	head() {
 		const title = `${this.story.content.headline} | ${routeMeta.NEWS.title}`
-		let image
-		let imageHeight
 
-		if (this.story.content.image?.filename) {
-			const ogImage = this.$_generateOgImageEntry(
-				this.story.content.image.filename
-			)
-			image = ogImage.image
-			imageHeight = ogImage.imageHeight
-		} else {
-			image = createOgImagePath(this.$route.path)
-		}
+		const { image, imageHeight } = this.$_generateOgImageEntry(
+			this.story.content.image_social?.filename,
+			this.$route.path
+		)
+
+		// TODO: define preset and preload img
 
 		return {
 			title,

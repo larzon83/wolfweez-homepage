@@ -1,4 +1,5 @@
 import { getNiceDate, getPlayTime, slashify } from '~/utils'
+import { createOgImagePath } from '~/utils/seo'
 import { presets, presetOptions } from '~/utils/responsive-images'
 
 export default {
@@ -39,9 +40,16 @@ export default {
 			return this.$_transformImage(filename, `${width.toString()}x0`)
 		},
 
-		$_generateOgImageEntry(filename) {
-			const image = this.$_transformImage(filename, '1200x0')
-			const imageHeight = Math.round(1200 / this.$_aspectRatio(filename))
+		$_generateOgImageEntry(socialFilename, routeForGenerator) {
+			let image
+			let imageHeight
+
+			if (socialFilename) {
+				image = this.$_transformImage(socialFilename, '1200x0')
+				imageHeight = Math.round(1200 / this.$_aspectRatio(socialFilename))
+			} else if (routeForGenerator) {
+				image = createOgImagePath(routeForGenerator)
+			}
 			return { image, imageHeight }
 		},
 
