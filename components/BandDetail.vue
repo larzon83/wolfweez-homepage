@@ -11,7 +11,7 @@
 					:preset="$config.presetNames.BAND_DETAIL"
 					:position="$_shiftImagePositionY(band.image_offset)"
 				/>
-				<div class="mt-6">
+				<div :class="{ 'mt-6': band.image && band.image.filename }">
 					<rich-text-renderer
 						v-if="band.description"
 						:document="band.description"
