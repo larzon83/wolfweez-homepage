@@ -116,7 +116,8 @@ export const removeSlashesFromStartAndEnd = routeRaw => {
 }
 
 export const dashifyPath = path => {
-	return path.replace('/', '-')
+	const regexSlash = /\//g
+	return path.replace(regexSlash, '-')
 }
 
 export const createOgImagePath = path => {
