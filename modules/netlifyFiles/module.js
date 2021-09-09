@@ -1,9 +1,5 @@
 import StoryblokClient from 'storyblok-js-client'
-import {
-	getHistoryRedirect,
-	getInfoRedirect,
-	slashify
-} from './../../utils/index'
+import { getSubNavRedirect, slashify } from './../../utils/index'
 import { routeMeta } from './../../utils/constants'
 
 export default function () {
@@ -74,7 +70,7 @@ export default function () {
 				version
 			})
 
-			netlifyRedirects.push(getHistoryRedirect(historicFestivals.stories))
+			netlifyRedirects.push(getSubNavRedirect(historicFestivals.stories))
 
 			// --------------------------------------------------------------
 
@@ -85,7 +81,7 @@ export default function () {
 				version
 			})
 
-			netlifyRedirects.push(getInfoRedirect(infoPages.stories))
+			netlifyRedirects.push(getSubNavRedirect(infoPages.stories))
 
 			// --------------------------------------------------------------
 

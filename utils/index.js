@@ -62,29 +62,9 @@ const redirectUsesFullslugOrTo = obj => {
 	return destination || '/'
 }
 
-export const getInfoRedirect = infos => {
-	let to = '/'
-
-	if (infos.length) {
-		const infoAllgemein = infos.find(info => info.slug === 'allgemein')
-
-		if (infoAllgemein) {
-			to = slashify(redirectUsesFullslugOrTo(infoAllgemein))
-		} else {
-			to = slashify(redirectUsesFullslugOrTo(infos[0]))
-		}
-	}
-
-	return {
-		from: routeMeta.INFOS.to,
-		to,
-		force: true
-	}
-}
-
-export const getHistoryRedirect = histories => {
-	const to = histories.length
-		? slashify(redirectUsesFullslugOrTo(histories[0]))
+export const getSubNavRedirect = navItems => {
+	const to = navItems.length
+		? slashify(redirectUsesFullslugOrTo(navItems[0]))
 		: '/'
 	return {
 		from: routeMeta.HISTORIE.to,

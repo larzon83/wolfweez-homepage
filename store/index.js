@@ -1,10 +1,4 @@
-import {
-	getHistoryRedirect,
-	getInfoRedirect,
-	sortAssetsByName,
-	sbData,
-	slashify
-} from '~/utils'
+import { getSubNavRedirect, sortAssetsByName, sbData, slashify } from '~/utils'
 import { routeMeta, tabTypes } from '~/utils/constants'
 
 export const state = () => ({
@@ -52,7 +46,7 @@ export const mutations = {
 		})
 		state.subNavItems[tabTypes.INFOS] = subInfos
 
-		const infoRedirect = getInfoRedirect(subInfos)
+		const infoRedirect = getSubNavRedirect(subInfos)
 		state.redirects[tabTypes.INFOS] = infoRedirect
 
 		// --------------------------------------------------------------
@@ -89,7 +83,7 @@ export const mutations = {
 		})
 		state.subNavItems[tabTypes.HISTORY] = subHistory
 
-		const historyRedirect = getHistoryRedirect(subHistory)
+		const historyRedirect = getSubNavRedirect(subHistory)
 		state.redirects[tabTypes.HISTORY] = historyRedirect
 
 		// --------------------------------------------------------------
