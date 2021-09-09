@@ -42,10 +42,10 @@
 
 		<!-- NORMAL sponsors -->
 		<!-- TODO: make this a h2 or h3 -->
-		<h2 class="mt-16">{{ normalSponsors.story.content.title }}</h2>
+		<h2 class="mt-16">{{ story.content.title }}</h2>
 		<v-row class="mt-3 mb-0">
 			<v-col
-				v-for="sponsor in normalSponsors.story.content.sponsors_list"
+				v-for="sponsor in story.content.sponsors_list"
 				:key="`normal-sponsor-${sponsor._uid}`"
 				v-editable="sponsor"
 				cols="6"
@@ -114,13 +114,11 @@ export default {
 	},
 
 	async asyncData(context) {
-		const normalSponsors = await sbData({
+		return await sbData({
 			ctx: context,
 			path: '/sponsoren/normal',
 			isStartpage: 0
 		})
-
-		return { normalSponsors }
 	},
 
 	computed: {
