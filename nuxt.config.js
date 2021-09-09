@@ -139,6 +139,7 @@ export default {
 		// 		}
 		// 	}
 		// ],
+		'@/modules/storybridgeMixin',
 		'@/modules/vuetifyAdditionalVars',
 		'@nuxtjs/eslint-module',
 		'@nuxtjs/pwa',

@@ -45,9 +45,9 @@
 </template>
 
 <script>
+import useStorybridge from 'storybridgeMixin/useStorybridge.js'
 import savePagetitleToVuex from '~/mixins/savePagetitleToVuex.js'
 import useFormatting from '~/mixins/useFormatting.js'
-import useStorybridge from '~/mixins/useStorybridge.js'
 import { sbData, sortAssetsByName, slashify } from '~/utils'
 import { routeMeta } from '~/utils/constants'
 import { createSEOMeta } from '~/utils/seo'
