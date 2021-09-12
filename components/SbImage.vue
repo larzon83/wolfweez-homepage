@@ -109,7 +109,11 @@ export default {
 			const lazyWidth = Math.ceil(
 				multiplier * this.$_aspectRatio(this.pic.filename)
 			)
-			return this.$_getSbImageUrl(this.pic.filename, lazyWidth)
+			return this.$_getSbImageUrl(
+				this.pic.filename,
+				lazyWidth,
+				this.currentPreset.imageFormat
+			)
 		},
 
 		defs() {
@@ -123,16 +127,26 @@ export default {
 				width = Math.round(
 					this.$_aspectRatio(this.pic.filename) * this.exactHeight
 				)
-				srcset = this.$_generateDpiSrcsetEntries(this.pic.filename, width)
-				defaultSrc = this.$_getSbImageUrl(this.pic.filename, width)
-			} else {
-				srcset = this.$_generateSrcsetEntries(
+				srcset = this.$_generateDpiSrcsetEntries(
 					this.pic.filename,
-					this.currentPreset.widths.srcset
+					width,
+					this.currentPreset.imageFormat
 				)
 				defaultSrc = this.$_getSbImageUrl(
 					this.pic.filename,
-					this.currentPreset.widths.defaultSrc
+					width,
+					this.currentPreset.imageFormat
+				)
+			} else {
+				srcset = this.$_generateSrcsetEntries(
+					this.pic.filename,
+					this.currentPreset.widths.srcset,
+					this.currentPreset.imageFormat
+				)
+				defaultSrc = this.$_getSbImageUrl(
+					this.pic.filename,
+					this.currentPreset.widths.defaultSrc,
+					this.currentPreset.imageFormat
 				)
 			}
 

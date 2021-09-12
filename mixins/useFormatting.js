@@ -1,6 +1,6 @@
 import { getNiceDate, getPlayTime, slashify } from '~/utils'
 import { createOgImagePath } from '~/utils/seo'
-import { presets, presetOptions } from '~/utils/responsive-images'
+import { imageFormats, presets, presetOptions } from '~/utils/responsive-images'
 
 export default {
 	methods: {
@@ -16,13 +16,15 @@ export default {
 			return getPlayTime(timeStart, timeEnd)
 		},
 
-		$_transformImage(image, option) {
+		$_transformImage(image, width, format) {
 			if (!image) return ''
-			if (!option) return ''
+			if (!width) return ''
+
+			const imgFormat = format ? `/filters:format(${format})` : ''
 
 			const imageService = 'https://img2.storyblok.com/'
 			const path = image.replace('https://a.storyblok.com', '')
-			return imageService + option + path
+			return imageService + width + imgFormat + path
 		},
 
 		$_aspectRatio(image) {
@@ -36,8 +38,8 @@ export default {
 			return ratio.toString()
 		},
 
-		$_getSbImageUrl(filename, width) {
-			return this.$_transformImage(filename, `${width.toString()}x0`)
+		$_getSbImageUrl(filename, width, format) {
+			return this.$_transformImage(filename, `${width.toString()}x0`, format)
 		},
 
 		$_generateOgImageEntry(socialFilename, routeForGenerator) {
@@ -45,7 +47,11 @@ export default {
 			let imageHeight
 
 			if (socialFilename) {
-				image = this.$_transformImage(socialFilename, '1200x0')
+				image = this.$_transformImage(
+					socialFilename,
+					'1200x0',
+					imageFormats.JPEG
+				)
 				imageHeight = Math.round(1200 / this.$_aspectRatio(socialFilename))
 			} else if (routeForGenerator) {
 				image = createOgImagePath(routeForGenerator)
@@ -68,19 +74,19 @@ export default {
 			}
 		},
 
-		$_generateSrcsetEntries(filename, widths) {
+		$_generateSrcsetEntries(filename, widths, format) {
 			return widths.reduce((acc, currWidth, index) => {
 				const divider = index < widths.length - 1 ? ', ' : ''
-				const url = this.$_getSbImageUrl(filename, currWidth)
+				const url = this.$_getSbImageUrl(filename, currWidth, format)
 				const entry = `${url} ${currWidth.toString()}w`
 				return acc + entry + divider
 			}, '')
 		},
 
-		$_generateDpiSrcsetEntries(filename, width) {
-			const size1 = this.$_getSbImageUrl(filename, width)
-			const size2 = this.$_getSbImageUrl(filename, width * 2)
-			const size3 = this.$_getSbImageUrl(filename, width * 3)
+		$_generateDpiSrcsetEntries(filename, width, format) {
+			const size1 = this.$_getSbImageUrl(filename, width, format)
+			const size2 = this.$_getSbImageUrl(filename, width * 2, format)
+			const size3 = this.$_getSbImageUrl(filename, width * 3, format)
 			return `${size1} 1x, ${size2} 2x, ${size3} 3x`
 		},
 
@@ -93,7 +99,8 @@ export default {
 				as: 'image',
 				imagesrcset: this.$_generateSrcsetEntries(
 					filename,
-					presets[preset].widths.srcset
+					presets[preset].widths.srcset,
+					presets[preset].imageFormat
 				),
 				imagesizes: presets[preset].sizes
 			}
