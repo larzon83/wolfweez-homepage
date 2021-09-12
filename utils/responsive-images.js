@@ -1,10 +1,12 @@
 export const presetNames = {
 	BAND_OVERVIEW: 'band-overview',
 	BAND_DETAIL: 'band-detail',
+	INFO: 'info',
+	NEWS_CARD: 'news-card',
+	NEWS_DETAIL: 'news-detail',
 	SPONSORS_MAIN: 'sponsors-main',
 	SPONSORS_MAIN_FOOTER: 'sponsors-main-footer',
-	SPONSORS_NORMAL: 'sponsors-normal',
-	INFO: 'info'
+	SPONSORS_NORMAL: 'sponsors-normal'
 }
 
 export const presetOptions = {
@@ -13,7 +15,14 @@ export const presetOptions = {
 }
 
 export const aspectRatios = {
-	BAND: 1.9048
+	BAND: 1.9048,
+	NEWS_CARD: 1.9047619
+}
+
+export const imageFormats = {
+	JPEG: 'jpeg',
+	PNG: 'png',
+	WEBP: 'webp'
 }
 
 const generateWidths = rawWidths => {
@@ -46,6 +55,7 @@ export const presets = {
 	 - contain: Boolean
 	 - disableLazySrc: Boolean
 	 - eager: Boolean
+	 - imageFormat: <enum>imageFormats
 	 - lazySrcMultiplier: Number
 	 - maxWidth: Number
 	 - rounded: Boolean
@@ -55,6 +65,7 @@ export const presets = {
 		aspectRatio: aspectRatios.BAND,
 		contain: false,
 		eager: true,
+		imageFormat: imageFormats.JPEG,
 		lazySrcMultiplier: 52,
 		widths: generateWidths([
 			253, 288, 300, 308, 328, 339, 343, 350, 367, 400, 467, 567
@@ -78,6 +89,7 @@ export const presets = {
 		aspectRatio: aspectRatios.BAND,
 		contain: false,
 		eager: true,
+		imageFormat: imageFormats.JPEG,
 		lazySrcMultiplier: 52,
 		rounded: true,
 		widths: generateWidths([
@@ -96,6 +108,54 @@ export const presets = {
 					(max-width: 783px) 530px,
 					(max-width: 1139px) 400px,
 					622px
+					`)
+	},
+	[presetNames.NEWS_CARD]: {
+		aspectRatio: aspectRatios.NEWS_CARD,
+		contain: false,
+		eager: true,
+		imageFormat: imageFormats.JPEG,
+		lazySrcMultiplier: 10,
+		widths: generateWidths([
+			288, 300, 308, 328, 339, 343, 350, 367, 400, 467, 530, 567
+		]),
+		sizes: removeClutter(`
+					(max-width: 320px) 288px,
+					(max-width: 340px) 308px,
+					(max-width: 360px) 328px,
+					(max-width: 375px) 343px,
+					(max-width: 382px) 350px,
+					(max-width: 399px) 367px,
+					(max-width: 432px) 400px,
+					(max-width: 499px) 467px,
+					(max-width: 599px) 567px,
+					(max-width: 783px) 530px,
+					(max-width: 1139px) 339px,
+					300px
+					`)
+	},
+	[presetNames.NEWS_DETAIL]: {
+		contain: false,
+		eager: true,
+		imageFormat: imageFormats.JPEG,
+		lazySrcMultiplier: 10,
+		rounded: true,
+		widths: generateWidths([
+			288, 308, 328, 343, 350, 367, 400, 467, 567, 490, 662, 904
+		]),
+		sizes: removeClutter(`
+					(max-width: 320px) 288px,
+					(max-width: 340px) 308px,
+					(max-width: 360px) 328px,
+					(max-width: 375px) 343px,
+					(max-width: 382px) 350px,
+					(max-width: 399px) 367px,
+					(max-width: 432px) 400px,
+					(max-width: 499px) 467px,
+					(max-width: 599px) 567px,
+					(max-width: 783px) 490px,
+					(max-width: 1139px) 662px,
+					904px
 					`)
 	},
 	[presetNames.SPONSORS_MAIN]: {

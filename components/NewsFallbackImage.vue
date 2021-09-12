@@ -2,7 +2,7 @@
 	<v-img
 		alt="Standard News-Bild"
 		:src="require('~/assets/img/bg.svg')"
-		:aspect-ratio="1.9047619"
+		:aspect-ratio="$config.aspectRatios.NEWS_CARD"
 		eager
 		class="news-fallback-image"
 		content-class="content"

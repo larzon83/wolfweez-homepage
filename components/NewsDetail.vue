@@ -1,16 +1,13 @@
 <template>
 	<div v-editable="news">
-		<DetailImage gradient>
-			<v-img
+		<div class="px-md-5 pb-5">
+			<SbImage
 				v-if="news.image_social && news.image_social.filename"
 				:alt="news.headline"
-				:src="news.image_social.filename"
-				:lazy-src="$_transformImage(news.image_social.filename, '300x0')"
-				:aspect-ratio="$_aspectRatio(news.image_social.filename)"
-				eager
-				class="rounded"
+				:pic="news.image_social"
+				:preset="$config.presetNames.NEWS_DETAIL"
 			/>
-		</DetailImage>
+		</div>
 		<div class="news-date">{{ newsDate }}</div>
 		<h1 class="pb-4">{{ news.headline }}</h1>
 		<rich-text-renderer v-if="news.description" :document="news.description" />
@@ -38,4 +35,14 @@ export default {
 
 <style lang="scss" scoped>
 @import '~/assets/style/__partials/_news.scss';
+
+.v-image {
+	::v-deep .v-responsive__sizer {
+		background-image: linear-gradient(
+			180deg,
+			rgba(255, 255, 255, 0) 80%,
+			rgba(255, 255, 255, 0.04)
+		);
+	}
+}
 </style>
