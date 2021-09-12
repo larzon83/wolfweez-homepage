@@ -124,7 +124,7 @@ export default {
 	components: true,
 
 	// TODO: how to get watch working to trigger "vuetifyAdditionalVars" module?
-	watch: ['~/config/**/font-sizes.js'],
+	watch: ['~/config/**/font-sizes.js', '~/modules/storybridgeMixin/**'],
 
 	// Modules for dev and build (recommended) (https://go.nuxtjs.dev/config-modules)
 	buildModules: [
