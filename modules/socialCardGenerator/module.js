@@ -10,7 +10,7 @@ const { resolve } = require('path')
 const fs = require('fs-extra')
 const nodeHtmlToImage = require('node-html-to-image')
 
-let isTest = true
+let isTest = false
 if (process.env.NODE_ENV === 'production') isTest = false
 
 const hookName = isTest ? 'build:before' : 'generate:done'
