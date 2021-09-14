@@ -33,6 +33,13 @@ export default {
 			this.$route.path
 		)
 
+		const linkEntries = []
+		const preloadImage = this.$_getPreloadImageHeadEntry(
+			this.newsSorted[0].content.image_social?.filename,
+			this.$config.presetNames.NEWS_DETAIL
+		)
+		if (preloadImage) linkEntries.push(preloadImage)
+
 		return {
 			title,
 			meta: createSEOMeta({
@@ -42,7 +49,8 @@ export default {
 				imageHeight,
 				title,
 				url: this.$route.path
-			})
+			}),
+			link: [...linkEntries]
 		}
 	},
 

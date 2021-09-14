@@ -24,7 +24,12 @@ export default {
 			this.$route.path
 		)
 
-		// TODO: define preset and preload img
+		const linkEntries = []
+		const preloadImage = this.$_getPreloadImageHeadEntry(
+			this.story.content.image_social?.filename,
+			this.$config.presetNames.NEWS_DETAIL
+		)
+		if (preloadImage) linkEntries.push(preloadImage)
 
 		return {
 			title,
@@ -35,7 +40,8 @@ export default {
 				imageHeight,
 				title,
 				url: this.$route.path
-			})
+			}),
+			link: [...linkEntries]
 		}
 	},
 
