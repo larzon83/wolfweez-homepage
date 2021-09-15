@@ -249,7 +249,9 @@ export default {
 			'v-application',
 			'v-application--wrap',
 			'nuxt__build_indicator',
-			'flip-clock'
+			'flip-clock',
+			'd-md-none',
+			'text-md-left'
 		],
 		whitelistPatterns: purgeWhitelistPatterns,
 		// whitelistPatterns: () => [

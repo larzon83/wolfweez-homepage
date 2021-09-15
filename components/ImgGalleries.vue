@@ -31,7 +31,7 @@
 							:src="$_transformImage(img.filename, '500x500')"
 							:lazy-src="$_transformImage(img.filename, '6x6')"
 							aspect-ratio="1"
-							class="gallery-image"
+							class="rounded gallery-image"
 							content-class="content"
 							@click="openGallery(imgIndex, galleryIndex)"
 						>
@@ -211,11 +211,10 @@ export default {
 	}
 
 	.gallery-image {
-		border-radius: $border-radius-root;
 		box-shadow: 0 0 20px -10px rgba(0, 0, 0, 0.6);
-		cursor: pointer;
 
 		@media (hover: hover) {
+			cursor: pointer;
 			&:hover {
 				::v-deep .content {
 					border-radius: $border-radius-root;

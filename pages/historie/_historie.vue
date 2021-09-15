@@ -1,46 +1,66 @@
 <template>
 	<section v-editable="story.content">
-		<h1>{{ headlinePage }}</h1>
-		<b>{{ story.content.date }} {{ story.content.year }}</b>
-		<br /><br />
-
-		<!-- Flyer -->
-		<v-img
-			v-if="story.content.flyer && story.content.flyer.filename"
-			:alt="`Flyer ${headlinePage}`"
-			:src="$_transformImage(story.content.flyer.filename, '600x0')"
-			:lazy-src="$_transformImage(story.content.flyer.filename, '150x0')"
-			aspect-ratio="0.7168"
-			eager
-			class="py-3"
-			max-width="150"
-			position="top center"
-			contain
-		></v-img>
-
-		<!-- Line-Up -->
-		<v-row v-if="timetable" class="my-0">
-			<v-col cols="12" class="py-0">
-				<h2>Line-Up</h2>
+		<v-row class="justify-center justify-md-start">
+			<v-col
+				v-if="story.content.flyer && story.content.flyer.filename"
+				cols="9"
+				md="4"
+				class="flyer d-flex align-self-start justify-center justify-md-start"
+			>
+				<v-img
+					:alt="`Flyer ${headlinePage}`"
+					:src="$_transformImage(story.content.flyer.filename, '600x0')"
+					:lazy-src="$_transformImage(story.content.flyer.filename, '150x0')"
+					aspect-ratio="0.7168"
+					eager
+					class="rounded"
+					content-class="content"
+				/>
 			</v-col>
-			<v-col v-for="day in timetable" :key="day._uid" cols="6" class="day">
-				<h3>
-					{{ day.day_display_name }}
-				</h3>
-				<div>
-					{{ $_niceDate(day.day) }}
-				</div>
 
-				<ul v-if="day.entry" class="flex py-6 mb-6">
-					<li v-for="slot in day.entry" :key="slot._uid" class="slot">
-						{{ slot.band.story.content.name }}
-					</li>
-				</ul>
+			<v-col cols="12" md="8">
+				<v-row>
+					<v-col cols="12" class="text-center text-md-left">
+						<h1 class="pt-3 pt-md-0">{{ headlinePage }}</h1>
+						<div class="font-weight-bold pb-6 pb-md-0">
+							{{ story.content.date }} {{ story.content.year }}
+						</div>
+						<v-divider class="d-md-none" />
+					</v-col>
+				</v-row>
+
+				<v-row v-if="timetable">
+					<v-col cols="12">
+						<h2>Line-Up</h2>
+					</v-col>
+					<v-col v-for="day in timetable" :key="day._uid" cols="6">
+						<h3>
+							{{ day.day_display_name }}
+						</h3>
+						<div>
+							{{ $_niceDate(day.day) }}
+						</div>
+
+						<ul v-if="day.entry" class="flex pt-3">
+							<li v-for="slot in day.entry" :key="slot._uid">
+								{{ slot.band.story.content.name }}
+							</li>
+						</ul>
+					</v-col>
+				</v-row>
 			</v-col>
 		</v-row>
 
-		<!-- Bilder -->
-		<ImgGalleries :galleries="galleries" headline="Bilder" />
+		<!-- TODO: padding-top-override ??? -->
+		<v-row>
+			<v-col cols="12">
+				<ImgGalleries
+					:galleries="galleries"
+					padding-top-override="pt-12"
+					headline="Bilder"
+				/>
+			</v-col>
+		</v-row>
 	</section>
 </template>
 
@@ -130,3 +150,24 @@ export default {
 	}
 }
 </script>
+
+<style lang="scss" scoped>
+.flyer .v-image {
+	max-width: 280px;
+
+	::v-deep .content {
+		border-radius: $border-radius-root;
+		border: 3px solid getcolor('bright');
+	}
+
+	// TODO: lightgallery
+	// @media (hover: hover) {
+	// 	cursor: pointer;
+	// 	&:hover {
+	// 		::v-deep .content {
+	// 			background: getcolor('bright', 0.3);
+	// 		}
+	// 	}
+	// }
+}
+</style>
