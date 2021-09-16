@@ -1,6 +1,8 @@
 <template>
 	<section>
-		<h1 class="d-none d-lg-flex">{{ pageTitle }}</h1>
+		<h1 class="d-none d-lg-flex text-h3 text-md-h2 font-weight-bold">
+			{{ pageTitle }}
+		</h1>
 
 		<!-- MAIN sponsors -->
 		<v-card color="darkish" flat class="mt-0 mt-lg-5 pb-4">

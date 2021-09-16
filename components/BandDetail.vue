@@ -1,6 +1,6 @@
 <template>
 	<div v-editable="band">
-		<h1 class="pb-3">{{ band.name }}</h1>
+		<h1 class="text-h3 text-md-h2 font-weight-bold pb-4">{{ band.name }}</h1>
 		<v-row>
 			<!-- main -->
 			<v-col cols="12" lg="7" xl="8">

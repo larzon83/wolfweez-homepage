@@ -9,7 +9,9 @@
 			/>
 		</div>
 		<div class="news-date">{{ newsDate }}</div>
-		<h1 class="pb-4">{{ news.headline }}</h1>
+		<h1 class="text-h4 text-md-h3 font-weight-bold pb-4">
+			{{ news.headline }}
+		</h1>
 		<rich-text-renderer v-if="news.description" :document="news.description" />
 	</div>
 </template>

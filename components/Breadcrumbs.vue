@@ -1,7 +1,7 @@
 <template>
 	<div>
 		<v-breadcrumbs
-			v-if="$route.name !== 'index'"
+			v-if="$route.name !== 'index' && !hasNuxtError"
 			:items="items"
 			class="pl-0 d-none d-lg-flex"
 		>
@@ -32,6 +32,10 @@ export default {
 	computed: {
 		items() {
 			return [{ ...routeMeta.HOME }, ...this.$store.state.central.crumbs]
+		},
+
+		hasNuxtError() {
+			return this.$nuxt?.context?.nuxtState?.error
 		}
 	}
 }
