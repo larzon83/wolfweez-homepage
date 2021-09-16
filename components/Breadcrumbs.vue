@@ -46,8 +46,11 @@ export default {
 	::v-deep .v-breadcrumbs__divider .v-icon {
 		color: getcolor('bright', 0.75);
 	}
+	::v-deep .v-breadcrumbs__item {
+		color: getcolor('bright', 0.92);
+	}
 	::v-deep .v-breadcrumbs__item--disabled {
-		color: getcolor('bright', 0.6);
+		color: getcolor('bright', 0.46);
 	}
 }
 </style>
