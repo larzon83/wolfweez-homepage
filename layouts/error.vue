@@ -1,12 +1,10 @@
 <template>
 	<v-app dark>
-		<h1 v-if="error.statusCode === 404">
-			{{ pageNotFound }}
+		<h1 class="text-h3 text-md-h2 font-weight-bold pt-lg-11">
+			<span v-if="error.statusCode === 404">{{ pageNotFound }}</span>
+			<span v-else>{{ otherError }}</span>
 		</h1>
-		<h1 v-else>
-			{{ otherError }}
-		</h1>
-		<NuxtLink to="/">zur Startseite</NuxtLink>
+		<GoBackHeader label="zur Startseite" class="mt-5" />
 	</v-app>
 </template>
 
