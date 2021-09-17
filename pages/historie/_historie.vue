@@ -5,16 +5,18 @@
 				v-if="story.content.flyer && story.content.flyer.filename"
 				cols="9"
 				md="4"
-				class="flyer d-flex align-self-start justify-center justify-md-start"
+				class="
+					flyer
+					d-flex
+					align-self-start
+					justify-center justify-md-start
+					pr-md-4 pr-lg-6 pr-xl-7
+				"
 			>
-				<!-- TODO: sbImage -->
-				<v-img
+				<SbImage
 					:alt="`Flyer ${headlinePage}`"
-					:src="$_transformImage(story.content.flyer.filename, '600x0')"
-					:lazy-src="$_transformImage(story.content.flyer.filename, '150x0')"
-					aspect-ratio="0.7168"
-					eager
-					class="rounded"
+					:pic="story.content.flyer"
+					:preset="$config.presetNames.HISTORY_FLYER"
 					content-class="content"
 				/>
 			</v-col>
@@ -22,7 +24,14 @@
 			<v-col cols="12" md="8">
 				<v-row>
 					<v-col cols="12" class="text-center text-md-left">
-						<h1 class="text-h3 text-md-h2 font-weight-bold pb-1 pt-3 pt-md-0">
+						<h1
+							class="
+								text-h4 text-sm-h3 text-lg-h2
+								font-weight-bold
+								pb-1
+								pt-3 pt-md-0
+							"
+						>
 							{{ headlinePage }}
 						</h1>
 						<div class="date-line pb-6 pb-md-0">
@@ -155,7 +164,9 @@ export default {
 
 <style lang="scss" scoped>
 .flyer .v-image {
-	max-width: 280px;
+	@media #{map-get($display-breakpoints, 'sm-and-down')} {
+		max-width: 280px;
+	}
 
 	::v-deep .content {
 		border-radius: $border-radius-root;
