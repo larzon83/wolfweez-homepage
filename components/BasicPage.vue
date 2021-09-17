@@ -1,6 +1,13 @@
 <template>
 	<section v-editable="content">
-		<h1 class="d-none d-lg-flex text-h3 text-md-h2 font-weight-bold pb-4">
+		<h1
+			class="
+				d-none d-lg-flex
+				text-h4 text-sm-h3 text-lg-h2
+				font-weight-bold
+				pb-4
+			"
+		>
 			{{ content.headline }}
 		</h1>
 		<rich-text-renderer v-if="content.text" :document="content.text" />

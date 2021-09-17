@@ -1,6 +1,6 @@
 <template>
 	<section>
-		<h1 class="d-none d-lg-flex text-h3 text-md-h2 font-weight-bold">
+		<h1 class="d-none d-lg-flex text-h4 text-sm-h3 text-lg-h2 font-weight-bold">
 			{{ pageTitle }}
 		</h1>
 		<ImgGalleries :galleries="festivalsWithGalleries" />
