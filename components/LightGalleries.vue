@@ -68,7 +68,7 @@ import { lightgalleryOptions } from '~/utils/constants'
 import { imageFormats } from '~/utils/responsive-images'
 
 export default {
-	name: 'ImgGalleries',
+	name: 'LightGalleries',
 	mixins: [useFormatting],
 
 	props: {

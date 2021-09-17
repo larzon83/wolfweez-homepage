@@ -72,7 +72,7 @@
 
 		<v-row>
 			<v-col cols="12">
-				<ImgGalleries
+				<LightGalleries
 					:galleries="galleries"
 					padding-top-override="pt-8 pt-lg-12"
 					headline="Bilder"

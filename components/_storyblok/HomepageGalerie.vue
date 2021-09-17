@@ -7,7 +7,7 @@
 		class="mt-16"
 	>
 		<v-card-text>
-			<ImgGalleries
+			<LightGalleries
 				:galleries="[latestGallery]"
 				:max-pics-to-show="6"
 				:headline="`Bilder vom Festival ${latestGallery.year}`"
