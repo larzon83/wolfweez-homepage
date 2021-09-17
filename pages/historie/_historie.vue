@@ -94,6 +94,13 @@ export default {
 			this.$route.path
 		)
 
+		const linkEntries = []
+		const preloadImage = this.$_getPreloadImageHeadEntry(
+			this.story.content.flyer?.filename,
+			this.$config.presetNames.HISTORY_FLYER
+		)
+		if (preloadImage) linkEntries.push(preloadImage)
+
 		return {
 			title,
 			meta: createSEOMeta({
@@ -103,7 +110,8 @@ export default {
 				imageHeight,
 				title,
 				url: this.$route.path
-			})
+			}),
+			link: [...linkEntries]
 		}
 	},
 
