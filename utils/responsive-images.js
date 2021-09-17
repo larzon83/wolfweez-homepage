@@ -1,6 +1,7 @@
 export const presetNames = {
 	BAND_OVERVIEW: 'band-overview',
 	BAND_DETAIL: 'band-detail',
+	HISTORY_FLYER: 'history-flyer',
 	INFO: 'info',
 	NEWS_CARD: 'news-card',
 	NEWS_DETAIL: 'news-detail',
@@ -108,6 +109,23 @@ export const presets = {
 					(max-width: 783px) 530px,
 					(max-width: 1139px) 400px,
 					622px
+					`)
+	},
+	[presetNames.HISTORY_FLYER]: {
+		contain: false,
+		eager: true,
+		imageFormat: imageFormats.JPEG,
+		lazySrcMultiplier: 14,
+		rounded: true,
+		widths: generateWidths([157, 206, 210, 228, 252, 280, 283]),
+		sizes: removeClutter(`
+					(max-width: 320px) 210px,
+					(max-width: 344px) 228px,
+					(max-width: 376px) 252px,
+					(max-width: 599px) 280px,
+					(max-width: 783px) 157px,
+					(max-width: 1139px) 206px,
+					283px
 					`)
 	},
 	[presetNames.NEWS_CARD]: {
