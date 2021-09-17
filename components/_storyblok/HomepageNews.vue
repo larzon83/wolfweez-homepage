@@ -55,5 +55,12 @@ export default {
 .btn-more {
 	background-color: getcolor('prime', 0.12);
 	border-width: 3px;
+
+	@media (max-width: 399px) {
+		display: flex;
+		flex: 1 0 auto;
+		min-width: 100% !important;
+		max-width: auto;
+	}
 }
 </style>
