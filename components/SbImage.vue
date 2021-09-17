@@ -4,6 +4,7 @@
 		:alt="alt || pic.alt"
 		:aspect-ratio="defs.aspectRatio"
 		:contain="isContain"
+		:content-class="contentClass"
 		:eager="defs.eager"
 		:height="defs.height"
 		:lazy-src="lazySrc"
@@ -43,6 +44,10 @@ export default {
 		},
 		contain: {
 			type: Boolean,
+			default: undefined
+		},
+		contentClass: {
+			type: String,
 			default: undefined
 		},
 		disableLazySrc: {
