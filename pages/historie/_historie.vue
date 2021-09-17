@@ -18,6 +18,13 @@
 					:pic="story.content.flyer"
 					:preset="$config.presetNames.HISTORY_FLYER"
 					content-class="content"
+					@click.native="$refs.gallerySingle.openGallery()"
+				/>
+				<LightGallerySingle
+					ref="gallerySingle"
+					:alt="`Flyer ${headlinePage}`"
+					:filename="story.content.flyer.filename"
+					:img-ident="`flyer-${story.content.year}`"
 				/>
 			</v-col>
 
@@ -181,15 +188,14 @@ export default {
 		border: 3px solid getcolor('bright');
 	}
 
-	// TODO: lightgallery
-	// @media (hover: hover) {
-	// 	cursor: pointer;
-	// 	&:hover {
-	// 		::v-deep .content {
-	// 			background: getcolor('bright', 0.3);
-	// 		}
-	// 	}
-	// }
+	@media (hover: hover) {
+		cursor: pointer;
+		&:hover {
+			::v-deep .content {
+				background: getcolor('bright', 0.3);
+			}
+		}
+	}
 }
 
 .date-line {
