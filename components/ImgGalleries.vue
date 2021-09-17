@@ -24,13 +24,15 @@
 						cols="3"
 						:lg="colsLg"
 					>
-						<!-- TODO: use sbImage -->
 						<v-img
 							:alt="`${$config.siteTitle.short} ${gallery.year} - Bild ${
 								imgIndex + 1
 							}`"
-							:src="$_transformImage(img.filename, '500x500')"
+							:src="$_transformImage(img.filename, '218x218')"
 							:lazy-src="$_transformImage(img.filename, '6x6')"
+							:srcset="
+								$_generateDpiSrcsetEntries(img.filename, 218, imageFormats.JPEG)
+							"
 							aspect-ratio="1"
 							class="rounded gallery-image"
 							content-class="content"
@@ -63,6 +65,7 @@
 <script>
 import useFormatting from '~/mixins/useFormatting.js'
 import { lightgalleryOptions } from '~/utils/constants'
+import { imageFormats } from '~/utils/responsive-images'
 
 export default {
 	name: 'ImgGalleries',
@@ -138,6 +141,10 @@ export default {
 		// Go to third slide
 		// Index starts from 0
 		// window.lgData[el.getAttribute('lg-uid')].slide(1)
+	},
+
+	created() {
+		this.imageFormats = imageFormats
 	},
 
 	methods: {
