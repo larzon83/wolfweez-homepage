@@ -28,7 +28,11 @@
 								'pt-0': blok.pics_arrangement === 'bottom'
 							}"
 						>
-							<SbImage :pic="pic" :preset="$config.presetNames.INFO" />
+							<SbImage
+								:alt="pic.alt"
+								:pic="pic"
+								:preset="$config.presetNames.INFO"
+							/>
 						</v-col>
 					</v-row>
 				</v-col>
