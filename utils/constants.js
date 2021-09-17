@@ -21,6 +21,19 @@ export const sbHomeBloks = {
 	VIDEO: 'HomepageVideo'
 }
 
+export const lightgalleryOptions = {
+	download: true,
+	dynamic: true,
+	fullScreen: true,
+	hideBarsDelay: 3000,
+	hideControlOnEnd: true,
+	loop: false,
+	mode: 'lg-slide',
+	speed: 120,
+	supportLegacyBrowser: false,
+	thumbnail: true
+}
+
 export const routeMeta = {
 	HOME: {
 		title: 'Home',

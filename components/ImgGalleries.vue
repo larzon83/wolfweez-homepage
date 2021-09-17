@@ -24,6 +24,7 @@
 						cols="3"
 						:lg="colsLg"
 					>
+						<!-- TODO: use sbImage -->
 						<v-img
 							:alt="`${$config.siteTitle.short} ${gallery.year} - Bild ${
 								imgIndex + 1
@@ -55,12 +56,13 @@
 			v-for="(gallery, lightgalleryIndex) in galleries"
 			:id="'lightgallery-' + lightgalleryIndex"
 			:key="`lightgallery-${lightgalleryIndex}`"
-		></div>
+		/>
 	</div>
 </template>
 
 <script>
 import useFormatting from '~/mixins/useFormatting.js'
+import { lightgalleryOptions } from '~/utils/constants'
 
 export default {
 	name: 'ImgGalleries',
@@ -143,17 +145,8 @@ export default {
 			const lg = document.getElementById(`lightgallery-${galleryIndex}`)
 
 			window.lightGallery(lg, {
-				download: true,
-				dynamic: true,
-				dynamicEl: this.dynamicElements[galleryIndex],
-				fullScreen: true,
-				hideBarsDelay: 3000,
-				hideControlOnEnd: true,
-				loop: false,
-				mode: 'lg-slide',
-				speed: 120,
-				supportLegacyBrowser: false,
-				thumbnail: true
+				...lightgalleryOptions,
+				dynamicEl: this.dynamicElements[galleryIndex]
 			})
 
 			// set slide index to the one passed from the clicked thumb
