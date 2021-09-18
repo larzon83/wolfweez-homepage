@@ -179,10 +179,6 @@ export default {
 	proxy: {},
 
 	pwa: {
-		// workbox: {
-		// 	enabled: true
-		// },
-
 		icon: {
 			iosSizes: []
 		},
@@ -207,6 +203,7 @@ export default {
 		},
 
 		workbox: {
+			// enabled: true,
 			skipWaiting: false,
 			runtimeCaching: [
 				{

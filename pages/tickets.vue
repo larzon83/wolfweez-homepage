@@ -106,8 +106,8 @@ export default {
 			pageTitle,
 			loading: false,
 			priceId: 'price_1IP7gWBfAFuG6uOs4a8hK5zz',
-			successUrl: 'https://ww-test.netlify.app/',
-			cancelUrl: 'https://ww-test-preview.netlify.app/'
+			successUrl: 'https://wolfweez.netlify.app/',
+			cancelUrl: 'https://wolfweez-preview.netlify.app/'
 		}
 	},
 
