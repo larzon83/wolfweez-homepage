@@ -8,7 +8,7 @@ module.exports = {
 	testPathIgnorePatterns: ['node_modules', '<rootDir>/cypress/'],
 	transform: {
 		'^.+\\.js$': 'babel-jest',
-		'.*\\.(vue)$': 'vue-jest'
+		'.*\\.(vue)$': '@vue/vue2-jest'
 	},
 	collectCoverage: false,
 	collectCoverageFrom: [
