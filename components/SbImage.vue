@@ -3,7 +3,7 @@
 		v-if="pic && pic.filename"
 		:alt="alt || pic.alt"
 		:aspect-ratio="defs.aspectRatio"
-		:contain="isContain"
+		:contain="defs.contain"
 		:content-class="contentClass"
 		:eager="defs.eager"
 		:height="defs.height"
@@ -97,13 +97,6 @@ export default {
 			return presets[this.preset]
 		},
 
-		isContain() {
-			if (this.contain === false) return false
-			if (this.contain === true) return true
-			if (this.currentPreset.contain === false) return false
-			return true
-		},
-
 		lazySrc() {
 			if (this.disableLazySrc || this.currentPreset.disableLazySrc) {
 				return undefined
@@ -160,6 +153,7 @@ export default {
 					this.aspectRatio ||
 					this.currentPreset.aspectRatio ||
 					this.$_aspectRatio(this.pic.filename),
+				contain: this.contain || this.currentPreset.contain || false,
 				eager: this.eager || this.currentPreset.eager || false,
 				maxWidth: this.maxWidth || this.currentPreset.maxWidth,
 				position:

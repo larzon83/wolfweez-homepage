@@ -64,7 +64,6 @@ export const presets = {
 
 	[presetNames.BAND_OVERVIEW]: {
 		aspectRatio: aspectRatios.BAND,
-		contain: false,
 		eager: true,
 		imageFormat: imageFormats.JPEG,
 		lazySrcMultiplier: 52,
@@ -88,7 +87,6 @@ export const presets = {
 	},
 	[presetNames.BAND_DETAIL]: {
 		aspectRatio: aspectRatios.BAND,
-		contain: false,
 		eager: true,
 		imageFormat: imageFormats.JPEG,
 		lazySrcMultiplier: 52,
@@ -112,7 +110,6 @@ export const presets = {
 					`)
 	},
 	[presetNames.HISTORY_FLYER]: {
-		contain: false,
 		eager: true,
 		imageFormat: imageFormats.JPEG,
 		lazySrcMultiplier: 14,
@@ -130,7 +127,6 @@ export const presets = {
 	},
 	[presetNames.NEWS_CARD]: {
 		aspectRatio: aspectRatios.NEWS_CARD,
-		contain: false,
 		eager: true,
 		imageFormat: imageFormats.JPEG,
 		lazySrcMultiplier: 10,
@@ -153,7 +149,6 @@ export const presets = {
 					`)
 	},
 	[presetNames.NEWS_DETAIL]: {
-		contain: false,
 		eager: true,
 		imageFormat: imageFormats.JPEG,
 		lazySrcMultiplier: 10,
@@ -177,6 +172,7 @@ export const presets = {
 					`)
 	},
 	[presetNames.SPONSORS_MAIN]: {
+		contain: true,
 		disableLazySrc: true,
 		maxWidth: 300,
 		widths: generateWidths([123, 166, 226, 250, 300]),
@@ -189,11 +185,13 @@ export const presets = {
 					`)
 	},
 	[presetNames.SPONSORS_MAIN_FOOTER]: {
+		contain: true,
 		disableLazySrc: true
 		// eager: true // FIXME: re-enable after dropping v-img
 	},
 	[presetNames.SPONSORS_NORMAL]: {
 		aspectRatio: 1,
+		contain: true,
 		disableLazySrc: true,
 		widths: generateWidths([123, 166, 226, 250, 300]),
 		sizes: removeClutter(`
@@ -206,6 +204,7 @@ export const presets = {
 	},
 	[presetNames.INFO]: {
 		bgPosition: presetOptions.BG_POSITION_TOP,
+		contain: true,
 		widths: generateWidths([123, 166, 226, 250, 300]),
 		sizes: removeClutter(`
 					(max-width: 322px) 250px,
