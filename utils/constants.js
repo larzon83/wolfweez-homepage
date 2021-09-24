@@ -34,6 +34,12 @@ export const lightgalleryOptions = {
 	thumbnail: true
 }
 
+export const countryNames = {
+	DE: 'Deutschland',
+	CH: 'Schweiz',
+	AT: 'Österreich'
+}
+
 export const routeMeta = {
 	HOME: {
 		title: 'Home',
@@ -97,6 +103,11 @@ export const routeMeta = {
 	TICKETS: {
 		title: 'Tickets',
 		to: '/tickets/'
+	},
+
+	TICKETS__STATUS: {
+		title: 'Bestellstatus',
+		to: '/tickets/status/'
 	},
 
 	MEDIEN__FOTOGALERIE: {

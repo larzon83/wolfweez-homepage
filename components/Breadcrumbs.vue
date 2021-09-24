@@ -9,7 +9,7 @@
 				<v-icon size="13">$chevronRight</v-icon>
 			</template>
 			<template #item="{ item }">
-				<v-breadcrumbs-item exact nuxt :to="item.to">
+				<v-breadcrumbs-item exact-path nuxt :to="item.to">
 					{{ item.title }}
 				</v-breadcrumbs-item>
 			</template>

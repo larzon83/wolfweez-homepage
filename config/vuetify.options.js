@@ -1,7 +1,9 @@
 import {
+	AlertOctagonIcon,
 	ArrowLeftIcon,
 	ArrowRightIcon,
 	BarChart2Icon,
+	CheckCircleIcon,
 	ChevronLeftIcon,
 	ChevronRightIcon,
 	CompassIcon,
@@ -35,11 +37,17 @@ export default {
 
 	icons: {
 		values: {
+			alertOctagon: {
+				component: AlertOctagonIcon
+			},
 			arrowLeft: {
 				component: ArrowLeftIcon
 			},
 			arrowRight: {
 				component: ArrowRightIcon
+			},
+			checkCircle: {
+				component: CheckCircleIcon
 			},
 			chevronLeft: {
 				component: ChevronLeftIcon

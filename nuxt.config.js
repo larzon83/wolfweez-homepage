@@ -139,6 +139,7 @@ export default {
 		// 		}
 		// 	}
 		// ],
+		'@/modules/stripeProducts',
 		'@/modules/storybridgeMixin',
 		'@/modules/vuetifyAdditionalVars',
 		'@nuxtjs/eslint-module',
@@ -153,22 +154,12 @@ export default {
 			}
 		],
 		['nuxt-canonical', { baseUrl }],
-		'@/modules/netlifyFiles',
-		'@/modules/socialCardGenerator'
+		'@/modules/netlifyFiles'
+		// '@/modules/socialCardGenerator'
 	],
 
 	// Modules (https://go.nuxtjs.dev/config-modules)
-	modules: [
-		'nuxt-client-init-module',
-		'@nuxtjs/axios',
-		'@nuxtjs/proxy',
-		'nuxt-stripejs'
-	],
-
-	stripe: {
-		publishableKey:
-			'pk_test_51IP7XYBfAFuG6uOs5pu8crgpe5Z6OUfreIGvoM6Vdz66XQnGN4H4RR9qoy2uwQv0meyYfxV4YsmAS2ZKbsOrxbTc00CET6X6bc'
-	},
+	modules: ['nuxt-client-init-module', '@nuxtjs/axios', '@nuxtjs/proxy'],
 
 	// Axios module configuration (https://go.nuxtjs.dev/config-axios)
 	axios: { proxy: true },

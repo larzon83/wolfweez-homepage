@@ -1,0 +1,11 @@
+{
+	"name": "stripe-products",
+	"version": "1.0.0",
+	"description": "",
+	"private": true,
+	"main": "module.js",
+	"license": "MIT",
+	"publishConfig": {
+		"access": "restricted"
+	}
+}

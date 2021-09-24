@@ -25,11 +25,18 @@
 		<v-card color="darkish" flat class="mt-3">
 			<!-- TODO: make this a h2 or h3 -->
 			<!-- <v-card-title>Tickets</v-card-title> -->
-			<v-card-text
+			<!-- FIXME: remove sb Tickets -->
+			<!-- <v-card-text
 				v-for="ticket in story.content.tickets_list"
 				:key="ticket.uuid"
 			>
 				{{ ticket.name }}
+			</v-card-text>
+
+			<v-divider /> -->
+
+			<v-card-text v-for="(ticket, index) in tickets" :key="`ticket-${index}`">
+				{{ ticket.livemode }}
 			</v-card-text>
 		</v-card>
 
@@ -50,19 +57,15 @@
 			</v-col>
 		</v-row>
 
-		<div class="mt-6 pa-4" style="background: rgba(255, 255, 255, 0.1)">
-			<div ref="stripeElements" />
-		</div>
 		<v-btn
 			:loading="loading"
 			:disabled="loading"
-			class="mt-3"
+			class="mt-13"
 			color="prime"
 			role="link"
 			@click="checkout"
-			>Kombi Ticket kaufen</v-btn
+			>Kombi Ticket kaufen 2</v-btn
 		>
-		<div id="error-message"></div>
 	</section>
 </template>
 
@@ -104,10 +107,8 @@ export default {
 	data() {
 		return {
 			pageTitle,
-			loading: false,
-			priceId: 'price_1IP7gWBfAFuG6uOs4a8hK5zz',
-			successUrl: 'https://wolfweez.netlify.app/',
-			cancelUrl: 'https://wolfweez-preview.netlify.app/'
+			devProducts: [],
+			loading: false
 		}
 	},
 
@@ -119,45 +120,63 @@ export default {
 			resolveRelations: 'tickets_list'
 		})
 
-		// FIXME: remove
-		// console.log('foo:', foo)
-		// console.log('foo:', foo.story.content.tickets_list)
-
 		return foo
 	},
 
-	// async mounted() {
-	// 	const stripe = await this.$stripe()
-	// 	console.log('stripe:', stripe)
-	// 	const elements = stripe.elements()
+	computed: {
+		tickets() {
+			if (this.devProducts.length) return this.devProducts
+			return this.$stripeProducts
+		}
+	},
 
-	// 	const card = elements.create('card')
-	// 	card.mount(this.$refs.stripeElements)
-	// },
+	async mounted() {
+		if (
+			process.env.NODE_ENV === 'development' ||
+			process.env.NUXT_ENV_IS_SPA === 'true'
+		) {
+			console.log('loading products...')
+			try {
+				const products = await this.$axios.$get('/api/stripe-get-products')
+				console.log('products:', products)
+				this.devProducts = products
+			} catch (error) {
+				console.log(error)
+			}
+		}
+	},
 
 	methods: {
 		async checkout(event) {
 			this.loading = true
-			const stripe = await this.$stripe()
-			stripe
-				.redirectToCheckout({
-					lineItems: [{ price: this.priceId, quantity: 1 }],
-					// Todo: handle fullfillment
-					// https://stripe.com/docs/payments/checkout/fulfillment
-					mode: 'payment',
-					successUrl: this.successUrl,
-					cancelUrl: this.cancelUrl
+			// const form = new FormData(event.target)
+			const data = [
+				{
+					// "Kombi-Ticket"
+					// sku: form.get('sku'),
+					// quantity: Number(form.get('quantity'))
+					price: 'price_1IP7gWBfAFuG6uOs4a8hK5zz',
+					quantity: 10
+				},
+				{
+					// "Kombi"
+					price: 'price_1IP8JQBfAFuG6uOsWHH4Xck2',
+					quantity: 1
+				}
+			]
+
+			try {
+				const response = await this.$axios.$post('/api/stripe-checkout', data, {
+					headers: { 'Content-Type': 'application/json' }
 				})
-				.then(function (result) {
-					console.log('result:', result)
-					if (result.error) {
-						const displayError = document.getElementById('error-message')
-						displayError.textContent = result.error.message
-					}
-				})
-				.finally(() => {
-					this.loading = false
-				})
+
+				console.log('response:', response)
+
+				window.location.href = response.sessionUrl
+			} catch (error) {
+				console.log(error)
+				this.loading = false
+			}
 		}
 	},
 

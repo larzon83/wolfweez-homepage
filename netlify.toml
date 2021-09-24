@@ -6,6 +6,11 @@
 [dev]
   autoLaunch = false
 
+[[redirects]]
+  from = "/api/*"
+  to = "/.netlify/functions/:splat"
+  status = 200
+
 [[plugins]]
 package = "@netlify/plugin-sitemap"
 
@@ -21,6 +26,7 @@ package = "@netlify/plugin-sitemap"
     '**/infos/index.html',
     '**/newsletter/index.html', # TODO: remove when go live
     '**/rechtliches/index.html',
+    '**/tickets/status/index.html',
     '**/**/200.html',
     '**/**/404.html'
   ]
