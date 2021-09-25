@@ -35,8 +35,30 @@
 
 			<v-divider /> -->
 
-			<v-card-text v-for="(ticket, index) in tickets" :key="`ticket-${index}`">
-				{{ ticket.livemode }}
+			<v-card-text v-if="tickets.length">
+				<v-row
+					v-for="(ticket, index) in tickets"
+					:key="`ticket-${index}`"
+					align="center"
+					justify="space-between"
+				>
+					<v-col>{{ ticket.name }}</v-col>
+					<v-col cols="auto">SELECT</v-col>
+				</v-row>
+
+				<v-row align="center" justify="end">
+					<v-col cols="auto">
+						<v-btn
+							:loading="loading"
+							:disabled="loading"
+							color="prime"
+							role="link"
+							class="mt-8"
+							@click="checkout"
+							>Jetzt kaufen</v-btn
+						>
+					</v-col>
+				</v-row>
 			</v-card-text>
 		</v-card>
 
@@ -56,16 +78,6 @@
 				{{ vvk.plz }} {{ vvk.city }}
 			</v-col>
 		</v-row>
-
-		<v-btn
-			:loading="loading"
-			:disabled="loading"
-			class="mt-13"
-			color="prime"
-			role="link"
-			@click="checkout"
-			>Kombi Ticket kaufen 2</v-btn
-		>
 	</section>
 </template>
 
