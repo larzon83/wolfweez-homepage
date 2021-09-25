@@ -1,20 +1,17 @@
 const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY)
-const endpointSecret = 'whsec_VgbvnNWiUY1D3c6V4DcrOpxdhAx1RTUq'
 
 const handler = async event => {
 	const sig = event.headers['stripe-signature']
-
-	let eventType
-	let eventDataObject
+	let stripeEvent
 
 	try {
-		const stripeEvent = await stripe.webhooks.constructEvent(
+		stripeEvent = await stripe.webhooks.constructEvent(
 			event.body,
 			sig,
-			endpointSecret
+			process.env.NODE_ENV === 'development'
+				? 'whsec_VgbvnNWiUY1D3c6V4DcrOpxdhAx1RTUq'
+				: process.env.STRIPE_WEBHOOK_SECRET
 		)
-		eventType = stripeEvent.type
-		eventDataObject = stripeEvent.data.object
 	} catch (err) {
 		console.error(`Stripe webhook failed with ${err}`)
 		return {
@@ -22,6 +19,8 @@ const handler = async event => {
 			body: `Webhook Error: ${err.message}`
 		}
 	}
+
+	const { eventType, eventDataObject } = stripeEvent
 
 	console.log('sig:', sig)
 	console.log('eventType:', eventType)

@@ -10,6 +10,7 @@ const SITE_URL = process.env.URL || 'http://localhost:3000'
 
 const handler = async event => {
 	const { countryNames } = require('./../utils/stripe-helpers.js')
+	let session
 
 	if (event.httpMethod !== 'POST') {
 		return {
@@ -36,7 +37,7 @@ const handler = async event => {
 	// const currency = priceFoo.currency
 
 	try {
-		const session = await stripe.checkout.sessions.create({
+		session = await stripe.checkout.sessions.create({
 			mode: 'payment',
 			submit_type: 'pay',
 			allow_promotion_codes: true,
@@ -58,19 +59,19 @@ const handler = async event => {
 			// automatic_tax: { enabled: false, status: null }, // TODO:
 			// shipping_rates: ['shr_123456789'], // TODO: https://stripe.com/docs/payments/checkout/shipping
 		})
-
-		console.info('session:', session)
-
-		return {
-			statusCode: 200,
-			body: JSON.stringify({
-				sessionUrl: session.url,
-				sessionId: session.id
-			})
-		}
 	} catch (error) {
 		console.error('checkout:', error)
 		return { statusCode: error.statusCode, body: JSON.stringify(error) }
+	}
+
+	console.info('session:', session)
+
+	return {
+		statusCode: 200,
+		body: JSON.stringify({
+			sessionUrl: session.url,
+			sessionId: session.id
+		})
 	}
 }
 
