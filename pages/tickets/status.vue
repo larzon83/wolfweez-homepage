@@ -13,7 +13,7 @@
 					icon="$checkCircle"
 				>
 					<!-- FIXME: check again in prod: is there an invoice with other details? -->
-					<!-- TODO: handle unpaid -->
+					<!-- TODO: handle payment_status: "unpaid" -->
 					<!-- TODO: better copy -->
 					<v-row align="start" justify="start">
 						<v-col cols="12" xl="6">
@@ -58,18 +58,18 @@
 								Versand an
 							</v-subheader>
 							<div v-if="sessionItem.shipping && sessionItem.shipping.address">
-								<span v-if="sessionInfo.customer.name">
-									{{ sessionInfo.customer.name }}<br />
+								<span v-if="sessionItem.shipping.name">
+									{{ sessionItem.shipping.name }}<br />
 								</span>
-								<span v-if="sessionInfo.customer.street">
-									{{ sessionInfo.customer.street }}<br />
+								<span v-if="sessionItem.shipping.address.line1">
+									{{ sessionItem.shipping.address.line1 }}<br />
 								</span>
-								<span v-if="sessionInfo.customer.street_additional">
-									{{ sessionInfo.customer.street_additional }}<br />
+								<span v-if="sessionItem.shipping.address.line2">
+									{{ sessionItem.shipping.address.line2 }}<br />
 								</span>
-								<span v-if="sessionInfo.customer.zip">
-									{{ sessionInfo.customer.zip }} {{ sessionInfo.customer.city
-									}}<br />
+								<span v-if="sessionItem.shipping.address.postal_code">
+									{{ sessionItem.shipping.address.postal_code }}
+									{{ sessionItem.shipping.address.city }}<br />
 								</span>
 								<span v-if="sessionItem.shipping.address.country">
 									{{ sessionItem.shipping.address.country }}<br />
@@ -78,6 +78,7 @@
 						</v-col>
 					</v-row>
 
+					<!-- TODO: make look better -->
 					<v-btn
 						v-if="chargeItem.receipt_url"
 						:ripple="false"
@@ -140,9 +141,7 @@ export default {
 	data() {
 		return {
 			pageTitle,
-			// receiptUrl: '',
 			showReceipt: false,
-			sessionInfo: undefined,
 			chargeItem: undefined,
 			sessionItem: undefined,
 			sessionError: null
@@ -165,21 +164,6 @@ export default {
 						this.$route.query.session_id
 				)
 
-				// TODO: handle payment_status: "unpaid"
-				const enrichedSession = {
-					amount: (session.amount_total / 100).toFixed(2),
-					customer: {
-						// TODO: Rechnungs Nummer?
-						email: session.customer_details?.email,
-						name: session.shipping?.name,
-						street: session.shipping?.address?.line1,
-						street_additional: session.shipping?.address?.line2,
-						zip: session.shipping?.address?.postal_code,
-						city: session.shipping?.address?.city,
-						country: session.shipping?.address?.country
-					}
-				}
-
 				if (session?.shipping?.address?.country) {
 					session.shipping.address.country =
 						countryNames[session.shipping.address.country] || ''
@@ -189,10 +173,7 @@ export default {
 
 				this.sessionItem = session
 				this.chargeItem = charge
-
 				this.showReceipt = true
-				// this.receiptUrl = charge.receipt_url
-				this.sessionInfo = enrichedSession
 			} catch (error) {
 				this.showReceipt = true
 				this.sessionError = error.response?.data?.raw?.message
