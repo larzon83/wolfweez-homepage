@@ -1,3 +1,9 @@
+const countryNames = {
+	DE: 'Deutschland',
+	CH: 'Schweiz',
+	AT: 'Österreich'
+}
+
 const constructProducts = (productsList, pricesList) => {
 	if (!productsList) return []
 
@@ -13,10 +19,17 @@ const constructProducts = (productsList, pricesList) => {
 	})
 }
 
-const countryNames = {
-	DE: 'Deutschland',
-	CH: 'Schweiz',
-	AT: 'Österreich'
+const getProducts = async stripe => {
+	const productsPromise = stripe.products.list({ limit: 100 })
+	const pricesPromise = stripe.prices.list({ limit: 100 })
+
+	const [productsList, pricesList] = await Promise.all([
+		productsPromise,
+		pricesPromise
+	])
+
+	const products = constructProducts(productsList, pricesList)
+	return products
 }
 
-module.exports = { constructProducts, countryNames }
+module.exports = { getProducts, countryNames }
