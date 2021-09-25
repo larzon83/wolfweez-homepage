@@ -43,7 +43,20 @@
 					justify="space-between"
 				>
 					<v-col>{{ ticket.name }}</v-col>
-					<v-col cols="auto">SELECT</v-col>
+					<v-col cols="auto">
+						<!-- TODO: "inputmethod" ??? -->
+						<v-text-field
+							v-model="quantities[ticket.productId]"
+							label="Anzahl"
+							type="number"
+							min="0"
+							inputmethod="decimal"
+							hide-details="auto"
+							outlined
+							filled
+							required
+						></v-text-field>
+					</v-col>
 				</v-row>
 
 				<v-row align="center" justify="end">
@@ -120,6 +133,7 @@ export default {
 		return {
 			pageTitle,
 			devProducts: [],
+			quantities: {},
 			loading: false
 		}
 	},
@@ -137,8 +151,23 @@ export default {
 
 	computed: {
 		tickets() {
-			if (this.devProducts.length) return this.devProducts
-			return this.$stripeProducts
+			const productsRaw = this.devProducts.length
+				? this.devProducts
+				: this.$stripeProducts
+
+			const tickets = productsRaw.map(({ id, images, name, prices }) => ({
+				productId: id,
+				images,
+				name,
+				price: {
+					id: prices[0].id,
+					currency: prices[0].currency,
+					unit_amount: prices[0].unit_amount,
+					unit_amount_decimal: prices[0].unit_amount_decimal
+				}
+			}))
+
+			return tickets
 		}
 	},
 
@@ -161,7 +190,28 @@ export default {
 	methods: {
 		async checkout(event) {
 			this.loading = true
+
+			const ticketsInCart = this.tickets.reduce((res, current) => {
+				if (
+					this.quantities[current.productId] &&
+					this.quantities[current.productId] > 0
+				) {
+					res.push({
+						price: current.price.id,
+						quantity: this.quantities[current.productId]
+					})
+				}
+				return res
+			}, [])
+
+			// TODO: add form
+			// TODO: don't send, if all quantities are 0
+			console.log('ticketsInCart:', ticketsInCart)
+
 			// const form = new FormData(event.target)
+
+			// FIXME: delete
+			// eslint-disable-next-line no-unused-vars
 			const data = [
 				{
 					// "Kombi-Ticket"
@@ -178,9 +228,13 @@ export default {
 			]
 
 			try {
-				const response = await this.$axios.$post('/api/stripe-checkout', data, {
-					headers: { 'Content-Type': 'application/json' }
-				})
+				const response = await this.$axios.$post(
+					'/api/stripe-checkout',
+					ticketsInCart,
+					{
+						headers: { 'Content-Type': 'application/json' }
+					}
+				)
 
 				console.log('response:', response)
 
