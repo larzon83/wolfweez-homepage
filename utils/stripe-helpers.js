@@ -7,16 +7,18 @@ const countryNames = {
 const constructProducts = (productsList, pricesList) => {
 	if (!productsList) return []
 
-	return productsList.data.map(product => {
-		let prices = []
-		if (pricesList && pricesList.data) {
-			prices = pricesList.data.filter(price => price.product === product.id)
-		}
-		return {
-			...product,
-			prices
-		}
-	})
+	return productsList.data
+		.filter(p => p.active)
+		.map(product => {
+			let prices = []
+			if (pricesList && pricesList.data) {
+				prices = pricesList.data.filter(price => price.product === product.id)
+			}
+			return {
+				...product,
+				prices
+			}
+		})
 }
 
 const getProducts = async stripe => {
