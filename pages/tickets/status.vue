@@ -15,13 +15,6 @@
 					<!-- FIXME: check again in prod: is there an invoice with other details? -->
 					<!-- TODO: handle unpaid -->
 					<!-- TODO: better copy -->
-					<!-- TODO: add bought tickets -->
-					<!-- TODO: country names -->
-					<!-- TODO: if shipping address is different than billing address... -->
-					<!-- <div class="mb-1">
-						Hier nochmal alle Details zu deiner Bestellung:
-					</div> -->
-
 					<v-row align="start" justify="start">
 						<v-col cols="12" xl="6">
 							<v-subheader class="sub-headline text-button pl-0">
