@@ -20,7 +20,8 @@ const handler = async event => {
 			c => c.payment_intent === session.payment_intent
 		)
 
-		console.log('charge:', charge)
+		console.info('session:', session)
+		console.info('charge:', charge)
 
 		// const customer = await stripe.customers.retrieve(session.customer)
 

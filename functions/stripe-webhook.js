@@ -16,7 +16,7 @@ const handler = async event => {
 		eventType = stripeEvent.type
 		eventDataObject = stripeEvent.data.object
 	} catch (err) {
-		console.log(`Stripe webhook failed with ${err}`)
+		console.error(`Stripe webhook failed with ${err}`)
 		return {
 			statusCode: 400,
 			body: `Webhook Error: ${err.message}`

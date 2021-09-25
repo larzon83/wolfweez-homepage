@@ -21,15 +21,15 @@ const handler = async event => {
 		}
 	}
 
+	const eventBody = JSON.parse(event.body)
+	console.info('eventBody:', eventBody)
+
 	const countryKeys = Object.keys(countryNames)
 
 	const items = JSON.parse(event.body).map(item => ({
 		...item,
 		adjustable_quantity: { enabled: true }
 	}))
-
-	const bbb = JSON.parse(event.body)
-	console.log('bbb:', bbb)
 
 	// const priceFoo = await stripe.prices.retrieve(price)
 	// const unitAmount = priceFoo.unit_amount
@@ -58,6 +58,8 @@ const handler = async event => {
 			// automatic_tax: { enabled: false, status: null }, // TODO:
 			// shipping_rates: ['shr_123456789'], // TODO: https://stripe.com/docs/payments/checkout/shipping
 		})
+
+		console.info('session:', session)
 
 		return {
 			statusCode: 200,

@@ -5,6 +5,7 @@ const handler = async event => {
 
 	try {
 		const products = await getProducts(stripe)
+		console.info('stripe-products:', products)
 		return {
 			statusCode: 200,
 			body: JSON.stringify(products)
