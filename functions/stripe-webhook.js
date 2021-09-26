@@ -8,9 +8,8 @@ const handler = async event => {
 		stripeEvent = await stripe.webhooks.constructEvent(
 			event.body,
 			sig,
-			process.env.NODE_ENV === 'development'
-				? 'whsec_VgbvnNWiUY1D3c6V4DcrOpxdhAx1RTUq'
-				: process.env.STRIPE_WEBHOOK_SECRET
+			'whsec_VgbvnNWiUY1D3c6V4DcrOpxdhAx1RTUq'
+			// process.env.STRIPE_WEBHOOK_SECRET
 		)
 	} catch (err) {
 		console.error(`Stripe webhook failed with ${err}`)
@@ -20,11 +19,8 @@ const handler = async event => {
 		}
 	}
 
-	const { eventType, eventDataObject } = stripeEvent
-
-	console.log('sig:', sig)
-	console.log('eventType:', eventType)
-	console.log('eventDataObject:', eventDataObject)
+	console.info('ℹ️  eventType:', stripeEvent.type)
+	// console.log('eventDataObject:', stripeEvent.data.object)
 
 	return {
 		statusCode: 200,
