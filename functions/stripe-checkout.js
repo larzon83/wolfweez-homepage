@@ -42,8 +42,7 @@ const handler = async event => {
 			submit_type: 'pay',
 			allow_promotion_codes: true,
 			success_url: `${SITE_URL}/tickets/status/?status=success&session_id={CHECKOUT_SESSION_ID}`,
-			cancel_url: `${SITE_URL}/tickets/status/?status=success&session_id={CHECKOUT_SESSION_ID}`, // TODO: use real cancel
-			// cancel_url: `${SITE_URL}/tickets/`,
+			cancel_url: `${SITE_URL}/tickets/`,
 			payment_method_types: [
 				'card',
 				'ideal',
