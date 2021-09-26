@@ -10,6 +10,8 @@ import {
 	FacebookIcon,
 	InfoIcon,
 	InstagramIcon,
+	MinusIcon,
+	PlusIcon,
 	RefreshCwIcon,
 	TwitterIcon,
 	XIcon,
@@ -72,6 +74,12 @@ export default {
 			},
 			menu: {
 				component: BarChart2Icon
+			},
+			minus: {
+				component: MinusIcon
+			},
+			plus: {
+				component: PlusIcon
 			},
 			refresh: {
 				component: RefreshCwIcon
