@@ -35,20 +35,34 @@
 											>{{ formatPrice(item.amount_total) }} €</v-col
 										>
 									</v-row>
-									<template v-if="sessionItem.line_items.length > 1">
-										<v-row
-											align="center"
-											justify="space-between"
-											class="font-weight-bold"
+
+									<v-row align="center" justify="space-between">
+										<v-col cols="12" class="pa-0"><v-divider /></v-col>
+									</v-row>
+									<v-row align="center" justify="space-between">
+										<v-col>Zwischensumme</v-col>
+										<!-- TODO: currency -->
+										<v-col cols="auto"
+											>{{ formatPrice(sessionItem.amount_subtotal) }} €</v-col
 										>
-											<v-col cols="12" class="pa-0"><v-divider /></v-col>
-											<v-col>Gesamtbetrag</v-col>
-											<!-- TODO: currency -->
-											<v-col cols="auto"
-												>{{ formatPrice(chargeItem.amount) }} €</v-col
-											>
-										</v-row>
-									</template>
+									</v-row>
+									<v-row align="center" justify="space-between" class="mt-0">
+										<v-col>Versand</v-col>
+										<!-- TODO: currency -->
+										<v-col cols="auto"
+											>{{
+												formatPrice(sessionItem.total_details.amount_shipping)
+											}}
+											€</v-col
+										>
+									</v-row>
+									<v-row align="center" justify="space-between" class="mt-0">
+										<v-col class="font-weight-bold">Gesamtbetrag</v-col>
+										<!-- TODO: currency -->
+										<v-col cols="auto" class="font-weight-bold"
+											>{{ formatPrice(chargeItem.amount) }} €</v-col
+										>
+									</v-row>
 								</v-card-text>
 							</v-card>
 						</v-col>

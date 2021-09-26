@@ -51,6 +51,7 @@ const handler = async event => {
 				'sepa_debit'
 			],
 			billing_address_collection: 'required',
+			shipping_rates: ['shr_1Je60JBfAFuG6uOs6j4oGfs6'],
 			shipping_address_collection: {
 				allowed_countries: countryKeys
 			},

@@ -96,6 +96,7 @@
 						>
 					</v-col>
 				</v-row>
+				<!-- TODO: add shipping_rate manually -->
 				<v-row v-if="checkoutError">
 					<v-col cols="12">
 						<p>Bestellung nicht möglich.</p>
