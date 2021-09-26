@@ -43,21 +43,41 @@
 					justify="space-between"
 				>
 					<v-col>{{ ticket.name }}<br />{{ ticket.price.formatted }} €</v-col>
-					<v-col cols="auto">
-						<!-- TODO: "inputmethod" ??? -->
-						<!-- TODO: readonly -->
-						<!-- TODO: better label for each -->
+					<v-col cols="auto" class="d-flex align-center justify-center">
+						<v-btn
+							:disabled="
+								!quantities[ticket.productId] ||
+								quantities[ticket.productId] < 1
+							"
+							color="prime"
+							depressed
+							fab
+							small
+							@click="decreaseQuantity(ticket.productId)"
+						>
+							<v-icon>$minus</v-icon>
+						</v-btn>
 						<v-text-field
 							v-model="quantities[ticket.productId]"
 							color="bright"
 							type="number"
 							filled
 							hide-details="auto"
-							inputmethod="decimal"
+							inputmode="numeric"
 							min="0"
 							outlined
 							placeholder="0"
-						></v-text-field>
+							class="mx-2"
+						/>
+						<v-btn
+							color="prime"
+							depressed
+							fab
+							small
+							@click="increaseQuantity(ticket.productId)"
+						>
+							<v-icon>$plus</v-icon>
+						</v-btn>
 					</v-col>
 				</v-row>
 
@@ -105,6 +125,7 @@
 </template>
 
 <script>
+import Vue from 'vue'
 import useStorybridge from 'storybridgeMixin/useStorybridge.js'
 import savePagetitleToVuex from '~/mixins/savePagetitleToVuex.js'
 import useFormatting from '~/mixins/useFormatting.js'
@@ -235,6 +256,7 @@ export default {
 						headers: { 'Content-Type': 'application/json' }
 					}
 				)
+				this.loading = false
 				window.location.href = response.sessionUrl
 			} catch (error) {
 				this.loading = false
@@ -249,6 +271,18 @@ export default {
 		// TODO: decimal separator
 		formatPrice(price) {
 			return (price / 100).toFixed(2)
+		},
+
+		decreaseQuantity(productId) {
+			const curr = parseInt(this.quantities[productId]) || 0
+			if (curr > 0) {
+				Vue.set(this.quantities, productId, (curr - 1).toString())
+			}
+		},
+
+		increaseQuantity(productId) {
+			const curr = parseInt(this.quantities[productId]) || 0
+			Vue.set(this.quantities, productId, (curr + 1).toString())
 		}
 	},
 
@@ -262,5 +296,24 @@ export default {
 <style lang="scss" scoped>
 .v-alert ::v-deep p:last-child {
 	margin: 0;
+}
+
+.v-text-field {
+	width: 56px;
+
+	::v-deep input[type='number'] {
+		appearance: none;
+		-moz-appearance: textfield;
+		text-align: center;
+		margin: 0;
+
+		&::-webkit-outer-spin-button,
+		&::-webkit-inner-spin-button {
+			appearance: none;
+			-moz-appearance: none;
+			-webkit-appearance: none;
+			margin: 0;
+		}
+	}
 }
 </style>
