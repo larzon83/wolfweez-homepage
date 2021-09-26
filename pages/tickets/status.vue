@@ -99,7 +99,7 @@
 					headline="Fehler"
 					icon="$alertOctagon"
 				>
-					<p>Der Bestellstatus konnt nicht ermittelt werden.</p>
+					<p>Der Bestellstatus konnte nicht ermittelt werden.</p>
 					<p><b>Fehlermeldung:</b> {{ sessionError }}</p>
 				</LazyCheckoutStatusBox>
 			</template>
