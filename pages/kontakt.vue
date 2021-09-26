@@ -25,6 +25,7 @@
 						<v-col cols="12" md="6">
 							<v-text-field
 								v-model="name"
+								color="bright"
 								:rules="nameRules"
 								name="name"
 								label="Name*"
@@ -37,6 +38,7 @@
 						<v-col cols="12" md="6">
 							<v-text-field
 								v-model="email"
+								color="bright"
 								:rules="emailRules"
 								name="email"
 								label="E-mail*"
@@ -51,6 +53,7 @@
 						<v-col cols="12" md="6">
 							<v-textarea
 								v-model="message"
+								color="bright"
 								:rules="messageRules"
 								name="message"
 								label="Nachricht*"
