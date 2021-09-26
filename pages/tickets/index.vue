@@ -42,34 +42,44 @@
 					align="center"
 					justify="space-between"
 				>
-					<v-col>{{ ticket.name }}</v-col>
+					<v-col>{{ ticket.name }}<br />{{ ticket.price.formatted }} €</v-col>
 					<v-col cols="auto">
 						<!-- TODO: "inputmethod" ??? -->
+						<!-- TODO: readonly -->
+						<!-- TODO: better label for each -->
 						<v-text-field
 							v-model="quantities[ticket.productId]"
-							label="Anzahl"
+							color="bright"
 							type="number"
-							min="0"
-							inputmethod="decimal"
-							hide-details="auto"
-							outlined
 							filled
-							required
+							hide-details="auto"
+							inputmethod="decimal"
+							min="0"
+							outlined
+							placeholder="0"
 						></v-text-field>
 					</v-col>
 				</v-row>
 
-				<v-row align="center" justify="end">
+				<v-row align="center" justify="end" class="mt-12">
+					<v-col cols="12">
+						<v-divider />
+					</v-col>
 					<v-col cols="auto">
 						<v-btn
 							:loading="loading"
-							:disabled="loading"
+							:disabled="!ticketsForCheckout.length || loading"
 							color="prime"
 							role="link"
-							class="mt-8"
 							@click="checkout"
 							>Jetzt kaufen</v-btn
 						>
+					</v-col>
+				</v-row>
+				<v-row v-if="checkoutError">
+					<v-col cols="12">
+						<p>Bestellung nicht möglich.</p>
+						<p><b>Fehlermeldung:</b> {{ checkoutError }}</p>
 					</v-col>
 				</v-row>
 			</v-card-text>
@@ -132,6 +142,7 @@ export default {
 	data() {
 		return {
 			pageTitle,
+			checkoutError: '',
 			devProducts: [],
 			quantities: {},
 			loading: false
@@ -163,11 +174,29 @@ export default {
 					id: prices[0].id,
 					currency: prices[0].currency,
 					unit_amount: prices[0].unit_amount,
-					unit_amount_decimal: prices[0].unit_amount_decimal
+					unit_amount_decimal: prices[0].unit_amount_decimal,
+					formatted: this.formatPrice(prices[0].unit_amount)
 				}
 			}))
 
 			return tickets
+		},
+
+		ticketsForCheckout() {
+			const tics = this.tickets.reduce((res, current) => {
+				if (
+					this.quantities[current.productId] &&
+					this.quantities[current.productId] > 0
+				) {
+					res.push({
+						price: current.price.id,
+						quantity: this.quantities[current.productId]
+					})
+				}
+				return res
+			}, [])
+
+			return tics
 		}
 	},
 
@@ -189,60 +218,37 @@ export default {
 
 	methods: {
 		async checkout(event) {
+			this.checkoutError = ''
+
+			if (!this.ticketsForCheckout.length) {
+				this.checkoutError = 'Mindestens ein Ticket mit Menge nötig.'
+				return
+			}
+
 			this.loading = true
-
-			const ticketsInCart = this.tickets.reduce((res, current) => {
-				if (
-					this.quantities[current.productId] &&
-					this.quantities[current.productId] > 0
-				) {
-					res.push({
-						price: current.price.id,
-						quantity: this.quantities[current.productId]
-					})
-				}
-				return res
-			}, [])
-
-			// TODO: add form
-			// TODO: don't send, if all quantities are 0
-			console.log('ticketsInCart:', ticketsInCart)
-
-			// const form = new FormData(event.target)
-
-			// FIXME: delete
-			// eslint-disable-next-line no-unused-vars
-			const data = [
-				{
-					// "Kombi-Ticket"
-					// sku: form.get('sku'),
-					// quantity: Number(form.get('quantity'))
-					price: 'price_1IP7gWBfAFuG6uOs4a8hK5zz',
-					quantity: 10
-				},
-				{
-					// "Kombi"
-					price: 'price_1IP8JQBfAFuG6uOsWHH4Xck2',
-					quantity: 1
-				}
-			]
 
 			try {
 				const response = await this.$axios.$post(
 					'/api/stripe-checkout',
-					ticketsInCart,
+					this.ticketsForCheckout,
 					{
 						headers: { 'Content-Type': 'application/json' }
 					}
 				)
-
-				console.log('response:', response)
-
 				window.location.href = response.sessionUrl
 			} catch (error) {
-				console.log(error)
 				this.loading = false
+				this.checkoutError = error.response?.data?.raw?.message
+				console.error(
+					`Error: ${error.response?.data?.type} (${error.response?.data?.raw?.message})`
+				)
 			}
+		},
+
+		// TODO: put in utils and use in status, too
+		// TODO: decimal separator
+		formatPrice(price) {
+			return (price / 100).toFixed(2)
 		}
 	},
 
