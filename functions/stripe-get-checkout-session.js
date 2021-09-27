@@ -19,7 +19,7 @@ const handler = async event => {
 		session = sessionResult
 		charges = chargesResult
 	} catch (error) {
-		console.error('get-checkout-session:', error)
+		console.error('❌  get-checkout-session:', error)
 		return { statusCode: error.statusCode, body: JSON.stringify(error) }
 	}
 
@@ -29,8 +29,8 @@ const handler = async event => {
 		c => c.payment_intent === session.payment_intent
 	)
 
-	console.info('session:', session)
-	console.info('charge:', charge)
+	console.info('ℹ️  session:', session)
+	console.info('ℹ️  charge:', charge)
 
 	// const customer = await stripe.customers.retrieve(session.customer)
 

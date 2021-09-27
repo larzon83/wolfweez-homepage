@@ -12,7 +12,7 @@ const handler = async event => {
 			// process.env.STRIPE_WEBHOOK_SECRET
 		)
 	} catch (err) {
-		console.error(`Stripe webhook failed with ${err}`)
+		console.error(`❌  Stripe webhook failed with ${err}`)
 		return {
 			statusCode: 400,
 			body: `Webhook Error: ${err.message}`
@@ -20,7 +20,7 @@ const handler = async event => {
 	}
 
 	console.info('ℹ️  eventType:', stripeEvent.type)
-	// console.log('eventDataObject:', stripeEvent.data.object)
+	// console.log('ℹ️  eventDataObject:', stripeEvent.data.object)
 
 	return {
 		statusCode: 200,

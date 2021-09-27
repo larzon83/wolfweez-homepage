@@ -7,11 +7,11 @@ const handler = async event => {
 	try {
 		products = await getProducts(stripe)
 	} catch (error) {
-		console.error('get-products:', error)
+		console.error('❌  get-products:', error)
 		return { statusCode: error.statusCode, body: JSON.stringify(error) }
 	}
 
-	console.info('stripe-products:', products)
+	console.info('ℹ️  stripe-products:', products)
 
 	return {
 		statusCode: 200,
