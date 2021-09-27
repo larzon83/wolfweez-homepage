@@ -81,28 +81,36 @@
 					</v-col>
 				</v-row>
 
-				<v-row align="center" justify="end" class="mt-12">
-					<v-col cols="12">
-						<v-divider />
-					</v-col>
-					<v-col cols="auto">
+				<v-divider class="mt-15" />
+
+				<v-row align="center" justify="end" class="mt-3">
+					<v-col cols="12" class="d-flex justify-end">
 						<v-btn
+							:disabled="loading"
 							:loading="loading"
-							:disabled="!ticketsForCheckout.length || loading"
+							:ripple="false"
 							color="prime"
-							role="link"
+							large
+							min-width="190"
+							class="btn"
 							@click="checkout"
-							>Jetzt kaufen</v-btn
 						>
+							Jetzt kaufen<v-icon size="15" class="ml-2">$shoppingCart</v-icon>
+						</v-btn>
+						<!-- TODO: add shipping_rate manually -->
 					</v-col>
 				</v-row>
-				<!-- TODO: add shipping_rate manually -->
-				<v-row v-if="checkoutError">
-					<v-col cols="12">
-						<p>Bestellung nicht möglich.</p>
-						<p><b>Fehlermeldung:</b> {{ checkoutError }}</p>
-					</v-col>
-				</v-row>
+				<v-alert
+					v-if="checkoutError && !ticketsForCheckout.length"
+					class="bad mt-6 mb-0"
+				>
+					<v-row>
+						<v-col cols="12">
+							<p>Bestellung nicht möglich.</p>
+							<p><b>Fehlermeldung:</b> {{ checkoutError }}</p>
+						</v-col>
+					</v-row>
+				</v-alert>
 			</v-card-text>
 		</v-card>
 
@@ -278,12 +286,14 @@ export default {
 			const curr = parseInt(this.quantities[productId]) || 0
 			if (curr > 0) {
 				Vue.set(this.quantities, productId, (curr - 1).toString())
+				this.checkoutError = ''
 			}
 		},
 
 		increaseQuantity(productId) {
 			const curr = parseInt(this.quantities[productId]) || 0
 			Vue.set(this.quantities, productId, (curr + 1).toString())
+			this.checkoutError = ''
 		}
 	},
 
@@ -295,6 +305,17 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.btn {
+	background-color: getcolor('prime', 0.12);
+	border-width: 3px;
+
+	@media (max-width: 399px) {
+		display: flex;
+		flex: 1 0 auto;
+		min-width: 100% !important;
+	}
+}
+
 .v-alert ::v-deep p:last-child {
 	margin: 0;
 }
