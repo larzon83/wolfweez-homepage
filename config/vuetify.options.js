@@ -7,6 +7,7 @@ import {
 	ChevronLeftIcon,
 	ChevronRightIcon,
 	CompassIcon,
+	ExternalLinkIcon,
 	FacebookIcon,
 	InfoIcon,
 	InstagramIcon,
@@ -64,6 +65,9 @@ export default {
 			},
 			close: {
 				component: XIcon
+			},
+			externalLink: {
+				component: ExternalLinkIcon
 			},
 			facebook: {
 				component: FacebookIcon
