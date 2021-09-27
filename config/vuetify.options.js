@@ -13,6 +13,8 @@ import {
 	MinusIcon,
 	PlusIcon,
 	RefreshCwIcon,
+	SendIcon,
+	ShoppingCartIcon,
 	TwitterIcon,
 	XIcon,
 	YoutubeIcon
@@ -83,6 +85,12 @@ export default {
 			},
 			refresh: {
 				component: RefreshCwIcon
+			},
+			send: {
+				component: SendIcon
+			},
+			shoppingCart: {
+				component: ShoppingCartIcon
 			},
 			wolf: {
 				component: IconWolf
