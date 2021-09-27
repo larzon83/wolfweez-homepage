@@ -37,13 +37,21 @@ export const mutations = {
 
 	SET_CONTENT(state, payload) {
 		// ::: handle infos :::
-		const subInfos = payload.infos.map(info => {
+		const subInfosAll = payload.infos.map(info => {
 			return {
 				slug: info.slug,
 				to: slashify(info.full_slug),
 				title: info.content.headline
 			}
 		})
+
+		const subInfosWithoutTesting = subInfosAll.filter(i => i.slug !== 'testing')
+
+		const subInfos =
+			process.env.NUXT_ENV_STORYBLOK_PREVIEW !== 'true'
+				? subInfosWithoutTesting
+				: subInfosAll
+
 		state.subNavItems[tabTypes.INFOS] = subInfos
 
 		const infoRedirect = getSubNavRedirect(subInfos)

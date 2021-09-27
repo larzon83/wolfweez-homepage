@@ -1,5 +1,5 @@
 <template>
-	<div v-editable="blok" class="mt-16">
+	<div v-editable="blok">
 		<!-- <Teaser :blok2="blok.body[0]" /> -->
 		<!-- blok: {{ blok }} -->
 

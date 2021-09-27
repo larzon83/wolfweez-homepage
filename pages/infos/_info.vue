@@ -69,6 +69,15 @@ export default {
 		pageTitle() {
 			return this.story.content.headline
 		}
+	},
+
+	middleware({ redirect, params }) {
+		if (
+			process.env.NUXT_ENV_STORYBLOK_PREVIEW !== 'true' &&
+			params.info === 'testing'
+		) {
+			redirect(301, '/')
+		}
 	}
 }
 </script>
