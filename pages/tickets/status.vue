@@ -99,12 +99,17 @@
 						:href="chargeItem.receipt_url"
 						rel="noopener noreferrer"
 						target="_blank"
-						color="bright"
 						role="link"
-						class="btn-receipt darkish--text mt-8"
+						color="bright"
 						depressed
-						>Zahlungsbeleg anzeigen</v-btn
+						large
+						min-width="190"
+						class="btn-receipt darkish--text mt-8"
 					>
+						Zahlungsbeleg anzeigen<v-icon size="15" class="ml-2"
+							>$externalLink</v-icon
+						>
+					</v-btn>
 				</LazyCheckoutStatusBox>
 
 				<LazyCheckoutStatusBox
@@ -256,7 +261,6 @@ export default {
 		display: flex;
 		flex: 1 0 auto;
 		min-width: 100% !important;
-		max-width: auto;
 	}
 }
 
