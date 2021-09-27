@@ -128,7 +128,7 @@ export default {
 	data: () => ({
 		pageTitle,
 		loading: false,
-		showSuccess: true,
+		showSuccess: false,
 		valid: false,
 		name: '',
 		nameRules: [v => !!v || 'Name darf nicht leer sein'],
