@@ -8,7 +8,7 @@
 			<v-form
 				ref="contactForm"
 				v-model="valid"
-				:disabled="formDisabled"
+				:disabled="loading"
 				name="contact"
 				method="POST"
 				action="/"
@@ -16,32 +16,34 @@
 				netlify-honeypot="bot-field"
 				@submit.prevent="handleSubmit"
 			>
-				<v-container class="pa-5">
+				<v-container class="py-6 px-5">
 					<input type="hidden" name="form-name" value="contact" />
 					<div hidden aria-hidden="true">
 						Don't fill this out if you're human: <input name="bot-field" />
 					</div>
-					<v-row class="my-0">
-						<v-col cols="12" md="6">
+					<v-row class="mt-0">
+						<v-col cols="12" md="7">
 							<v-text-field
 								v-model="name"
 								color="bright"
 								:rules="nameRules"
 								name="name"
 								label="Name*"
+								hide-details="auto"
 								filled
 								outlined
 								required
 							></v-text-field>
 						</v-col>
 
-						<v-col cols="12" md="6">
+						<v-col cols="12" md="7">
 							<v-text-field
 								v-model="email"
 								color="bright"
 								:rules="emailRules"
 								name="email"
 								label="E-mail*"
+								hide-details="auto"
 								filled
 								outlined
 								required
@@ -49,14 +51,15 @@
 						</v-col>
 					</v-row>
 
-					<v-row class="my-0">
-						<v-col cols="12" md="6">
+					<v-row>
+						<v-col cols="12" md="10">
 							<v-textarea
 								v-model="message"
 								color="bright"
 								:rules="messageRules"
 								name="message"
 								label="Nachricht*"
+								hide-details="auto"
 								auto-grow
 								filled
 								outlined
@@ -66,17 +69,20 @@
 						</v-col>
 					</v-row>
 
-					<v-row class="my-0">
-						<v-col cols="12" md="4">
-							<v-col cols="12" md="4">
-								<v-btn
-									:disabled="buttonDisabled"
-									class="mr-4"
-									color="prime"
-									type="submit"
-									>Submit</v-btn
-								>
-							</v-col>
+					<v-row align="center" justify="end" class="mt-6">
+						<v-col cols="12">
+							<v-btn
+								:disabled="loading"
+								:loading="loading"
+								:ripple="false"
+								color="prime"
+								large
+								min-width="190"
+								class="btn"
+								type="submit"
+							>
+								Senden<v-icon size="15" class="ml-2">$send</v-icon>
+							</v-btn>
 						</v-col>
 					</v-row>
 				</v-container>
@@ -121,9 +127,8 @@ export default {
 
 	data: () => ({
 		pageTitle,
-		buttonDisabled: false,
-		formDisabled: false,
-		showSuccess: false,
+		loading: false,
+		showSuccess: true,
 		valid: false,
 		name: '',
 		nameRules: [v => !!v || 'Name darf nicht leer sein'],
@@ -148,8 +153,7 @@ export default {
 			this.$refs.contactForm.validate()
 
 			if (this.valid) {
-				this.buttonDisabled = true
-				this.formDisabled = true
+				this.loading = true
 
 				const axiosConfig = {
 					header: {
@@ -173,14 +177,12 @@ export default {
 					.then(res => {
 						// console.log('res:', res.data.body)
 						this.$refs.contactForm.reset()
-						this.buttonDisabled = false
-						this.formDisabled = false
+						this.loading = false
 						this.showSuccess = true
 						// this.$router.push('/')
 					})
 					.catch(function (error) {
-						this.buttonDisabled = false
-						this.formDisabled = false
+						this.loading = false
 						console.log(error)
 					})
 			}
@@ -193,3 +195,16 @@ export default {
 	}
 }
 </script>
+
+<style lang="scss" scoped>
+.btn {
+	background-color: getcolor('prime', 0.12);
+	border-width: 3px;
+
+	@media (max-width: 399px) {
+		display: flex;
+		flex: 1 0 auto;
+		min-width: 100% !important;
+	}
+}
+</style>
