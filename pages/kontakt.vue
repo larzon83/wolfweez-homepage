@@ -1,10 +1,14 @@
 <template>
-	<section>
+	<section v-editable="story.content">
 		<h1 class="d-none d-lg-flex text-h4 text-sm-h3 text-lg-h2 font-weight-bold">
 			{{ pageTitle }}
 		</h1>
 
 		<v-card color="darkish" flat class="mt-0 mt-lg-5">
+			<v-card-text v-if="story.content.text" class="pb-0">
+				<rich-text-renderer :document="story.content.text" />
+			</v-card-text>
+
 			<v-form
 				ref="contactForm"
 				v-model="valid"
@@ -16,7 +20,7 @@
 				netlify-honeypot="bot-field"
 				@submit.prevent="handleSubmit"
 			>
-				<v-container class="py-6 px-5">
+				<v-container class="pa-5">
 					<input type="hidden" name="form-name" value="contact" />
 					<div hidden aria-hidden="true">
 						Don't fill this out if you're human: <input name="bot-field" />
@@ -102,7 +106,9 @@
 </template>
 
 <script>
+import useStorybridge from 'storybridgeMixin/useStorybridge.js'
 import savePagetitleToVuex from '~/mixins/savePagetitleToVuex.js'
+import { sbData } from '~/utils'
 import { routeMeta } from '~/utils/constants'
 import { createOgImagePath, createSEOMeta } from '~/utils/seo'
 
@@ -110,13 +116,14 @@ const pageTitle = routeMeta.RECHTLICHES__KONTAKT.title
 
 export default {
 	name: pageTitle,
-	mixins: [savePagetitleToVuex],
+	mixins: [savePagetitleToVuex, useStorybridge],
 
 	head() {
 		const title = pageTitle
 		return {
 			title,
 			meta: createSEOMeta({
+				description: this.story.content.description_meta,
 				image: createOgImagePath(this.$route.path),
 				imageAlt: title,
 				title,
@@ -140,6 +147,13 @@ export default {
 			v => /.+@.+\..+/.test(v) || 'E-mail ungültig'
 		]
 	}),
+
+	async asyncData(context) {
+		return await sbData({
+			ctx: context,
+			path: '/kontakt'
+		})
+	},
 
 	methods: {
 		encode(data) {
