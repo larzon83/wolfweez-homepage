@@ -1,7 +1,8 @@
 const countryNames = {
 	DE: 'Deutschland',
 	CH: 'Schweiz',
-	AT: 'Österreich'
+	AT: 'Österreich',
+	FR: 'Frankreich'
 }
 
 const constructProducts = (productsList, pricesList) => {
