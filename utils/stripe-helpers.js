@@ -5,6 +5,17 @@ const countryNames = {
 	FR: 'Frankreich'
 }
 
+const shippingRates = {
+	sr350: {
+		id: 'shr_1JemHsBfAFuG6uOsEUCxo2lm',
+		amount: '3,50'
+	},
+	sr450: {
+		id: 'shr_1JemNZBfAFuG6uOsOmW1BH7i',
+		amount: '4,50'
+	}
+}
+
 const constructProducts = (productsList, pricesList) => {
 	if (!productsList) return []
 
@@ -35,4 +46,4 @@ const getProducts = async stripe => {
 	return products
 }
 
-module.exports = { getProducts, countryNames }
+module.exports = { getProducts, countryNames, shippingRates }

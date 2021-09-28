@@ -9,7 +9,10 @@ const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY)
 const SITE_URL = process.env.URL || 'http://localhost:3000'
 
 const handler = async event => {
-	const { countryNames } = require('./../utils/stripe-helpers.js')
+	const {
+		countryNames,
+		shippingRates
+	} = require('./../utils/stripe-helpers.js')
 
 	if (event.httpMethod !== 'POST') {
 		return {
@@ -22,9 +25,12 @@ const handler = async event => {
 	}
 
 	let session
+	const eventBody = JSON.parse(event.body)
+	const shippingRate = eventBody.shippingRate || shippingRates.sr350
 
-	const items = JSON.parse(event.body).map(item => ({
-		...item,
+	const items = eventBody.items.map(item => ({
+		price: item.price,
+		quantity: item.quantity,
 		adjustable_quantity: { enabled: true }
 	}))
 
@@ -43,7 +49,7 @@ const handler = async event => {
 				'sepa_debit'
 			],
 			billing_address_collection: 'required',
-			shipping_rates: ['shr_1Je60JBfAFuG6uOs6j4oGfs6'],
+			shipping_rates: [shippingRate],
 			shipping_address_collection: {
 				allowed_countries: Object.keys(countryNames)
 			},

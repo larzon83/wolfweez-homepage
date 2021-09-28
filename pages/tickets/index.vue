@@ -83,6 +83,9 @@
 
 				<v-divider class="mt-15" />
 
+				<!-- TODO: add shipping_rate manually -->
+				<div>Versand: {{ shippingRate.amount }}</div>
+
 				<v-row align="center" justify="end" class="mt-3">
 					<v-col cols="12" class="d-flex justify-end">
 						<v-btn
@@ -97,7 +100,6 @@
 						>
 							Jetzt kaufen<v-icon size="15" class="ml-2">$shoppingCart</v-icon>
 						</v-btn>
-						<!-- TODO: add shipping_rate manually -->
 					</v-col>
 				</v-row>
 				<v-alert
@@ -141,6 +143,7 @@ import useFormatting from '~/mixins/useFormatting.js'
 import { sbData } from '~/utils'
 import { routeMeta } from '~/utils/constants'
 import { createSEOMeta } from '~/utils/seo'
+import { shippingRates } from '~/utils/stripe-helpers'
 
 const pageTitle = routeMeta.TICKETS.title
 
@@ -196,18 +199,23 @@ export default {
 				? this.devProducts
 				: this.$stripeProducts
 
-			const tickets = productsRaw.map(({ id, images, name, prices }) => ({
-				productId: id,
-				images,
-				name,
-				price: {
-					id: prices[0].id,
-					currency: prices[0].currency,
-					unit_amount: prices[0].unit_amount,
-					unit_amount_decimal: prices[0].unit_amount_decimal,
-					formatted: this.formatPrice(prices[0].unit_amount)
+			const tickets = productsRaw.map(
+				({ id, images, metadata, name, prices }) => {
+					return {
+						productId: id,
+						images,
+						name,
+						extraShipping: metadata?.['extra-shipping'] === 'yes',
+						price: {
+							id: prices[0].id,
+							currency: prices[0].currency,
+							unit_amount: prices[0].unit_amount,
+							unit_amount_decimal: prices[0].unit_amount_decimal,
+							formatted: this.formatPrice(prices[0].unit_amount)
+						}
+					}
 				}
-			}))
+			)
 
 			return tickets
 		},
@@ -219,6 +227,7 @@ export default {
 					this.quantities[current.productId] > 0
 				) {
 					res.push({
+						extraShipping: current.extraShipping,
 						price: current.price.id,
 						quantity: this.quantities[current.productId]
 					})
@@ -227,6 +236,18 @@ export default {
 			}, [])
 
 			return tics
+		},
+
+		shippingRate() {
+			if (!this.ticketsForCheckout.length) {
+				return shippingRates.sr350
+			}
+
+			const hasExtraShipping = this.ticketsForCheckout.find(
+				p => p.extraShipping
+			)
+
+			return hasExtraShipping ? shippingRates.sr450 : shippingRates.sr350
 		}
 	},
 
@@ -238,7 +259,6 @@ export default {
 			console.log('loading products...')
 			try {
 				const products = await this.$axios.$get('/api/stripe-get-products')
-				console.log('products:', products)
 				this.devProducts = products
 			} catch (error) {
 				console.log(error)
@@ -260,7 +280,10 @@ export default {
 			try {
 				const response = await this.$axios.$post(
 					'/api/stripe-checkout',
-					this.ticketsForCheckout,
+					{
+						items: this.ticketsForCheckout,
+						shippingRate: this.shippingRate.id
+					},
 					{
 						headers: { 'Content-Type': 'application/json' }
 					}
