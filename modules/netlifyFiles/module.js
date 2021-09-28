@@ -20,7 +20,14 @@ export default function () {
 			securityHeaders.push('X-Frame-Options: DENY')
 		}
 
-		const netlifyRedirects = []
+		const netlifyRedirects = [
+			{
+				from: '/api/*',
+				to: '/.netlify/functions/:splat',
+				status: 200,
+				force: true
+			}
+		]
 
 		if (process.env.NUXT_ENV_IS_SPA === 'true') {
 			netlifyRedirects.push({
