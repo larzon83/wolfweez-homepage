@@ -6,121 +6,127 @@
 
 		<template v-if="hasCorrectRouteQueries">
 			<template v-if="showReceipt">
-				<LazyCheckoutStatusBox
-					v-if="sessionItem && chargeItem"
-					class="good"
-					headline="Bestellung erfolgreich"
-					icon="$checkCircle"
-				>
-					<!-- FIXME: check again in prod: is there an invoice with other details? -->
-					<!-- TODO: handle payment_status: "unpaid" -->
-					<!-- TODO: better copy -->
-					<v-row align="start" justify="start">
-						<v-col cols="12" xl="6">
-							<v-subheader class="sub-headline text-button pl-0">
-								Übersicht
-							</v-subheader>
-
-							<v-card flat class="products-box">
-								<v-card-text class="py-4">
-									<v-row
-										v-for="(item, index) in sessionItem.line_items"
-										:key="item.id"
-										align="center"
-										justify="space-between"
-										:class="{ 'mt-0': index !== 0 }"
-									>
-										<v-col>{{ item.description }} × {{ item.quantity }}</v-col>
-										<v-col cols="auto"
-											>{{ formatPrice(item.amount_total) }} €</v-col
-										>
-									</v-row>
-
-									<v-row align="center" justify="space-between">
-										<v-col cols="12" class="pa-0"><v-divider /></v-col>
-									</v-row>
-									<v-row align="center" justify="space-between">
-										<v-col>Zwischensumme</v-col>
-										<!-- TODO: currency -->
-										<v-col cols="auto"
-											>{{ formatPrice(sessionItem.amount_subtotal) }} €</v-col
-										>
-									</v-row>
-									<v-row align="center" justify="space-between" class="mt-0">
-										<v-col>Versand</v-col>
-										<!-- TODO: currency -->
-										<v-col cols="auto"
-											>{{
-												formatPrice(sessionItem.total_details.amount_shipping)
-											}}
-											€</v-col
-										>
-									</v-row>
-									<v-row align="center" justify="space-between" class="mt-0">
-										<v-col class="font-weight-bold">Gesamtbetrag</v-col>
-										<!-- TODO: currency -->
-										<v-col cols="auto" class="font-weight-bold"
-											>{{ formatPrice(chargeItem.amount) }} €</v-col
-										>
-									</v-row>
-								</v-card-text>
-							</v-card>
-						</v-col>
-
-						<v-col cols="12" xl="5" offset-xl="1">
-							<v-subheader class="sub-headline text-button pl-0">
-								Versand an
-							</v-subheader>
-							<div v-if="sessionItem.shipping && sessionItem.shipping.address">
-								<span v-if="sessionItem.shipping.name">
-									{{ sessionItem.shipping.name }}<br />
-								</span>
-								<span v-if="sessionItem.shipping.address.line1">
-									{{ sessionItem.shipping.address.line1 }}<br />
-								</span>
-								<span v-if="sessionItem.shipping.address.line2">
-									{{ sessionItem.shipping.address.line2 }}<br />
-								</span>
-								<span v-if="sessionItem.shipping.address.postal_code">
-									{{ sessionItem.shipping.address.postal_code }}
-									{{ sessionItem.shipping.address.city }}<br />
-								</span>
-								<span v-if="sessionItem.shipping.address.country">
-									{{ sessionItem.shipping.address.country }}<br />
-								</span>
-							</div>
-						</v-col>
-					</v-row>
-
-					<!-- TODO: make look better -->
-					<v-btn
-						v-if="chargeItem.receipt_url"
-						:ripple="false"
-						:href="chargeItem.receipt_url"
-						rel="noopener noreferrer"
-						target="_blank"
-						role="link"
-						color="bright"
-						depressed
-						large
-						min-width="190"
-						class="btn-receipt darkish--text mt-8"
+				<client-only>
+					<LazyCheckoutStatusBox
+						v-if="sessionItem && chargeItem"
+						class="good"
+						headline="Bestellung erfolgreich"
+						icon="$checkCircle"
 					>
-						Zahlungsbeleg anzeigen<v-icon size="15" class="ml-2"
-							>$externalLink</v-icon
-						>
-					</v-btn>
-				</LazyCheckoutStatusBox>
+						<!-- FIXME: check again in prod: is there an invoice with other details? -->
+						<!-- TODO: handle payment_status: "unpaid" -->
+						<!-- TODO: better copy -->
+						<v-row align="start" justify="start">
+							<v-col cols="12" xl="6">
+								<v-subheader class="sub-headline text-button pl-0">
+									Übersicht
+								</v-subheader>
 
-				<LazyCheckoutStatusBox
-					v-else-if="sessionError"
-					class="bad"
-					headline="Fehler"
-					icon="$alertOctagon"
-				>
-					<p>Der Bestellstatus konnte nicht ermittelt werden.</p>
-					<p><b>Fehlermeldung:</b> {{ sessionError }}</p>
-				</LazyCheckoutStatusBox>
+								<v-card flat class="products-box">
+									<v-card-text class="py-4">
+										<v-row
+											v-for="(item, index) in sessionItem.line_items"
+											:key="item.id"
+											align="center"
+											justify="space-between"
+											:class="{ 'mt-0': index !== 0 }"
+										>
+											<v-col
+												>{{ item.description }} × {{ item.quantity }}</v-col
+											>
+											<v-col cols="auto"
+												>{{ formatPrice(item.amount_total) }} €</v-col
+											>
+										</v-row>
+
+										<v-row align="center" justify="space-between">
+											<v-col cols="12" class="pa-0"><v-divider /></v-col>
+										</v-row>
+										<v-row align="center" justify="space-between">
+											<v-col>Zwischensumme</v-col>
+											<!-- TODO: currency -->
+											<v-col cols="auto"
+												>{{ formatPrice(sessionItem.amount_subtotal) }} €</v-col
+											>
+										</v-row>
+										<v-row align="center" justify="space-between" class="mt-0">
+											<v-col>Versand</v-col>
+											<!-- TODO: currency -->
+											<v-col cols="auto"
+												>{{
+													formatPrice(sessionItem.total_details.amount_shipping)
+												}}
+												€</v-col
+											>
+										</v-row>
+										<v-row align="center" justify="space-between" class="mt-0">
+											<v-col class="font-weight-bold">Gesamtbetrag</v-col>
+											<!-- TODO: currency -->
+											<v-col cols="auto" class="font-weight-bold"
+												>{{ formatPrice(chargeItem.amount) }} €</v-col
+											>
+										</v-row>
+									</v-card-text>
+								</v-card>
+							</v-col>
+
+							<v-col cols="12" xl="5" offset-xl="1">
+								<v-subheader class="sub-headline text-button pl-0">
+									Versand an
+								</v-subheader>
+								<div
+									v-if="sessionItem.shipping && sessionItem.shipping.address"
+								>
+									<span v-if="sessionItem.shipping.name">
+										{{ sessionItem.shipping.name }}<br />
+									</span>
+									<span v-if="sessionItem.shipping.address.line1">
+										{{ sessionItem.shipping.address.line1 }}<br />
+									</span>
+									<span v-if="sessionItem.shipping.address.line2">
+										{{ sessionItem.shipping.address.line2 }}<br />
+									</span>
+									<span v-if="sessionItem.shipping.address.postal_code">
+										{{ sessionItem.shipping.address.postal_code }}
+										{{ sessionItem.shipping.address.city }}<br />
+									</span>
+									<span v-if="sessionItem.shipping.address.country">
+										{{ sessionItem.shipping.address.country }}<br />
+									</span>
+								</div>
+							</v-col>
+						</v-row>
+
+						<!-- TODO: make look better -->
+						<v-btn
+							v-if="chargeItem.receipt_url"
+							:ripple="false"
+							:href="chargeItem.receipt_url"
+							rel="noopener noreferrer"
+							target="_blank"
+							role="link"
+							color="bright"
+							depressed
+							large
+							min-width="190"
+							class="btn-receipt darkish--text mt-8"
+						>
+							Zahlungsbeleg anzeigen<v-icon size="15" class="ml-2"
+								>$externalLink</v-icon
+							>
+						</v-btn>
+					</LazyCheckoutStatusBox>
+
+					<LazyCheckoutStatusBox
+						v-else-if="sessionError"
+						class="bad"
+						headline="Fehler"
+						icon="$alertOctagon"
+					>
+						<p>Der Bestellstatus konnte nicht ermittelt werden.</p>
+						<p><b>Fehlermeldung:</b> {{ sessionError }}</p>
+					</LazyCheckoutStatusBox>
+				</client-only>
 			</template>
 			<v-skeleton-loader v-else type="image"></v-skeleton-loader>
 		</template>
