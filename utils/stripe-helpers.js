@@ -8,11 +8,11 @@ const countryNames = {
 const shippingRates = {
 	sr350: {
 		id: 'shr_1JemHsBfAFuG6uOsEUCxo2lm',
-		amount: '3,50'
+		amount: 350
 	},
 	sr450: {
 		id: 'shr_1JemNZBfAFuG6uOsOmW1BH7i',
-		amount: '4,50'
+		amount: 450
 	}
 }
 

@@ -84,7 +84,8 @@
 				<v-divider class="mt-15" />
 
 				<!-- TODO: add shipping_rate manually -->
-				<div>Versand: {{ shippingRate.amount }}</div>
+				<div>Versand: {{ formatPrice(shippingRate.amount) }} €</div>
+				<div>Gesamt: {{ chargeAmount }} €</div>
 
 				<v-row align="center" justify="end" class="mt-3">
 					<v-col cols="12" class="d-flex justify-end">
@@ -227,6 +228,7 @@ export default {
 					this.quantities[current.productId] > 0
 				) {
 					res.push({
+						amount: current.price.unit_amount,
 						extraShipping: current.extraShipping,
 						price: current.price.id,
 						quantity: this.quantities[current.productId]
@@ -239,15 +241,26 @@ export default {
 		},
 
 		shippingRate() {
-			if (!this.ticketsForCheckout.length) {
-				return shippingRates.sr350
-			}
+			if (!this.ticketsForCheckout.length) return shippingRates.sr350
 
 			const hasExtraShipping = this.ticketsForCheckout.find(
 				p => p.extraShipping
 			)
 
 			return hasExtraShipping ? shippingRates.sr450 : shippingRates.sr350
+		},
+
+		chargeAmount() {
+			if (!this.ticketsForCheckout.length) return this.formatPrice(0)
+
+			const sum = this.ticketsForCheckout.reduce((res, current) => {
+				if (current.quantity > 0) {
+					res += current.amount * current.quantity
+				}
+				return res
+			}, this.shippingRate.amount)
+
+			return this.formatPrice(sum)
 		}
 	},
 
