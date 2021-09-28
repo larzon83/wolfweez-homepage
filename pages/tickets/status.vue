@@ -169,8 +169,6 @@ export default {
 
 	computed: {
 		hasCorrectRouteQueries() {
-			console.log('this.$route.query.status:', this.$route.query.status)
-			console.log('this.$route.query.session_id:', this.$route.query.session_id)
 			return (
 				this.$route.query.status === 'success' && this.$route.query.session_id
 			)
@@ -178,11 +176,8 @@ export default {
 	},
 
 	async mounted() {
-		console.log('this.hasCorrectRouteQueries:', this.hasCorrectRouteQueries)
 		if (this.hasCorrectRouteQueries) {
-			console.log('before try')
 			try {
-				console.log('trying...')
 				const { session, charge } = await this.$axios.$get(
 					'/api/stripe-get-checkout-session?sessionId=' +
 						this.$route.query.session_id
@@ -193,13 +188,10 @@ export default {
 						countryNames[session.shipping.address.country] || ''
 				}
 
-				console.log('session:', session)
-
 				this.sessionItem = session
 				this.chargeItem = charge
 				this.showReceipt = true
 			} catch (error) {
-				console.log('oh noooooooo')
 				this.showReceipt = true
 				this.sessionError = error.response?.data?.raw?.message
 				console.error(
