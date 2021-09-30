@@ -42,7 +42,7 @@
 					align="center"
 					justify="space-between"
 				>
-					<v-col>{{ ticket.name }}<br />{{ ticket.price.formatted }} €</v-col>
+					<v-col>{{ ticket.name }}<br />{{ ticket.price.formatted }}</v-col>
 					<v-col cols="auto" class="d-flex align-center justify-center">
 						<v-btn
 							:disabled="
@@ -83,9 +83,8 @@
 
 				<v-divider class="mt-15" />
 
-				<!-- TODO: add shipping_rate manually -->
-				<div>Versand: {{ formatPrice(shippingRate.amount) }} €</div>
-				<div>Gesamt: {{ chargeAmount }} €</div>
+				<div>Versand: {{ $_formatPrice(shippingRate.amount) }}</div>
+				<div>Gesamt: {{ chargeAmount }}</div>
 
 				<v-row align="center" justify="end" class="mt-3">
 					<v-col cols="12" class="d-flex justify-end">
@@ -212,7 +211,7 @@ export default {
 							currency: prices[0].currency,
 							unit_amount: prices[0].unit_amount,
 							unit_amount_decimal: prices[0].unit_amount_decimal,
-							formatted: this.formatPrice(prices[0].unit_amount)
+							formatted: this.$_formatPrice(prices[0].unit_amount)
 						}
 					}
 				}
@@ -251,7 +250,7 @@ export default {
 		},
 
 		chargeAmount() {
-			if (!this.ticketsForCheckout.length) return this.formatPrice(0)
+			if (!this.ticketsForCheckout.length) return this.$_formatPrice(0)
 
 			const sum = this.ticketsForCheckout.reduce((res, current) => {
 				if (current.quantity > 0) {
@@ -260,7 +259,7 @@ export default {
 				return res
 			}, this.shippingRate.amount)
 
-			return this.formatPrice(sum)
+			return this.$_formatPrice(sum)
 		}
 	},
 
@@ -310,12 +309,6 @@ export default {
 					`Error: ${error.response?.data?.type} (${error.response?.data?.raw?.message})`
 				)
 			}
-		},
-
-		// TODO: put in utils and use in status, too
-		// TODO: decimal separator
-		formatPrice(price) {
-			return (price / 100).toFixed(2)
 		},
 
 		decreaseQuantity(productId) {

@@ -16,6 +16,15 @@ export default {
 			return getPlayTime(timeStart, timeEnd)
 		},
 
+		$_formatPrice(price) {
+			return (
+				(price / 100)
+					.toFixed(2) // always two decimal digits
+					.replace('.', ',') // replace decimal point character with ,
+					.replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.') + ' €' // use . as a separator
+			)
+		},
+
 		$_transformImage(image, width, format) {
 			if (!image) return ''
 			if (!width) return ''

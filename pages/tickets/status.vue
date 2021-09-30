@@ -31,9 +31,9 @@
 										:class="{ 'mt-0': index !== 0 }"
 									>
 										<v-col>{{ item.description }} × {{ item.quantity }}</v-col>
-										<v-col cols="auto"
-											>{{ formatPrice(item.amount_total) }} €</v-col
-										>
+										<v-col cols="auto">{{
+											$_formatPrice(item.amount_total)
+										}}</v-col>
 									</v-row>
 
 									<v-row align="center" justify="space-between">
@@ -41,27 +41,23 @@
 									</v-row>
 									<v-row align="center" justify="space-between">
 										<v-col>Zwischensumme</v-col>
-										<!-- TODO: currency -->
-										<v-col cols="auto"
-											>{{ formatPrice(sessionItem.amount_subtotal) }} €</v-col
-										>
+										<v-col cols="auto">{{
+											$_formatPrice(sessionItem.amount_subtotal)
+										}}</v-col>
 									</v-row>
 									<v-row align="center" justify="space-between" class="mt-0">
 										<v-col>Versand</v-col>
-										<!-- TODO: currency -->
 										<v-col cols="auto"
 											>{{
-												formatPrice(sessionItem.total_details.amount_shipping)
+												$_formatPrice(sessionItem.total_details.amount_shipping)
 											}}
-											€</v-col
-										>
+										</v-col>
 									</v-row>
 									<v-row align="center" justify="space-between" class="mt-0">
 										<v-col class="font-weight-bold">Gesamtbetrag</v-col>
-										<!-- TODO: currency -->
-										<v-col cols="auto" class="font-weight-bold"
-											>{{ formatPrice(chargeItem.amount) }} €</v-col
-										>
+										<v-col cols="auto" class="font-weight-bold">{{
+											$_formatPrice(chargeItem.amount)
+										}}</v-col>
 									</v-row>
 								</v-card-text>
 							</v-card>
@@ -92,7 +88,6 @@
 						</v-col>
 					</v-row>
 
-					<!-- TODO: make look better -->
 					<v-btn
 						v-if="chargeItem.receipt_url"
 						:ripple="false"
@@ -135,6 +130,7 @@
 
 <script>
 import savePagetitleToVuex from '~/mixins/savePagetitleToVuex.js'
+import useFormatting from '~/mixins/useFormatting.js'
 import { countryNames, routeMeta } from '~/utils/constants'
 import { createOgImagePath, createSEOMeta } from '~/utils/seo'
 
@@ -142,7 +138,7 @@ const pageTitle = routeMeta.TICKETS__STATUS.title
 
 export default {
 	name: 'ReceiptStatus',
-	mixins: [savePagetitleToVuex],
+	mixins: [savePagetitleToVuex, useFormatting],
 
 	head() {
 		const title = pageTitle
@@ -203,13 +199,6 @@ export default {
 
 	created() {
 		this.ticketsOverviewRoute = routeMeta.TICKETS.to
-	},
-
-	methods: {
-		// TODO: decimal separator
-		formatPrice(price) {
-			return (price / 100).toFixed(2)
-		}
 	},
 
 	middleware({ store }) {
