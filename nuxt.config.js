@@ -227,11 +227,13 @@ export default {
 				if (
 					process.env.NODE_ENV === 'development' ||
 					process.env.NUXT_ENV_IS_SPA === 'true' ||
-					process.env.NUXT_ENV_STORYBLOK_PREVIEW !== 'true'
+					process.env.NUXT_ENV_STORYBLOK_PREVIEW === 'true'
 				) {
 					toDelete = 'robotsProd.txt'
 					toCopy = 'robotsDev.txt'
 				}
+				console.log('toDelete:', toDelete)
+				console.log('toCopy:', toCopy)
 
 				readdirSync(builder.options.generate.dir, { withFileTypes: true })
 					.filter(item => !item.isDirectory())
