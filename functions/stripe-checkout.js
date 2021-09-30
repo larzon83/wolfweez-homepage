@@ -54,7 +54,6 @@ const handler = async event => {
 				allowed_countries: Object.keys(countryNames)
 			},
 			line_items: items
-			// automatic_tax: { enabled: false, status: null }, // TODO:
 		})
 	} catch (error) {
 		console.error('❌  checkout:', error)
