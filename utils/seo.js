@@ -100,6 +100,14 @@ export const createSEOMeta = data => {
 		)
 	}
 
+	if (data && data.noindex) {
+		metaArray.push({
+			hid: 'robots',
+			name: 'robots',
+			content: 'noindex'
+		})
+	}
+
 	return metaArray
 }
 

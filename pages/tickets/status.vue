@@ -148,7 +148,8 @@ export default {
 				image: createOgImagePath(this.$route.path),
 				imageAlt: title,
 				title,
-				url: this.$route.path
+				url: this.$route.path,
+				noindex: true
 			})
 		}
 	},

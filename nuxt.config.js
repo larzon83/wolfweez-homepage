@@ -232,8 +232,6 @@ export default {
 					toDelete = 'robotsProd.txt'
 					toCopy = 'robotsDev.txt'
 				}
-				console.log('toDelete:', toDelete)
-				console.log('toCopy:', toCopy)
 
 				readdirSync(builder.options.generate.dir, { withFileTypes: true })
 					.filter(item => !item.isDirectory())
