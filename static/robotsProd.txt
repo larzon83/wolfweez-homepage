@@ -1,0 +1,3 @@
+User-agent: *
+Disallow: /
+Sitemap: https://wolfweez.netlify.app/sitemap.xml

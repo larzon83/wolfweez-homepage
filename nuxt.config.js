@@ -1,4 +1,5 @@
-import { resolve } from 'path'
+import { resolve, join } from 'path'
+import { move, readdirSync, unlink } from 'fs-extra'
 import { baseUrl, siteDescription, siteTitle } from './utils/constants'
 import { aspectRatios, presetNames } from './utils/responsive-images'
 import { createSEOMeta } from './utils/seo'
@@ -215,6 +216,41 @@ export default {
 
 	generate: {
 		fallback: process.env.NUXT_ENV_IS_SPA === 'true' ? '200.html' : true
+	},
+
+	hooks: {
+		generate: {
+			distCopied(builder) {
+				let toDelete = 'robotsDev.txt'
+				let toCopy = 'robotsProd.txt'
+
+				if (
+					process.env.NODE_ENV === 'development' ||
+					process.env.NUXT_ENV_IS_SPA === 'true' ||
+					process.env.NUXT_ENV_STORYBLOK_PREVIEW !== 'true'
+				) {
+					toDelete = 'robotsProd.txt'
+					toCopy = 'robotsDev.txt'
+				}
+
+				readdirSync(builder.options.generate.dir, { withFileTypes: true })
+					.filter(item => !item.isDirectory())
+					.filter(item => item.name === toCopy || item.name === toDelete)
+					.forEach(item => {
+						if (item.name === toDelete) {
+							unlink(join(builder.options.generate.dir, item.name), err => {
+								if (err) throw err
+							})
+						} else if (item.name === toCopy) {
+							const oldFile = join(builder.options.generate.dir, item.name)
+							const newFile = join(builder.options.generate.dir, 'robots.txt')
+							move(oldFile, newFile, err => {
+								if (err) throw err
+							})
+						}
+					})
+			}
+		}
 	},
 
 	router: {
