@@ -14,10 +14,12 @@ export default {
 				() => {
 					const { StoryblokBridge } = window
 
-					const storyblokInstance = new StoryblokBridge({
-						// TODO: remove
-						resolveRelations: ['tickets.tickets_list']
-					})
+					// NOTE: handle resolveRelations like this when needed
+					// const storyblokInstance = new StoryblokBridge({
+					// 	resolveRelations: ['tickets.tickets_list']
+					// })
+
+					const storyblokInstance = new StoryblokBridge()
 
 					storyblokInstance.on(
 						['input', 'published', 'change'],

@@ -184,9 +184,7 @@ export default {
 	async asyncData(context) {
 		return await sbData({
 			ctx: context,
-			path: '/tickets/tickets',
-			// TODO: remove
-			resolveRelations: 'tickets_list'
+			path: '/tickets/tickets'
 		})
 	},
 
@@ -285,7 +283,7 @@ export default {
 				this.devProducts = products
 				console.info('🚀 ~ products loaded', products)
 			} catch (error) {
-				console.log(error)
+				console.error(error)
 			}
 		}
 	},
