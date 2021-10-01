@@ -80,7 +80,15 @@ const constructProducts = (productsList, pricesList, sbTickets, testMode) => {
 		}
 	)
 
-	return products
+	// https://newbedev.com/sort-an-array-of-objects-based-on-another-array-of-ids
+	const itemPositions = {}
+	for (const [index, id] of sbTickets.stories.entries()) {
+		itemPositions[id.content[sbProductId]] = index
+	}
+
+	return products.sort(
+		(a, b) => itemPositions[a.productId] - itemPositions[b.productId]
+	)
 }
 
 const getProducts = async (stripe, sbClient, sbVersion, testMode = 'false') => {
