@@ -15,6 +15,7 @@ export default {
 					const { StoryblokBridge } = window
 
 					const storyblokInstance = new StoryblokBridge({
+						// TODO: remove
 						resolveRelations: ['tickets.tickets_list']
 					})
 

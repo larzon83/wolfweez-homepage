@@ -9,10 +9,7 @@ const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY)
 const SITE_URL = process.env.URL || 'http://localhost:3000'
 
 const handler = async event => {
-	const {
-		countryNames,
-		shippingRates
-	} = require('./../utils/stripe-helpers.js')
+	const { countryNames } = require('./../utils/stripe-helpers.js')
 
 	if (event.httpMethod !== 'POST') {
 		return {
@@ -26,7 +23,7 @@ const handler = async event => {
 
 	let session
 	const eventBody = JSON.parse(event.body)
-	const shippingRate = eventBody.shippingRate || shippingRates.sr350
+	const shippingRate = eventBody.shippingRate || ''
 
 	const items = eventBody.items.map(item => ({
 		price: item.price,

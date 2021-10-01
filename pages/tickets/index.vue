@@ -23,18 +23,6 @@
 
 		<h2 class="mt-11">Tickets</h2>
 		<v-card color="darkish" flat class="mt-3">
-			<!-- TODO: make this a h2 or h3 -->
-			<!-- <v-card-title>Tickets</v-card-title> -->
-			<!-- FIXME: remove sb Tickets -->
-			<!-- <v-card-text
-				v-for="ticket in story.content.tickets_list"
-				:key="ticket.uuid"
-			>
-				{{ ticket.name }}
-			</v-card-text>
-
-			<v-divider /> -->
-
 			<v-card-text v-if="tickets.length">
 				<v-row
 					v-for="(ticket, index) in tickets"
@@ -42,6 +30,16 @@
 					align="center"
 					justify="space-between"
 				>
+					<v-col>
+						<v-img
+							:alt="ticket.name"
+							:src="ticketsImages[ticket.productId].src"
+							:lazy-src="ticketsImages[ticket.productId].lazySrc"
+							:srcset="ticketsImages[ticket.productId].srcset"
+							aspect-ratio="1"
+							class="rounded"
+						/>
+					</v-col>
 					<v-col>{{ ticket.name }}<br />{{ ticket.price.formatted }}</v-col>
 					<v-col cols="auto" class="d-flex align-center justify-center">
 						<v-btn
@@ -142,8 +140,9 @@ import savePagetitleToVuex from '~/mixins/savePagetitleToVuex.js'
 import useFormatting from '~/mixins/useFormatting.js'
 import { sbData } from '~/utils'
 import { routeMeta } from '~/utils/constants'
+import { imageFormats } from '~/utils/responsive-images'
 import { createSEOMeta } from '~/utils/seo'
-import { shippingRates } from '~/utils/stripe-helpers'
+import { getShippingRates } from '~/utils/stripe-helpers'
 
 const pageTitle = routeMeta.TICKETS.title
 
@@ -183,41 +182,44 @@ export default {
 	},
 
 	async asyncData(context) {
-		// TODO: directly return
-		const foo = await sbData({
+		return await sbData({
 			ctx: context,
 			path: '/tickets/tickets',
+			// TODO: remove
 			resolveRelations: 'tickets_list'
 		})
-
-		return foo
 	},
 
 	computed: {
 		tickets() {
-			const productsRaw = this.devProducts.length
-				? this.devProducts
-				: this.$stripeProducts
+			if (this.devProducts.length) return this.devProducts
+			return this.$stripeProducts
+		},
 
-			const tickets = productsRaw.map(
-				({ id, images, metadata, name, prices }) => {
-					return {
-						productId: id,
-						images,
-						name,
-						extraShipping: metadata?.['extra-shipping'] === 'yes',
-						price: {
-							id: prices[0].id,
-							currency: prices[0].currency,
-							unit_amount: prices[0].unit_amount,
-							unit_amount_decimal: prices[0].unit_amount_decimal,
-							formatted: this.$_formatPrice(prices[0].unit_amount)
-						}
-					}
+		ticketsImages() {
+			const images = {}
+
+			this.tickets.forEach(t => {
+				let src
+				let lazySrc
+				let srcset
+
+				if (t.imageSb) {
+					src = this.$_transformImage(t.imageSb, '218x218')
+					lazySrc = this.$_transformImage(t.imageSb, '6x6')
+					srcset = this.$_generateDpiSrcsetEntries(
+						t.imageSb,
+						218,
+						// TODO: use png
+						imageFormats.JPEG
+					)
+				} else {
+					src = t.imageStripe
 				}
-			)
+				images[t.productId] = { src, lazySrc, srcset }
+			})
 
-			return tickets
+			return images
 		},
 
 		ticketsForCheckout() {
@@ -240,6 +242,14 @@ export default {
 		},
 
 		shippingRate() {
+			const testMode =
+				process.env.NODE_ENV === 'development' ||
+				process.env.NUXT_ENV_IS_SPA === 'true'
+					? 'true'
+					: 'false'
+
+			const shippingRates = getShippingRates(testMode)
+
 			if (!this.ticketsForCheckout.length) return shippingRates.sr350
 
 			const hasExtraShipping = this.ticketsForCheckout.find(
@@ -257,21 +267,23 @@ export default {
 					res += current.amount * current.quantity
 				}
 				return res
-			}, this.shippingRate.amount)
+			}, this.shippingRate.amount || 0)
 
 			return this.$_formatPrice(sum)
 		}
 	},
 
+	// TODO: what happens in dev-mode when not using netlify dev?
 	async mounted() {
 		if (
 			process.env.NODE_ENV === 'development' ||
 			process.env.NUXT_ENV_IS_SPA === 'true'
 		) {
-			console.log('loading products...')
+			console.info('loading products...')
 			try {
 				const products = await this.$axios.$get('/api/stripe-get-products')
 				this.devProducts = products
+				console.info('🚀 ~ products loaded', products)
 			} catch (error) {
 				console.log(error)
 			}
@@ -294,7 +306,7 @@ export default {
 					'/api/stripe-checkout',
 					{
 						items: this.ticketsForCheckout,
-						shippingRate: this.shippingRate.id
+						shippingRate: this.shippingRate.id || ''
 					},
 					{
 						headers: { 'Content-Type': 'application/json' }

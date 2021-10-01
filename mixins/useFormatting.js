@@ -1,5 +1,6 @@
 import { getNiceDate, getPlayTime, slashify } from '~/utils'
 import { createOgImagePath } from '~/utils/seo'
+import { formatPrice } from '~/utils/stripe-helpers'
 import { imageFormats, presets, presetOptions } from '~/utils/responsive-images'
 
 export default {
@@ -17,12 +18,7 @@ export default {
 		},
 
 		$_formatPrice(price) {
-			return (
-				(price / 100)
-					.toFixed(2) // always two decimal digits
-					.replace('.', ',') // replace decimal point character with ,
-					.replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.') + ' €' // use . as a separator
-			)
+			return formatPrice(price)
 		},
 
 		$_transformImage(image, width, format) {
