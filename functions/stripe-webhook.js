@@ -20,7 +20,7 @@ const handler = async event => {
 	}
 
 	console.info('ℹ️  eventType:', stripeEvent.type)
-	// console.log('ℹ️  eventDataObject:', stripeEvent.data.object)
+	// console.info('ℹ️  eventDataObject:', stripeEvent.data.object)
 
 	return {
 		statusCode: 200,

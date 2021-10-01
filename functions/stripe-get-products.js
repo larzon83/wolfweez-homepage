@@ -8,8 +8,6 @@ const sbClient = new StoryblokClient({
 	accessToken: process.env.STORYBLOK_PREVIEW_TOKEN
 })
 
-console.log('process.env.NETLIFY_LOCAL:', process.env.NETLIFY_LOCAL)
-
 const handler = async event => {
 	const { getProducts } = require('./../utils/stripe-helpers.js')
 	let products

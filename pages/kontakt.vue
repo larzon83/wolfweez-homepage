@@ -197,7 +197,7 @@ export default {
 					})
 					.catch(function (error) {
 						this.loading = false
-						console.log(error)
+						console.error(error)
 					})
 			}
 		}
