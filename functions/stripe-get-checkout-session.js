@@ -1,4 +1,8 @@
-const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY)
+const stripe = require('stripe')(
+	process.env.NUXT_ENV_TEST_MODE === 'true'
+		? process.env.STRIPE_SECRET_KEY_TEST
+		: process.env.STRIPE_SECRET_KEY_LIVE
+)
 
 const handler = async event => {
 	const sessionId = event.queryStringParameters.sessionId || ''

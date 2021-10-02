@@ -5,7 +5,11 @@
 // and almost the same:
 // https://github.com/stripe-samples/checkout-one-time-payments
 
-const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY)
+const stripe = require('stripe')(
+	process.env.NUXT_ENV_TEST_MODE === 'true'
+		? process.env.STRIPE_SECRET_KEY_TEST
+		: process.env.STRIPE_SECRET_KEY_LIVE
+)
 const SITE_URL = process.env.URL || 'http://localhost:3000'
 
 const handler = async event => {

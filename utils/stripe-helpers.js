@@ -14,15 +14,20 @@ const formatPrice = price => {
 	)
 }
 
-// TODO: correct live ids
 const getShippingRates = testMode => {
 	return {
 		sr350: {
-			id: testMode === 'true' ? 'shr_1JemHsBfAFuG6uOsEUCxo2lm' : 'foo',
+			id:
+				testMode === 'true'
+					? 'shr_1JemHsBfAFuG6uOsEUCxo2lm'
+					: 'shr_1JgGLBBfAFuG6uOsMiABGtLE',
 			amount: 350
 		},
 		sr450: {
-			id: testMode === 'true' ? 'shr_1JemNZBfAFuG6uOsOmW1BH7i' : 'bar',
+			id:
+				testMode === 'true'
+					? 'shr_1JemNZBfAFuG6uOsOmW1BH7i'
+					: 'shr_1JgGLMBfAFuG6uOsma0HxiPb',
 			amount: 450
 		}
 	}

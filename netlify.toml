@@ -6,6 +6,10 @@
 [dev]
   autoLaunch = false
 
+[context.dev.environment]
+  # defined as "false" in Netlify GUI - set to true when running "netlify dev"
+  NUXT_ENV_TEST_MODE = "true"
+
 [[redirects]]
   from = "/api/*"
   to = "/.netlify/functions/:splat"

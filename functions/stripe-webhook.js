@@ -1,4 +1,8 @@
-const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY)
+const stripe = require('stripe')(
+	process.env.NUXT_ENV_TEST_MODE === 'true'
+		? process.env.STRIPE_SECRET_KEY_TEST
+		: process.env.STRIPE_SECRET_KEY_LIVE
+)
 
 const handler = async event => {
 	const sig = event.headers['stripe-signature']
@@ -8,8 +12,10 @@ const handler = async event => {
 		stripeEvent = await stripe.webhooks.constructEvent(
 			event.body,
 			sig,
-			'whsec_VgbvnNWiUY1D3c6V4DcrOpxdhAx1RTUq'
-			// process.env.STRIPE_WEBHOOK_SECRET
+			'whsec_VgbvnNWiUY1D3c6V4DcrOpxdhAx1RTUq' // local forwarding
+			// process.env.NUXT_ENV_TEST_MODE === 'true'
+			// 	? process.env.STRIPE_WEBHOOK_SECRET_TEST
+			// 	: process.env.STRIPE_WEBHOOK_SECRET_LIVE
 		)
 	} catch (err) {
 		console.error(`❌  Stripe webhook failed with ${err}`)

@@ -4,7 +4,11 @@ const { getProducts } = require('../../utils/stripe-helpers.js')
 
 export default function () {
 	this.nuxt.hook('build:before', async context => {
-		const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY)
+		const stripe = require('stripe')(
+			process.env.NUXT_ENV_TEST_MODE === 'true'
+				? process.env.STRIPE_SECRET_KEY_TEST
+				: process.env.STRIPE_SECRET_KEY_LIVE
+		)
 		const StoryblokClient = require('storyblok-js-client')
 
 		const sbClient = new StoryblokClient({
@@ -15,10 +19,7 @@ export default function () {
 			process.env.NUXT_ENV_STORYBLOK_PREVIEW === 'true' ? 'draft' : 'published'
 
 		const testMode =
-			process.env.NODE_ENV === 'development' ||
-			process.env.NUXT_ENV_IS_SPA === 'true'
-				? 'true'
-				: 'false'
+			process.env.NUXT_ENV_TEST_MODE === 'true' ? 'true' : 'false'
 
 		const products = await getProducts(stripe, sbClient, sbVersion, testMode)
 

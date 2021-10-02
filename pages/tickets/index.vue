@@ -100,10 +100,7 @@
 						</v-btn>
 					</v-col>
 				</v-row>
-				<v-alert
-					v-if="checkoutError && !ticketsForCheckout.length"
-					class="bad mt-6 mb-0"
-				>
+				<v-alert v-if="checkoutError" class="bad mt-6 mb-0">
 					<v-row>
 						<v-col cols="12">
 							<p>Bestellung nicht möglich.</p>
@@ -241,10 +238,7 @@ export default {
 
 		shippingRate() {
 			const testMode =
-				process.env.NODE_ENV === 'development' ||
-				process.env.NUXT_ENV_IS_SPA === 'true'
-					? 'true'
-					: 'false'
+				process.env.NUXT_ENV_TEST_MODE === 'true' ? 'true' : 'false'
 
 			const shippingRates = getShippingRates(testMode)
 
@@ -273,10 +267,7 @@ export default {
 
 	// TODO: what happens in dev-mode when not using netlify dev?
 	async mounted() {
-		if (
-			process.env.NODE_ENV === 'development' ||
-			process.env.NUXT_ENV_IS_SPA === 'true'
-		) {
+		if (process.env.NUXT_ENV_TEST_MODE === 'true') {
 			console.info('loading products...')
 			try {
 				const products = await this.$axios.$get('/api/stripe-get-products')
