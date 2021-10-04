@@ -281,9 +281,20 @@ export default {
 	},
 
 	computed: {
+		showTestTicket() {
+			return this.$route.query.testticket === '1'
+		},
+
 		tickets() {
-			if (this.devProducts.length) return this.devProducts
-			return this.$stripeProducts
+			let tickets
+			if (this.devProducts.length) tickets = this.devProducts
+			else tickets = this.$stripeProducts
+
+			if (!this.showTestTicket && tickets.length) {
+				return tickets.filter(t => t.name !== 'testticket')
+			}
+
+			return tickets
 		},
 
 		ticketsImages() {
@@ -321,6 +332,7 @@ export default {
 					res.push({
 						amount: current.price.unit_amount,
 						extraShipping: current.extraShipping,
+						name: current.name,
 						price: current.price.id,
 						quantity: this.quantities[current.productId]
 					})

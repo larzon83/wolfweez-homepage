@@ -27,13 +27,18 @@ const handler = async event => {
 
 	let session
 	const eventBody = JSON.parse(event.body)
-	const shippingRate = eventBody.shippingRate || ''
+	let shippingRate = eventBody.shippingRate ? [eventBody.shippingRate] : []
 
 	const items = eventBody.items.map(item => ({
 		price: item.price,
 		quantity: item.quantity,
 		adjustable_quantity: { enabled: true }
 	}))
+
+	const hasTestTicket = eventBody.items.find(i => i.name === 'testticket')
+	if (hasTestTicket && items.length === 1) {
+		shippingRate = []
+	}
 
 	try {
 		session = await stripe.checkout.sessions.create({
@@ -50,7 +55,7 @@ const handler = async event => {
 				'sepa_debit'
 			],
 			billing_address_collection: 'required',
-			shipping_rates: [shippingRate],
+			shipping_rates: shippingRate,
 			shipping_address_collection: {
 				allowed_countries: Object.keys(countryNames)
 			},
