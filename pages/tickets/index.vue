@@ -83,6 +83,7 @@
 												!quantities[ticket.productId] ||
 												quantities[ticket.productId] < 1
 											"
+											:aria-label="`${ticket.name} Anzahl verringern`"
 											color="prime"
 											depressed
 											fab
@@ -93,6 +94,7 @@
 										</v-btn>
 										<v-text-field
 											v-model="quantities[ticket.productId]"
+											:aria-label="`${ticket.name} Anzahl`"
 											color="bright"
 											type="number"
 											dense
@@ -105,6 +107,7 @@
 											class="mx-3"
 										/>
 										<v-btn
+											:aria-label="`${ticket.name} Anzahl erhöhen`"
 											color="prime"
 											depressed
 											fab
