@@ -80,6 +80,7 @@
 								:loading="loading"
 								:ripple="false"
 								color="prime"
+								depressed
 								large
 								min-width="190"
 								class="btn"
