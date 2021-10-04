@@ -19,7 +19,6 @@
 			/>
 		</v-alert>
 
-		<!-- <h2 class="mt-11">Tickets</h2> -->
 		<div class="mx-n4 mx-md-0 mt-0 mt-lg-5">
 			<v-card color="darkish" flat class="ticket-box">
 				<v-card-text v-if="tickets.length" class="pa-4 pa-md-5">
@@ -120,6 +119,7 @@
 							/>
 						</v-col>
 
+						<!-- divider after each product -->
 						<v-col
 							v-if="index !== tickets.length - 1"
 							cols="12"
@@ -132,6 +132,7 @@
 						</v-col>
 					</v-row>
 
+					<!-- final divider -->
 					<v-row>
 						<v-col cols="12">
 							<v-divider />
@@ -140,26 +141,39 @@
 
 					<!-- checkout amount details and button -->
 					<v-row align="center" justify="space-between" class="mt-3">
-						<!-- FIXME: jumpy layout on mobile -->
-						<!-- TODO: sm: label and amount -> space-between -->
-						<v-col cols="12" md="auto" class="shipping-details">
+						<v-col cols="12" md="auto" class="py-0 py-md-3">
 							<div v-if="ticketsForCheckout.length">
-								<div class="font-weight-bold">Gesamt: {{ chargeAmount }}</div>
-								<div class="shipping-amount">
-									Inkl. {{ $_formatPrice(shippingRate.amount) }} Versand
+								<div class="d-none d-md-block">
+									<div class="font-weight-bold">Summe: {{ chargeAmount }}</div>
+									<div class="shipping-amount">
+										zzgl. {{ $_formatPrice(shippingRate.amount) }} Versandkosten
+									</div>
+								</div>
+								<div class="d-block d-md-none">
+									<span class="font-weight-bold">Summe: {{ chargeAmount }}</span
+									>&nbsp;<span class="shipping-amount">
+										(zzgl.
+										{{ $_formatPrice(shippingRate.amount) }} Versand)
+									</span>
 								</div>
 							</div>
-							<div v-else class="d-none d-md-block">
-								<div class="font-weight-bold">&nbsp;</div>
-								<div>&nbsp;</div>
+							<div v-else>
+								<div class="d-none d-md-block">
+									<div class="font-weight-bold">&nbsp;</div>
+									<div>&nbsp;</div>
+								</div>
+								<div class="d-block d-md-none">
+									<span class="font-weight-bold">&nbsp;</span>
+								</div>
 							</div>
 						</v-col>
-						<v-col cols="12" md="auto" class="d-flex justify-end">
+						<v-col cols="12" md="auto" class="d-flex justify-md-end">
 							<v-btn
 								:disabled="loading"
 								:loading="loading"
 								:ripple="false"
 								color="prime"
+								depressed
 								large
 								min-width="190"
 								class="btn-buy"
@@ -172,6 +186,7 @@
 						</v-col>
 					</v-row>
 
+					<!-- error box -->
 					<v-alert v-if="checkoutError" class="bad mt-6 mb-0">
 						<v-row>
 							<v-col cols="12">
@@ -339,7 +354,7 @@ export default {
 					res += current.amount * current.quantity
 				}
 				return res
-			}, this.shippingRate.amount || 0)
+			}, 0)
 
 			return this.$_formatPrice(sum)
 		}
@@ -448,8 +463,14 @@ export default {
 	}
 }
 
-.v-alert ::v-deep p:last-child {
-	margin: 0;
+.v-alert {
+	::v-deep p:last-child {
+		margin: 0;
+	}
+
+	a {
+		color: currentColor;
+	}
 }
 
 .v-text-field {
