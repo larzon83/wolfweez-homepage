@@ -55,6 +55,7 @@ const constructProducts = (productsList, pricesList, sbTickets, testMode) => {
 		({ id, images, metadata, name, prices }) => {
 			const price = prices[0]
 			let imageSb
+			let textSb
 
 			const sbEntryExists = sbTickets.stories.find(
 				t => t.content[sbProductId] === id
@@ -68,10 +69,15 @@ const constructProducts = (productsList, pricesList, sbTickets, testMode) => {
 				imageSb = sbEntryExists.content.image.filename
 			}
 
+			if (sbEntryExists && sbEntryExists.content.text) {
+				textSb = sbEntryExists.content.text
+			}
+
 			return {
 				productId: id,
 				imageStripe: images[0],
 				imageSb,
+				textSb,
 				name,
 				extraShipping: metadata['extra-shipping'] === 'yes',
 				price: {
