@@ -1,5 +1,9 @@
 <template>
 	<section v-editable="story.content">
+		<h2 class="d-none d-lg-flex text-h4 text-sm-h3 text-lg-h2 font-weight-bold">
+			Tickets
+		</h2>
+
 		<v-alert
 			v-if="story.content.show_info_box"
 			icon="$info"
@@ -7,7 +11,7 @@
 			outlined
 			prominent
 			text
-			class="pa-4 mb-10 information--text"
+			class="pa-4 mb-10 mt-0 mt-lg-5 information--text"
 		>
 			<rich-text-renderer
 				v-if="story.content.info_box"
@@ -15,101 +19,177 @@
 			/>
 		</v-alert>
 
-		<!-- TODO: put text in festival infos and link from here -->
-		<rich-text-renderer
-			v-if="story.content.text"
-			:document="story.content.text"
-		/>
+		<!-- <h2 class="mt-11">Tickets</h2> -->
+		<div class="mx-n4 mx-md-0 mt-0 mt-lg-5">
+			<v-card color="darkish" flat class="ticket-box">
+				<v-card-text v-if="tickets.length" class="pa-4 pa-md-5">
+					<v-row
+						v-for="(ticket, index) in tickets"
+						:key="`ticket-${index}`"
+						align="center"
+						justify="start"
+					>
+						<!-- image -->
+						<v-col cols="auto" md="3" lg="2" align-self="start">
+							<v-img
+								:alt="ticket.name"
+								:src="ticketsImages[ticket.productId].src"
+								:lazy-src="ticketsImages[ticket.productId].lazySrc"
+								:srcset="ticketsImages[ticket.productId].srcset"
+								aspect-ratio="1"
+								class="ticket-img rounded"
+							/>
+						</v-col>
 
-		<h2 class="mt-11">Tickets</h2>
-		<v-card color="darkish" flat class="mt-3">
-			<v-card-text v-if="tickets.length">
-				<v-row
-					v-for="(ticket, index) in tickets"
-					:key="`ticket-${index}`"
-					align="center"
-					justify="space-between"
-				>
-					<v-col>
-						<v-img
-							:alt="ticket.name"
-							:src="ticketsImages[ticket.productId].src"
-							:lazy-src="ticketsImages[ticket.productId].lazySrc"
-							:srcset="ticketsImages[ticket.productId].srcset"
-							aspect-ratio="1"
-							class="rounded"
-						/>
-					</v-col>
-					<v-col>{{ ticket.name }}<br />{{ ticket.price.formatted }}</v-col>
-					<v-col cols="auto" class="d-flex align-center justify-center">
-						<v-btn
-							:disabled="
-								!quantities[ticket.productId] ||
-								quantities[ticket.productId] < 1
-							"
-							color="prime"
-							depressed
-							fab
-							small
-							@click="decreaseQuantity(ticket.productId)"
+						<v-col md="9" lg="10">
+							<!-- title and order-buttons -->
+							<v-row
+								class="flex-column flex-md-row"
+								align="center"
+								justify="start"
+							>
+								<v-col>
+									<h3 class="font-weight-medium">{{ ticket.name }}</h3>
+									<div class="price ahref--text font-weight-black mt-1">
+										{{ ticket.price.formatted }}
+									</div>
+								</v-col>
+								<!-- TODO: make buttons smaller on mobile -->
+								<v-col
+									cols="auto"
+									class="d-flex align-center justify-start"
+									align-self="start"
+								>
+									<v-btn
+										:disabled="
+											!quantities[ticket.productId] ||
+											quantities[ticket.productId] < 1
+										"
+										color="prime"
+										depressed
+										fab
+										small
+										@click="decreaseQuantity(ticket.productId)"
+									>
+										<v-icon>$minus</v-icon>
+									</v-btn>
+									<v-text-field
+										v-model="quantities[ticket.productId]"
+										color="bright"
+										type="number"
+										filled
+										hide-details="auto"
+										inputmode="numeric"
+										min="0"
+										outlined
+										placeholder="0"
+										class="mx-2"
+									/>
+									<v-btn
+										color="prime"
+										depressed
+										fab
+										small
+										@click="increaseQuantity(ticket.productId)"
+									>
+										<v-icon>$plus</v-icon>
+									</v-btn>
+								</v-col>
+							</v-row>
+
+							<!-- description ::: desktop -->
+							<v-row
+								v-if="ticket.textSb"
+								justify="start"
+								class="d-none d-md-flex flex-column flex-md-row"
+							>
+								<v-col cols="12" class="desc">
+									<rich-text-renderer
+										v-if="ticket.textSb"
+										:document="ticket.textSb"
+									/>
+								</v-col>
+							</v-row>
+						</v-col>
+
+						<!-- description ::: mobile -->
+						<v-col v-if="ticket.textSb" cols="12" class="d-md-none">
+							<rich-text-renderer
+								v-if="ticket.textSb"
+								:document="ticket.textSb"
+							/>
+						</v-col>
+
+						<v-col
+							v-if="index !== tickets.length - 1"
+							cols="12"
+							md="9"
+							lg="10"
+							offset-md="3"
+							offset-lg="2"
 						>
-							<v-icon>$minus</v-icon>
-						</v-btn>
-						<v-text-field
-							v-model="quantities[ticket.productId]"
-							color="bright"
-							type="number"
-							filled
-							hide-details="auto"
-							inputmode="numeric"
-							min="0"
-							outlined
-							placeholder="0"
-							class="mx-2"
-						/>
-						<v-btn
-							color="prime"
-							depressed
-							fab
-							small
-							@click="increaseQuantity(ticket.productId)"
-						>
-							<v-icon>$plus</v-icon>
-						</v-btn>
-					</v-col>
-				</v-row>
-
-				<v-divider class="mt-15" />
-
-				<div>Versand: {{ $_formatPrice(shippingRate.amount) }}</div>
-				<div>Gesamt: {{ chargeAmount }}</div>
-
-				<v-row align="center" justify="end" class="mt-3">
-					<v-col cols="12" class="d-flex justify-end">
-						<v-btn
-							:disabled="loading"
-							:loading="loading"
-							:ripple="false"
-							color="prime"
-							large
-							min-width="190"
-							class="btn"
-							@click="checkout"
-						>
-							Jetzt kaufen<v-icon size="15" class="ml-2">$shoppingCart</v-icon>
-						</v-btn>
-					</v-col>
-				</v-row>
-				<v-alert v-if="checkoutError" class="bad mt-6 mb-0">
-					<v-row>
-						<v-col cols="12">
-							<p>Bestellung nicht möglich.</p>
-							<p><b>Fehlermeldung:</b> {{ checkoutError }}</p>
+							<v-divider />
 						</v-col>
 					</v-row>
-				</v-alert>
-			</v-card-text>
-		</v-card>
+
+					<v-row>
+						<v-col cols="12">
+							<v-divider />
+						</v-col>
+					</v-row>
+
+					<!-- checkout amount details and button -->
+					<v-row align="center" justify="space-between" class="mt-3">
+						<!-- FIXME: jumpy layout on mobile -->
+						<!-- TODO: sm: label and amount -> space-between -->
+						<v-col cols="12" md="auto" class="shipping-details">
+							<div v-if="ticketsForCheckout.length">
+								<div class="font-weight-bold">Gesamt: {{ chargeAmount }}</div>
+								<div class="shipping-amount">
+									Inkl. {{ $_formatPrice(shippingRate.amount) }} Versand
+								</div>
+							</div>
+							<div v-else class="d-none d-md-block">
+								<div class="font-weight-bold">&nbsp;</div>
+								<div>&nbsp;</div>
+							</div>
+						</v-col>
+						<v-col cols="12" md="auto" class="d-flex justify-end">
+							<v-btn
+								:disabled="loading"
+								:loading="loading"
+								:ripple="false"
+								color="prime"
+								large
+								min-width="190"
+								class="btn-buy"
+								@click="checkout"
+							>
+								Jetzt kaufen<v-icon size="15" class="ml-2"
+									>$shoppingCart</v-icon
+								>
+							</v-btn>
+						</v-col>
+					</v-row>
+
+					<v-alert v-if="checkoutError" class="bad mt-6 mb-0">
+						<v-row>
+							<v-col cols="12">
+								<p>Bestellung nicht möglich.</p>
+								<p><b>Fehlermeldung:</b> {{ checkoutError }}</p>
+							</v-col>
+						</v-row>
+					</v-alert>
+				</v-card-text>
+			</v-card>
+		</div>
+
+		<div v-if="story.content.text" class="mt-8">
+			<rich-text-renderer
+				v-if="story.content.text"
+				:document="story.content.text"
+			/>
+		</div>
 
 		<h2 class="mt-16 pb-3">Offizielle Vorverkaufstellen</h2>
 		<v-row>
@@ -284,7 +364,7 @@ export default {
 			this.checkoutError = ''
 
 			if (!this.ticketsForCheckout.length) {
-				this.checkoutError = 'Mindestens ein Ticket mit Menge nötig.'
+				this.checkoutError = 'Kein Ticket ausgewählt.'
 				return
 			}
 
@@ -335,7 +415,29 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.btn {
+@media #{map-get($display-breakpoints, 'sm-and-down')} {
+	.ticket-box {
+		border-radius: 0;
+	}
+
+	.ticket-img {
+		width: 120px;
+	}
+}
+
+.price {
+	font-size: $size20;
+}
+
+.desc {
+	color: getcolor('bright', 0.85);
+}
+
+.shipping-amount {
+	color: getcolor('bright', 0.45);
+}
+
+.btn-buy {
 	background-color: getcolor('prime', 0.12);
 	border-width: 3px;
 
@@ -352,6 +454,7 @@ export default {
 
 .v-text-field {
 	width: 56px;
+	max-width: 56px;
 
 	::v-deep input[type='number'] {
 		appearance: none;
