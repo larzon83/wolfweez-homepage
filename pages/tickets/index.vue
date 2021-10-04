@@ -40,13 +40,19 @@
 								lg="2"
 								class="align-self-center align-self-md-start"
 							>
-								<v-img
+								<SbImage
+									v-if="ticket.imageSb && ticket.imageSb.filename"
 									:alt="ticket.name"
-									:src="ticketsImages[ticket.productId].src"
-									:lazy-src="ticketsImages[ticket.productId].lazySrc"
-									:srcset="ticketsImages[ticket.productId].srcset"
-									aspect-ratio="1"
-									class="ticket-img rounded"
+									:pic="ticket.imageSb"
+									:preset="$config.presetNames.TICKET"
+									class="ticket-img"
+								/>
+								<v-img
+									v-else
+									:alt="ticket.name"
+									:src="ticket.imageStripe"
+									:aspect-ratio="$config.aspectRatios.TICKET"
+									class="rounded ticket-img"
 								/>
 							</v-col>
 
@@ -247,7 +253,6 @@ import savePagetitleToVuex from '~/mixins/savePagetitleToVuex.js'
 import useFormatting from '~/mixins/useFormatting.js'
 import { sbData } from '~/utils'
 import { routeMeta } from '~/utils/constants'
-import { imageFormats } from '~/utils/responsive-images'
 import { createSEOMeta } from '~/utils/seo'
 import { getShippingRates } from '~/utils/stripe-helpers'
 
@@ -299,32 +304,6 @@ export default {
 		tickets() {
 			if (this.devProducts.length) return this.devProducts
 			return this.$stripeProducts
-		},
-
-		ticketsImages() {
-			const images = {}
-
-			this.tickets.forEach(t => {
-				let src
-				let lazySrc
-				let srcset
-
-				if (t.imageSb) {
-					src = this.$_transformImage(t.imageSb, '218x218')
-					lazySrc = this.$_transformImage(t.imageSb, '6x6')
-					srcset = this.$_generateDpiSrcsetEntries(
-						t.imageSb,
-						218,
-						// TODO: use png
-						imageFormats.JPEG
-					)
-				} else {
-					src = t.imageStripe
-				}
-				images[t.productId] = { src, lazySrc, srcset }
-			})
-
-			return images
 		},
 
 		ticketsForCheckout() {

@@ -7,7 +7,8 @@ export const presetNames = {
 	NEWS_DETAIL: 'news-detail',
 	SPONSORS_MAIN: 'sponsors-main',
 	SPONSORS_MAIN_FOOTER: 'sponsors-main-footer',
-	SPONSORS_NORMAL: 'sponsors-normal'
+	SPONSORS_NORMAL: 'sponsors-normal',
+	TICKET: 'ticket'
 }
 
 export const presetOptions = {
@@ -17,7 +18,8 @@ export const presetOptions = {
 
 export const aspectRatios = {
 	BAND: 1.9048,
-	NEWS_CARD: 1.9047619
+	NEWS_CARD: 1.9047619,
+	TICKET: 1
 }
 
 export const imageFormats = {
@@ -212,6 +214,19 @@ export const presets = {
 					(max-width: 783px) 123px,
 					(max-width: 1139px) 166px,
 					226px
+					`)
+	},
+	[presetNames.TICKET]: {
+		aspectRatio: aspectRatios.TICKET,
+		eager: true,
+		imageFormat: imageFormats.JPEG, // TODO: use png
+		rounded: true,
+		widths: generateWidths([91, 105, 115, 131]),
+		sizes: removeClutter(`
+					(max-width: 599px) 115px,
+					(max-width: 783px) 105px,
+					(max-width: 1139px) 91px,
+					131px
 					`)
 	}
 }

@@ -66,7 +66,7 @@ const constructProducts = (productsList, pricesList, sbTickets, testMode) => {
 				sbEntryExists.content.image &&
 				sbEntryExists.content.image.filename
 			) {
-				imageSb = sbEntryExists.content.image.filename
+				imageSb = sbEntryExists.content.image
 			}
 
 			if (sbEntryExists && sbEntryExists.content.text) {
