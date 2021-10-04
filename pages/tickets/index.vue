@@ -22,115 +22,121 @@
 		<div class="mx-n4 mx-md-0 mt-0 mt-lg-5">
 			<v-card color="darkish" flat class="ticket-box">
 				<v-card-text v-if="tickets.length" class="pa-4 pa-md-5">
-					<v-row
-						v-for="(ticket, index) in tickets"
-						:key="`ticket-${index}`"
-						align="center"
-						justify="start"
-					>
-						<!-- image -->
-						<v-col cols="auto" md="3" lg="2" align-self="start">
-							<v-img
-								:alt="ticket.name"
-								:src="ticketsImages[ticket.productId].src"
-								:lazy-src="ticketsImages[ticket.productId].lazySrc"
-								:srcset="ticketsImages[ticket.productId].srcset"
-								aspect-ratio="1"
-								class="ticket-img rounded"
-							/>
-						</v-col>
-
-						<v-col md="9" lg="10">
-							<!-- title and order-buttons -->
-							<v-row
-								class="flex-column flex-md-row"
-								align="center"
-								justify="start"
-							>
-								<v-col>
-									<h3 class="font-weight-medium">{{ ticket.name }}</h3>
-									<div class="price ahref--text font-weight-black mt-1">
-										{{ ticket.price.formatted }}
-									</div>
-								</v-col>
-								<!-- TODO: make buttons smaller on mobile -->
-								<v-col
-									cols="auto"
-									class="d-flex align-center justify-start"
-									align-self="start"
-								>
-									<v-btn
-										:disabled="
-											!quantities[ticket.productId] ||
-											quantities[ticket.productId] < 1
-										"
-										color="prime"
-										depressed
-										fab
-										small
-										@click="decreaseQuantity(ticket.productId)"
-									>
-										<v-icon>$minus</v-icon>
-									</v-btn>
-									<v-text-field
-										v-model="quantities[ticket.productId]"
-										color="bright"
-										type="number"
-										filled
-										hide-details="auto"
-										inputmode="numeric"
-										min="0"
-										outlined
-										placeholder="0"
-										class="mx-2"
-									/>
-									<v-btn
-										color="prime"
-										depressed
-										fab
-										small
-										@click="increaseQuantity(ticket.productId)"
-									>
-										<v-icon>$plus</v-icon>
-									</v-btn>
-								</v-col>
-							</v-row>
-
-							<!-- description ::: desktop -->
-							<v-row
-								v-if="ticket.textSb"
-								justify="start"
-								class="d-none d-md-flex flex-column flex-md-row"
-							>
-								<v-col cols="12" class="desc">
-									<rich-text-renderer
-										v-if="ticket.textSb"
-										:document="ticket.textSb"
-									/>
-								</v-col>
-							</v-row>
-						</v-col>
-
-						<!-- description ::: mobile -->
-						<v-col v-if="ticket.textSb" cols="12" class="d-md-none">
-							<rich-text-renderer
-								v-if="ticket.textSb"
-								:document="ticket.textSb"
-							/>
-						</v-col>
-
-						<!-- divider after each product -->
-						<v-col
-							v-if="index !== tickets.length - 1"
-							cols="12"
-							md="9"
-							lg="10"
-							offset-md="3"
-							offset-lg="2"
+					<!-- tickets -->
+					<div v-for="(ticket, index) in tickets" :key="`ticket-${index}`">
+						<v-row
+							v-show="
+								ticket.name !== 'testticket' ||
+								(ticket.name === 'testticket' &&
+									$route.query.testticket === '1')
+							"
+							align="center"
+							justify="start"
 						>
-							<v-divider />
-						</v-col>
-					</v-row>
+							<!-- image -->
+							<v-col cols="auto" md="3" lg="2" align-self="start">
+								<v-img
+									:alt="ticket.name"
+									:src="ticketsImages[ticket.productId].src"
+									:lazy-src="ticketsImages[ticket.productId].lazySrc"
+									:srcset="ticketsImages[ticket.productId].srcset"
+									aspect-ratio="1"
+									class="ticket-img rounded"
+								/>
+							</v-col>
+
+							<v-col md="9" lg="10">
+								<!-- title and order-buttons -->
+								<v-row
+									class="flex-column flex-md-row"
+									align="center"
+									justify="start"
+								>
+									<v-col>
+										<h3 class="font-weight-medium">{{ ticket.name }}</h3>
+										<div class="price ahref--text font-weight-black mt-1">
+											{{ ticket.price.formatted }}
+										</div>
+									</v-col>
+									<!-- TODO: make buttons smaller on mobile -->
+									<v-col
+										cols="auto"
+										class="d-flex align-center justify-start"
+										align-self="start"
+									>
+										<v-btn
+											:disabled="
+												!quantities[ticket.productId] ||
+												quantities[ticket.productId] < 1
+											"
+											color="prime"
+											depressed
+											fab
+											small
+											@click="decreaseQuantity(ticket.productId)"
+										>
+											<v-icon>$minus</v-icon>
+										</v-btn>
+										<v-text-field
+											v-model="quantities[ticket.productId]"
+											color="bright"
+											type="number"
+											filled
+											hide-details="auto"
+											inputmode="numeric"
+											min="0"
+											outlined
+											placeholder="0"
+											class="mx-2"
+										/>
+										<v-btn
+											color="prime"
+											depressed
+											fab
+											small
+											@click="increaseQuantity(ticket.productId)"
+										>
+											<v-icon>$plus</v-icon>
+										</v-btn>
+									</v-col>
+								</v-row>
+
+								<!-- description ::: desktop -->
+								<v-row
+									v-if="ticket.textSb"
+									justify="start"
+									class="d-none d-md-flex flex-column flex-md-row"
+								>
+									<v-col cols="12" class="desc">
+										<rich-text-renderer
+											v-if="ticket.textSb"
+											:document="ticket.textSb"
+										/>
+									</v-col>
+								</v-row>
+							</v-col>
+
+							<!-- description ::: mobile -->
+							<v-col v-if="ticket.textSb" cols="12" class="d-md-none">
+								<rich-text-renderer
+									v-if="ticket.textSb"
+									:document="ticket.textSb"
+								/>
+							</v-col>
+
+							<!-- divider after each product -->
+							<v-col
+								v-if="index !== tickets.length - 1"
+								cols="12"
+								md="9"
+								lg="10"
+								offset-md="3"
+								offset-lg="2"
+							>
+								<v-divider />
+							</v-col>
+						</v-row>
+					</div>
 
 					<!-- final divider -->
 					<v-row>
@@ -281,20 +287,9 @@ export default {
 	},
 
 	computed: {
-		showTestTicket() {
-			return this.$route.query.testticket === '1'
-		},
-
 		tickets() {
-			let tickets
-			if (this.devProducts.length) tickets = this.devProducts
-			else tickets = this.$stripeProducts
-
-			if (!this.showTestTicket && tickets.length) {
-				return tickets.filter(t => t.name !== 'testticket')
-			}
-
-			return tickets
+			if (this.devProducts.length) return this.devProducts
+			return this.$stripeProducts
 		},
 
 		ticketsImages() {
