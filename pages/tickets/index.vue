@@ -23,7 +23,11 @@
 			<v-card color="darkish" flat class="ticket-box">
 				<v-card-text v-if="tickets.length" class="pa-4 pa-md-5">
 					<!-- tickets -->
-					<div v-for="(ticket, index) in tickets" :key="`ticket-${index}`">
+					<div
+						v-for="(ticket, index) in tickets"
+						:key="`ticket-${index}`"
+						class="my-3"
+					>
 						<v-row
 							v-show="
 								ticket.name !== 'testticket' ||
