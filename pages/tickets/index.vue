@@ -34,7 +34,12 @@
 							justify="start"
 						>
 							<!-- image -->
-							<v-col cols="auto" md="3" lg="2" align-self="start">
+							<v-col
+								cols="auto"
+								md="3"
+								lg="2"
+								class="align-self-center align-self-md-start"
+							>
 								<v-img
 									:alt="ticket.name"
 									:src="ticketsImages[ticket.productId].src"
@@ -58,11 +63,14 @@
 											{{ ticket.price.formatted }}
 										</div>
 									</v-col>
-									<!-- TODO: make buttons smaller on mobile -->
 									<v-col
 										cols="auto"
-										class="d-flex align-center justify-start"
-										align-self="start"
+										class="
+											d-flex
+											align-center
+											justify-start
+											align-self-start align-self-md-center
+										"
 									>
 										<v-btn
 											:disabled="
@@ -72,7 +80,7 @@
 											color="prime"
 											depressed
 											fab
-											small
+											x-small
 											@click="decreaseQuantity(ticket.productId)"
 										>
 											<v-icon>$minus</v-icon>
@@ -81,6 +89,7 @@
 											v-model="quantities[ticket.productId]"
 											color="bright"
 											type="number"
+											dense
 											filled
 											hide-details="auto"
 											inputmode="numeric"
@@ -93,7 +102,7 @@
 											color="prime"
 											depressed
 											fab
-											small
+											x-small
 											@click="increaseQuantity(ticket.productId)"
 										>
 											<v-icon>$plus</v-icon>
@@ -451,7 +460,7 @@ export default {
 	}
 
 	.ticket-img {
-		width: 120px;
+		width: 115px;
 	}
 }
 
@@ -489,8 +498,8 @@ export default {
 }
 
 .v-text-field {
-	width: 56px;
-	max-width: 56px;
+	width: 40px;
+	max-width: 40px;
 
 	::v-deep input[type='number'] {
 		appearance: none;
