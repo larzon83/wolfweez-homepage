@@ -367,9 +367,11 @@ export default {
 		}
 	},
 
-	// TODO: what happens in dev-mode when not using netlify dev?
 	async mounted() {
-		if (process.env.NUXT_ENV_TEST_MODE === 'true') {
+		if (
+			process.env.NUXT_ENV_TEST_MODE === 'true' &&
+			window.location.host !== 'localhost:3000'
+		) {
 			console.info('loading products...')
 			try {
 				const products = await this.$axios.$get('/api/stripe-get-products')
@@ -386,7 +388,12 @@ export default {
 			this.checkoutError = ''
 
 			if (!this.ticketsForCheckout.length) {
-				this.checkoutError = 'Kein Ticket ausgewählt.'
+				this.checkoutError = 'Kein Ticket ausgewählt'
+				return
+			}
+
+			if (window.location.host === 'localhost:3000') {
+				this.checkoutError = 'Netlify dev wird benötigt'
 				return
 			}
 
@@ -407,7 +414,8 @@ export default {
 				window.location.href = response.sessionUrl
 			} catch (error) {
 				this.loading = false
-				this.checkoutError = error.response?.data?.raw?.message
+				this.checkoutError =
+					error.response?.data?.raw?.message || error.message || error
 				console.error(
 					`Error: ${error.response?.data?.type} (${error.response?.data?.raw?.message})`
 				)

@@ -173,6 +173,12 @@ export default {
 	},
 
 	async mounted() {
+		if (window.location.host === 'localhost:3000') {
+			this.showReceipt = true
+			this.sessionError = 'Netlify dev wird benötigt'
+			return
+		}
+
 		if (this.hasCorrectRouteQueries) {
 			try {
 				const { session, charge } = await this.$axios.$get(
@@ -190,7 +196,8 @@ export default {
 				this.showReceipt = true
 			} catch (error) {
 				this.showReceipt = true
-				this.sessionError = error.response?.data?.raw?.message
+				this.sessionError =
+					error.response?.data?.raw?.message || error.message || error
 				console.error(
 					`Error: ${error.response?.data?.type} (${error.response?.data?.raw?.message})`
 				)
