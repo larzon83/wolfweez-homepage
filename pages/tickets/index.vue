@@ -270,6 +270,20 @@ export default {
 			this.$route.path
 		)
 
+		const linkEntries = []
+
+		if (this.$stripeProducts.length) {
+			const imgIndex = this.$stripeProducts[0].name === 'testticket' ? 1 : 0
+
+			if (this.$stripeProducts[imgIndex]) {
+				const preloadImage = this.$_getPreloadImageHeadEntry(
+					this.$stripeProducts[imgIndex].imageSb?.filename,
+					this.$config.presetNames.TICKET
+				)
+				if (preloadImage) linkEntries.push(preloadImage)
+			}
+		}
+
 		return {
 			title,
 			meta: createSEOMeta({
@@ -279,7 +293,8 @@ export default {
 				imageHeight,
 				title,
 				url: this.$route.path
-			})
+			}),
+			link: [...linkEntries]
 		}
 	},
 
