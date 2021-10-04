@@ -1,15 +1,22 @@
 <template>
-	<v-row>
-		<v-col
-			v-for="news in newsSorted"
-			:key="news.content._uid"
-			cols="12"
-			lg="6"
-			xl="4"
-		>
-			<NewsCard :news="news" />
-		</v-col>
-	</v-row>
+	<section>
+		<h1 class="d-none d-lg-flex text-h4 text-sm-h3 text-lg-h2 font-weight-bold">
+			{{ pageTitle }}
+		</h1>
+		<div class="mt-0 mt-lg-5">
+			<v-row>
+				<v-col
+					v-for="news in newsSorted"
+					:key="news.content._uid"
+					cols="12"
+					lg="6"
+					xl="4"
+				>
+					<NewsCard :news="news" />
+				</v-col>
+			</v-row>
+		</div>
+	</section>
 </template>
 
 <script>
