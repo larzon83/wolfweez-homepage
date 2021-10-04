@@ -102,7 +102,7 @@
 											min="0"
 											outlined
 											placeholder="0"
-											class="mx-2"
+											class="mx-3"
 										/>
 										<v-btn
 											color="prime"
