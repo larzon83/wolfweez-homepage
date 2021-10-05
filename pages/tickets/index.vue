@@ -141,7 +141,7 @@
 							</v-col>
 
 							<!-- description ::: mobile -->
-							<v-col v-if="ticket.textSb" cols="12" class="d-md-none">
+							<v-col v-if="ticket.textSb" cols="12" class="desc d-md-none">
 								<rich-text-renderer
 									v-if="ticket.textSb"
 									:document="ticket.textSb"
@@ -472,7 +472,7 @@ export default {
 }
 
 .desc {
-	color: getcolor('bright', 0.85);
+	color: getcolor('bright', 0.8);
 }
 
 .shipping-amount {
