@@ -14,7 +14,6 @@
 				>
 					<!-- FIXME: check again in prod: is there an invoice with other details? -->
 					<!-- TODO: handle payment_status: "unpaid" -->
-					<!-- TODO: better copy -->
 					<v-row align="start" justify="start">
 						<v-col cols="12" xl="6">
 							<v-subheader class="sub-headline text-button pl-0">
