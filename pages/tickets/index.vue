@@ -88,6 +88,7 @@
 												quantities[ticket.productId] < 1
 											"
 											:aria-label="`${ticket.name} Anzahl verringern`"
+											:ripple="{ center: true }"
 											color="prime"
 											depressed
 											fab
@@ -112,6 +113,7 @@
 										/>
 										<v-btn
 											:aria-label="`${ticket.name} Anzahl erhöhen`"
+											:ripple="{ center: true }"
 											color="prime"
 											depressed
 											fab
