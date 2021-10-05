@@ -150,7 +150,7 @@
 
 							<!-- divider after each product -->
 							<v-col
-								v-if="index !== tickets.length - 1"
+								v-if="index !== realTicketsCount - 1"
 								cols="12"
 								md="9"
 								lg="10"
@@ -281,6 +281,7 @@ export default {
 
 		const linkEntries = []
 
+		// only relevant for production, so, ignoring "devProducts"
 		if (this.$stripeProducts.length) {
 			const imgIndex = this.$stripeProducts[0].name === 'testticket' ? 1 : 0
 
@@ -328,6 +329,13 @@ export default {
 		tickets() {
 			if (this.devProducts.length) return this.devProducts
 			return this.$stripeProducts
+		},
+
+		realTicketsCount() {
+			let count = this.tickets.length
+			const hasTestTicket = this.tickets.find(t => t.name === 'testticket')
+			if (hasTestTicket) count -= 1
+			return count
 		},
 
 		ticketsForCheckout() {
