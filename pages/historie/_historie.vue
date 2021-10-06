@@ -166,12 +166,14 @@ export default {
 		},
 
 		galleries() {
-			return [
-				{
-					year: this.story.content.year,
-					imgs: this.story.content.gallery
-				}
-			]
+			return this.story.content.gallery.length
+				? [
+						{
+							year: this.story.content.year,
+							imgs: this.story.content.gallery
+						}
+				  ]
+				: []
 		}
 	}
 }
