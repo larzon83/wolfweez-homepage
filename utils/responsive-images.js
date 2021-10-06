@@ -219,7 +219,7 @@ export const presets = {
 	[presetNames.TICKET]: {
 		aspectRatio: aspectRatios.TICKET,
 		eager: true,
-		imageFormat: imageFormats.JPEG, // TODO: use png
+		imageFormat: imageFormats.PNG,
 		rounded: true,
 		widths: generateWidths([91, 105, 115, 131]),
 		sizes: removeClutter(`
