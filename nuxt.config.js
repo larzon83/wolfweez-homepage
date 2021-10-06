@@ -155,8 +155,8 @@ export default {
 			}
 		],
 		['nuxt-canonical', { baseUrl }],
-		'@/modules/netlifyFiles'
-		// '@/modules/socialCardGenerator'
+		'@/modules/netlifyFiles',
+		'@/modules/socialCardGenerator'
 	],
 
 	// Modules (https://go.nuxtjs.dev/config-modules)
