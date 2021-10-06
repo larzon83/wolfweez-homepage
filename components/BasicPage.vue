@@ -1,5 +1,5 @@
 <template>
-	<section v-editable="content">
+	<section v-editable="content" class="right">
 		<h1
 			class="
 				d-none d-lg-flex
@@ -28,7 +28,10 @@ export default {
 
 <style lang="scss" scoped>
 .right {
-	h4 {
+	h2 {
+		padding-top: 12px;
+	}
+	h3 {
 		text-decoration: underline;
 	}
 	a {
