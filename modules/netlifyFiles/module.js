@@ -26,6 +26,61 @@ export default function () {
 				to: '/.netlify/functions/:splat',
 				status: 200,
 				force: true
+			},
+			{
+				from: '/bandcontest',
+				to: '/',
+				force: true
+			},
+			{
+				from: '/line-up',
+				to: routeMeta.LINEUP__BANDS.to,
+				force: true
+			},
+			{
+				from: '/bands',
+				to: routeMeta.LINEUP__BANDS.to,
+				force: true
+			},
+			{
+				from: '/timetable',
+				to: routeMeta.LINEUP__TIMETABLE.to,
+				force: true
+			},
+			{
+				from: '/agbs',
+				to: routeMeta.RECHTLICHES__AGB.to,
+				force: true
+			},
+			{
+				from: '/gallerie',
+				to: routeMeta.MEDIEN__FOTOGALERIE.to,
+				force: true
+			},
+			{
+				from: '/sponsoren',
+				to: routeMeta.SPONSOREN.to,
+				force: true
+			},
+			{
+				from: '/info',
+				to: routeMeta.INFOS.to,
+				force: true
+			},
+			{
+				from: '/uebers-festival',
+				to: `${routeMeta.INFOS.to}allgemein/`,
+				force: true
+			},
+			{
+				from: '/anfahrt',
+				to: `${routeMeta.INFOS.to}anreise/`,
+				force: true
+			},
+			{
+				from: '/faq',
+				to: `${routeMeta.INFOS.to}faq/`,
+				force: true
 			}
 		]
 
