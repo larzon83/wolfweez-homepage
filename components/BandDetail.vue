@@ -24,14 +24,18 @@
 			<!-- aside -->
 			<v-col cols="12" lg="5" xl="4" tag="aside">
 				<v-card color="darkish" flat>
-					<v-card-text>
+					<v-card-text v-if="playDay || playTime">
 						<h2>Running Order</h2>
 						<v-divider />
 						<div class="pb-2"><b>Tag:</b> {{ playDay || 'TBA' }}</div>
 						<div><b>Zeit:</b> {{ playTime || 'TBA' }}</div>
 					</v-card-text>
 
-					<v-card-text v-if="bandLinks.length" class="pt-4 pb-3">
+					<v-card-text
+						v-if="bandLinks.length"
+						class="pb-3"
+						:class="{ 'pt-4': playDay || playTime }"
+					>
 						<h2>Links</h2>
 						<v-divider />
 						<v-list dense color="transparent" class="py-0 mx-n2">
