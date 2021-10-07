@@ -46,6 +46,15 @@
 				</v-card-text>
 			</v-card>
 		</v-col>
+		<v-col cols="12">
+			<h2>Sonntag</h2>
+			<div class="text-subtitle-2 font-weight-regular">03.07.2022</div>
+			Traditioneller "Frühschoppen" mit den
+			<nuxt-link to="/line-up/bands/polkamusikanten-stetten/"
+				>Polkamusikanten Stetten</nuxt-link
+			>
+			ab 10 Uhr.
+		</v-col>
 	</v-row>
 </template>
 
