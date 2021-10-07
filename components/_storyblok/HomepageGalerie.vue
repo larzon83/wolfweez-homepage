@@ -9,11 +9,11 @@
 		<v-card-text>
 			<LightGalleries
 				:galleries="[latestGallery]"
-				:max-pics-to-show="6"
+				:max-pics-to-show="8"
 				:headline="`Bilder vom Festival ${latestGallery.year}`"
 				padding-top-override="pt-1"
 				padding-bottom-override="pb-5"
-				cols-lg="2"
+				cols-lg="3"
 			/>
 			<v-row align="center" justify="center" no-gutters class="mt-6">
 				<v-btn

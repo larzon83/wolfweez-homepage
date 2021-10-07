@@ -193,7 +193,7 @@ export default {
 
 <style lang="scss" scoped>
 .gallery {
-	--gutter: 12px;
+	--gutter: 10px;
 
 	@media #{map-get($display-breakpoints, 'lg-and-down')} {
 		--gutter: 8px;
