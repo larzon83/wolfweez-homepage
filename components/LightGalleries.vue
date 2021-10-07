@@ -37,17 +37,7 @@
 							class="rounded gallery-image"
 							content-class="content"
 							@click="openGallery(imgIndex, galleryIndex)"
-						>
-							<template #placeholder>
-								<v-row class="fill-height ma-0" align="center" justify="center">
-									<v-progress-circular
-										indeterminate
-										color="ahref"
-										aria-label="Fortschritt Bild Download"
-									></v-progress-circular>
-								</v-row>
-							</template>
-						</v-img>
+						/>
 					</v-col>
 				</template>
 			</v-row>
