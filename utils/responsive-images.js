@@ -2,7 +2,10 @@ export const presetNames = {
 	BAND_OVERVIEW: 'band-overview',
 	BAND_DETAIL: 'band-detail',
 	HISTORY_FLYER: 'history-flyer',
-	INFO: 'info',
+	INFO_1_OF_4: 'info-1-of-4',
+	INFO_2_OF_4: 'info-2-of-4',
+	INFO_3_OF_4: 'info-3-of-4',
+	INFO_4_OF_4: 'info-4-of-4',
 	NEWS_CARD: 'news-card',
 	NEWS_DETAIL: 'news-detail',
 	SPONSORS_MAIN: 'sponsors-main',
@@ -127,6 +130,94 @@ export const presets = {
 					283px
 					`)
 	},
+	[presetNames.INFO_1_OF_4]: {
+		bgPosition: presetOptions.BG_POSITION_TOP,
+		contain: true,
+		imageFormat: imageFormats.JPEG,
+		widths: generateWidths([
+			288, 308, 328, 343, 350, 367, 400, 467, 530, 567, 702, 944
+		]),
+		sizes: removeClutter(`
+					(max-width: 320px) 288px,
+					(max-width: 340px) 308px,
+					(max-width: 360px) 328px,
+					(max-width: 375px) 343px,
+					(max-width: 382px) 350px,
+					(max-width: 399px) 367px,
+					(max-width: 432px) 400px,
+					(max-width: 499px) 467px,
+					(max-width: 599px) 567px,
+					(max-width: 783px) 530px,
+					(max-width: 1139px) 702px,
+					944px
+					`)
+	},
+	[presetNames.INFO_2_OF_4]: {
+		bgPosition: presetOptions.BG_POSITION_TOP,
+		contain: true,
+		imageFormat: imageFormats.JPEG,
+		widths: generateWidths([
+			253, 288, 308, 328, 339, 343, 350, 367, 400, 460, 467, 567
+		]),
+		sizes: removeClutter(`
+					(max-width: 320px) 288px,
+					(max-width: 340px) 308px,
+					(max-width: 360px) 328px,
+					(max-width: 375px) 343px,
+					(max-width: 382px) 350px,
+					(max-width: 399px) 367px,
+					(max-width: 432px) 400px,
+					(max-width: 499px) 467px,
+					(max-width: 599px) 567px,
+					(max-width: 783px) 253px,
+					(max-width: 1139px) 339px,
+					460px
+					`)
+	},
+	[presetNames.INFO_3_OF_4]: {
+		bgPosition: presetOptions.BG_POSITION_TOP,
+		contain: true,
+		imageFormat: imageFormats.JPEG,
+		widths: generateWidths([
+			161, 218, 288, 299, 308, 328, 343, 350, 367, 400, 467, 567
+		]),
+		sizes: removeClutter(`
+					(max-width: 320px) 288px,
+					(max-width: 340px) 308px,
+					(max-width: 360px) 328px,
+					(max-width: 375px) 343px,
+					(max-width: 382px) 350px,
+					(max-width: 399px) 367px,
+					(max-width: 432px) 400px,
+					(max-width: 499px) 467px,
+					(max-width: 599px) 567px,
+					(max-width: 783px) 161px,
+					(max-width: 1139px) 218px,
+					299px
+					`)
+	},
+	[presetNames.INFO_4_OF_4]: {
+		bgPosition: presetOptions.BG_POSITION_TOP,
+		contain: true,
+		imageFormat: imageFormats.JPEG,
+		widths: generateWidths([
+			115, 158, 218, 288, 308, 328, 343, 350, 367, 400, 467, 567
+		]),
+		sizes: removeClutter(`
+					(max-width: 320px) 288px,
+					(max-width: 340px) 308px,
+					(max-width: 360px) 328px,
+					(max-width: 375px) 343px,
+					(max-width: 382px) 350px,
+					(max-width: 399px) 367px,
+					(max-width: 432px) 400px,
+					(max-width: 499px) 467px,
+					(max-width: 599px) 567px,
+					(max-width: 783px) 115px,
+					(max-width: 1139px) 158px,
+					218px
+					`)
+	},
 	[presetNames.NEWS_CARD]: {
 		aspectRatio: aspectRatios.NEWS_CARD,
 		eager: true,
@@ -195,18 +286,6 @@ export const presets = {
 		aspectRatio: 1,
 		contain: true,
 		disableLazySrc: true,
-		widths: generateWidths([123, 166, 226, 250, 300]),
-		sizes: removeClutter(`
-					(max-width: 322px) 250px,
-					(max-width: 599px) 300px,
-					(max-width: 783px) 123px,
-					(max-width: 1139px) 166px,
-					226px
-					`)
-	},
-	[presetNames.INFO]: {
-		bgPosition: presetOptions.BG_POSITION_TOP,
-		contain: true,
 		widths: generateWidths([123, 166, 226, 250, 300]),
 		sizes: removeClutter(`
 					(max-width: 322px) 250px,
