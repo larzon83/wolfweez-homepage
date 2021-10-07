@@ -79,7 +79,7 @@
 		"nuxt-canonical": "1.0.6",
 		"nuxt-purgecss": "1.0.0",
 		"prettier": "2.4.1",
-		"pwa-asset-generator": "4.3.9",
+		"pwa-asset-generator": "5.0.0",
 		"sass": "1.32.13",
 		"storyblok-migrate": "0.3.4",
 		"trianglify": "4.1.1",
