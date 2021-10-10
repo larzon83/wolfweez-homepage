@@ -6,7 +6,6 @@
 			app
 			right
 			disable-resize-watcher
-			disable-route-watcher
 			temporary
 			width="100vw"
 			height="auto"
@@ -26,7 +25,7 @@
 					:key="i"
 					:ripple="false"
 					:to="navItem.to"
-					exact-path
+					:exact-path="$route.name === 'index'"
 					nuxt
 				>
 					<v-list-item-content class="text-center">
