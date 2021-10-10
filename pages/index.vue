@@ -93,7 +93,7 @@
 			<v-card color="darkish" flat>
 				<div class="countdown-wrapper">
 					<client-only>
-						<div>
+						<div class="countdown-inner">
 							<flip-countdown
 								deadline="2022-07-01 20:00:00"
 								:labels="timerLabels"
@@ -363,6 +363,12 @@ export default {
 <style lang="scss" scoped>
 .countdown-wrapper {
 	min-height: 103px;
+
+	// prevent flickering of icons in buttons down the page
+	.countdown-inner {
+		overflow: hidden;
+		transform-style: preserve-3d;
+	}
 
 	@media (min-width: 360px) {
 		min-height: 110px;
