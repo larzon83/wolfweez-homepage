@@ -5,6 +5,8 @@
 			fixed
 			app
 			right
+			disable-resize-watcher
+			disable-route-watcher
 			temporary
 			width="100vw"
 			height="auto"
@@ -22,9 +24,10 @@
 				<v-list-item
 					v-for="(navItem, i) in mainNavItems"
 					:key="i"
-					:to="navItem.to"
-					nuxt
 					:ripple="false"
+					:to="navItem.to"
+					exact-path
+					nuxt
 				>
 					<v-list-item-content class="text-center">
 						<v-list-item-title v-text="navItem.title" />
