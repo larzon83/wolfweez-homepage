@@ -116,7 +116,6 @@ export default {
 	plugins: [
 		'~/plugins/composition-api.js',
 		'~/plugins/rich-text-renderer.js',
-		{ src: '~/plugins/pwa-update.js', mode: 'client' },
 		{ src: '~/plugins/lightgallery.js', mode: 'client' },
 		{ src: '~/plugins/smoothscroll.js', mode: 'client' },
 		{ src: '~~/node_modules/vue-rellax/lib/nuxt-plugin', mode: 'client' }
@@ -198,7 +197,7 @@ export default {
 		workbox: {
 			// enabled: true,
 			clientsClaim: false,
-			skipWaiting: false,
+			// skipWaiting: false,
 			runtimeCaching: [
 				{
 					urlPattern: 'https://img2.storyblok.com/.*',

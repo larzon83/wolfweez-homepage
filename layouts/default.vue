@@ -46,7 +46,6 @@ export default {
 		const workbox = await window.$workbox
 
 		if (workbox) {
-			// FIXME: remove console.logs
 			console.log('workbox in window')
 			workbox.addEventListener('installed', event => {
 				console.log('sw: installed')
@@ -55,8 +54,6 @@ export default {
 					this.updateBannerVisible = true
 					window.location.replace('/news/')
 					// window.location.reload()
-				} else {
-					console.log('fooooooooo')
 				}
 			})
 
