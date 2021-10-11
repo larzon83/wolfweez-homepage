@@ -29,7 +29,7 @@ package = "@netlify/plugin-sitemap"
     '**/line-up/index.html',
     '**/infos/index.html',
     '**/infos/testing/index.html',
-    '**/newsletter/index.html', # TODO: remove when go live
+    '**/newsletter/index.html',
     '**/rechtliches/index.html',
     '**/tickets/status/index.html',
     '**/**/200.html',
