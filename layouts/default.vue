@@ -53,8 +53,16 @@ export default {
 				if (event.isUpdate) {
 					console.log('sw: update available')
 					this.updateBannerVisible = true
+					window.location.replace('/news/')
 					// window.location.reload()
+				} else {
+					console.log('fooooooooo')
 				}
+			})
+
+			workbox.addEventListener('waiting', event => {
+				console.log('waiting event: ', event)
+				window.location.replace('/kontakt/')
 			})
 		}
 	},
