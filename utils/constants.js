@@ -1,5 +1,9 @@
 // env.URL is main url of netlify site
-export const baseUrl = process.env.URL || 'http://localhost:3000'
+let netlifyUrl = process.env.URL
+if (netlifyUrl) {
+	netlifyUrl = netlifyUrl.replace('http://', 'https://')
+}
+export const baseUrl = netlifyUrl || 'http://localhost:3000'
 
 export const siteTitle = {
 	short: 'Wolfweez Openair Festival',
