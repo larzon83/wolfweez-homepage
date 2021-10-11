@@ -56,11 +56,6 @@ export default {
 					// window.location.reload()
 				}
 			})
-
-			// workbox.addEventListener('waiting', event => {
-			// 	console.log('waiting event: ', event)
-			// 	window.location.replace('/kontakt/')
-			// })
 		}
 	},
 
