@@ -42,22 +42,22 @@ export default {
 		}
 	},
 
-	async mounted() {
-		const workbox = await window.$workbox
+	// async mounted() {
+	// 	const workbox = await window.$workbox
 
-		if (workbox) {
-			console.log('workbox in window')
-			workbox.addEventListener('installed', event => {
-				console.log('sw: installed')
-				if (event.isUpdate) {
-					console.log('sw: update available')
-					this.updateBannerVisible = true
-					window.location.replace('/news/')
-					// window.location.reload()
-				}
-			})
-		}
-	},
+	// 	if (workbox) {
+	// 		console.log('workbox in window')
+	// 		workbox.addEventListener('installed', event => {
+	// 			console.log('sw: installed')
+	// 			if (event.isUpdate) {
+	// 				console.log('sw: update available')
+	// 				this.updateBannerVisible = true
+	// 				// window.location.replace('/news/')
+	// 				// window.location.reload()
+	// 			}
+	// 		})
+	// 	}
+	// },
 
 	methods: {
 		onIntersect(entries, observer) {
