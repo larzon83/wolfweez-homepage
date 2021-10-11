@@ -57,10 +57,10 @@ export default {
 				}
 			})
 
-			workbox.addEventListener('waiting', event => {
-				console.log('waiting event: ', event)
-				window.location.replace('/kontakt/')
-			})
+			// workbox.addEventListener('waiting', event => {
+			// 	console.log('waiting event: ', event)
+			// 	window.location.replace('/kontakt/')
+			// })
 		}
 	},
 

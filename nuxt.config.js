@@ -196,7 +196,7 @@ export default {
 
 		workbox: {
 			// enabled: true,
-			clientsClaim: false,
+			// clientsClaim: false,
 			// skipWaiting: false,
 			runtimeCaching: [
 				{
