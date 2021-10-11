@@ -196,7 +196,7 @@ export default {
 
 		workbox: {
 			// enabled: true,
-			skipWaiting: false,
+			// skipWaiting: false,
 			runtimeCaching: [
 				{
 					urlPattern: 'https://img2.storyblok.com/.*',

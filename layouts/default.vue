@@ -53,6 +53,7 @@ export default {
 				if (event.isUpdate) {
 					console.log('sw: update available')
 					this.updateBannerVisible = true
+					// window.location.reload()
 				}
 			})
 		}
