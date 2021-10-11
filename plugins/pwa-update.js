@@ -6,6 +6,8 @@ export default async context => {
 		return
 	}
 
+	console.log('plugin: workbox in window')
+
 	workbox.addEventListener('installed', event => {
 		console.log('sw-plugin: installed')
 		if (!event.isUpdate) {

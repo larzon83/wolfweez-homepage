@@ -102,7 +102,7 @@
 						</div>
 					</client-only>
 				</div>
-				<div>helllooooooo 7</div>
+				<div>helllooooooo 8</div>
 				<v-card-title>
 					Welcome to the Vuetify + Nuxt.js template!
 				</v-card-title>
