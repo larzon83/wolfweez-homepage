@@ -90,6 +90,48 @@
 		</v-col>
 
 		<v-col cols="12" class="mt-12">
+			<v-row>
+				<v-col
+					>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
+					eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+					minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+					aliquip ex ea commodo consequat. Duis aute irure dolor in
+					reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+					pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+					culpa qui officia deserunt mollit anim id est laborum.</v-col
+				>
+				<v-col cols="auto">
+					<v-card flat class="ticket-box">
+						<v-card-text class="prime ticket-box-inner pb-6">
+							<v-img
+								alt="Ticket"
+								class="mx-10"
+								:aspect-ratio="166 / 95"
+								:src="require('~/assets/img/ticket.svg')"
+							/>
+						</v-card-text>
+						<v-card-text class="pt-3">
+							<v-btn
+								:ripple="false"
+								to="/tickets/"
+								nuxt
+								block
+								color="prime"
+								depressed
+								large
+								min-width="190"
+								role="link"
+								class="font-weight-bold"
+							>
+								Tickets<v-icon size="15" class="ml-2">$arrowRight</v-icon>
+							</v-btn>
+						</v-card-text>
+					</v-card>
+				</v-col>
+			</v-row>
+		</v-col>
+
+		<v-col cols="12" class="mt-12">
 			<v-card color="darkish" flat>
 				<div class="countdown-wrapper">
 					<client-only>
@@ -518,5 +560,30 @@ export default {
 	.dot.current > div {
 		background: getcolor('prime');
 	}
+}
+
+.ticket-box {
+	width: 250px;
+	background-color: #391918;
+
+	// box-shadow: rgba(224, 94, 94, 0.4) -5px 5px, rgba(224, 94, 94, 0.3) -10px 10px,
+	// 	rgba(224, 94, 94, 0.2) -15px 15px, rgba(224, 94, 94, 0.1) -20px 20px,
+	// 	rgba(224, 94, 94, 0.05) -25px 25px !important;
+	// box-shadow: rgba(224, 94, 94, 0.4) 5px 5px, rgba(224, 94, 94, 0.3) 10px 10px,
+	// 	rgba(224, 94, 94, 0.2) 15px 15px, rgba(224, 94, 94, 0.1) 20px 20px,
+	// 	rgba(224, 94, 94, 0.05) 25px 25px !important;
+
+	// box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px !important;
+	// box-shadow: rgba(0, 0, 0, 0.55) 0px 20px 30px -10px !important;
+	// box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px !important; // mac 82
+	box-shadow: rgba(0, 0, 0, 0.4) 0px 30px 90px !important; // lonely planet 81
+}
+
+.ticket-box-inner {
+	background-image: url(~assets/img/trees.svg);
+	background-size: auto 60px;
+	background-position-y: 100%;
+	background-position-x: 2%;
+	background-blend-mode: hard-light;
 }
 </style>
