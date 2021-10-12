@@ -69,9 +69,16 @@
 								>
 									<v-col>
 										<h3 class="font-weight-medium">{{ ticket.name }}</h3>
-										<div class="price ahref--text font-weight-black mt-1">
+										<v-chip
+											:ripple="false"
+											class="mt-1 mt-md-2 font-weight-bold"
+											color="ahref"
+											label
+											outlined
+											tag="div"
+										>
 											{{ ticket.price.formatted }}
-										</div>
+										</v-chip>
 									</v-col>
 									<v-col
 										cols="auto"
@@ -80,6 +87,7 @@
 											align-center
 											justify-start
 											align-self-start align-self-md-center
+											pt-1 pt-md-3
 										"
 									>
 										<v-btn
@@ -131,7 +139,7 @@
 									justify="start"
 									class="d-none d-md-flex flex-column flex-md-row"
 								>
-									<v-col cols="12" class="desc">
+									<v-col cols="12" class="desc pt-2">
 										<rich-text-renderer
 											v-if="ticket.textSb"
 											:document="ticket.textSb"
@@ -475,8 +483,9 @@ export default {
 	}
 }
 
-.price {
-	font-size: $size20;
+.v-chip:hover:before,
+.v-chip:before {
+	opacity: 0.06;
 }
 
 .desc {
