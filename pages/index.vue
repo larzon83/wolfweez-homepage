@@ -121,7 +121,6 @@
 								large
 								min-width="190"
 								role="link"
-								class="font-weight-bold"
 							>
 								Tickets<v-icon size="15" class="ml-2">$arrowRight</v-icon>
 							</v-btn>
@@ -490,7 +489,7 @@ export default {
 
 .ticket-box {
 	width: 250px;
-	background-color: #391918;
+	background-color: #391918 !important;
 
 	// box-shadow: rgba(224, 94, 94, 0.4) -5px 5px, rgba(224, 94, 94, 0.3) -10px 10px,
 	// 	rgba(224, 94, 94, 0.2) -15px 15px, rgba(224, 94, 94, 0.1) -20px 20px,
