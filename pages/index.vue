@@ -133,17 +133,6 @@
 
 		<v-col cols="12" class="mt-12">
 			<v-card color="darkish" flat>
-				<div class="countdown-wrapper">
-					<client-only>
-						<div class="countdown-inner">
-							<flip-countdown
-								deadline="2022-07-01 20:00:00"
-								:labels="timerLabels"
-								class="px-2"
-							></flip-countdown>
-						</div>
-					</client-only>
-				</div>
 				<v-card-title>
 					Welcome to the Vuetify + Nuxt.js template!
 				</v-card-title>
@@ -276,7 +265,6 @@
 
 <script>
 import { mapState } from 'vuex'
-import FlipCountdown from 'vue2-flip-countdown'
 import VueHorizontal from 'vue-horizontal'
 import useStorybridge from 'storybridgeMixin/useStorybridge.js'
 import savePagetitleToVuex from '~/mixins/savePagetitleToVuex.js'
@@ -288,7 +276,6 @@ import { createSEOMeta } from '~/utils/seo'
 export default {
 	name: 'Index',
 	components: {
-		FlipCountdown,
 		VueHorizontal
 	},
 	mixins: [savePagetitleToVuex, useFormatting, useStorybridge],
@@ -326,13 +313,7 @@ export default {
 			pageTitle: routeMeta.HOME.title,
 			width: 0,
 			index: 0,
-			pages: 0,
-			timerLabels: {
-				days: 'Tage',
-				hours: 'Stunden',
-				minutes: 'Min.',
-				seconds: 'Sek.'
-			}
+			pages: 0
 		}
 	},
 
@@ -403,61 +384,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.countdown-wrapper {
-	min-height: 103px;
-
-	// prevent flickering of icons in buttons down the page
-	.countdown-inner {
-		overflow: hidden;
-		transform-style: preserve-3d;
-	}
-
-	@media (min-width: 360px) {
-		min-height: 110px;
-	}
-	@media (min-width: 460px) {
-		min-height: 117px;
-	}
-	@media (min-width: 1000px) {
-		min-height: 140px;
-	}
-}
-
-.flip-clock ::v-deep {
-	.flip-card {
-		@media (max-width: 459px) {
-			font-size: 1.9rem !important;
-		}
-		@media (max-width: 359px) {
-			font-size: 1.6rem !important;
-		}
-	}
-
-	.flip-card__top,
-	.flip-card__bottom,
-	.flip-card__back-bottom,
-	.flip-card__back::before,
-	.flip-card__back::after {
-		border-radius: 3px;
-		width: 2.45em;
-	}
-	.flip-card__top {
-		background: getcolor('prime');
-		color: getcolor('bright');
-	}
-	.flip-card__bottom,
-	.flip-card__back-bottom {
-		background: getcolor('prime');
-		color: getcolor('bright');
-		border-top-color: rgba(0, 0, 0, 0.15);
-	}
-	.flip-card__back::before,
-	.flip-card__back::after {
-		background: #cc5555;
-		color: #d1d1d4;
-	}
-}
-
 .slider-item {
 	--band-name-height: 34px;
 	border-top-left-radius: 7px;
