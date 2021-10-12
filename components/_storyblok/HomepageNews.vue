@@ -1,7 +1,7 @@
 <template>
 	<div v-if="newsSorted" v-editable="pageBlok" class="mt-16">
 		<h2 v-if="pageBlok.headline">{{ pageBlok.headline }}</h2>
-		<v-row class="mt-2">
+		<v-row class="mt-0">
 			<v-col
 				v-for="news in newsSorted"
 				:key="news.content._uid"
