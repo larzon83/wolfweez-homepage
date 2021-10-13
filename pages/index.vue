@@ -90,37 +90,68 @@
 		</v-col>
 
 		<v-col cols="12" class="mt-12">
-			<v-row>
-				<v-col
-					>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-					eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-					minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-					aliquip ex ea commodo consequat. Duis aute irure dolor in
-					reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-					pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-					culpa qui officia deserunt mollit anim id est laborum.</v-col
-				>
-				<v-col cols="auto">
+			<v-row class="flex-column-reverse flex-lg-row">
+				<v-col>
+					<v-card color="darkish" flat>
+						<v-card-text>
+							<h1 class="h1 font-weight-medium">{{ siteTitle.short }}</h1>
+							<h2 class="text-h4 text-lg-h3 font-weight-bold mt-1 pb-4">
+								Line-Up {{ currentFestival.content.year }}
+							</h2>
+
+							<v-divider class="pb-10" />
+
+							<SbImage
+								v-if="
+									currentFestival.content.image_all_bands &&
+									currentFestival.content.image_all_bands.filename
+								"
+								alt="Alle Bands"
+								:pic="currentFestival.content.image_all_bands"
+								:preset="$config.presetNames.HOME_ALL_BANDS"
+							/>
+
+							<v-divider class="mt-12 pb-5" />
+
+							<v-row align="center" justify="center" no-gutters>
+								<v-btn
+									:ripple="false"
+									min-width="190"
+									color="ahref"
+									large
+									outlined
+									role="link"
+									class="btn-more"
+									:to="lineupRoute"
+								>
+									Alle Bands<v-icon right size="15" color="prime"
+										>$arrowRight</v-icon
+									>
+								</v-btn>
+							</v-row>
+						</v-card-text>
+					</v-card>
+				</v-col>
+				<v-col cols="12" lg="auto">
 					<v-card flat class="ticket-box">
 						<v-card-text class="prime ticket-box-inner pb-6">
 							<v-img
 								alt="Ticket"
-								class="mx-10"
 								:aspect-ratio="166 / 95"
 								:src="require('~/assets/img/ticket.svg')"
+								contain
+								height="75"
 							/>
 						</v-card-text>
 						<v-card-text class="pt-3">
 							<v-btn
 								:ripple="false"
-								to="/tickets/"
+								:to="ticketsRoute"
 								nuxt
 								block
 								color="prime"
 								depressed
 								large
-								min-width="190"
-								role="link"
 							>
 								Tickets<v-icon size="15" class="ml-2">$arrowRight</v-icon>
 							</v-btn>
@@ -128,106 +159,6 @@
 					</v-card>
 				</v-col>
 			</v-row>
-		</v-col>
-
-		<v-col cols="12" class="mt-12">
-			<v-card color="darkish" flat>
-				<v-card-title>
-					Welcome to the Vuetify + Nuxt.js template!
-				</v-card-title>
-				<v-card-text>
-					<p>YEAR: {{ currentFestival.content.year }}</p>
-					<p>DATE: {{ currentFestival.content.date }}</p>
-					<p>FLYER: {{ currentFestival.content.flyer.filename }}</p>
-					<p>DESC: {{ currentFestival.content.description_meta }}</p>
-					<p>
-						Vuetify is a progressive Material Design component framework for
-						Vue.js. It was designed to empower developers to create amazing
-						applications.
-					</p>
-					<p>
-						For more information on Vuetify, check out the
-						<a
-							href="https://vuetifyjs.com"
-							target="_blank"
-							rel="noopener noreferrer"
-							>documentation</a
-						>.
-					</p>
-					<p>
-						If you have questions, please join the official
-						<a
-							href="https://chat.vuetifyjs.com/"
-							target="_blank"
-							rel="noopener noreferrer"
-							title="chat"
-						>
-							discord</a
-						>.
-					</p>
-					<p>
-						Find a bug? Report it on the github
-						<a
-							href="https://github.com/vuetifyjs/vuetify/issues"
-							target="_blank"
-							rel="noopener noreferrer"
-							title="contribute"
-						>
-							issue board</a
-						>.
-					</p>
-					<p>
-						Thank you for developing with Vuetify and I look forward to bringing
-						more exciting features in the future.
-					</p>
-					<div class="text-xs-right">
-						<em><small>&mdash; John Leider</small></em>
-					</div>
-					<p>
-						Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-						eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-						ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-						aliquip ex ea commodo consequat. Duis aute irure dolor in
-						reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-						pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-						culpa qui officia deserunt mollit anim id est laborum.
-					</p>
-					<p>
-						Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-						eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-						ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-						aliquip ex ea commodo consequat. Duis aute irure dolor in
-						reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-						pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-						culpa qui officia deserunt mollit anim id est laborum.
-					</p>
-					<p>
-						Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-						eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-						ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-						aliquip ex ea commodo consequat. Duis aute irure dolor in
-						reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-						pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-						culpa qui officia deserunt mollit anim id est laborum.
-					</p>
-					<hr class="my-3" />
-					<a
-						href="https://nuxtjs.org/"
-						target="_blank"
-						rel="noopener noreferrer"
-					>
-						Nuxt Documentation
-					</a>
-					<br />
-					<a
-						href="https://github.com/nuxt/nuxt.js"
-						target="_blank"
-						rel="noopener noreferrer"
-					>
-						Nuxt GitHub
-					</a>
-				</v-card-text>
-			</v-card>
 		</v-col>
 
 		<!-- <component
@@ -269,7 +200,7 @@ import useStorybridge from 'storybridgeMixin/useStorybridge.js'
 import savePagetitleToVuex from '~/mixins/savePagetitleToVuex.js'
 import useFormatting from '~/mixins/useFormatting.js'
 import { getNewsSorted, sbData } from '~/utils'
-import { routeMeta, sbHomeBloks } from '~/utils/constants'
+import { routeMeta, sbHomeBloks, siteTitle } from '~/utils/constants'
 import { createSEOMeta } from '~/utils/seo'
 
 export default {
@@ -364,6 +295,12 @@ export default {
 		...mapState(['currentFestival'])
 	},
 
+	created() {
+		this.siteTitle = siteTitle
+		this.ticketsRoute = routeMeta.TICKETS.to
+		this.lineupRoute = routeMeta.LINEUP__BANDS.to
+	},
+
 	methods: {
 		onScrollDebounce({ scrollWidth, width, left }) {
 			this.width = width
@@ -383,6 +320,23 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.h1 {
+	color: getcolor('bright', 0.55);
+	font-size: $size17;
+}
+
+.btn-more {
+	background-color: getcolor('prime', 0.12);
+	border-width: 3px;
+
+	@media (max-width: 399px) {
+		display: flex;
+		flex: 1 0 auto;
+		min-width: 100% !important;
+		max-width: auto;
+	}
+}
+
 .slider-item {
 	--band-name-height: 34px;
 	border-top-left-radius: 7px;
@@ -488,20 +442,12 @@ export default {
 }
 
 .ticket-box {
-	width: 250px;
 	background-color: #391918 !important;
+	box-shadow: rgba(0, 0, 0, 0.4) 0px 30px 90px !important;
 
-	// box-shadow: rgba(224, 94, 94, 0.4) -5px 5px, rgba(224, 94, 94, 0.3) -10px 10px,
-	// 	rgba(224, 94, 94, 0.2) -15px 15px, rgba(224, 94, 94, 0.1) -20px 20px,
-	// 	rgba(224, 94, 94, 0.05) -25px 25px !important;
-	// box-shadow: rgba(224, 94, 94, 0.4) 5px 5px, rgba(224, 94, 94, 0.3) 10px 10px,
-	// 	rgba(224, 94, 94, 0.2) 15px 15px, rgba(224, 94, 94, 0.1) 20px 20px,
-	// 	rgba(224, 94, 94, 0.05) 25px 25px !important;
-
-	// box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px !important;
-	// box-shadow: rgba(0, 0, 0, 0.55) 0px 20px 30px -10px !important;
-	// box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px !important; // mac 82
-	box-shadow: rgba(0, 0, 0, 0.4) 0px 30px 90px !important; // lonely planet 81
+	@media #{map-get($display-breakpoints, 'lg-and-up')} {
+		width: 250px;
+	}
 }
 
 .ticket-box-inner {
