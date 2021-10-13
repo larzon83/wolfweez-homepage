@@ -73,6 +73,11 @@ export default {
 				content: 'yes'
 			},
 			{
+				hid: 'google-site-verification',
+				name: 'google-site-verification',
+				content: process.env.GOOGLE_SITE_VERIFICATION || ''
+			},
+			{
 				hid: 'og:site_name',
 				property: 'og:site_name',
 				content: siteTitle.short
