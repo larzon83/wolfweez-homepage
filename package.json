@@ -8,7 +8,7 @@
 		"build": "nuxt build",
 		"local:build:preview": "env-cmd -e base,target_preview,spa nuxt build",
 		"local:build:prod": "env-cmd -e base,target_prod,spa nuxt build",
-		"generate": "nuxt generate",
+		"generate": "nuxt generate --modern",
 		"local:generate:preview": "env-cmd -e base,target_preview nuxt generate",
 		"local:generate:prod": "env-cmd -e base,target_prod nuxt generate",
 		"start": "nuxt start",
