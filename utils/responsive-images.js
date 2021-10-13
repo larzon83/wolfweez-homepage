@@ -1,6 +1,7 @@
 export const presetNames = {
 	BAND_OVERVIEW: 'band-overview',
 	BAND_DETAIL: 'band-detail',
+	HOME_ALL_BANDS: 'home-all-bands',
 	HISTORY_FLYER: 'history-flyer',
 	INFO_1_OF_4: 'info-1-of-4',
 	INFO_2_OF_4: 'info-2-of-4',
@@ -112,6 +113,27 @@ export const presets = {
 					(max-width: 783px) 530px,
 					(max-width: 1139px) 400px,
 					622px
+					`)
+	},
+	[presetNames.HOME_ALL_BANDS]: {
+		imageFormat: imageFormats.JPEG,
+		lazySrcMultiplier: 52,
+		widths: generateWidths([
+			248, 268, 288, 303, 310, 327, 360, 388, 427, 490, 527, 630
+		]),
+		sizes: removeClutter(`
+					(max-width: 320px) 248px,
+					(max-width: 340px) 268px,
+					(max-width: 360px) 288px,
+					(max-width: 375px) 303px,
+					(max-width: 382px) 310px,
+					(max-width: 399px) 327px,
+					(max-width: 432px) 360px,
+					(max-width: 499px) 427px,
+					(max-width: 599px) 527px,
+					(max-width: 783px) 490px,
+					(max-width: 1139px) 388px,
+					630px
 					`)
 	},
 	[presetNames.HISTORY_FLYER]: {
