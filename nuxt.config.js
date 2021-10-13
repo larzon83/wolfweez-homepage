@@ -263,7 +263,7 @@ export default {
 	},
 
 	purgeCSS: {
-		enabled: true,
+		// enabled: true,
 		paths: [
 			// 'node_modules/@nuxtjs/vuetify/**/*.ts',
 			// 'node_modules/@nuxt/vue-app/template/**/*.html',
