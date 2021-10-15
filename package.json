@@ -44,7 +44,7 @@
 		"nuxt-client-init-module": "0.3.0",
 		"smoothscroll-polyfill": "0.4.4",
 		"storyblok-nuxt": "2.0.1",
-		"stripe": "8.182.0",
+		"stripe": "8.183.0",
 		"vue-horizontal": "0.8.11",
 		"vue-rellax": "0.2.0",
 		"vue2-flip-countdown": "0.11.2"
