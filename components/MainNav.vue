@@ -144,6 +144,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+/*! purgecss start ignore */
 .navbar {
 	height: 54px;
 	border-bottom: 2px solid getcolor('bright', 0.06);
@@ -169,6 +170,7 @@ export default {
 		}
 	}
 }
+/*! purgecss end ignore */
 
 .nav-btn {
 	font-size: $size20;
