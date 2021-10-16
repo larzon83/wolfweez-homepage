@@ -47,13 +47,7 @@ const handler = async event => {
 			allow_promotion_codes: true,
 			success_url: `${SITE_URL}/tickets/status/?status=success&session_id={CHECKOUT_SESSION_ID}`,
 			cancel_url: `${SITE_URL}/tickets/`,
-			payment_method_types: [
-				'card',
-				'ideal',
-				'giropay',
-				'sofort',
-				'sepa_debit'
-			],
+			payment_method_types: ['card', 'giropay', 'sofort', 'sepa_debit'],
 			billing_address_collection: 'required',
 			shipping_rates: shippingRate,
 			shipping_address_collection: {
