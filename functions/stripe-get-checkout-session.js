@@ -7,21 +7,11 @@ const stripe = require('stripe')(
 const handler = async event => {
 	const sessionId = event.queryStringParameters.sessionId || ''
 	let session
-	let charges
 
 	try {
-		const sessionPromise = stripe.checkout.sessions.retrieve(sessionId, {
-			expand: ['line_items']
+		session = await stripe.checkout.sessions.retrieve(sessionId, {
+			expand: ['line_items', 'payment_intent.charges']
 		})
-		const chargesPromise = stripe.charges.list({ limit: 100 })
-
-		const [sessionResult, chargesResult] = await Promise.all([
-			sessionPromise,
-			chargesPromise
-		])
-
-		session = sessionResult
-		charges = chargesResult
 	} catch (error) {
 		console.error('❌  get-checkout-session:', error)
 		return { statusCode: error.statusCode, body: JSON.stringify(error) }
@@ -29,14 +19,12 @@ const handler = async event => {
 
 	session.line_items = session.line_items.data.map(item => item)
 
-	const charge = charges.data.find(
-		c => c.payment_intent === session.payment_intent
+	const charge = session.payment_intent.charges.data.find(
+		c => c.payment_intent === session.payment_intent.id
 	)
 
 	console.info('ℹ️  session:', session)
 	console.info('ℹ️  charge:', charge)
-
-	// const customer = await stripe.customers.retrieve(session.customer)
 
 	return {
 		statusCode: 200,
