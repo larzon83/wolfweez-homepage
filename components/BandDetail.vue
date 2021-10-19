@@ -59,6 +59,19 @@
 						</v-list>
 					</v-card-text>
 				</v-card>
+
+				<div v-if="band.spotify" class="spotify-wrapper mt-6">
+					<client-only>
+						<v-lazy v-model="spotifyVisible">
+							<iframe
+								:src="`https://open.spotify.com/embed/artist/${band.spotify}`"
+								frameBorder="0"
+								allowfullscreen=""
+								allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+							></iframe>
+						</v-lazy>
+					</client-only>
+				</div>
 			</v-col>
 		</v-row>
 	</div>
@@ -83,6 +96,12 @@ export default {
 		playTime: {
 			type: String,
 			default: ''
+		}
+	},
+
+	data() {
+		return {
+			spotifyVisible: false
 		}
 	},
 
@@ -151,6 +170,19 @@ export default {
 
 	&::before {
 		border-radius: $border-radius-root;
+	}
+}
+
+.spotify-wrapper {
+	--wrapper-height: 396px;
+
+	height: var(--wrapper-height);
+	border-radius: $border-radius-root;
+	overflow: hidden;
+
+	iframe {
+		width: 100%;
+		height: var(--wrapper-height);
 	}
 }
 </style>
