@@ -175,14 +175,12 @@ export default {
 
 .spotify-wrapper {
 	--wrapper-height: 396px;
-
 	height: var(--wrapper-height);
-	border-radius: $border-radius-root;
-	overflow: hidden;
 
 	iframe {
 		width: 100%;
 		height: var(--wrapper-height);
+		border-radius: $border-radius-root;
 	}
 }
 </style>
