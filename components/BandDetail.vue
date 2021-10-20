@@ -13,7 +13,25 @@
 					:preset="$config.presetNames.BAND_DETAIL"
 					:position="$_shiftImagePositionY(band.image_offset)"
 				/>
-				<div :class="{ 'mt-6': band.image && band.image.filename }">
+				<v-responsive
+					v-if="band.youtube_embed"
+					:aspect-ratio="16 / 9"
+					:class="{ 'mt-6': band.image && band.image.filename }"
+				>
+					<v-lazy v-model="youtubeVisible">
+						<LazyYoutubeVideo
+							:src="`https://www.youtube.com/embed/${band.youtube_embed}`"
+							:alt="`${band.name} Video thumbnail`"
+							:webp="!band.youtube_embed_only_jpg"
+							button-label="Video abspielen"
+						/>
+					</v-lazy>
+				</v-responsive>
+				<div
+					:class="{
+						'mt-6': (band.image && band.image.filename) || band.youtube_embed
+					}"
+				>
 					<rich-text-renderer
 						v-if="band.description"
 						:document="band.description"
@@ -78,10 +96,15 @@
 </template>
 
 <script>
+import 'vue-lazy-youtube-video/dist/style.min.css'
+import LazyYoutubeVideo from 'vue-lazy-youtube-video'
 import useFormatting from '~/mixins/useFormatting.js'
 
 export default {
 	name: 'BandDetail',
+	components: {
+		LazyYoutubeVideo
+	},
 	mixins: [useFormatting],
 
 	props: {
@@ -101,7 +124,8 @@ export default {
 
 	data() {
 		return {
-			spotifyVisible: false
+			spotifyVisible: false,
+			youtubeVisible: false
 		}
 	},
 
@@ -169,6 +193,13 @@ export default {
 	color: getcolor('bright', 0.85) !important;
 
 	&::before {
+		border-radius: $border-radius-root;
+	}
+}
+
+.y-video {
+	--y-video-background-color: transparent;
+	::v-deep .y-video__inner .y-video__media {
 		border-radius: $border-radius-root;
 	}
 }
