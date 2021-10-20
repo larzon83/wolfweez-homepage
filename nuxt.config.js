@@ -273,7 +273,8 @@ export default {
 			// 'node_modules/@nuxtjs/vuetify/**/*.ts',
 			// 'node_modules/@nuxt/vue-app/template/**/*.html',
 			// 'node_modules/@nuxt/vue-app/template/**/*.vue',
-			'node_modules/vuetify/src/**/*.ts'
+			'node_modules/vuetify/src/**/*.ts',
+			'node_modules/vue-lazy-youtube-video/dist/**/*.js'
 		],
 		whitelist: [
 			'v-application',
