@@ -21,15 +21,12 @@ export default {
 			return formatPrice(price)
 		},
 
-		$_transformImage(image, width, format) {
+		$_transformImage(image, dimensions, format) {
 			if (!image) return ''
-			if (!width) return ''
+			if (!dimensions) return ''
 
 			const imgFormat = format ? `/filters:format(${format})` : ''
-
-			const imageService = 'https://img2.storyblok.com/'
-			const path = image.replace('https://a.storyblok.com', '')
-			return imageService + width + imgFormat + path
+			return image + '/m/' + dimensions + imgFormat
 		},
 
 		$_aspectRatio(image) {

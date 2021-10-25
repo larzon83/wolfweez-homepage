@@ -71,7 +71,7 @@ export const presets = {
 	[presetNames.BAND_OVERVIEW]: {
 		aspectRatio: aspectRatios.BAND,
 		eager: true,
-		imageFormat: imageFormats.JPEG,
+		// imageFormat: imageFormats.JPEG,
 		lazySrcMultiplier: 52,
 		widths: generateWidths([
 			253, 288, 300, 308, 328, 339, 343, 350, 367, 400, 467, 567
@@ -94,7 +94,7 @@ export const presets = {
 	[presetNames.BAND_DETAIL]: {
 		aspectRatio: aspectRatios.BAND,
 		eager: true,
-		imageFormat: imageFormats.JPEG,
+		// imageFormat: imageFormats.JPEG,
 		lazySrcMultiplier: 52,
 		rounded: true,
 		widths: generateWidths([
@@ -116,7 +116,7 @@ export const presets = {
 					`)
 	},
 	[presetNames.HOME_ALL_BANDS]: {
-		imageFormat: imageFormats.JPEG,
+		// imageFormat: imageFormats.JPEG,
 		lazySrcMultiplier: 52,
 		widths: generateWidths([
 			248, 268, 288, 303, 310, 327, 360, 388, 427, 490, 527, 630
@@ -138,7 +138,7 @@ export const presets = {
 	},
 	[presetNames.HISTORY_FLYER]: {
 		eager: true,
-		imageFormat: imageFormats.JPEG,
+		// imageFormat: imageFormats.JPEG,
 		lazySrcMultiplier: 14,
 		rounded: true,
 		widths: generateWidths([157, 206, 210, 228, 252, 280, 283]),
@@ -155,7 +155,7 @@ export const presets = {
 	[presetNames.INFO_1_OF_4]: {
 		bgPosition: presetOptions.BG_POSITION_TOP,
 		contain: true,
-		imageFormat: imageFormats.JPEG,
+		// imageFormat: imageFormats.JPEG,
 		widths: generateWidths([
 			288, 308, 328, 343, 350, 367, 400, 467, 530, 567, 702, 944
 		]),
@@ -177,7 +177,7 @@ export const presets = {
 	[presetNames.INFO_2_OF_4]: {
 		bgPosition: presetOptions.BG_POSITION_TOP,
 		contain: true,
-		imageFormat: imageFormats.JPEG,
+		// imageFormat: imageFormats.JPEG,
 		widths: generateWidths([
 			253, 288, 308, 328, 339, 343, 350, 367, 400, 460, 467, 567
 		]),
@@ -199,7 +199,7 @@ export const presets = {
 	[presetNames.INFO_3_OF_4]: {
 		bgPosition: presetOptions.BG_POSITION_TOP,
 		contain: true,
-		imageFormat: imageFormats.JPEG,
+		// imageFormat: imageFormats.JPEG,
 		widths: generateWidths([
 			161, 218, 288, 299, 308, 328, 343, 350, 367, 400, 467, 567
 		]),
@@ -221,7 +221,7 @@ export const presets = {
 	[presetNames.INFO_4_OF_4]: {
 		bgPosition: presetOptions.BG_POSITION_TOP,
 		contain: true,
-		imageFormat: imageFormats.JPEG,
+		// imageFormat: imageFormats.JPEG,
 		widths: generateWidths([
 			115, 158, 218, 288, 308, 328, 343, 350, 367, 400, 467, 567
 		]),
@@ -243,7 +243,7 @@ export const presets = {
 	[presetNames.NEWS_CARD]: {
 		aspectRatio: aspectRatios.NEWS_CARD,
 		eager: true,
-		imageFormat: imageFormats.JPEG,
+		// imageFormat: imageFormats.JPEG,
 		lazySrcMultiplier: 10,
 		widths: generateWidths([
 			288, 300, 308, 328, 339, 343, 350, 367, 400, 467, 530, 567
@@ -265,7 +265,7 @@ export const presets = {
 	},
 	[presetNames.NEWS_DETAIL]: {
 		eager: true,
-		imageFormat: imageFormats.JPEG,
+		// imageFormat: imageFormats.JPEG,
 		lazySrcMultiplier: 10,
 		rounded: true,
 		widths: generateWidths([
@@ -320,7 +320,7 @@ export const presets = {
 	[presetNames.TICKET]: {
 		aspectRatio: aspectRatios.TICKET,
 		eager: true,
-		imageFormat: imageFormats.PNG,
+		// imageFormat: imageFormats.PNG,
 		rounded: true,
 		widths: generateWidths([91, 105, 115, 131]),
 		sizes: removeClutter(`
