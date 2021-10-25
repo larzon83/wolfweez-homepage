@@ -27,16 +27,20 @@ export default function () {
 				status: 200,
 				force: true
 			},
+
+			// TODO: check, if preview page can handle this
+			// old site
 			{
 				from: '/bandcontest',
 				to: '/',
 				force: true
 			},
-			{
-				from: '/line-up',
-				to: routeMeta.LINEUP__BANDS.to,
-				force: true
-			},
+			// TODO: remove -> defined later in line 118
+			// {
+			// 	from: '/line-up',
+			// 	to: routeMeta.LINEUP__BANDS.to,
+			// 	force: true
+			// },
 			{
 				from: '/bands',
 				to: routeMeta.LINEUP__BANDS.to,
@@ -57,11 +61,15 @@ export default function () {
 				to: routeMeta.MEDIEN__FOTOGALERIE.to,
 				force: true
 			},
-			{
-				from: '/sponsoren',
-				to: routeMeta.SPONSOREN.to,
-				force: true
-			},
+			// NOTE: the same route exists in new site
+			// -> netlify automatically adds trailing slash
+			// -> DON'T comment-in! -> redirect loop...
+			// keep this here for reference
+			// {
+			// 	from: '/sponsoren',
+			// 	to: routeMeta.SPONSOREN.to,
+			// 	force: true
+			// },
 			{
 				from: '/info',
 				to: routeMeta.INFOS.to,
