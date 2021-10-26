@@ -109,8 +109,7 @@ export default {
 			// { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
 			{ rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg' },
 			...splashscreens,
-			{ rel: 'preconnect', href: 'https://a.storyblok.com' },
-			{ rel: 'preconnect', href: 'https://img2.storyblok.com' }
+			{ rel: 'preconnect', href: 'https://a.storyblok.com' }
 		]
 	},
 
