@@ -173,14 +173,21 @@ export default function () {
 			})
 
 			// find out, which bands are in "historie" folder and need a redirect
-			// -> all available bands - current active bands === "old" bands
+			// "old" bands -> all available bands MINUS current active bands
 			const oldBands = allBands.stories.filter(band => {
 				const active = activeBands.stories.find(item => item.uuid === band.uuid)
 				return !active
 			})
 
+			const oldBandsWithoutDuplicates = []
+			oldBands.forEach(ob => {
+				if (!oldBandsWithoutDuplicates.find(item => item.slug === ob.slug)) {
+					oldBandsWithoutDuplicates.push(ob)
+				}
+			})
+
 			// redirects for "old" bands
-			const bandsRedirects = oldBands.map(item => {
+			const bandsRedirects = oldBandsWithoutDuplicates.map(item => {
 				const from = `${routeMeta.LINEUP__BANDS.to}${item.slug}`
 				const to = item.full_slug.substr(0, 14) // eg "historie/2019/bands/slayer" -> "historie/2019/"
 				return {
