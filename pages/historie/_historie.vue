@@ -13,19 +13,21 @@
 					pr-md-4 pr-lg-6 pr-xl-7
 				"
 			>
-				<SbImage
-					:alt="`Flyer ${headlinePage}`"
-					:pic="story.content.flyer"
-					:preset="$config.presetNames.HISTORY_FLYER"
-					content-class="content"
-					@click.native="$refs.gallerySingle.openGallery()"
-				/>
-				<LightGallerySingle
-					ref="gallerySingle"
-					:alt="`Flyer ${headlinePage}`"
-					:filename="story.content.flyer.filename"
-					:img-ident="`flyer-${story.content.year}`"
-				/>
+				<LightGalleries
+					id="lightgallery-flyer"
+					:galleries="galleryWithSingleImage"
+					is-single-image
+				>
+					<template #default="{ open }">
+						<SbImage
+							:alt="singleImageAlt"
+							:pic="story.content.flyer"
+							:preset="$config.presetNames.HISTORY_FLYER"
+							content-class="content"
+							@click.native="open(0, 0)"
+						/>
+					</template>
+				</LightGalleries>
 			</v-col>
 
 			<v-col cols="12" md="8">
@@ -174,27 +176,50 @@ export default {
 						}
 				  ]
 				: []
+		},
+
+		singleImageAlt() {
+			return `Flyer ${this.headlinePage}`
+		},
+
+		galleryWithSingleImage() {
+			return this.story.content.flyer?.filename
+				? [
+						{
+							imgs: [
+								{
+									...this.story.content.flyer,
+									alt: this.singleImageAlt
+								}
+							]
+						}
+				  ]
+				: []
 		}
 	}
 }
 </script>
 
 <style lang="scss" scoped>
-.flyer .v-image {
+.flyer #lightgallery-flyer {
+	width: 100%;
+	max-width: 100%;
 	@media #{map-get($display-breakpoints, 'sm-and-down')} {
 		max-width: 280px;
 	}
 
-	::v-deep .content {
-		border-radius: $border-radius-root;
-		border: 3px solid getcolor('bright');
-	}
+	.v-image {
+		::v-deep .content {
+			border-radius: $border-radius-root;
+			border: 3px solid getcolor('bright');
+		}
 
-	@media (hover: hover) {
-		cursor: pointer;
-		&:hover {
-			::v-deep .content {
-				background: getcolor('bright', 0.3);
+		@media (hover: hover) {
+			cursor: pointer;
+			&:hover {
+				::v-deep .content {
+					background: getcolor('bright', 0.3);
+				}
 			}
 		}
 	}

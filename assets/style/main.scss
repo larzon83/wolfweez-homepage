@@ -78,17 +78,6 @@ body {
 	}
 }
 
-// for lightgallery
-body.lg-on {
-	font-family: $body-font-family;
-	line-height: 1.5;
-}
-
-.lg-outer .lg-thumb-item.active,
-.lg-outer .lg-thumb-item:hover {
-	border-color: getcolor('prime') !important;
-}
-
 .v-card::before {
 	border-radius: $border-radius-root;
 }

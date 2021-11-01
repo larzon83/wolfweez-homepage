@@ -26,16 +26,24 @@ export const sbHomeBloks = {
 }
 
 export const lightgalleryOptions = {
+	backdropDuration: 200,
 	download: true,
 	dynamic: true,
 	fullScreen: true,
 	hideBarsDelay: 3000,
 	hideControlOnEnd: true,
+	licenseKey: '1234-0000-000-0000', // TODO:
 	loop: false,
-	mode: 'lg-slide',
-	speed: 120,
 	supportLegacyBrowser: false,
-	thumbnail: true
+	swipeThreshold: 170,
+	mobileSettings: {
+		allowMediaOverlap: true,
+		controls: false,
+		download: true,
+		fullScreen: true,
+		showCloseIcon: true,
+		toggleThumb: true
+	}
 }
 
 export const countryNames = {

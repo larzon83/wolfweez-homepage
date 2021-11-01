@@ -1,56 +1,63 @@
 <template>
-	<div v-if="galleries.length" class="gallery">
-		<template v-for="(gallery, galleryIndex) in galleries">
-			<h2
-				:key="`gallery-headline-${galleryIndex}`"
-				:class="[
-					paddingTopOverride
-						? paddingTopOverride
-						: galleryIndex === 0
-						? 'pt-0 pt-lg-12'
-						: 'pt-16',
-					paddingBottomOverride ? paddingBottomOverride : 'pb-3'
-				]"
-				v-text="
-					headline ? headline : `${$config.siteTitle.short} ${gallery.year}`
-				"
-			/>
-			<v-row :key="`gallery-${galleryIndex}`" class="gallery-row">
-				<template v-for="(img, imgIndex) in gallery.imgs">
-					<v-col
-						v-if="!maxPicsToShow || imgIndex < maxPicsToShow"
-						:key="`gallery-${galleryIndex}--img-${imgIndex}`"
-						class="gallery-col d-flex child-flex"
-						cols="3"
-						:lg="colsLg"
-					>
-						<v-img
-							:alt="`${$config.siteTitle.short} ${gallery.year} - Bild ${
-								imgIndex + 1
-							}`"
-							:src="$_transformImage(img.filename, '218x218')"
-							:lazy-src="$_transformImage(img.filename, '6x6')"
-							:srcset="$_generateDpiSrcsetEntries(img.filename, 218)"
-							aspect-ratio="1"
-							class="rounded gallery-image"
-							content-class="content"
-							@click="openGallery(imgIndex, galleryIndex)"
-						/>
-					</v-col>
+	<div :id="id">
+		<slot name="default" :open="handleOpenGallery">
+			<div v-if="galleries.length" class="gallery">
+				<template v-for="(gallery, galleryIndex) in galleries">
+					<h2
+						:key="`gallery-headline-${galleryIndex}`"
+						:class="[
+							paddingTopOverride
+								? paddingTopOverride
+								: galleryIndex === 0
+								? 'pt-0 pt-lg-12'
+								: 'pt-16',
+							paddingBottomOverride ? paddingBottomOverride : 'pb-3'
+						]"
+						v-text="
+							headline ? headline : `${$config.siteTitle.short} ${gallery.year}`
+						"
+					/>
+					<v-row :key="`gallery-${galleryIndex}`" class="gallery-row">
+						<template v-for="(img, imgIndex) in gallery.imgs">
+							<v-col
+								v-if="!maxPicsToShow || imgIndex < maxPicsToShow"
+								:key="`gallery-${galleryIndex}--img-${imgIndex}`"
+								class="gallery-col d-flex child-flex"
+								cols="3"
+								:lg="colsLg"
+							>
+								<v-img
+									:alt="`${$config.siteTitle.short} ${gallery.year} - Bild ${
+										imgIndex + 1
+									}`"
+									:src="$_transformImage(img.filename, '221x221')"
+									:lazy-src="$_transformImage(img.filename, '6x6')"
+									:srcset="$_generateDpiSrcsetEntries(img.filename, 221)"
+									aspect-ratio="1"
+									class="rounded gallery-image"
+									content-class="content"
+									@click="handleOpenGallery(imgIndex, galleryIndex)"
+								/>
+							</v-col>
+						</template>
+					</v-row>
 				</template>
-			</v-row>
-		</template>
-
-		<!-- Placeholders for lightgallery -->
-		<div
-			v-for="(gallery, lightgalleryIndex) in galleries"
-			:id="'lightgallery-' + lightgalleryIndex"
-			:key="`lightgallery-${lightgalleryIndex}`"
-		/>
+				<v-overlay :value="overlayVisible">
+					<v-progress-circular indeterminate size="64"></v-progress-circular>
+				</v-overlay>
+			</div>
+		</slot>
 	</div>
 </template>
 
 <script>
+import lgFullscreen from 'lightgallery/plugins/fullscreen'
+import lgThumbnail from 'lightgallery/plugins/thumbnail'
+import lgZoom from 'lightgallery/plugins/zoom'
+import 'lightgallery/css/lightgallery.css'
+import 'lightgallery/css/lg-fullscreen.css'
+import 'lightgallery/css/lg-thumbnail.css'
+import 'lightgallery/css/lg-zoom.css'
 import useFormatting from '~/mixins/useFormatting.js'
 import { lightgalleryOptions } from '~/utils/constants'
 
@@ -66,6 +73,14 @@ export default {
 		headline: {
 			type: String,
 			default: ''
+		},
+		id: {
+			type: String,
+			default: 'lightgallery'
+		},
+		isSingleImage: {
+			type: Boolean,
+			default: false
 		},
 		paddingTopOverride: {
 			type: String,
@@ -85,6 +100,15 @@ export default {
 		}
 	},
 
+	data() {
+		return {
+			currentGalleryIndex: 0,
+			galleryInstance: null,
+			overlayDelay: null,
+			overlayVisible: false
+		}
+	},
+
 	computed: {
 		dynamicElements() {
 			const elements = this.galleries.map(gallery => {
@@ -94,10 +118,11 @@ export default {
 				return imgsToLoop.map((img, index) => {
 					return {
 						downloadUrl: img.filename,
-						subHtml: `${this.$config.siteTitle.short} ${gallery.year}`,
-						alt: `${this.$config.siteTitle.short} ${gallery.year} - Bild ${
-							index + 1
-						}`,
+						alt: this.isSingleImage
+							? img.alt
+							: `${this.$config.siteTitle.short} ${gallery.year} - Bild ${
+									index + 1
+							  }`,
 						responsive: `
 									${this.$_transformImage(img.filename, '329x0')} 340,
 									${this.$_transformImage(img.filename, '529x0')} 540,
@@ -105,8 +130,8 @@ export default {
 									${this.$_transformImage(img.filename, '1253x0')} 1264,
 									${this.$_transformImage(img.filename, '1589x0')} 1600
 									`,
-						src: img.filename,
-						thumb: this.$_transformImage(img.filename, '96x96')
+						src: this.$_transformImage(img.filename, '1589x0'),
+						thumb: this.$_transformImage(img.filename, '100x80')
 					}
 				})
 			})
@@ -114,61 +139,57 @@ export default {
 		}
 	},
 
-	mounted() {
-		// const el = document.getElementById('lightgallery')
-		// el.addEventListener(
-		// 	'onBeforeOpen',
-		// 	function (e) {
-		// 		// alert('onBeforeOpen')
-		// 		console.log('e:', e)
-		// 	},
-		// 	false
-		// )
-		// window.lightGallery(el)
-		// Go to third slide
-		// Index starts from 0
-		// window.lgData[el.getAttribute('lg-uid')].slide(1)
+	beforeDestroy() {
+		this.clearOverlayDelay()
+		if (this.galleryInstance !== null) {
+			this.galleryInstance.destroy()
+		}
 	},
 
 	methods: {
-		openGallery(slideIndex = 0, galleryIndex = 0) {
-			const lg = document.getElementById(`lightgallery-${galleryIndex}`)
+		async handleOpenGallery(slideIndex = 0, galleryIndex = 0) {
+			// initialize lightgallery once
+			if (this.galleryInstance === null) {
+				if (this.currentGalleryIndex !== galleryIndex) {
+					this.currentGalleryIndex = galleryIndex
+				}
 
-			window.lightGallery(lg, {
-				...lightgalleryOptions,
-				dynamicEl: this.dynamicElements[galleryIndex]
-			})
+				// don't show loading circle right away -> with fast internet,
+				// lightgallery lib loads to fast and spinner would only be visible for a few ms
+				this.overlayDelay = setTimeout(() => {
+					this.overlayVisible = true
+				}, 250)
 
-			// set slide index to the one passed from the clicked thumb
-			const pl = window.lgData[lg.getAttribute('lg-uid')]
-			pl.index = parseInt(slideIndex)
+				// const sleep = new Promise(resolve => setTimeout(resolve, 3000))
+				// await sleep
 
-			// lg.addEventListener(
-			// 	'onAfterOpen',
-			// 	function () {
-			// 		window.lgData[lg.getAttribute('lg-uid')].slide(Number(slideIndex))
-			// 		window.lgData[lg.getAttribute('lg-uid')].index = Number(slideIndex)
-			// 	},
-			// 	{
-			// 		once: true
-			// 	}
-			// )
+				const lg = await import(
+					/* webpackChunkName: "lightgalleryLib" */ 'lightgallery'
+				)
 
-			// lg.addEventListener(
-			// 	'onBeforeOpen',
-			// 	function (event) {
-			// 		// console.log('event:', event)
-			// 		// window.lgData[lg.getAttribute('lg-uid')].index = 1
-			// 		// lg.data('lightgallery').destroy(true)
-			// 		// window.lgData[lg.getAttribute('lg-uid')].slide(index)
-			// 		// window.lgData[lg.getAttribute('lg-uid')].destroy(true)
-			// 	},
-			// 	false
-			// )
+				this.clearOverlayDelay()
+				this.overlayVisible = false
 
-			// window.lightGallery(lg)
+				const el = document.getElementById(this.id)
+				let plugins = [lgFullscreen, lgZoom]
+				if (!this.isSingleImage) plugins = [...plugins, lgThumbnail]
 
-			// window.lgData[lg.getAttribute('lg-uid')].slide(index)
+				this.galleryInstance = lg.default(el, {
+					// TODO: licenseKey
+					...lightgalleryOptions,
+					plugins,
+					dynamicEl: this.dynamicElements[galleryIndex]
+				})
+			} else if (this.currentGalleryIndex !== galleryIndex) {
+				this.currentGalleryIndex = galleryIndex
+				this.galleryInstance.refresh(this.dynamicElements[galleryIndex])
+			}
+
+			this.galleryInstance.openGallery(parseInt(slideIndex))
+		},
+
+		clearOverlayDelay() {
+			clearTimeout(this.overlayDelay)
 		}
 	}
 }
@@ -207,5 +228,25 @@ export default {
 			}
 		}
 	}
+}
+</style>
+
+<style lang="scss">
+body.lg-on {
+	font-family: $body-font-family;
+	line-height: 1.5;
+}
+
+.lg-container {
+	font-family: $body-font-family !important;
+}
+
+.lg-outer .lg-thumb-item.active,
+.lg-outer .lg-thumb-item:hover {
+	border-color: getcolor('prime') !important;
+}
+
+.lg-outer .lg-counter {
+	line-height: 1.5;
 }
 </style>

@@ -1,3 +1,3 @@
-import smoothscroll from 'smoothscroll-polyfill'
+import { polyfill } from 'seamless-scroll-polyfill'
 
-smoothscroll.polyfill()
+polyfill()
