@@ -94,6 +94,37 @@
 			</v-form>
 		</v-card>
 
+		<v-row align="center" class="pt-16 flex-column flex-md-row">
+			<v-col cols="auto">
+				<v-img
+					alt="Logo Musikinitiative Irslingen 2019 e.V."
+					:aspect-ratio="945 / 990"
+					:src="require('~/assets/img/mii-logo.svg')"
+					contain
+					width="120"
+				/>
+			</v-col>
+			<v-col class="text-center text-md-left">
+				<h2>Musikinitiative Irslingen 2019 e.V.</h2>
+				<p class="mb-1">
+					<a href="/mii-broschuere-2021_web.pdf" target="_blank"
+						>Hier geht's zur Mitgliedschaft<v-icon
+							size="15"
+							class="ml-2 ahref--text"
+							>$externalLink</v-icon
+						></a
+					>
+				</p>
+				<p>
+					<a href="/mii-satzung.pdf" target="_blank"
+						>Satzung der M.I.I.<v-icon size="15" class="ml-2 ahref--text"
+							>$externalLink</v-icon
+						></a
+					>
+				</p>
+			</v-col>
+		</v-row>
+
 		<v-snackbar v-model="showSuccess" timeout="2000" color="good">
 			Nachricht erfolgreich gesendet.
 
