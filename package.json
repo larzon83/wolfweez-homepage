@@ -41,7 +41,7 @@
 		"nuxt-client-init-module": "0.3.0",
 		"seamless-scroll-polyfill": "2.1.5",
 		"storyblok-nuxt": "2.0.1",
-		"stripe": "8.186.0",
+		"stripe": "8.186.1",
 		"vue-horizontal": "0.8.12",
 		"vue-lazy-youtube-video": "2.3.0",
 		"vue-rellax": "0.2.0",
@@ -82,6 +82,6 @@
 		"storyblok-migrate": "0.3.4",
 		"trianglify": "4.1.1",
 		"vue-feather-icons": "5.1.0",
-		"vuetify": "2.5.10"
+		"vuetify": "2.5.11"
 	}
 }
