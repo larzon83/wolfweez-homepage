@@ -107,7 +107,7 @@
 			<v-col class="text-center text-md-left">
 				<h2>Musikinitiative Irslingen 2019 e.V.</h2>
 				<p class="mb-1">
-					<a href="/mii-broschuere-2021_web.pdf" target="_blank"
+					<a href="/mii-broschuere-2019_web.pdf" target="_blank"
 						>Hier geht's zur Mitgliedschaft<v-icon
 							size="15"
 							class="ml-2 ahref--text"
