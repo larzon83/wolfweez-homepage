@@ -106,8 +106,10 @@ export default {
 			}
 		],
 		link: [
-			// { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
+			// https://evilmartians.com/chronicles/how-to-favicon-in-2021-six-files-that-fit-most-needs
+			{ rel: 'icon', href: '/favicon.ico', sizes: 'any' },
 			{ rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg' },
+			{ rel: 'mask-icon', href: '/favicon-pinned-tab.svg', color: '#212121' },
 			...splashscreens,
 			{ rel: 'preconnect', href: 'https://a.storyblok.com' }
 		]
