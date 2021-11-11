@@ -49,7 +49,7 @@
 	},
 	"devDependencies": {
 		"@aceforth/nuxt-netlify": "1.1.0",
-		"@babel/eslint-parser": "7.16.0",
+		"@babel/eslint-parser": "7.16.3",
 		"@commitlint/cli": "14.1.0",
 		"@commitlint/config-conventional": "14.1.0",
 		"@epegzz/sass-vars-loader": "6.1.0",
@@ -77,11 +77,11 @@
 		"nuxt-canonical": "1.0.6",
 		"nuxt-purgecss": "1.0.0",
 		"prettier": "2.4.1",
-		"pwa-asset-generator": "6.0.0",
+		"pwa-asset-generator": "6.0.1",
 		"sass": "1.32.13",
 		"storyblok-migrate": "0.3.4",
 		"trianglify": "4.1.1",
 		"vue-feather-icons": "5.1.0",
-		"vuetify": "2.5.13"
+		"vuetify": "2.5.14"
 	}
 }
