@@ -77,6 +77,12 @@ export default {
 				name: 'google-site-verification',
 				content: process.env.GOOGLE_SITE_VERIFICATION || ''
 			},
+			// prevent Android "Auto Dark Theme" destroying the colors
+			{
+				hid: 'color-scheme',
+				name: 'color-scheme',
+				content: 'only light'
+			},
 			{
 				hid: 'og:site_name',
 				property: 'og:site_name',
