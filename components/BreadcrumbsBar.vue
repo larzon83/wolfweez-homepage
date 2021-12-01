@@ -27,7 +27,7 @@
 import { routeMeta } from '~/utils/constants'
 
 export default {
-	name: 'BreadCrumbs',
+	name: 'BreadcrumbsBar',
 
 	computed: {
 		items() {
