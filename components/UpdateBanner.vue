@@ -8,11 +8,7 @@
 			</v-col>
 			<v-col cols="8" sm="10" class="text-body-2">
 				<v-row
-					class="
-						flex-column flex-sm-row
-						align-center
-						justify-center justify-sm-end justify-md-center
-					"
+					class="flex-column flex-sm-row align-center justify-center justify-sm-end justify-md-center"
 					no-gutters
 				>
 					<div class="text-center mr-sm-1 pb-1 pb-sm-0">

@@ -39,13 +39,7 @@
 					class="powered-by justify-center justify-md-start mt-5"
 				>
 					<v-subheader
-						class="
-							sub-headline
-							text-button
-							justify-center justify-md-start
-							pl-0
-							pr-0 pr-md-4
-						"
+						class="sub-headline text-button justify-center justify-md-start pl-0 pr-0 pr-md-4"
 						>Powered by</v-subheader
 					>
 					<SponsorItem
@@ -98,7 +92,7 @@ import { mapState } from 'vuex'
 import { routeMeta, tabTypes } from '~/utils/constants'
 
 export default {
-	name: 'Footer',
+	name: 'TheFooter',
 
 	computed: {
 		...mapState(['mainSponsors', 'subNavItems']),

@@ -82,13 +82,7 @@
 									</v-col>
 									<v-col
 										cols="auto"
-										class="
-											d-flex
-											align-center
-											justify-start
-											align-self-start align-self-md-center
-											pt-1 pt-md-3
-										"
+										class="d-flex align-center justify-start align-self-start align-self-md-center pt-1 pt-md-3"
 									>
 										<v-btn
 											:disabled="

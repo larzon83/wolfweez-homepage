@@ -1,12 +1,7 @@
 <template>
 	<section v-editable="content" class="right">
 		<h1
-			class="
-				d-none d-lg-flex
-				text-h4 text-sm-h3 text-lg-h2
-				font-weight-bold
-				pb-4
-			"
+			class="d-none d-lg-flex text-h4 text-sm-h3 text-lg-h2 font-weight-bold pb-4"
 		>
 			{{ content.headline }}
 		</h1>

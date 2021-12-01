@@ -53,7 +53,7 @@
 import { mapState } from 'vuex'
 
 export default {
-	name: 'Header',
+	name: 'TheHeader',
 
 	computed: {
 		...mapState(['currentFestival'])

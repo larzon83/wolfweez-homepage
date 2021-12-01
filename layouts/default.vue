@@ -1,12 +1,12 @@
 <template>
 	<v-app>
-		<Toolbar :swap-toolbar="isIntersecting" />
+		<TheToolbar :swap-toolbar="isIntersecting" />
 		<v-main>
-			<Header />
+			<TheHeader />
 			<v-container class="pt-0 pb-16">
 				<MainNav />
 				<TabsNavigation />
-				<Breadcrumbs
+				<BreadCrumbs
 					v-intersect="{
 						handler: onIntersect,
 						options: {
@@ -16,7 +16,7 @@
 				/>
 				<nuxt />
 			</v-container>
-			<Footer />
+			<TheFooter />
 			<LazyUpdateBanner
 				v-if="updateBannerVisible"
 				@doReload="reloadPage"
@@ -27,12 +27,13 @@
 </template>
 
 <script>
-import Toolbar from '~/components/Toolbar'
+import TheToolbar from '~/components/TheToolbar'
 
 export default {
+	// eslint-disable-next-line vue/multi-word-component-names
 	name: 'Default',
 	components: {
-		Toolbar
+		TheToolbar
 	},
 
 	data() {

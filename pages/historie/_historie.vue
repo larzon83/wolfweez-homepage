@@ -5,13 +5,7 @@
 				v-if="story.content.flyer && story.content.flyer.filename"
 				cols="9"
 				md="4"
-				class="
-					flyer
-					d-flex
-					align-self-start
-					justify-center justify-md-start
-					pr-md-4 pr-lg-6 pr-xl-7
-				"
+				class="flyer d-flex align-self-start justify-center justify-md-start pr-md-4 pr-lg-6 pr-xl-7"
 			>
 				<LightGalleries
 					id="lightgallery-flyer"
@@ -34,12 +28,7 @@
 				<v-row>
 					<v-col cols="12" class="text-center text-md-left">
 						<h1
-							class="
-								text-h4 text-sm-h3 text-lg-h2
-								font-weight-bold
-								pb-1
-								pt-3 pt-md-0
-							"
+							class="text-h4 text-sm-h3 text-lg-h2 font-weight-bold pb-1 pt-3 pt-md-0"
 						>
 							{{ headlinePage }}
 						</h1>

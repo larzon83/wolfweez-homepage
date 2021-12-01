@@ -204,7 +204,7 @@ import { routeMeta, sbHomeBloks, siteTitle } from '~/utils/constants'
 import { createSEOMeta } from '~/utils/seo'
 
 export default {
-	name: 'Index',
+	name: 'IndexPage',
 	components: {
 		VueHorizontal
 	},

@@ -107,7 +107,7 @@ import { mapState } from 'vuex'
 import { mainNavItems } from '~/utils/constants'
 
 export default {
-	name: 'Toolbar',
+	name: 'TheToolbar',
 	props: {
 		swapToolbar: {
 			type: Boolean,
