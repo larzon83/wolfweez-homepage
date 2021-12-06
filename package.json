@@ -76,7 +76,7 @@
 		"node-html-to-image": "3.2.0",
 		"nuxt-canonical": "1.0.6",
 		"nuxt-purgecss": "1.0.0",
-		"prettier": "2.5.0",
+		"prettier": "2.5.1",
 		"pwa-asset-generator": "6.0.4",
 		"sass": "1.32.13",
 		"storyblok-migrate": "0.3.4",
