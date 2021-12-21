@@ -27,7 +27,9 @@ const handler = async event => {
 
 	let session
 	const eventBody = JSON.parse(event.body)
-	let shippingRate = eventBody.shippingRate ? [eventBody.shippingRate] : []
+	let shippingRateObject = eventBody.shippingRate
+		? { shipping_rate: eventBody.shippingRate }
+		: {}
 
 	const items = eventBody.items.map(item => ({
 		price: item.price,
@@ -37,7 +39,7 @@ const handler = async event => {
 
 	const hasTestTicket = eventBody.items.find(i => i.name === 'testticket')
 	if (hasTestTicket && items.length === 1) {
-		shippingRate = []
+		shippingRateObject = {}
 	}
 
 	try {
@@ -49,7 +51,7 @@ const handler = async event => {
 			cancel_url: `${SITE_URL}/tickets/`,
 			payment_method_types: ['card', 'giropay', 'sofort', 'sepa_debit'],
 			billing_address_collection: 'required',
-			shipping_rates: shippingRate,
+			shipping_options: [shippingRateObject],
 			shipping_address_collection: {
 				allowed_countries: Object.keys(countryNames)
 			},

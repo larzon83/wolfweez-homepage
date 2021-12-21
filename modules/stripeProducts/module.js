@@ -1,6 +1,6 @@
 // NOTE: equivalent is done inside fn "stripe-get-products" when in dev or spa mode
 const { resolve } = require('path')
-const { getProducts } = require('../../utils/stripe-helpers.js')
+const { getProductsAndShippingRates } = require('../../utils/stripe-helpers.js')
 
 export default function () {
 	this.nuxt.hook('build:before', async context => {
@@ -21,15 +21,24 @@ export default function () {
 		const testMode =
 			process.env.NUXT_ENV_TEST_MODE === 'true' ? 'true' : 'false'
 
-		const products = await getProducts(stripe, sbClient, sbVersion, testMode)
+		const result = await getProductsAndShippingRates(
+			stripe,
+			sbClient,
+			sbVersion,
+			testMode
+		)
+
+		const { products, shippingRates } = result
 
 		console.info('ℹ️  stripe-products(module):', products)
+		console.info('ℹ️  stripe-shippingRates(module):', shippingRates)
 
 		this.addPlugin({
 			src: resolve(__dirname, 'plugin.js'),
 			fileName: 'stripe-products-plugin.js',
 			options: {
-				products
+				products,
+				shippingRates
 			}
 		})
 	})

@@ -13,21 +13,32 @@ const sbClient = new StoryblokClient({
 })
 
 const handler = async event => {
-	const { getProducts } = require('./../utils/stripe-helpers.js')
+	const {
+		getProductsAndShippingRates
+	} = require('./../utils/stripe-helpers.js')
 	let products
+	let shippingRates
 
 	try {
-		products = await getProducts(stripe, sbClient, 'draft', 'true')
+		const result = await getProductsAndShippingRates(
+			stripe,
+			sbClient,
+			'draft',
+			'true'
+		)
+		products = result.products
+		shippingRates = result.shippingRates
 	} catch (error) {
 		console.error('❌  get-products:', error)
 		return { statusCode: error.statusCode, body: JSON.stringify(error) }
 	}
 
 	console.info('ℹ️  stripe-products:', products)
+	console.info('ℹ️  stripe-shippingRates:', shippingRates)
 
 	return {
 		statusCode: 200,
-		body: JSON.stringify(products)
+		body: JSON.stringify({ products, shippingRates })
 	}
 }
 

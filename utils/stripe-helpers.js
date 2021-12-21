@@ -14,23 +14,24 @@ const formatPrice = price => {
 	)
 }
 
-const getShippingRates = testMode => {
-	return {
-		sr350: {
-			id:
-				testMode === 'true'
-					? 'shr_1JemHsBfAFuG6uOsEUCxo2lm'
-					: 'shr_1JgGLBBfAFuG6uOsMiABGtLE',
-			amount: 350
-		},
-		sr450: {
-			id:
-				testMode === 'true'
-					? 'shr_1JemNZBfAFuG6uOsOmW1BH7i'
-					: 'shr_1JgGLMBfAFuG6uOsma0HxiPb',
-			amount: 450
-		}
-	}
+const constructShippingRates = ratesList => {
+	if (!ratesList) return []
+
+	const activeRates = ratesList.data.filter(sr => sr.active)
+
+	if (!activeRates.length) return []
+
+	const vvkAmount = 200
+
+	const rates = activeRates.map(rate => ({
+		id: rate.id,
+		ident: rate.metadata.ident || '',
+		amountTotal: formatPrice(rate.fixed_amount.amount),
+		amountOnlyShipping: formatPrice(rate.fixed_amount.amount - vvkAmount),
+		amountOnlyVvk: formatPrice(vvkAmount)
+	}))
+
+	return rates
 }
 
 const constructProducts = (productsList, pricesList, sbTickets, testMode) => {
@@ -102,19 +103,27 @@ const constructProducts = (productsList, pricesList, sbTickets, testMode) => {
 	)
 }
 
-const getProducts = async (stripe, sbClient, sbVersion, testMode = 'false') => {
+const getProductsAndShippingRates = async (
+	stripe,
+	sbClient,
+	sbVersion,
+	testMode = 'false'
+) => {
 	const productsPromise = stripe.products.list({ limit: 100 })
 	const pricesPromise = stripe.prices.list({ limit: 100 })
+	const shippingRatesPromise = stripe.shippingRates.list({ limit: 100 })
 	const sbPromise = sbClient.get('cdn/stories', {
 		starts_with: 'tickets/ticket_types/',
 		version: sbVersion
 	})
 
-	const [productsList, pricesList, { data: sbTickets }] = await Promise.all([
-		productsPromise,
-		pricesPromise,
-		sbPromise
-	])
+	const [productsList, pricesList, shippingRatesList, { data: sbTickets }] =
+		await Promise.all([
+			productsPromise,
+			pricesPromise,
+			shippingRatesPromise,
+			sbPromise
+		])
 
 	const products = constructProducts(
 		productsList,
@@ -122,7 +131,14 @@ const getProducts = async (stripe, sbClient, sbVersion, testMode = 'false') => {
 		sbTickets,
 		testMode
 	)
-	return products
+
+	const shippingRates = constructShippingRates(shippingRatesList)
+
+	return { products, shippingRates }
 }
 
-module.exports = { countryNames, formatPrice, getShippingRates, getProducts }
+module.exports = {
+	countryNames,
+	formatPrice,
+	getProductsAndShippingRates
+}

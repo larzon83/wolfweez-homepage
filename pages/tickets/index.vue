@@ -173,33 +173,24 @@
 
 					<!-- checkout amount details and button -->
 					<v-row align="center" justify="space-between" class="mt-3">
-						<v-col cols="12" md="auto" class="py-0 py-md-3">
+						<v-col cols="12" lg="auto" class="py-0 py-lg-3">
 							<div v-if="ticketsForCheckout.length">
-								<div class="d-none d-md-block">
+								<div>
 									<div class="font-weight-bold">Summe: {{ chargeAmount }}</div>
 									<div class="shipping-amount">
-										zzgl. {{ $_formatPrice(shippingRate.amount) }} Versandkosten
+										zzgl. {{ shippingRate.amountOnlyShipping }} Versandkosten
+										und {{ shippingRate.amountOnlyVvk }} VVK-Gebühr
 									</div>
-								</div>
-								<div class="d-block d-md-none">
-									<span class="font-weight-bold">Summe: {{ chargeAmount }}</span
-									>&nbsp;<span class="shipping-amount">
-										(zzgl.
-										{{ $_formatPrice(shippingRate.amount) }} Versand)
-									</span>
 								</div>
 							</div>
 							<div v-else>
-								<div class="d-none d-md-block">
+								<div class="d-none d-lg-block">
 									<div class="font-weight-bold">&nbsp;</div>
 									<div>&nbsp;</div>
 								</div>
-								<div class="d-block d-md-none">
-									<span class="font-weight-bold">&nbsp;</span>
-								</div>
 							</div>
 						</v-col>
-						<v-col cols="12" md="auto" class="d-flex justify-md-end">
+						<v-col cols="12" lg="auto" class="d-flex justify-lg-end">
 							<v-btn
 								:disabled="loading"
 								:loading="loading"
@@ -265,7 +256,6 @@ import useFormatting from '~/mixins/useFormatting.js'
 import { sbData } from '~/utils'
 import { routeMeta } from '~/utils/constants'
 import { createSEOMeta } from '~/utils/seo'
-import { getShippingRates } from '~/utils/stripe-helpers'
 
 const pageTitle = routeMeta.TICKETS.title
 
@@ -315,6 +305,7 @@ export default {
 			pageTitle,
 			checkoutError: '',
 			devProducts: [],
+			devShippingRates: [],
 			quantities: {},
 			loading: false
 		}
@@ -331,6 +322,11 @@ export default {
 		tickets() {
 			if (this.devProducts.length) return this.devProducts
 			return this.$stripeProducts
+		},
+
+		shippingRates() {
+			if (this.devShippingRates.length) return this.devShippingRates
+			return this.$stripeShippingRates
 		},
 
 		realTicketsCount() {
@@ -361,18 +357,20 @@ export default {
 		},
 
 		shippingRate() {
-			const testMode =
-				process.env.NUXT_ENV_TEST_MODE === 'true' ? 'true' : 'false'
+			const shippingBase = this.shippingRates.find(
+				s => s.ident === 'shippingBase'
+			)
+			const shippingExtended = this.shippingRates.find(
+				s => s.ident === 'shippingExtended'
+			)
 
-			const shippingRates = getShippingRates(testMode)
-
-			if (!this.ticketsForCheckout.length) return shippingRates.sr350
+			if (!this.ticketsForCheckout.length) return shippingBase
 
 			const hasExtraShipping = this.ticketsForCheckout.find(
 				p => p.extraShipping
 			)
 
-			return hasExtraShipping ? shippingRates.sr450 : shippingRates.sr350
+			return hasExtraShipping ? shippingExtended : shippingBase
 		},
 
 		chargeAmount() {
@@ -396,9 +394,11 @@ export default {
 		) {
 			console.info('loading products...')
 			try {
-				const products = await this.$axios.$get('/api/stripe-get-products')
-				this.devProducts = products
-				console.info('🚀 ~ products loaded', products)
+				const result = await this.$axios.$get('/api/stripe-get-products')
+				this.devProducts = result.products
+				this.devShippingRates = result.shippingRates
+				console.info('🚀 ~ products loaded', result.products)
+				console.info('🚀 ~ shippingRates loaded', result.shippingRates)
 			} catch (error) {
 				console.error(error)
 			}
@@ -494,7 +494,7 @@ export default {
 	background-color: getcolor('prime', 0.12);
 	border-width: 3px;
 
-	@media (max-width: 399px) {
+	@media (max-width: 783px) {
 		display: flex;
 		flex: 1 0 auto;
 		min-width: 100% !important;
