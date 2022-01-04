@@ -78,7 +78,7 @@
 		"nuxt-purgecss": "1.0.0",
 		"prettier": "2.5.1",
 		"pwa-asset-generator": "6.0.5",
-		"sass": "1.32.13",
+		"sass": "1.45.2",
 		"storyblok-migrate": "0.3.4",
 		"trianglify": "4.1.1",
 		"vue-feather-icons": "5.1.0",
