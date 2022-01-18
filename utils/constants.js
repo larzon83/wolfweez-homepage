@@ -11,7 +11,7 @@ export const siteTitle = {
 }
 
 export const siteDescription =
-	'Das Wolfweez Openair Festival in Irslingen bei Rottweil – alle Infos zum Festival, Line-up, Tickets, Fotos & News. 3 Tage Rock, Metal & Blasmusik vom Feinsten!'
+	'Das Wolfweez Openair Festival in Irslingen bei Rottweil – alle Infos zum Festival, Line-up, Tickets, Fotos & News. 2 Tage Rock, Metal & Blasmusik vom Feinsten!'
 
 export const tabTypes = {
 	HISTORY: 'history',
