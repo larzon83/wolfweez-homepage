@@ -36,7 +36,7 @@
 		"@nuxtjs/proxy": "2.1.0",
 		"@vue/composition-api": "1.4.4",
 		"core-js": "3.20.3",
-		"lightgallery": "2.3.0",
+		"lightgallery": "2.4.0",
 		"nuxt": "2.15.8",
 		"nuxt-client-init-module": "0.3.0",
 		"seamless-scroll-polyfill": "2.1.6",
