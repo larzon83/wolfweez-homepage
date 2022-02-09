@@ -73,7 +73,7 @@
 		"husky": "4.3.8",
 		"jest": "27.4.7",
 		"lint-staged": "12.2.0",
-		"node-html-to-image": "3.2.0",
+		"node-html-to-image": "3.2.1",
 		"nuxt-canonical": "1.0.6",
 		"nuxt-purgecss": "1.0.0",
 		"prettier": "2.5.1",
