@@ -53,7 +53,7 @@
 			<nuxt-link to="/line-up/bands/polkamusikanten-stetten/"
 				>Polkamusikanten Stetten</nuxt-link
 			>
-			ab 10 Uhr (freier Eintritt).
+			ab 11 Uhr (freier Eintritt). Ende 15 Uhr.
 		</v-col>
 	</v-row>
 </template>
