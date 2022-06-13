@@ -1,4 +1,5 @@
 // env.URL is main url of netlify site
+// TODO: remove this replace -> https-bug fixed, see: https://github.com/netlify/build/issues/3771
 let netlifyUrl = process.env.URL
 if (netlifyUrl) {
 	netlifyUrl = netlifyUrl.replace('http://', 'https://')

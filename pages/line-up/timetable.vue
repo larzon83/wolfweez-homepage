@@ -12,7 +12,10 @@
 					<div class="flex-column justify-center">
 						<h2>{{ day.day_display_name }}</h2>
 						<div class="date text-subtitle-1 font-weight-medium">
-							{{ $_niceDate(day.day) }}
+							{{ $_niceDate(day.day)
+							}}<span v-if="day.doors_open" class="doors-open">
+								| Einlass: {{ day.doors_open }}</span
+							>
 						</div>
 					</div>
 				</v-card-title>
@@ -127,6 +130,10 @@ export default {
 
 			.date {
 				color: getcolor('dark', 0.75);
+			}
+
+			.doors-open {
+				text-transform: none;
 			}
 		}
 
