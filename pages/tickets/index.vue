@@ -1,5 +1,31 @@
 <template>
-	<section v-editable="story.content">
+	<!-- IN-ACTIVE -->
+	<section v-if="!pageIsActive">
+		<h2 class="d-none d-lg-flex text-h4 text-sm-h3 text-lg-h2 font-weight-bold">
+			Tickets
+		</h2>
+
+		<v-alert
+			icon="$info"
+			dense
+			outlined
+			prominent
+			text
+			class="pa-4 mb-10 mt-0 mt-lg-5 information--text"
+		>
+			<p><b>Der Vorverkauf ist beendet.</b></p>
+		</v-alert>
+
+		<div v-if="story.content.text_page_inactive" class="mt-8">
+			<rich-text-renderer
+				v-if="story.content.text_page_inactive"
+				:document="story.content.text_page_inactive"
+			/>
+		</div>
+	</section>
+
+	<!-- ACTIVE -->
+	<section v-else v-editable="story.content">
 		<h2 class="d-none d-lg-flex text-h4 text-sm-h3 text-lg-h2 font-weight-bold">
 			Tickets
 		</h2>
@@ -302,6 +328,7 @@ export default {
 
 	data() {
 		return {
+			pageIsActive: false,
 			pageTitle,
 			checkoutError: '',
 			devProducts: [],
