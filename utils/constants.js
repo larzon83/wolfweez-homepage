@@ -131,6 +131,11 @@ export const routeMeta = {
 	NEWSLETTER: {
 		title: 'Newsletter',
 		to: '/newsletter/'
+	},
+
+	BANDCONTEST: {
+		title: 'Bandcontest',
+		to: '/bandcontest/'
 	}
 }
 

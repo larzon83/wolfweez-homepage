@@ -116,7 +116,8 @@ export default {
 					title: 'Dies & Das',
 					links: [
 						{ ...routeMeta.MEDIEN__FOTOGALERIE },
-						{ ...routeMeta.SPONSOREN }
+						{ ...routeMeta.SPONSOREN },
+						{ ...routeMeta.BANDCONTEST }
 						// TODO: add presse/medien here
 						// TODO: add newsletter here
 					]

@@ -32,11 +32,13 @@ export default function () {
 			// NOTE: the following paths also exist in the new site and are therefor not set here:
 			// - "/line-up"
 			// - "/sponsoren"
-			{
-				from: '/bandcontest',
-				to: '/',
-				force: true
-			},
+
+			// TODO: enable redirect again once the bandcontest is over
+			// {
+			// 	from: '/bandcontest',
+			// 	to: '/',
+			// 	force: true
+			// },
 			{
 				from: '/bands',
 				to: routeMeta.LINEUP__BANDS.to,
