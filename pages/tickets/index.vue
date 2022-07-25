@@ -275,13 +275,12 @@
 </template>
 
 <script>
-import Vue from 'vue'
 import useStorybridge from 'storybridgeMixin/useStorybridge.js'
 import savePagetitleToVuex from '~/mixins/savePagetitleToVuex.js'
 import useFormatting from '~/mixins/useFormatting.js'
 import { sbData } from '~/utils'
 import { routeMeta } from '~/utils/constants'
-import { createSEOMeta } from '~/utils/seo'
+import { createOgImagePath, createSEOMeta } from '~/utils/seo'
 
 const pageTitle = routeMeta.TICKETS.title
 
@@ -291,40 +290,53 @@ export default {
 
 	head() {
 		const title = pageTitle
-
-		const { image, imageHeight } = this.$_generateOgImageEntry(
-			this.story.content.image_social?.filename,
-			this.$route.path
-		)
-
-		const linkEntries = []
-
-		// only relevant for production, so, ignoring "devProducts"
-		if (this.$stripeProducts.length) {
-			const imgIndex = this.$stripeProducts[0].name === 'testticket' ? 1 : 0
-
-			if (this.$stripeProducts[imgIndex]) {
-				const preloadImage = this.$_getPreloadImageHeadEntry(
-					this.$stripeProducts[imgIndex].imageSb?.filename,
-					this.$config.presetNames.TICKET
-				)
-				if (preloadImage) linkEntries.push(preloadImage)
-			}
-		}
-
 		return {
 			title,
 			meta: createSEOMeta({
-				description: this.story.content.description_meta,
-				image,
+				image: createOgImagePath(this.$route.path),
 				imageAlt: title,
-				imageHeight,
 				title,
 				url: this.$route.path
-			}),
-			link: [...linkEntries]
+			})
 		}
 	},
+
+	// head() {
+	// 	const title = pageTitle
+
+	// 	const { image, imageHeight } = this.$_generateOgImageEntry(
+	// 		this.story.content.image_social?.filename,
+	// 		this.$route.path
+	// 	)
+
+	// 	const linkEntries = []
+
+	// 	// only relevant for production, so, ignoring "devProducts"
+	// 	if (this.$stripeProducts.length) {
+	// 		const imgIndex = this.$stripeProducts[0].name === 'testticket' ? 1 : 0
+
+	// 		if (this.$stripeProducts[imgIndex]) {
+	// 			const preloadImage = this.$_getPreloadImageHeadEntry(
+	// 				this.$stripeProducts[imgIndex].imageSb?.filename,
+	// 				this.$config.presetNames.TICKET
+	// 			)
+	// 			if (preloadImage) linkEntries.push(preloadImage)
+	// 		}
+	// 	}
+
+	// 	return {
+	// 		title,
+	// 		meta: createSEOMeta({
+	// 			description: this.story.content.description_meta,
+	// 			image,
+	// 			imageAlt: title,
+	// 			imageHeight,
+	// 			title,
+	// 			url: this.$route.path
+	// 		}),
+	// 		link: [...linkEntries]
+	// 	}
+	// },
 
 	data() {
 		return {
@@ -474,14 +486,14 @@ export default {
 		decreaseQuantity(productId) {
 			const curr = parseInt(this.quantities[productId]) || 0
 			if (curr > 0) {
-				Vue.set(this.quantities, productId, (curr - 1).toString())
+				this.$set(this.quantities, productId, (curr - 1).toString())
 				this.checkoutError = ''
 			}
 		},
 
 		increaseQuantity(productId) {
 			const curr = parseInt(this.quantities[productId]) || 0
-			Vue.set(this.quantities, productId, (curr + 1).toString())
+			this.$set(this.quantities, productId, (curr + 1).toString())
 			this.checkoutError = ''
 		}
 	},

@@ -2,7 +2,8 @@ module.exports = {
 	root: true,
 	env: {
 		browser: true,
-		node: true
+		node: true,
+		'jest/globals': true
 	},
 	parserOptions: {
 		parser: '@babel/eslint-parser',
@@ -14,7 +15,7 @@ module.exports = {
 		'plugin:nuxt/recommended',
 		'plugin:prettier/recommended'
 	],
-	plugins: [],
+	plugins: ['jest'],
 	// add your custom rules here
 	rules: {
 		'no-console': process.env.NODE_ENV === 'production' ? 'error' : 'off',

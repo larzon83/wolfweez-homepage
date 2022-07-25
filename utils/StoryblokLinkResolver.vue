@@ -18,6 +18,7 @@ export default defineComponent({
 			required: true
 		}
 	},
+	// eslint-disable-next-line vue/no-setup-props-destructure
 	setup({ attrs }) {
 		const linkType = ref(attrs.linktype)
 		const href = ref(attrs.href)

@@ -1,3 +1,4 @@
+<!-- eslint-disable vue/no-v-text-v-html-on-component -->
 <template>
 	<div v-editable="band">
 		<h1 class="text-h4 text-sm-h3 text-lg-h2 font-weight-bold pb-4">
