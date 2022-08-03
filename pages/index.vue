@@ -90,15 +90,17 @@
 		</v-col>
 
 		<v-col cols="12" class="mt-12">
-			<SbImage
-				v-if="
-					bandcontest.story.content.image_social &&
-					bandcontest.story.content.image_social.filename
-				"
-				:alt="bandcontest.story.content.headline"
-				:pic="bandcontest.story.content.image_social"
-				:preset="$config.presetNames.FULL_WIDTH"
-			/>
+			<nuxt-link :to="bandcontestRoute">
+				<SbImage
+					v-if="
+						bandcontest.story.content.image_social &&
+						bandcontest.story.content.image_social.filename
+					"
+					:alt="bandcontest.story.content.headline"
+					:pic="bandcontest.story.content.image_social"
+					:preset="$config.presetNames.FULL_WIDTH"
+				/>
+			</nuxt-link>
 		</v-col>
 
 		<v-col cols="12" class="mt-12">
@@ -317,6 +319,7 @@ export default {
 		this.siteTitle = siteTitle
 		this.ticketsRoute = routeMeta.TICKETS.to
 		this.lineupRoute = routeMeta.LINEUP__BANDS.to
+		this.bandcontestRoute = routeMeta.BANDCONTEST.to
 	},
 
 	methods: {
