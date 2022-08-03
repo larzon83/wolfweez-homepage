@@ -12,7 +12,8 @@ export const presetNames = {
 	SPONSORS_MAIN: 'sponsors-main',
 	SPONSORS_MAIN_FOOTER: 'sponsors-main-footer',
 	SPONSORS_NORMAL: 'sponsors-normal',
-	TICKET: 'ticket'
+	TICKET: 'ticket',
+	FULL_WIDTH: 'full-width'
 }
 
 export const presetOptions = {
@@ -328,6 +329,27 @@ export const presets = {
 					(max-width: 783px) 105px,
 					(max-width: 1139px) 91px,
 					131px
+					`)
+	},
+	[presetNames.FULL_WIDTH]: {
+		eager: true,
+		disableLazySrc: true,
+		widths: generateWidths([
+			288, 308, 328, 343, 350, 367, 400, 467, 530, 567, 702, 944
+		]),
+		sizes: removeClutter(`
+					(max-width: 320px) 288px,
+					(max-width: 340px) 308px,
+					(max-width: 360px) 328px,
+					(max-width: 375px) 343px,
+					(max-width: 382px) 350px,
+					(max-width: 399px) 367px,
+					(max-width: 432px) 400px,
+					(max-width: 499px) 467px,
+					(max-width: 599px) 567px,
+					(max-width: 783px) 530px,
+					(max-width: 1139px) 702px,
+					944px
 					`)
 	}
 }

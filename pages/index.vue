@@ -90,6 +90,18 @@
 		</v-col>
 
 		<v-col cols="12" class="mt-12">
+			<SbImage
+				v-if="
+					bandcontest.story.content.image_social &&
+					bandcontest.story.content.image_social.filename
+				"
+				:alt="bandcontest.story.content.headline"
+				:pic="bandcontest.story.content.image_social"
+				:preset="$config.presetNames.FULL_WIDTH"
+			/>
+		</v-col>
+
+		<v-col cols="12" class="mt-12">
 			<v-row class="flex-column-reverse flex-lg-row">
 				<v-col>
 					<v-card color="darkish" flat>
@@ -259,6 +271,11 @@ export default {
 			isStartpage: 0
 		})
 
+		const bandcontest = await sbData({
+			ctx: context,
+			path: '/bandcontest'
+		})
+
 		// const foo = homepage.story.content.body.map(item => {
 		// 	return {
 		// 		name: item.component,
@@ -287,7 +304,8 @@ export default {
 			...homepage,
 			// foo,
 			bands,
-			newsSorted
+			newsSorted,
+			bandcontest
 		}
 	},
 
