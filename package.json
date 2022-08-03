@@ -89,7 +89,7 @@
 		"trianglify": "4.1.1",
 		"vue-feather-icons": "5.1.0",
 		"vuetify": "2.6.8",
-		"vuetify-loader": "1.9.2"
+		"vuetify-loader": "1.7.3"
 	},
 	"resolutions": {
 		"vue": "2.6.14",
