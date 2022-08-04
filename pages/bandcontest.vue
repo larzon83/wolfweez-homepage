@@ -113,7 +113,8 @@
 					>bancontest@wolfweez-openair.de</a
 				>.
 			</p>
-			<br />
+
+			<!-- <br />
 			<v-divider />
 			<br />
 
@@ -139,7 +140,7 @@
 						</tr>
 					</tbody>
 				</template>
-			</v-simple-table>
+			</v-simple-table> -->
 		</div>
 	</section>
 </template>
@@ -181,25 +182,25 @@ export default {
 
 	data() {
 		return {
-			pageTitle,
-			sponsoringBenefits: [
-				{
-					name: 'Unterstützer',
-					price: '50 € - 200 €',
-					benefit: 'Aufhängen eines Banners'
-				},
-				{
-					name: 'Premium',
-					price: '250 € 400 €',
-					benefit: 'Aufhängen Banner + Logo auf Medialeinwand'
-				},
-				{
-					name: 'Haupt',
-					price: '450 € - 600 €',
-					benefit:
-						'Aufhängen Banner + Logo Medialeinwand + Logo auf Flyer u. Plakat'
-				}
-			]
+			pageTitle
+			// sponsoringBenefits: [
+			// 	{
+			// 		name: 'Unterstützer',
+			// 		price: '50 € - 200 €',
+			// 		benefit: 'Aufhängen eines Banners'
+			// 	},
+			// 	{
+			// 		name: 'Premium',
+			// 		price: '250 € 400 €',
+			// 		benefit: 'Aufhängen Banner + Logo auf Medialeinwand'
+			// 	},
+			// 	{
+			// 		name: 'Haupt',
+			// 		price: '450 € - 600 €',
+			// 		benefit:
+			// 			'Aufhängen Banner + Logo Medialeinwand + Logo auf Flyer u. Plakat'
+			// 	}
+			// ]
 		}
 	},
 
@@ -218,12 +219,12 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.v-data-table.sponsoring-table {
-	tr {
-		> th:first-of-type,
-		> td:first-of-type {
-			padding-left: 0;
-		}
-	}
-}
+// .v-data-table.sponsoring-table {
+// 	tr {
+// 		> th:first-of-type,
+// 		> td:first-of-type {
+// 			padding-left: 0;
+// 		}
+// 	}
+// }
 </style>
