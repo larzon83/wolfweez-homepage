@@ -25,7 +25,7 @@
 				<b>Termin:</b> 18.November 2022<br />
 				<b>Location:</b> Waidbachhalle 78661 Irslingen<br />
 				<b>Doors Open:</b> 18.00 Uhr<br />
-				<b>Bewerbungszeitraum:</b> 29.07.2022 – 04.09.2022
+				<b>Bewerbungszeitraum:</b> 05.08.2022 – 04.09.2022
 			</p>
 			<br />
 			<v-divider />
