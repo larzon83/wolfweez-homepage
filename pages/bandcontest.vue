@@ -54,8 +54,8 @@
 			<p>
 				<b
 					>Schickt uns euere Bewerbung bis zum 04.09.2022 an
-					<a href="mailto:bancontest@wolfweez-openair.de"
-						>bancontest@wolfweez-openair.de</a
+					<a href="mailto:bandcontest@wolfweez-openair.de"
+						>bandcontest@wolfweez-openair.de</a
 					>.</b
 				>
 			</p>
@@ -109,8 +109,8 @@
 			<p>
 				Solltet ihr noch Fragen haben, welche hier nicht schon beantwortet
 				wurden, dann schreibt uns gerne an
-				<a href="mailto:bancontest@wolfweez-openair.de"
-					>bancontest@wolfweez-openair.de</a
+				<a href="mailto:bandcontest@wolfweez-openair.de"
+					>bandcontest@wolfweez-openair.de</a
 				>.
 			</p>
 
