@@ -88,7 +88,7 @@
 		"storyblok-migrate": "0.3.4",
 		"trianglify": "4.1.1",
 		"vue-feather-icons": "5.1.0",
-		"vuetify": "2.6.8",
+		"vuetify": "2.6.9",
 		"vuetify-loader": "1.7.3"
 	},
 	"resolutions": {
