@@ -1,7 +1,23 @@
 <template>
 	<v-row tag="section">
+		<!-- IN-ACTIVE -->
+		<v-col v-if="bandsAll" cols="12">
+			<v-alert
+				icon="$info"
+				dense
+				outlined
+				prominent
+				text
+				class="pa-4 mb-10 mt-0 information--text"
+			>
+				<p><b>TBA</b></p>
+			</v-alert>
+		</v-col>
+
+		<!-- ACTIVE -->
 		<v-col
 			v-for="band in bandsAll"
+			v-else
 			:key="band.content._uid"
 			cols="12"
 			md="6"
@@ -58,7 +74,7 @@ export default {
 
 		const linkEntries = []
 		const preloadImage = this.$_getPreloadImageHeadEntry(
-			this.bandsAll[0].content.image?.filename,
+			this.bandsAll[0]?.content.image?.filename,
 			this.$config.presetNames.BAND_OVERVIEW
 		)
 		if (preloadImage) linkEntries.push(preloadImage)
@@ -111,5 +127,15 @@ export default {
 
 .hover-card .news-title {
 	line-height: 1.8125rem; // 29px
+}
+
+.v-alert {
+	::v-deep p:last-child {
+		margin: 0;
+	}
+
+	a {
+		color: currentColor;
+	}
 }
 </style>

@@ -12,13 +12,6 @@
 			>
 				<p><b>TBA</b></p>
 			</v-alert>
-
-			<div v-if="story.content.text_page_inactive" class="mt-8">
-				<rich-text-renderer
-					v-if="story.content.text_page_inactive"
-					:document="story.content.text_page_inactive"
-				/>
-			</div>
 		</v-col>
 
 		<!-- ACTIVE -->

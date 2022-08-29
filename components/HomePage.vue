@@ -38,6 +38,10 @@ export default {
 			import(
 				/* webpackChunkName: "BlokTeaser" */ '~/components/_storyblok/BlokTeaser'
 			),
+		HomepageBanner: () =>
+			import(
+				/* webpackChunkName: "HomepageBanner" */ '~/components/_storyblok/HomepageBanner'
+			),
 		HomepageGalerie: () =>
 			import(
 				/* webpackChunkName: "HomepageGalerie" */ '~/components/_storyblok/HomepageGalerie'

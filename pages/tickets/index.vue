@@ -313,7 +313,7 @@ export default {
 
 	// 	// only relevant for production, so, ignoring "devProducts"
 	// 	if (this.$stripeProducts.length) {
-	// 		const imgIndex = this.$stripeProducts[0].name === 'testticket' ? 1 : 0
+	// 		const imgIndex = this.$stripeProducts[0]?.name === 'testticket' ? 1 : 0
 
 	// 		if (this.$stripeProducts[imgIndex]) {
 	// 			const preloadImage = this.$_getPreloadImageHeadEntry(

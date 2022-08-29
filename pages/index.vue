@@ -1,6 +1,6 @@
 <template>
 	<v-row justify="center" align="center" no-gutters class="mt-lg-5 mt-0">
-		<v-col cols="12">
+		<v-col v-if="bands.stories.length" cols="12">
 			<vue-horizontal
 				ref="horizontal"
 				class="horizontal"
@@ -89,21 +89,14 @@
 			</div>
 		</v-col>
 
-		<v-col cols="12" class="mt-12">
-			<nuxt-link :to="bandcontestRoute">
-				<SbImage
-					v-if="
-						bandcontest.story.content.image_social &&
-						bandcontest.story.content.image_social.filename
-					"
-					:alt="bandcontest.story.content.headline"
-					:pic="bandcontest.story.content.image_social"
-					:preset="$config.presetNames.FULL_WIDTH"
-				/>
-			</nuxt-link>
-		</v-col>
-
-		<v-col cols="12" class="mt-12">
+		<v-col
+			v-if="
+				currentFestival.content.image_all_bands &&
+				currentFestival.content.image_all_bands.filename
+			"
+			cols="12"
+			class="mt-12"
+		>
 			<v-row class="flex-column-reverse flex-lg-row">
 				<v-col>
 					<v-card color="darkish" flat>
@@ -186,6 +179,7 @@
 			v-if="story.content.component"
 			:blok="story.content"
 			:news-sorted="newsSorted"
+			:class="{ 'mt-n12': !hasActiveFestivalContent }"
 		/>
 
 		<!-- <v-col v-for="item in foo" :key="item.name" cols="12" class="mt-12">
@@ -233,7 +227,7 @@ export default {
 
 		const linkEntries = []
 		const preloadImage = this.$_getPreloadImageHeadEntry(
-			this.bands.stories[0].content.image?.filename,
+			this.bands.stories[0]?.content.image?.filename,
 			this.$config.presetNames.BAND_OVERVIEW
 		)
 		if (preloadImage) linkEntries.push(preloadImage)
@@ -264,18 +258,14 @@ export default {
 	async asyncData(context) {
 		const homepage = await sbData({
 			ctx: context,
-			path: '/homepage'
+			path: '/homepage',
+			resolveLinks: 'story'
 		})
 
 		const bands = await sbData({
 			ctx: context,
 			startsWith: 'line-up/bands/',
 			isStartpage: 0
-		})
-
-		const bandcontest = await sbData({
-			ctx: context,
-			path: '/bandcontest'
 		})
 
 		// const foo = homepage.story.content.body.map(item => {
@@ -306,20 +296,25 @@ export default {
 			...homepage,
 			// foo,
 			bands,
-			newsSorted,
-			bandcontest
+			newsSorted
 		}
 	},
 
 	computed: {
-		...mapState(['currentFestival'])
+		...mapState(['currentFestival']),
+
+		hasActiveFestivalContent() {
+			return (
+				!!this.bands.stories.length &&
+				this.currentFestival?.content?.image_all_bands?.filename
+			)
+		}
 	},
 
 	created() {
 		this.siteTitle = siteTitle
 		this.ticketsRoute = routeMeta.TICKETS.to
 		this.lineupRoute = routeMeta.LINEUP__BANDS.to
-		this.bandcontestRoute = routeMeta.BANDCONTEST.to
 	},
 
 	methods: {

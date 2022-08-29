@@ -1,5 +1,5 @@
 <template>
-	<div v-if="newsSorted" v-editable="pageBlok" class="mt-16">
+	<div v-if="newsSorted" v-editable="pageBlok" class="mt-md-16 mt-9">
 		<h2 v-if="pageBlok.headline">{{ pageBlok.headline }}</h2>
 		<v-row class="mt-0">
 			<v-col
