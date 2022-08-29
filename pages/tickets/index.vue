@@ -13,7 +13,7 @@
 			text
 			class="pa-4 mb-10 mt-0 mt-lg-5 information--text"
 		>
-			<p><b>Der Vorverkauf ist beendet.</b></p>
+			<p><b>Aktuell kein Vorverkauf</b></p>
 		</v-alert>
 
 		<div v-if="story.content.text_page_inactive" class="mt-8">

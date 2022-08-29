@@ -1,0 +1,1420 @@
+{
+  "components": [
+    {
+      "name": "band",
+      "display_name": null,
+      "created_at": "2020-10-16T13:42:47.107Z",
+      "updated_at": "2021-10-20T15:50:17.736Z",
+      "id": 1148945,
+      "schema": {
+        "name": {
+          "type": "text",
+          "required": true,
+          "default_value": "",
+          "pos": 0
+        },
+        "logo": {
+          "type": "asset",
+          "filetypes": [
+            "images"
+          ],
+          "asset_folder_id": "",
+          "pos": 1
+        },
+        "image": {
+          "type": "asset",
+          "pos": 2,
+          "filetypes": [
+            "images"
+          ],
+          "display_name": "Bild"
+        },
+        "image_offset": {
+          "type": "number",
+          "pos": 3,
+          "display_name": "Bild Offset",
+          "description": "Bild wird zentriert innerhalb eines festen Formats angezeigt (Slider Homepage, Bands-Übersicht, Band-Detail). Hiermit lässt sich die Bildposition anpassen."
+        },
+        "image_social": {
+          "type": "asset",
+          "pos": 4,
+          "display_name": "Bild - Social Media",
+          "filetypes": [
+            "images"
+          ],
+          "required": false,
+          "description": "Dieses Bild wird angezeigt, wenn diese Seite zb auf Facebook geteilt wird. Wenn nicht gesetzt, wird ein automatisch generiertes Bild genutzt."
+        },
+        "spotify": {
+          "type": "text",
+          "pos": 5,
+          "display_name": "Spotify Artist ID",
+          "description": ""
+        },
+        "youtube_embed": {
+          "type": "text",
+          "pos": 6,
+          "display_name": "Youtube Embed ID",
+          "description": "Beim Youtube Video auf \"Teilen\" -> \"Einbetten\" -> ID aus der \"src\" rauskopieren: https://www.youtube.com/embed/XXXXXXXX"
+        },
+        "youtube_embed_only_jpg": {
+          "type": "boolean",
+          "pos": 7,
+          "display_name": "Youtube Embed - nur jpg (kein webp) Coverbild"
+        },
+        "description": {
+          "type": "richtext",
+          "display_name": "Beschreibung",
+          "customize_toolbar": false,
+          "style_options": [],
+          "restrict_components": false,
+          "restrict_type": "",
+          "description": "",
+          "pos": 8
+        },
+        "description_meta": {
+          "type": "textarea",
+          "description": "Für Google",
+          "display_name": "Meta Beschreibung",
+          "pos": 9
+        },
+        "links": {
+          "type": "section",
+          "keys": [
+            "link_website",
+            "link_facebook",
+            "link_instagram",
+            "link_twitter",
+            "link_youtube"
+          ],
+          "pos": 10
+        },
+        "link_website": {
+          "type": "text",
+          "display_name": "Webseite",
+          "pos": 11
+        },
+        "link_facebook": {
+          "type": "text",
+          "display_name": "Facebook",
+          "pos": 12
+        },
+        "link_instagram": {
+          "type": "text",
+          "display_name": "Instagram",
+          "pos": 13
+        },
+        "link_twitter": {
+          "type": "text",
+          "display_name": "Twitter",
+          "pos": 14
+        },
+        "link_youtube": {
+          "type": "text",
+          "display_name": "Youtube",
+          "pos": 15
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": true,
+      "preview_tmpl": null,
+      "is_nestable": false,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "band",
+      "component_group_uuid": null,
+      "color": null,
+      "icon": null
+    },
+    {
+      "name": "bandcontest",
+      "display_name": "Bandcontest",
+      "created_at": "2022-08-03T20:29:32.690Z",
+      "updated_at": "2022-08-03T20:29:53.151Z",
+      "id": 2779434,
+      "schema": {
+        "headline": {
+          "type": "text",
+          "display_name": "Überschrift",
+          "pos": 0
+        },
+        "description_meta": {
+          "type": "textarea",
+          "default_value": "",
+          "display_name": "Meta Beschreibung",
+          "description": "Für Google",
+          "pos": 1
+        },
+        "image_social": {
+          "type": "asset",
+          "pos": 2,
+          "filetypes": [
+            "images"
+          ],
+          "display_name": "Bild - Social Media",
+          "description": "Dieses Bild wird angezeigt, wenn diese Seite zb auf Facebook geteilt wird. Wenn nicht gesetzt, wird ein automatisch generiertes Bild genutzt."
+        },
+        "text": {
+          "type": "richtext",
+          "style_options": [],
+          "restrict_components": false,
+          "pos": 3
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": true,
+      "preview_tmpl": null,
+      "is_nestable": false,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "Bandcontest",
+      "component_group_uuid": null,
+      "color": null,
+      "icon": null
+    },
+    {
+      "name": "BasicPage",
+      "display_name": "Basis Seite",
+      "created_at": "2020-11-09T21:44:06.787Z",
+      "updated_at": "2021-09-04T20:05:09.105Z",
+      "id": 1186108,
+      "schema": {
+        "headline": {
+          "type": "text",
+          "display_name": "Überschrift",
+          "pos": 0
+        },
+        "description_meta": {
+          "type": "textarea",
+          "default_value": "",
+          "display_name": "Meta Beschreibung",
+          "description": "Für Google",
+          "pos": 1
+        },
+        "image_social": {
+          "type": "asset",
+          "pos": 2,
+          "filetypes": [
+            "images"
+          ],
+          "display_name": "Bild - Social Media",
+          "description": "Dieses Bild wird angezeigt, wenn diese Seite zb auf Facebook geteilt wird. Wenn nicht gesetzt, wird ein automatisch generiertes Bild genutzt."
+        },
+        "text": {
+          "type": "richtext",
+          "style_options": [],
+          "restrict_components": false,
+          "pos": 3
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": true,
+      "preview_tmpl": null,
+      "is_nestable": false,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "Basis Seite",
+      "component_group_uuid": null,
+      "color": null,
+      "icon": null
+    },
+    {
+      "name": "BlokContent",
+      "display_name": "Abschnitt",
+      "created_at": "2020-11-17T23:49:08.901Z",
+      "updated_at": "2020-11-22T21:00:02.769Z",
+      "id": 1197114,
+      "schema": {
+        "headline": {
+          "type": "text",
+          "display_name": "Überschrift (H2)",
+          "pos": 0
+        },
+        "headline_inset": {
+          "type": "boolean",
+          "pos": 1,
+          "display_name": "Überschrift im Textblok"
+        },
+        "pics_arrangement": {
+          "type": "option",
+          "options": [
+            {
+              "value": "top",
+              "name": "Oben"
+            },
+            {
+              "value": "bottom",
+              "name": "Unten"
+            },
+            {
+              "value": "left",
+              "name": "Links"
+            },
+            {
+              "value": "right",
+              "name": "Rechts"
+            }
+          ],
+          "use_uuid": true,
+          "display_name": "Ausrichtung der Bilder",
+          "description": "Für \"Oben\" oder \"Unten\" gilt:\n- 1 Bild -> Volle Breite\nFür \"Links\" oder \"Rechts\" gilt:\n- x Bilder -> x Bilder in einer Reihe\n- Bitte maximal 4 Bilder",
+          "default_value": "right",
+          "pos": 2
+        },
+        "pics": {
+          "type": "multiasset",
+          "filetypes": [
+            "images"
+          ],
+          "display_name": "Bild(er)",
+          "description": "Ein oder mehrere Bilder - Bitte maximal 4 Bilder!",
+          "pos": 3
+        },
+        "text": {
+          "type": "richtext",
+          "pos": 4
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": false,
+      "preview_tmpl": "",
+      "is_nestable": true,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "Abschnitt",
+      "component_group_uuid": null,
+      "color": null,
+      "icon": null
+    },
+    {
+      "name": "BlokFaq",
+      "display_name": "Abschnitt FAQ",
+      "created_at": "2021-08-16T21:38:24.094Z",
+      "updated_at": "2021-08-16T21:40:05.829Z",
+      "id": 1713119,
+      "schema": {
+        "question": {
+          "type": "text",
+          "display_name": "Frage",
+          "required": true
+        },
+        "answer": {
+          "type": "richtext",
+          "display_name": "Antwort",
+          "required": true
+        }
+      },
+      "image": null,
+      "preview_field": "question",
+      "is_root": false,
+      "preview_tmpl": null,
+      "is_nestable": true,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "Abschnitt FAQ",
+      "component_group_uuid": null,
+      "color": null,
+      "icon": null
+    },
+    {
+      "name": "BlokFeature",
+      "display_name": null,
+      "created_at": "2020-10-15T22:19:14.084Z",
+      "updated_at": "2020-11-17T00:00:49.248Z",
+      "id": 1147724,
+      "schema": {
+        "name": {
+          "type": "text"
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": false,
+      "preview_tmpl": null,
+      "is_nestable": true,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "BlokFeature",
+      "component_group_uuid": null,
+      "color": null,
+      "icon": null
+    },
+    {
+      "name": "BlokGrid",
+      "display_name": null,
+      "created_at": "2020-10-15T22:19:14.067Z",
+      "updated_at": "2020-11-17T00:00:56.235Z",
+      "id": 1147723,
+      "schema": {
+        "columns": {
+          "type": "bloks"
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": false,
+      "preview_tmpl": null,
+      "is_nestable": true,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "BlokGrid",
+      "component_group_uuid": null,
+      "color": null,
+      "icon": null
+    },
+    {
+      "name": "BlokHome",
+      "display_name": null,
+      "created_at": "2020-11-17T00:44:42.984Z",
+      "updated_at": "2020-11-17T00:51:51.734Z",
+      "id": 1195174,
+      "schema": {
+        "headline": {
+          "type": "text"
+        },
+        "flow": {
+          "type": "text"
+        },
+        "image": {
+          "type": "text"
+        },
+        "text": {
+          "type": "text"
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": false,
+      "preview_tmpl": "",
+      "is_nestable": true,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "BlokHome",
+      "component_group_uuid": null,
+      "color": null,
+      "icon": null
+    },
+    {
+      "name": "BlokSimple",
+      "display_name": "Abschnitt simpel",
+      "created_at": "2021-08-16T21:40:25.140Z",
+      "updated_at": "2021-08-21T20:57:18.249Z",
+      "id": 1713120,
+      "schema": {
+        "two_columns": {
+          "type": "boolean",
+          "pos": 0,
+          "display_name": "Anzeige in zwei Spalten",
+          "description": "Zeige als eine von zwei Spalten (Desktop only). Ansonsten Darstellung über volle Breite. Hat keine Wirkung beim Typ \"Info Karte\"."
+        },
+        "text": {
+          "type": "richtext",
+          "required": true,
+          "pos": 1
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": false,
+      "preview_tmpl": "",
+      "is_nestable": true,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "Abschnitt simpel",
+      "component_group_uuid": null,
+      "color": null,
+      "icon": null
+    },
+    {
+      "name": "BlokTeaser",
+      "display_name": null,
+      "created_at": "2020-10-15T22:19:14.050Z",
+      "updated_at": "2020-11-17T00:01:03.243Z",
+      "id": 1147722,
+      "schema": {
+        "headline": {
+          "type": "text"
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": false,
+      "preview_tmpl": null,
+      "is_nestable": true,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "BlokTeaser",
+      "component_group_uuid": null,
+      "color": null,
+      "icon": null
+    },
+    {
+      "name": "config",
+      "display_name": null,
+      "created_at": "2020-10-24T21:38:05.334Z",
+      "updated_at": "2021-10-13T09:36:42.709Z",
+      "id": 1160757,
+      "schema": {
+        "year": {
+          "type": "text",
+          "pos": 0,
+          "display_name": "Jahr",
+          "description": "zb. \"2020\"",
+          "required": true
+        },
+        "date": {
+          "type": "text",
+          "display_name": "Datum",
+          "description": "zb. \"03.-05. Juli\"",
+          "pos": 1,
+          "required": true
+        },
+        "image_social": {
+          "type": "asset",
+          "pos": 2,
+          "display_name": "Bild - Social Media",
+          "description": "Dieses Bild wird angezeigt, wenn diese Seite zb auf Facebook geteilt wird. Wenn nicht gesetzt, wird ein automatisch generiertes Bild genutzt.",
+          "filetypes": [
+            "images"
+          ]
+        },
+        "flyer": {
+          "type": "asset",
+          "filetypes": [
+            "images"
+          ],
+          "asset_folder_id": 43806,
+          "display_name": "Bild - Flyer",
+          "pos": 3,
+          "description": ""
+        },
+        "image_all_bands": {
+          "type": "asset",
+          "pos": 4,
+          "display_name": "Bild - alle Bands",
+          "required": false,
+          "description": "Für Homepage",
+          "filetypes": [
+            "images"
+          ]
+        },
+        "title_meta": {
+          "type": "text",
+          "pos": 5,
+          "description": "Für Google und Browser-Tab",
+          "display_name": "Meta Titel",
+          "required": true
+        },
+        "description_meta": {
+          "type": "textarea",
+          "display_name": "Meta Beschreibung",
+          "description": "Für Google",
+          "pos": 6,
+          "required": false
+        },
+        "gallery": {
+          "type": "multiasset",
+          "filetypes": [
+            "images",
+            "videos"
+          ],
+          "pos": 7,
+          "display_name": "Galerie",
+          "asset_folder_id": 88868
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": true,
+      "preview_tmpl": null,
+      "is_nestable": false,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "config",
+      "component_group_uuid": null,
+      "color": null,
+      "icon": null
+    },
+    {
+      "name": "Homepage",
+      "display_name": null,
+      "created_at": "2020-10-15T22:19:14.032Z",
+      "updated_at": "2021-08-12T21:54:04.948Z",
+      "id": 1147721,
+      "schema": {
+        "body": {
+          "type": "bloks"
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": true,
+      "preview_tmpl": null,
+      "is_nestable": false,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "Homepage",
+      "component_group_uuid": null,
+      "color": null,
+      "icon": null
+    },
+    {
+      "name": "HomepageGalerie",
+      "display_name": "",
+      "created_at": "2021-08-13T20:39:39.382Z",
+      "updated_at": "2021-08-13T21:15:08.121Z",
+      "id": 1708653,
+      "schema": {},
+      "image": null,
+      "preview_field": null,
+      "is_root": false,
+      "preview_tmpl": null,
+      "is_nestable": true,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "HomepageGalerie",
+      "component_group_uuid": null,
+      "color": null,
+      "icon": null
+    },
+    {
+      "name": "HomepageNews",
+      "display_name": null,
+      "created_at": "2021-08-12T21:51:02.363Z",
+      "updated_at": "2021-08-13T20:40:46.894Z",
+      "id": 1706616,
+      "schema": {
+        "headline": {
+          "type": "text",
+          "display_name": "Überschrift"
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": false,
+      "preview_tmpl": null,
+      "is_nestable": true,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "HomepageNews",
+      "component_group_uuid": null,
+      "color": null,
+      "icon": null
+    },
+    {
+      "name": "HomepageVideo",
+      "display_name": null,
+      "created_at": "2021-08-13T13:09:25.950Z",
+      "updated_at": "2021-08-13T13:11:12.582Z",
+      "id": 1708104,
+      "schema": {
+        "headline": {
+          "type": "text",
+          "pos": 0,
+          "display_name": "Überschrift"
+        },
+        "url": {
+          "type": "text",
+          "filetypes": [],
+          "link_scope": "",
+          "display_name": "URL",
+          "pos": 1
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": false,
+      "preview_tmpl": null,
+      "is_nestable": true,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "HomepageVideo",
+      "component_group_uuid": null,
+      "color": null,
+      "icon": null
+    },
+    {
+      "name": "image_social",
+      "display_name": null,
+      "created_at": "2021-09-04T19:46:17.111Z",
+      "updated_at": "2021-09-04T19:46:17.111Z",
+      "id": 1759695,
+      "schema": {},
+      "image": null,
+      "preview_field": null,
+      "is_root": false,
+      "preview_tmpl": null,
+      "is_nestable": true,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "image_social",
+      "component_group_uuid": null,
+      "color": null,
+      "icon": null
+    },
+    {
+      "name": "info",
+      "display_name": "Info",
+      "created_at": "2020-11-17T23:57:57.216Z",
+      "updated_at": "2021-09-04T20:18:04.912Z",
+      "id": 1197117,
+      "schema": {
+        "headline": {
+          "type": "text",
+          "pos": 0,
+          "display_name": "Bezeichnung",
+          "translatable": false,
+          "required": true
+        },
+        "image_social": {
+          "type": "asset",
+          "pos": 1,
+          "filetypes": [
+            "images"
+          ],
+          "display_name": "Bild - Social Media",
+          "description": "Dieses Bild wird angezeigt, wenn diese Seite zb auf Facebook geteilt wird. Wenn nicht gesetzt, wird ein automatisch generiertes Bild genutzt."
+        },
+        "description_meta": {
+          "type": "textarea",
+          "pos": 2,
+          "display_name": "Meta Beschreibung",
+          "description": "Für Google"
+        },
+        "bloks": {
+          "type": "bloks",
+          "restrict_components": true,
+          "component_whitelist": [
+            "BlokContent"
+          ],
+          "display_name": "Abschnitte",
+          "pos": 3
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": true,
+      "preview_tmpl": null,
+      "is_nestable": false,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "Info",
+      "component_group_uuid": null,
+      "color": null,
+      "icon": null
+    },
+    {
+      "name": "info_map",
+      "display_name": "Info Karte",
+      "created_at": "2021-08-21T19:07:16.754Z",
+      "updated_at": "2021-09-04T20:19:46.344Z",
+      "id": 1722954,
+      "schema": {
+        "headline": {
+          "type": "text",
+          "pos": 0,
+          "display_name": "Bezeichnung",
+          "required": true
+        },
+        "image_social": {
+          "type": "asset",
+          "pos": 1,
+          "filetypes": [
+            "images"
+          ],
+          "display_name": "Bild - Social Media",
+          "description": "Dieses Bild wird angezeigt, wenn diese Seite zb auf Facebook geteilt wird. Wenn nicht gesetzt, wird ein automatisch generiertes Bild genutzt."
+        },
+        "description_meta": {
+          "type": "textarea",
+          "pos": 2,
+          "display_name": "Meta Beschreibung",
+          "description": "Für Google"
+        },
+        "title": {
+          "type": "text",
+          "pos": 3,
+          "display_name": "Überschrift"
+        },
+        "iframe": {
+          "type": "textarea",
+          "display_name": "iFrame Google Maps",
+          "description": "Gewünschte Adresse bei Google Maps suchen -> Teilen -> Tab \"Karten einbetten\" wählen -> \"HTML kopieren\"",
+          "pos": 4
+        },
+        "bloks": {
+          "type": "bloks",
+          "restrict_components": true,
+          "component_whitelist": [
+            "BlokSimple"
+          ],
+          "display_name": "Abschnitte",
+          "required": true,
+          "pos": 5
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": true,
+      "preview_tmpl": null,
+      "is_nestable": false,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "Info Karte",
+      "component_group_uuid": null,
+      "color": null,
+      "icon": null
+    },
+    {
+      "name": "info_simple",
+      "display_name": "Info Simpel",
+      "created_at": "2021-08-17T14:22:48.914Z",
+      "updated_at": "2021-09-04T20:18:57.173Z",
+      "id": 1714808,
+      "schema": {
+        "headline": {
+          "type": "text",
+          "pos": 0,
+          "display_name": "Bezeichnung",
+          "translatable": true
+        },
+        "image_social": {
+          "type": "asset",
+          "pos": 1,
+          "filetypes": [
+            "images"
+          ],
+          "display_name": "Bild - Social Media",
+          "description": "Dieses Bild wird angezeigt, wenn diese Seite zb auf Facebook geteilt wird. Wenn nicht gesetzt, wird ein automatisch generiertes Bild genutzt."
+        },
+        "description_meta": {
+          "type": "textarea",
+          "pos": 2,
+          "display_name": "Meta Beschreibung",
+          "description": "Für Google"
+        },
+        "title": {
+          "type": "text",
+          "pos": 3,
+          "display_name": "Überschrift"
+        },
+        "bloks": {
+          "type": "bloks",
+          "restrict_components": true,
+          "component_whitelist": [
+            "BlokSimple",
+            "BlokFaq"
+          ],
+          "display_name": "Abschnitte",
+          "pos": 4
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": true,
+      "preview_tmpl": null,
+      "is_nestable": false,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "Info Simpel",
+      "component_group_uuid": null,
+      "color": null,
+      "icon": null
+    },
+    {
+      "name": "kontakt",
+      "display_name": null,
+      "created_at": "2021-09-27T23:16:00.231Z",
+      "updated_at": "2021-09-27T23:17:22.078Z",
+      "id": 1820659,
+      "schema": {
+        "description_meta": {
+          "type": "textarea",
+          "description": "Für Google",
+          "display_name": "Meta Beschreibung"
+        },
+        "text": {
+          "type": "richtext"
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": true,
+      "preview_tmpl": null,
+      "is_nestable": false,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "kontakt",
+      "component_group_uuid": null,
+      "color": null,
+      "icon": null
+    },
+    {
+      "name": "main_sponsors",
+      "display_name": "Hauptsponsoren",
+      "created_at": "2021-07-12T11:35:46.353Z",
+      "updated_at": "2021-09-04T20:07:37.104Z",
+      "id": 1648450,
+      "schema": {
+        "title": {
+          "type": "text",
+          "pos": 0,
+          "required": true,
+          "display_name": "Überschrift"
+        },
+        "image_social": {
+          "type": "asset",
+          "pos": 1,
+          "filetypes": [
+            "images"
+          ],
+          "display_name": "Bild - Social Media",
+          "description": "Dieses Bild wird angezeigt, wenn diese Seite zb auf Facebook geteilt wird. Wenn nicht gesetzt, wird ein automatisch generiertes Bild genutzt."
+        },
+        "sponsors_list": {
+          "type": "bloks",
+          "restrict_components": true,
+          "component_whitelist": [
+            "sponsor__main"
+          ],
+          "required": true,
+          "display_name": "Sponsoren",
+          "pos": 2
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": true,
+      "preview_tmpl": null,
+      "is_nestable": true,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "Hauptsponsoren",
+      "component_group_uuid": null,
+      "color": null,
+      "icon": null
+    },
+    {
+      "name": "meta",
+      "display_name": "",
+      "created_at": "2020-11-01T22:29:18.984Z",
+      "updated_at": "2021-09-04T19:57:33.641Z",
+      "id": 1173683,
+      "schema": {
+        "description_meta": {
+          "type": "textarea",
+          "display_name": "Meta Beschreibung",
+          "description": "Für Google"
+        },
+        "image_social": {
+          "type": "asset",
+          "filetypes": [
+            "images"
+          ],
+          "display_name": "Bild - Social Media",
+          "description": "Dieses Bild wird angezeigt, wenn diese Seite zb auf Facebook geteilt wird. Wenn nicht gesetzt, wird ein automatisch generiertes Bild genutzt."
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": true,
+      "preview_tmpl": null,
+      "is_nestable": false,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "meta",
+      "component_group_uuid": null,
+      "color": null,
+      "icon": null
+    },
+    {
+      "name": "news",
+      "display_name": null,
+      "created_at": "2020-10-22T12:56:42.352Z",
+      "updated_at": "2021-09-04T20:22:11.841Z",
+      "id": 1157411,
+      "schema": {
+        "headline": {
+          "type": "text",
+          "pos": 0
+        },
+        "image_social": {
+          "type": "asset",
+          "filetypes": [
+            "images"
+          ],
+          "display_name": "Bild",
+          "pos": 1
+        },
+        "custom_date": {
+          "type": "datetime",
+          "pos": 2,
+          "display_name": "Selbst gewähltes Veröffentlichungsdatum",
+          "description": "Ansonsten wird das Datum aus der aller ersten Veröffentlichung erzeugt."
+        },
+        "description": {
+          "type": "richtext",
+          "display_name": "Text",
+          "pos": 3
+        },
+        "description_short": {
+          "type": "richtext",
+          "description": "Wird auf Übersichtsseite angezeigt",
+          "display_name": "Kurzbeschreibung",
+          "pos": 4
+        },
+        "description_meta": {
+          "type": "textarea",
+          "display_name": "Meta Beschreibung",
+          "description": "Für Google",
+          "pos": 5
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": true,
+      "preview_tmpl": null,
+      "is_nestable": false,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "news",
+      "component_group_uuid": null,
+      "color": null,
+      "icon": null
+    },
+    {
+      "name": "normal_sponsors",
+      "display_name": "Normale Sponsoren",
+      "created_at": "2021-07-12T11:36:49.682Z",
+      "updated_at": "2021-07-12T19:43:02.512Z",
+      "id": 1648480,
+      "schema": {
+        "title": {
+          "type": "text",
+          "pos": 0,
+          "display_name": "Überschrift",
+          "required": true
+        },
+        "sponsors_list": {
+          "type": "bloks",
+          "restrict_components": true,
+          "component_whitelist": [
+            "sponsor__normal"
+          ],
+          "required": false,
+          "display_name": "Sponsoren",
+          "pos": 1
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": true,
+      "preview_tmpl": null,
+      "is_nestable": true,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "Normale Sponsoren",
+      "component_group_uuid": null,
+      "color": null,
+      "icon": null
+    },
+    {
+      "name": "sponsor__main",
+      "display_name": "Sponsor",
+      "created_at": "2021-07-12T11:38:17.419Z",
+      "updated_at": "2021-08-02T15:06:28.168Z",
+      "id": 1648484,
+      "schema": {
+        "name": {
+          "type": "text",
+          "pos": 0
+        },
+        "link": {
+          "type": "text",
+          "show_anchor": false,
+          "description": "Link zur Webseite des Sponsors (optional)",
+          "pos": 1
+        },
+        "logo": {
+          "type": "asset",
+          "filetypes": [
+            "images"
+          ],
+          "required": true,
+          "pos": 2
+        },
+        "logo_height": {
+          "type": "number",
+          "pos": 3,
+          "display_name": "Höhe Logo",
+          "default_value": "",
+          "description": "Falls leer gelassen, wird der Standard von 35px verwendet"
+        },
+        "logo_margin_top": {
+          "type": "number",
+          "pos": 4,
+          "display_name": "Logo Abstand nach oben (in px)",
+          "description": "Gilt nur für die Logos innerhalb des Footers!"
+        },
+        "description": {
+          "type": "richtext",
+          "restrict_components": false,
+          "required": true,
+          "display_name": "Beschreibung",
+          "pos": 5
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": false,
+      "preview_tmpl": "{{name}}",
+      "is_nestable": true,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "Sponsor",
+      "component_group_uuid": null,
+      "color": null,
+      "icon": null
+    },
+    {
+      "name": "sponsor__normal",
+      "display_name": "Sponsor",
+      "created_at": "2021-07-12T11:37:05.166Z",
+      "updated_at": "2021-07-12T19:43:25.684Z",
+      "id": 1648481,
+      "schema": {
+        "name": {
+          "type": "text",
+          "pos": 0
+        },
+        "link": {
+          "type": "text",
+          "show_anchor": false,
+          "description": "Link zur Webseite des Sponsors (optional)",
+          "pos": 1
+        },
+        "logo": {
+          "type": "asset",
+          "filetypes": [
+            "images"
+          ],
+          "required": true,
+          "pos": 2
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": false,
+      "preview_tmpl": "{{name}}",
+      "is_nestable": true,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "Sponsor",
+      "component_group_uuid": null,
+      "color": null,
+      "icon": null
+    },
+    {
+      "name": "tickets",
+      "display_name": "Tickets",
+      "created_at": "2021-08-15T19:36:03.851Z",
+      "updated_at": "2022-06-26T21:59:44.482Z",
+      "id": 1710625,
+      "schema": {
+        "image": {
+          "type": "asset",
+          "pos": 0,
+          "filetypes": [
+            "images"
+          ],
+          "display_name": "Bild für Startseite"
+        },
+        "image_social": {
+          "type": "asset",
+          "pos": 1,
+          "filetypes": [
+            "images"
+          ],
+          "display_name": "Bild - Social Media",
+          "description": "Dieses Bild wird angezeigt, wenn diese Seite zb auf Facebook geteilt wird. Wenn nicht gesetzt, wird ein automatisch generiertes Bild genutzt."
+        },
+        "show_info_box": {
+          "type": "boolean",
+          "pos": 2,
+          "display_name": "Info-Box sichtbar?"
+        },
+        "info_box": {
+          "type": "richtext",
+          "pos": 3,
+          "description": "Eingefärbte Box für wichtige Infos. Nur sichtbar wenn obige Checkbox angehakt.",
+          "display_name": "Info-Box Text"
+        },
+        "text": {
+          "type": "richtext",
+          "pos": 4
+        },
+        "text_page_inactive": {
+          "type": "richtext",
+          "pos": 5
+        },
+        "vvk_places": {
+          "type": "bloks",
+          "pos": 6,
+          "display_name": "Vorverkaufsstellen",
+          "restrict_components": true,
+          "component_whitelist": [
+            "tickets_vvk"
+          ]
+        },
+        "description_meta": {
+          "type": "textarea",
+          "description": "Für Google",
+          "display_name": "Meta Beschreibung",
+          "pos": 7
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": true,
+      "preview_tmpl": null,
+      "is_nestable": false,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "Tickets",
+      "component_group_uuid": null,
+      "color": null,
+      "icon": null
+    },
+    {
+      "name": "tickets_vvk",
+      "display_name": "Vorverkaufsstelle",
+      "created_at": "2021-08-15T19:43:49.508Z",
+      "updated_at": "2021-08-15T20:08:06.385Z",
+      "id": 1710626,
+      "schema": {
+        "name": {
+          "type": "text",
+          "required": true
+        },
+        "additional_line": {
+          "type": "text",
+          "display_name": "Zusätzliche Zeile"
+        },
+        "street": {
+          "type": "text",
+          "required": true,
+          "display_name": "Straße"
+        },
+        "street_nr": {
+          "type": "text",
+          "required": true,
+          "display_name": "Hausnummer"
+        },
+        "plz": {
+          "type": "text",
+          "display_name": "PLZ",
+          "required": true
+        },
+        "city": {
+          "type": "text",
+          "required": true,
+          "display_name": "Ort"
+        }
+      },
+      "image": null,
+      "preview_field": "name",
+      "is_root": false,
+      "preview_tmpl": null,
+      "is_nestable": true,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "Vorverkaufsstelle",
+      "component_group_uuid": null,
+      "color": null,
+      "icon": null
+    },
+    {
+      "name": "ticket_type",
+      "display_name": "Ticket Typ",
+      "created_at": "2021-08-15T19:53:32.978Z",
+      "updated_at": "2021-10-03T22:30:35.412Z",
+      "id": 1710627,
+      "schema": {
+        "stripe_id_test": {
+          "type": "text",
+          "required": true,
+          "display_name": "Stripe Id (TEST)"
+        },
+        "stripe_id_live": {
+          "type": "text",
+          "required": true,
+          "display_name": "Stripe Id (LIVE)"
+        },
+        "image": {
+          "type": "asset",
+          "filetypes": [
+            "images"
+          ],
+          "required": true,
+          "display_name": "Bild"
+        },
+        "text": {
+          "type": "richtext",
+          "display_name": "Beschreibungstext"
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": true,
+      "preview_tmpl": null,
+      "is_nestable": false,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "Ticket Typ",
+      "component_group_uuid": null,
+      "color": null,
+      "icon": null
+    },
+    {
+      "name": "timetable",
+      "display_name": "Timetable",
+      "created_at": "2020-10-17T22:45:18.768Z",
+      "updated_at": "2021-09-04T20:15:07.801Z",
+      "id": 1150178,
+      "schema": {
+        "image_social": {
+          "type": "asset",
+          "pos": 0,
+          "filetypes": [
+            "images"
+          ],
+          "display_name": "Bild - Social Media",
+          "description": "Dieses Bild wird angezeigt, wenn diese Seite zb auf Facebook geteilt wird. Wenn nicht gesetzt, wird ein automatisch generiertes Bild genutzt."
+        },
+        "entry": {
+          "type": "bloks",
+          "restrict_components": true,
+          "restrict_type": "",
+          "component_whitelist": [
+            "timetable_day"
+          ],
+          "required": true,
+          "display_name": "Tage",
+          "pos": 1
+        },
+        "description_meta": {
+          "type": "textarea",
+          "description": "Für Google",
+          "display_name": "Meta Beschreibung",
+          "pos": 2
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": true,
+      "preview_tmpl": "",
+      "is_nestable": false,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "Timetable",
+      "component_group_uuid": null,
+      "color": null,
+      "icon": null
+    },
+    {
+      "name": "timetable_day",
+      "display_name": "Tag",
+      "created_at": "2020-10-17T23:12:51.767Z",
+      "updated_at": "2022-06-13T19:30:08.364Z",
+      "id": 1150180,
+      "schema": {
+        "day_display_name": {
+          "type": "text",
+          "pos": 0,
+          "display_name": "Bezeichnung"
+        },
+        "doors_open": {
+          "type": "text",
+          "pos": 1,
+          "required": false
+        },
+        "day": {
+          "type": "datetime",
+          "disable_time": true,
+          "display_name": "Tag wählen",
+          "pos": 2
+        },
+        "entry": {
+          "type": "bloks",
+          "restrict_components": true,
+          "component_whitelist": [
+            "timetable_entry"
+          ],
+          "pos": 3,
+          "display_name": "Bands"
+        }
+      },
+      "image": null,
+      "preview_field": "day_display_name",
+      "is_root": false,
+      "preview_tmpl": "",
+      "is_nestable": true,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "Tag",
+      "component_group_uuid": null,
+      "color": null,
+      "icon": null
+    },
+    {
+      "name": "timetable_entry",
+      "display_name": "Band",
+      "created_at": "2020-10-17T22:46:29.723Z",
+      "updated_at": "2020-10-24T21:19:20.157Z",
+      "id": 1150179,
+      "schema": {
+        "band_name": {
+          "type": "text",
+          "pos": 0,
+          "display_name": "Name des Feldes"
+        },
+        "band": {
+          "type": "multilink",
+          "restrict_content_types": true,
+          "component_whitelist": [
+            "band"
+          ],
+          "pos": 1,
+          "display_name": "Link zur Band"
+        },
+        "time_start": {
+          "type": "datetime",
+          "display_name": "Zeit Start",
+          "description": "Wenn leer, wird \"tba\" angezeigt",
+          "pos": 2
+        },
+        "time_end": {
+          "type": "datetime",
+          "display_name": "Zeit Ende",
+          "pos": 3
+        }
+      },
+      "image": null,
+      "preview_field": "band_name",
+      "is_root": false,
+      "preview_tmpl": "",
+      "is_nestable": true,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "Band",
+      "component_group_uuid": null,
+      "color": null,
+      "icon": null
+    }
+  ],
+  "component_groups": []
+}
