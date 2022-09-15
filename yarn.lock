@@ -7426,10 +7426,10 @@ levn@^0.4.1:
     prelude-ls "^1.2.1"
     type-check "~0.4.0"
 
-lightgallery@2.6.0:
-  version "2.6.0"
-  resolved "https://registry.yarnpkg.com/lightgallery/-/lightgallery-2.6.0.tgz#2ac12433706d05a484b47ee60a7331a6d442c273"
-  integrity sha512-D1YJvPkGSrv6rqLzFGGl7CII4CiZWD3YtYjC3u256L0qk280YIzC9CINzOQlnRKQDTJJzfEa1PDgGO3Cb6ORSQ==
+lightgallery@2.6.1:
+  version "2.6.1"
+  resolved "https://registry.yarnpkg.com/lightgallery/-/lightgallery-2.6.1.tgz#b6ace61cc7b5f0567c1d0b002beeb69b2df01ae9"
+  integrity sha512-Lwcr4uEqzTBP3u7FurJo+kBT2BuNMXgFpP1iCwbS+5uSXHyzApolUwAm9TmQ7lLpTMVPIti5a5wwQNplw769ZQ==
 
 lighthouse-logger@^1.0.0:
   version "1.3.0"
