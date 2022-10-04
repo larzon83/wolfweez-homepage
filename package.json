@@ -35,7 +35,7 @@
 		"@nuxtjs/axios": "5.13.6",
 		"@nuxtjs/proxy": "2.1.0",
 		"@vue/composition-api": "1.7.0",
-		"core-js": "3.25.0",
+		"core-js": "3.25.5",
 		"lightgallery": "2.6.0",
 		"nuxt": "2.15.8",
 		"nuxt-client-init-module": "0.3.0",
