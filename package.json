@@ -46,7 +46,7 @@
 		"vue-horizontal": "0.8.12",
 		"vue-lazy-youtube-video": "2.3.0",
 		"vue-rellax": "0.2.0",
-		"vue-server-renderer": "2.6.14",
+		"vue-server-renderer": "2.7.12",
 		"vue-template-compiler": "2.6.14",
 		"vue2-flip-countdown": "0.12.1",
 		"vuex": "3.6.2"
@@ -93,7 +93,7 @@
 	},
 	"resolutions": {
 		"vue": "2.6.14",
-		"vue-server-renderer": "2.6.14",
+		"vue-server-renderer": "2.7.12",
 		"vue-template-compiler": "2.6.14"
 	}
 }
