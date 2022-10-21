@@ -17,6 +17,19 @@
 		<!-- TODO: put text in SB -->
 		<div>
 			<p>
+				<b>Termin:</b> 18.November 2022<br />
+				<b>Location:</b> Waidbachhalle 78661 Irslingen<br />
+				<b>Doors Open:</b> 18.00 Uhr<br />
+				<b>Bewerbungszeitraum:</b> 05.08.2022 – 04.09.2022
+			</p>
+			<br />
+			<v-divider />
+			<br />
+
+			<h2>Bands</h2>
+			<p>Folgende Bands nehmen am Bandcontest 2022 teil:</p>
+
+			<!-- <p>
 				Yeah! Großartige Sache das ihr hier gelandet seid und euch mit euerer
 				Band bei unserem Bandcontest bewerbt!!!
 			</p>
@@ -112,8 +125,9 @@
 				<a href="mailto:bandcontest@wolfweez-openair.de"
 					>bandcontest@wolfweez-openair.de</a
 				>.
-			</p>
+			</p> -->
 
+			<!-- TODO: obsolete -> remove -->
 			<!-- <br />
 			<v-divider />
 			<br />
@@ -142,6 +156,40 @@
 				</template>
 			</v-simple-table> -->
 		</div>
+		<v-row tag="section">
+			<!-- ACTIVE -->
+			<v-col
+				v-for="band in bands.stories"
+				:key="band.content._uid"
+				cols="12"
+				md="6"
+				xl="4"
+			>
+				<v-card
+					v-if="band.content"
+					:ripple="false"
+					color="darkish"
+					flat
+					height="100%"
+					href
+					nuxt
+					class="hover-card"
+				>
+					<v-card-text class="pt-2 pb-4">
+						<h2 class="text-body-1 news-title text-center">
+							{{ band.content.name }}
+						</h2>
+					</v-card-text>
+					<SbImage
+						v-if="band.content.image && band.content.image.filename"
+						:alt="band.content.name"
+						:pic="band.content.image"
+						:preset="$config.presetNames.BAND_OVERVIEW"
+						:position="$_shiftImagePositionY(band.content.image_offset)"
+					/>
+				</v-card>
+			</v-col>
+		</v-row>
 	</section>
 </template>
 
@@ -205,10 +253,17 @@ export default {
 	},
 
 	async asyncData(context) {
-		return await sbData({
+		const bandcontest = await sbData({
 			ctx: context,
 			path: '/bandcontest'
 		})
+
+		const bands = await sbData({
+			ctx: context,
+			startsWith: 'bandcontest-bands/'
+		})
+
+		return { ...bandcontest, bands }
 	},
 
 	middleware({ store }) {
@@ -219,6 +274,12 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import '~/assets/style/__partials/_hover-card.scss';
+
+.hover-card .news-title {
+	line-height: 1.8125rem; // 29px
+}
+
 // .v-data-table.sponsoring-table {
 // 	tr {
 // 		> th:first-of-type,
