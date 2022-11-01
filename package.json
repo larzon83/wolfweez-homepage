@@ -54,7 +54,7 @@
 	"devDependencies": {
 		"@aceforth/nuxt-netlify": "1.1.0",
 		"@babel/eslint-parser": "7.18.9",
-		"@commitlint/cli": "17.1.2",
+		"@commitlint/cli": "17.2.0",
 		"@commitlint/config-conventional": "17.1.0",
 		"@epegzz/sass-vars-loader": "6.1.0",
 		"@nuxtjs/eslint-config": "10.0.0",
