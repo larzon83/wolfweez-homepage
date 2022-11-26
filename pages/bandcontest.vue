@@ -17,6 +17,53 @@
 		<!-- TODO: put text in SB -->
 		<div>
 			<p>
+				Der Bandcontest 2022 ist vorbei und die Halle wurde wieder in ihren
+				ursprünglichen Zustand versetzt!😁🤘💪
+			</p>
+
+			<p>
+				Nach einem tollen Bandcontest am Freitag, mit super Bands, die wirklich
+				alles auf der Bühne gegeben haben, einem tollen Publikum, und einer sehr
+				fachlichen Jury wurden am Abend gleich die beiden Sieger-Bands
+				ermittelt. 🥳🤘🍻
+			</p>
+
+			<p>Es war bis zum siebten Platz ein Kopf an Kopf rennen!</p>
+
+			<p>
+				Vielen Dank an dieser Stelle nochmals an alle Bands die mit dabei
+				waren!🤩🤘
+			</p>
+
+			<p>
+				Das Rennen um die zwei begehrten Plätze
+				machten.....*Trommelwirbel*....😁🥁
+			</p>
+
+			<p>
+				<b>Platz 1: FEARPARK</b><br />
+				<b>Platz 2: MADHOUZE</b><br />
+				🥳🥳🥳🥳🥳🥳
+			</p>
+
+			<p>
+				Somit steht auch fest wer am Festival-Freitag und am Festival-Samstag
+				die jeweiligen Festivaltage eröffnet!🤩🤘
+			</p>
+
+			<p>
+				Das heißt, die ersten zwei Bands vom 2023er LineUp sind veröffentlicht.
+				😎🤘
+			</p>
+
+			<p>
+				Wir wünschen allen einen schönen Sonntag und seid gespannt...die
+				Veröffentlichung des 2023er LineUp's beginnt demnächst😎😉🤘
+			</p>
+		</div>
+
+		<div>
+			<!-- <p>
 				<b>Termin:</b> 18.November 2022<br />
 				<b>Location:</b> Waidbachhalle 78661 Irslingen<br />
 				<b>Doors Open:</b> 18.00 Uhr<br />
@@ -27,7 +74,7 @@
 			<br />
 
 			<h2>Bands</h2>
-			<p>Folgende Bands nehmen am Bandcontest 2022 teil:</p>
+			<p>Folgende Bands nehmen am Bandcontest 2022 teil:</p> -->
 
 			<!-- <p>
 				Yeah! Großartige Sache das ihr hier gelandet seid und euch mit euerer
@@ -156,8 +203,8 @@
 				</template>
 			</v-simple-table> -->
 		</div>
-		<v-row tag="section">
-			<!-- ACTIVE -->
+
+		<!-- <v-row tag="section">
 			<v-col
 				v-for="band in bands.stories"
 				:key="band.content._uid"
@@ -189,7 +236,7 @@
 					/>
 				</v-card>
 			</v-col>
-		</v-row>
+		</v-row> -->
 	</section>
 </template>
 
