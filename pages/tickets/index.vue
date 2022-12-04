@@ -13,7 +13,7 @@
 			text
 			class="pa-4 mb-10 mt-0 mt-lg-5 information--text"
 		>
-			<p><b>Aktuell kein Vorverkauf</b></p>
+			<p><b>Vorverkauf startet in Kürze</b></p>
 		</v-alert>
 
 		<div v-if="story.content.text_page_inactive" class="mt-8">
@@ -95,16 +95,19 @@
 								>
 									<v-col>
 										<h3 class="font-weight-medium">{{ ticket.name }}</h3>
-										<v-chip
-											:ripple="false"
-											class="mt-1 mt-md-2 font-weight-bold"
-											color="ahref"
-											label
-											outlined
-											tag="div"
-										>
-											{{ ticket.price.formatted }}
-										</v-chip>
+										<div class="price-wrapper d-flex align-center mt-1 mt-md-2">
+											<v-chip
+												:ripple="false"
+												class="font-weight-bold flex-shrink-0"
+												color="ahref"
+												label
+												outlined
+												tag="div"
+											>
+												{{ ticket.price.formatted }}
+											</v-chip>
+											<small class="vvk">inkl. 2€ VVK-Gebühr</small>
+										</div>
 									</v-col>
 									<v-col
 										cols="auto"
@@ -521,8 +524,17 @@ export default {
 	opacity: 0.06;
 }
 
-.desc {
+.price-wrapper {
+	gap: 8px;
+}
+
+.desc,
+.vvk {
 	color: getcolor('bright', 0.8);
+}
+
+.vvk {
+	line-height: normal;
 }
 
 .shipping-amount {

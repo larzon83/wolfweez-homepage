@@ -1,7 +1,7 @@
 <template>
 	<v-row tag="section">
 		<!-- IN-ACTIVE -->
-		<v-col v-if="bandsAll" cols="12">
+		<!-- <v-col v-if="bandsAll" cols="12">
 			<v-alert
 				icon="$info"
 				dense
@@ -12,12 +12,11 @@
 			>
 				<p><b>TBA</b></p>
 			</v-alert>
-		</v-col>
+		</v-col> -->
 
 		<!-- ACTIVE -->
 		<v-col
 			v-for="band in bandsAll"
-			v-else
 			:key="band.content._uid"
 			cols="12"
 			md="6"
