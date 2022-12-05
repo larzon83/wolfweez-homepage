@@ -43,7 +43,7 @@
 			<!-- aside -->
 			<v-col cols="12" lg="5" xl="4" tag="aside">
 				<v-card color="darkish" flat>
-					<v-card-text v-if="playDay || playTime">
+					<v-card-text>
 						<h2>Running Order</h2>
 						<v-divider />
 						<div class="pb-2"><b>Tag:</b> {{ playDay || 'TBA' }}</div>
