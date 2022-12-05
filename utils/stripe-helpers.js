@@ -81,6 +81,7 @@ const constructProducts = (productsList, pricesList, sbTickets, testMode) => {
 				textSb,
 				name,
 				extraShipping: metadata['extra-shipping'] === 'yes',
+				noVvk: metadata['no-vvk'] === 'yes',
 				price: {
 					id: price.id,
 					currency: price.currency,
@@ -117,6 +118,7 @@ const getProductsAndShippingRates = async (
 		version: sbVersion
 	})
 
+	// TODO: try catch
 	const [productsList, pricesList, shippingRatesList, { data: sbTickets }] =
 		await Promise.all([
 			productsPromise,

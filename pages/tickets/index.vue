@@ -106,7 +106,9 @@
 											>
 												{{ ticket.price.formatted }}
 											</v-chip>
-											<small class="vvk">inkl. 2€ VVK-Gebühr</small>
+											<small v-if="!ticket.noVvk" class="vvk"
+												>inkl. 2€ VVK-Gebühr</small
+											>
 										</div>
 									</v-col>
 									<v-col
@@ -203,12 +205,11 @@
 					<!-- checkout amount details and button -->
 					<v-row align="center" justify="space-between" class="mt-3">
 						<v-col cols="12" lg="auto" class="py-0 py-lg-3">
-							<div v-if="ticketsForCheckout.length">
+							<div v-if="ticketsForCheckout.length && shippingRate.id">
 								<div>
 									<div class="font-weight-bold">Summe: {{ chargeAmount }}</div>
 									<div class="shipping-amount">
-										zzgl. {{ shippingRate.amountOnlyShipping }} Versandkosten
-										und {{ shippingRate.amountOnlyVvk }} VVK-Gebühr
+										zzgl. {{ shippingRate.amountTotal }} Versandkosten
 									</div>
 								</div>
 							</div>
@@ -258,6 +259,25 @@
 			/>
 		</div>
 
+		<v-alert
+			icon="$info"
+			dense
+			prominent
+			color="information"
+			class="pa-4 mb-10 mt-0 mt-lg-5"
+		>
+			<p>
+				<b>Unterkünfte</b><br />
+				Finde passende Unterkünfte in Irslingen und Umgebung:
+				<a
+					href="https://www.google.de/search?q=78661+unterk%C3%BCnfte&sxsrf=ALiCzsaTM31Eyr2jXPJt483ULVV5baTkow:1670278852176&source=hp&ei=xG6OY9eRBIWD9u8Po_iBgAE&iflsig=AJiK0e8AAAAAY4581Og8KVaDz8FkCfWrCG5F--5YIxGQ&ved=0ahUKEwjXg53NweP7AhWFgf0HHSN8ABAQ4dUDCAo&uact=5&oq=78661+unterk%C3%BCnfte&gs_lcp=Cgdnd3Mtd2l6EAMyBQgAEKIEMgUIABCiBDIFCAAQogQyBQgAEKIEMgUIABCiBDoECCMQJzoFCAAQgAQ6BQguEIAEOggIABCABBDLAToECAAQHjoGCAAQHhAPOgIIJjoFCCEQoAE6BwghEKABEApQAFjdR2D9SWgAcAB4AIABbogB_AeSAQQxMi4xmAEAoAECoAEB&sclient=gws-wiz&pccc=1"
+					rel="nofollow noopener"
+					target="_blank"
+					>Google Suche</a
+				>
+			</p>
+		</v-alert>
+
 		<h2 class="mt-16 pb-3">Offizielle Vorverkaufstellen</h2>
 		<v-row>
 			<v-col
@@ -283,7 +303,7 @@ import savePagetitleToVuex from '~/mixins/savePagetitleToVuex.js'
 import useFormatting from '~/mixins/useFormatting.js'
 import { sbData } from '~/utils'
 import { routeMeta } from '~/utils/constants'
-import { createOgImagePath, createSEOMeta } from '~/utils/seo'
+import { createSEOMeta } from '~/utils/seo'
 
 const pageTitle = routeMeta.TICKETS.title
 
@@ -291,59 +311,64 @@ export default {
 	name: pageTitle,
 	mixins: [savePagetitleToVuex, useFormatting, useStorybridge],
 
-	head() {
-		const title = pageTitle
-		return {
-			title,
-			meta: createSEOMeta({
-				image: createOgImagePath(this.$route.path),
-				imageAlt: title,
-				title,
-				url: this.$route.path
-			})
-		}
-	},
-
+	// IN-ACTIVE
 	// head() {
 	// 	const title = pageTitle
-
-	// 	const { image, imageHeight } = this.$_generateOgImageEntry(
-	// 		this.story.content.image_social?.filename,
-	// 		this.$route.path
-	// 	)
-
-	// 	const linkEntries = []
-
-	// 	// only relevant for production, so, ignoring "devProducts"
-	// 	if (this.$stripeProducts.length) {
-	// 		const imgIndex = this.$stripeProducts[0]?.name === 'testticket' ? 1 : 0
-
-	// 		if (this.$stripeProducts[imgIndex]) {
-	// 			const preloadImage = this.$_getPreloadImageHeadEntry(
-	// 				this.$stripeProducts[imgIndex].imageSb?.filename,
-	// 				this.$config.presetNames.TICKET
-	// 			)
-	// 			if (preloadImage) linkEntries.push(preloadImage)
-	// 		}
-	// 	}
-
 	// 	return {
 	// 		title,
 	// 		meta: createSEOMeta({
-	// 			description: this.story.content.description_meta,
-	// 			image,
+	// 			image: createOgImagePath(this.$route.path),
 	// 			imageAlt: title,
-	// 			imageHeight,
 	// 			title,
 	// 			url: this.$route.path
-	// 		}),
-	// 		link: [...linkEntries]
+	// 		})
 	// 	}
 	// },
 
+	// ACTIVE
+	head() {
+		const title = pageTitle
+
+		const { image, imageHeight } = this.$_generateOgImageEntry(
+			this.story.content.image_social?.filename,
+			this.$route.path
+		)
+
+		const linkEntries = []
+
+		// only relevant for production, so, ignoring "devProducts"
+		if (this.$stripeProducts.length) {
+			const imgIndex = this.$stripeProducts[0]?.name === 'testticket' ? 1 : 0
+
+			if (this.$stripeProducts[imgIndex]) {
+				const preloadImage = this.$_getPreloadImageHeadEntry(
+					this.$stripeProducts[imgIndex].imageSb?.filename,
+					this.$config.presetNames.TICKET
+				)
+				if (preloadImage) linkEntries.push(preloadImage)
+			}
+		}
+
+		return {
+			title,
+			meta: createSEOMeta({
+				description: this.story.content.description_meta,
+				image,
+				imageAlt: title,
+				imageHeight,
+				title,
+				url: this.$route.path
+			}),
+			link: [...linkEntries]
+		}
+	},
+
 	data() {
 		return {
-			pageIsActive: false,
+			pageIsActive:
+				process.env.NODE_ENV === 'development' ||
+				process.env.NUXT_ENV_IS_SPA === 'true' ||
+				process.env.NUXT_ENV_STORYBLOK_PREVIEW === 'true',
 			pageTitle,
 			checkoutError: '',
 			devProducts: [],
@@ -387,6 +412,7 @@ export default {
 					res.push({
 						amount: current.price.unit_amount,
 						extraShipping: current.extraShipping,
+						noVvk: current.noVvk,
 						name: current.name,
 						price: current.price.id,
 						quantity: this.quantities[current.productId]
@@ -399,20 +425,25 @@ export default {
 		},
 
 		shippingRate() {
-			const shippingBase = this.shippingRates.find(
-				s => s.ident === 'shippingBase'
-			)
-			const shippingExtended = this.shippingRates.find(
-				s => s.ident === 'shippingExtended'
-			)
+			// const shippingBase = this.shippingRates.find(
+			// 	s => s.ident === 'shippingBase'
+			// )
+			// const shippingExtended = this.shippingRates.find(
+			// 	s => s.ident === 'shippingExtended'
+			// )
 
-			if (!this.ticketsForCheckout.length) return shippingBase
+			// if (!this.ticketsForCheckout.length) return shippingBase
 
-			const hasExtraShipping = this.ticketsForCheckout.find(
-				p => p.extraShipping
+			// const hasExtraShipping = this.ticketsForCheckout.find(
+			// 	p => p.extraShipping
+			// )
+
+			// return hasExtraShipping ? shippingExtended : shippingBase
+
+			const shippingRate2023 = this.shippingRates.find(
+				s => s.ident === 'shippingRate2023'
 			)
-
-			return hasExtraShipping ? shippingExtended : shippingBase
+			return shippingRate2023 || {}
 		},
 
 		chargeAmount() {
@@ -453,6 +484,11 @@ export default {
 
 			if (!this.ticketsForCheckout.length) {
 				this.checkoutError = 'Kein Ticket ausgewählt'
+				return
+			}
+
+			if (!this.shippingRate.id) {
+				this.checkoutError = 'Versandkosten konnten nicht ermittelt werden'
 				return
 			}
 
