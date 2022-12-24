@@ -86,6 +86,7 @@
 								:src="`https://open.spotify.com/embed/artist/${band.spotify}`"
 								frameBorder="0"
 								allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+								loading="lazy"
 							></iframe>
 						</v-lazy>
 					</client-only>
