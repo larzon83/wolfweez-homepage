@@ -42,7 +42,9 @@ const constructProducts = (productsList, pricesList, sbTickets, testMode) => {
 		.map(product => {
 			let prices = []
 			if (pricesList && pricesList.data) {
-				prices = pricesList.data.filter(price => price.product === product.id)
+				prices = pricesList.data.filter(
+					price => price.product === product.id && price.active === true
+				)
 			}
 			return {
 				...product,
