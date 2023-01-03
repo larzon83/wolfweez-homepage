@@ -83,7 +83,9 @@
 					<client-only>
 						<v-lazy v-model="spotifyVisible">
 							<iframe
-								:src="`https://open.spotify.com/embed/artist/${band.spotify}`"
+								:src="`https://open.spotify.com/embed/${
+									band.spotify_embed_type || 'artist'
+								}/${band.spotify}`"
 								frameBorder="0"
 								allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
 								loading="lazy"
