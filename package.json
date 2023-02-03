@@ -41,7 +41,7 @@
 		"nuxt-client-init-module": "0.3.0",
 		"seamless-scroll-polyfill": "2.2.0",
 		"storyblok-nuxt": "2.0.1",
-		"stripe": "8.222.0",
+		"stripe": "11.9.0",
 		"vue": "2.6.14",
 		"vue-horizontal": "0.8.12",
 		"vue-lazy-youtube-video": "2.3.0",
