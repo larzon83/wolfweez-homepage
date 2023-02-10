@@ -70,10 +70,10 @@
 			<v-col cols="12">
 				<h2>Frühschoppen am Samstag Morgen</h2>
 				<div class="text-subtitle-2 font-weight-regular">02.07.2022</div>
-				Traditioneller "Frühschoppen" mit den
-				<nuxt-link to="/line-up/bands/polkamusikanten-stetten/"
+				Traditioneller "Frühschoppen" mit den lustigen Wildeckern
+				<!-- <nuxt-link to="/line-up/bands/polkamusikanten-stetten/"
 					>Polkamusikanten Stetten</nuxt-link
-				>
+				> -->
 				ab 11 Uhr (freier Eintritt). Ende 15 Uhr.
 			</v-col>
 		</template>
