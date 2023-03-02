@@ -37,7 +37,7 @@
 		"@vue/composition-api": "1.7.0",
 		"core-js": "3.25.0",
 		"lightgallery": "2.6.0",
-		"nuxt": "2.15.8",
+		"nuxt": "2.16.2",
 		"nuxt-client-init-module": "0.3.0",
 		"seamless-scroll-polyfill": "2.2.0",
 		"storyblok-nuxt": "2.0.1",
