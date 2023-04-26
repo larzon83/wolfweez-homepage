@@ -4,25 +4,30 @@
 			Festival Shirts
 		</h2>
 
-		<v-row tag="section">
-			<v-col cols="12" md="6" xl="4">
+		<h3 class="mb-2">Spendenaktion für Merle</h3>
+		<p>
+			Der Erlös aus der Aktion kommt komplett Merle und ihrer Familie zugute.
+			Wichtiger Hinweis zum Kauf: T-Shirts verfügbar so lange der Vorrat reicht
+			(es sind keine großen Stückzahlen mehr vorhanden).
+		</p>
+		<p>
+			Da wir das ganze kurzfristig eingerichtet haben kann es sein, dass euere
+			Bestellung evtl. schon nicht mehr verfügbar ist. Wir überweisen dann das
+			Geld selbstverständlich wieder zurück.
+		</p>
+		<p>Vielen herzlichen Dank für Eure Unterstützung!</p>
+
+		<v-row class="mt-2">
+			<v-col
+				v-for="(btn, idx) in buyButtons"
+				:key="`btn-${idx}-${btn.buyButtonId}`"
+				cols="12"
+				md="6"
+				xl="4"
+			>
 				<stripe-buy-button
-					buy-button-id="buy_btn_1N15TGBfAFuG6uOsIIQJQ65k"
-					publishable-key="pk_test_51IP7XYBfAFuG6uOs5pu8crgpe5Z6OUfreIGvoM6Vdz66XQnGN4H4RR9qoy2uwQv0meyYfxV4YsmAS2ZKbsOrxbTc00CET6X6bc"
-				>
-				</stripe-buy-button>
-			</v-col>
-			<v-col cols="12" md="6" xl="4">
-				<stripe-buy-button
-					buy-button-id="buy_btn_1N15TGBfAFuG6uOsIIQJQ65k"
-					publishable-key="pk_test_51IP7XYBfAFuG6uOs5pu8crgpe5Z6OUfreIGvoM6Vdz66XQnGN4H4RR9qoy2uwQv0meyYfxV4YsmAS2ZKbsOrxbTc00CET6X6bc"
-				>
-				</stripe-buy-button>
-			</v-col>
-			<v-col cols="12" md="6" xl="4">
-				<stripe-buy-button
-					buy-button-id="buy_btn_1N15TGBfAFuG6uOsIIQJQ65k"
-					publishable-key="pk_test_51IP7XYBfAFuG6uOs5pu8crgpe5Z6OUfreIGvoM6Vdz66XQnGN4H4RR9qoy2uwQv0meyYfxV4YsmAS2ZKbsOrxbTc00CET6X6bc"
+					:buy-button-id="btn.buyButtonId"
+					:publishable-key="btn.publishableKey"
 				>
 				</stripe-buy-button>
 			</v-col>
@@ -42,7 +47,6 @@ export default {
 	name: 'FestivalShirts',
 	mixins: [savePagetitleToVuex, useFormatting, useStorybridge],
 
-	// IN-ACTIVE
 	head() {
 		const title = pageTitle
 		return {
@@ -62,6 +66,48 @@ export default {
 		}
 	},
 
+	computed: {
+		buyButtons() {
+			// dev shirts
+			if (process.env.NUXT_ENV_TEST_MODE === 'true') {
+				const publishableKey =
+					'pk_test_51IP7XYBfAFuG6uOs5pu8crgpe5Z6OUfreIGvoM6Vdz66XQnGN4H4RR9qoy2uwQv0meyYfxV4YsmAS2ZKbsOrxbTc00CET6X6bc'
+				return [
+					{
+						buyButtonId: 'buy_btn_1N1FRbBfAFuG6uOsivAE1Ky1',
+						publishableKey
+					},
+					{
+						buyButtonId: 'buy_btn_1N1FSHBfAFuG6uOs9Zh2CSw5',
+						publishableKey
+					},
+					{
+						buyButtonId: 'buy_btn_1N1FT0BfAFuG6uOsZJEy8VYi',
+						publishableKey
+					}
+				]
+			}
+
+			// real shirts
+			const publishableKey =
+				'pk_live_51IP7XYBfAFuG6uOsT6iPXBc5tAIj8xOiOSDprjvToPCV3wrzchcqQe3p8WdZJbBvAYrMAUDaE7dg6GevBgzOwTMd00CXYTn8IM'
+			return [
+				{
+					buyButtonId: 'buy_btn_1N1FI9BfAFuG6uOsL9PiiuUr',
+					publishableKey
+				},
+				{
+					buyButtonId: 'buy_btn_1N1FJWBfAFuG6uOsD9zu3u4J',
+					publishableKey
+				},
+				{
+					buyButtonId: 'buy_btn_1N1FLUBfAFuG6uOsZVBJrmx5',
+					publishableKey
+				}
+			]
+		}
+	},
+
 	middleware({ store }) {
 		// TODO:
 		const crumbs = [{ title: pageTitle, to: '/shirts/' }]
@@ -69,78 +115,3 @@ export default {
 	}
 }
 </script>
-
-<style lang="scss" scoped>
-@media #{map-get($display-breakpoints, 'sm-and-down')} {
-	.ticket-box {
-		border-radius: 0;
-	}
-
-	.ticket-img {
-		width: 115px;
-	}
-}
-
-.v-chip:hover:before,
-.v-chip:before {
-	opacity: 0.06;
-}
-
-.price-wrapper {
-	gap: 8px;
-}
-
-.desc,
-.vvk {
-	color: getcolor('bright', 0.8);
-}
-
-.vvk {
-	line-height: normal;
-}
-
-.shipping-amount {
-	color: getcolor('bright', 0.45);
-}
-
-.btn-buy {
-	background-color: getcolor('prime', 0.12);
-	border-width: 3px;
-
-	@media (max-width: 783px) {
-		display: flex;
-		flex: 1 0 auto;
-		min-width: 100% !important;
-	}
-}
-
-.v-alert {
-	::v-deep p:last-child {
-		margin: 0;
-	}
-
-	a {
-		color: currentColor;
-	}
-}
-
-.v-text-field {
-	width: 40px;
-	max-width: 40px;
-
-	::v-deep input[type='number'] {
-		appearance: none;
-		-moz-appearance: textfield;
-		text-align: center;
-		margin: 0;
-
-		&::-webkit-outer-spin-button,
-		&::-webkit-inner-spin-button {
-			appearance: none;
-			-moz-appearance: none;
-			-webkit-appearance: none;
-			margin: 0;
-		}
-	}
-}
-</style>
