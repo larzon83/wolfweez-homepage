@@ -38,7 +38,7 @@ const constructProducts = (productsList, pricesList, sbTickets, testMode) => {
 	if (!productsList) return []
 
 	const productsWithPrices = productsList.data
-		.filter(p => p.active)
+		.filter(p => p.active && !p.name.includes('Festivalshirt'))
 		.map(product => {
 			let prices = []
 			if (pricesList && pricesList.data) {
