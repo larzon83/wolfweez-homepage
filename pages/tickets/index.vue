@@ -6,6 +6,7 @@
 		</h2>
 
 		<v-alert
+			v-if="story.content.show_info_box"
 			icon="$info"
 			dense
 			outlined
@@ -13,7 +14,10 @@
 			text
 			class="pa-4 mb-10 mt-0 mt-lg-5 information--text"
 		>
-			<p><b>Vorverkauf startet in Kürze</b></p>
+			<rich-text-renderer
+				v-if="story.content.info_box"
+				:document="story.content.info_box"
+			/>
 		</v-alert>
 
 		<div v-if="story.content.text_page_inactive" class="mt-8">
