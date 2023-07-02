@@ -175,6 +175,22 @@
 			:blok="story.content"
 		/> -->
 
+		<v-alert
+			icon="$info"
+			dense
+			outlined
+			prominent
+			text
+			class="pa-4 mb-10 mt-0 mt-lg-5 information--text"
+			style="width: 100%"
+		>
+			<h3>ACHTUNG</h3>
+			<p>
+				Der Ticket-Vorverkauf ist beendet. Resttickets sind bis Ausverkauf an
+				der Abendkasse erhältlich.
+			</p>
+		</v-alert>
+
 		<HomePage
 			v-if="story.content.component"
 			:blok="story.content"
