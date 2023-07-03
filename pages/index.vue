@@ -181,13 +181,19 @@
 			outlined
 			prominent
 			text
-			class="pa-4 mb-10 mt-0 mt-lg-5 information--text"
+			class="pa-4 mb-10 mt-0 mt-lg-5 warning--text"
 			style="width: 100%"
 		>
 			<h3>ACHTUNG</h3>
 			<p>
 				Der Ticket-Vorverkauf ist beendet. Resttickets sind bis Ausverkauf an
 				der Abendkasse erhältlich.
+			</p>
+			<p>
+				Weitere Infos dazu hier:
+				<nuxt-link class="" to="/news/2023-abendkasse/" style="color: #fff">
+					Tickets Abendkasse
+				</nuxt-link>
 			</p>
 		</v-alert>
 
