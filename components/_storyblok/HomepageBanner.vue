@@ -5,8 +5,16 @@
 		class="mt-9"
 	>
 		<v-col cols="12">
+			<template v-if="!pageBlok.url.url && !pageBlok.url.story">
+				<SbImage
+					v-if="pageBlok.image && pageBlok.image.filename"
+					:alt="pageBlok.alt"
+					:pic="pageBlok.image"
+					:preset="$config.presetNames.FULL_WIDTH"
+				/>
+			</template>
 			<a
-				v-if="pageBlok.url.url"
+				v-else-if="pageBlok.url.url"
 				:href="pageBlok.url.url"
 				rel="noreferrer"
 				target="_blank"
