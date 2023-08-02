@@ -175,7 +175,7 @@
 			:blok="story.content"
 		/> -->
 
-		<v-alert
+		<!-- <v-alert
 			icon="$info"
 			dense
 			outlined
@@ -195,7 +195,7 @@
 					Tickets Abendkasse
 				</nuxt-link>
 			</p>
-		</v-alert>
+		</v-alert> -->
 
 		<HomePage
 			v-if="story.content.component"
