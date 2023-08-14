@@ -67,7 +67,7 @@
 				<b>Termin:</b> 18.November 2022<br />
 				<b>Location:</b> Waidbachhalle 78661 Irslingen<br />
 				<b>Doors Open:</b> 18.00 Uhr<br />
-				<b>Bewerbungszeitraum:</b> 05.08.2022 – 04.09.2022
+				<b>Bewerbungszeitraum:</b> 05.08.2022 – 15.10.2022
 			</p>
 			<br />
 			<v-divider />
@@ -85,7 +85,7 @@
 				<b>Termin:</b> 18.November 2023<br />
 				<b>Location:</b> Waidbachhalle 78661 Irslingen<br />
 				<b>Doors Open:</b> 18.00 Uhr<br />
-				<b>Bewerbungszeitraum:</b> 14.08.2023 – 04.09.2023
+				<b>Bewerbungszeitraum:</b> 14.08.2023 – 15.10.2023
 			</p>
 			<br />
 			<v-divider />
@@ -113,7 +113,7 @@
 
 			<p>
 				<b
-					>Schickt uns euere Bewerbung bis zum 04.09.2023 an
+					>Schickt uns euere Bewerbung bis zum 15.10.2023 an
 					<a href="mailto:bandcontest@wolfweez-openair.de"
 						>bandcontest@wolfweez-openair.de</a
 					>.</b
