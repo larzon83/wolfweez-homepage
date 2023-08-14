@@ -15,7 +15,7 @@
 		</h1>
 
 		<!-- TODO: put text in SB -->
-		<div>
+		<!-- <div>
 			<p>
 				Der Bandcontest 2022 ist vorbei und die Halle wurde wieder in ihren
 				ursprünglichen Zustand versetzt!😁🤘💪
@@ -60,7 +60,7 @@
 				Wir wünschen allen einen schönen Sonntag und seid gespannt...die
 				Veröffentlichung des 2023er LineUp's beginnt demnächst😎😉🤘
 			</p>
-		</div>
+		</div> -->
 
 		<div>
 			<!-- <p>
@@ -76,16 +76,16 @@
 			<h2>Bands</h2>
 			<p>Folgende Bands nehmen am Bandcontest 2022 teil:</p> -->
 
-			<!-- <p>
+			<p>
 				Yeah! Großartige Sache das ihr hier gelandet seid und euch mit euerer
 				Band bei unserem Bandcontest bewerbt!!!
 			</p>
 			<h2>Infos zum Bandcontest</h2>
 			<p>
-				<b>Termin:</b> 18.November 2022<br />
+				<b>Termin:</b> 18.November 2023<br />
 				<b>Location:</b> Waidbachhalle 78661 Irslingen<br />
 				<b>Doors Open:</b> 18.00 Uhr<br />
-				<b>Bewerbungszeitraum:</b> 05.08.2022 – 04.09.2022
+				<b>Bewerbungszeitraum:</b> 14.08.2023 – 04.09.2023
 			</p>
 			<br />
 			<v-divider />
@@ -113,7 +113,7 @@
 
 			<p>
 				<b
-					>Schickt uns euere Bewerbung bis zum 04.09.2022 an
+					>Schickt uns euere Bewerbung bis zum 04.09.2023 an
 					<a href="mailto:bandcontest@wolfweez-openair.de"
 						>bandcontest@wolfweez-openair.de</a
 					>.</b
@@ -172,7 +172,7 @@
 				<a href="mailto:bandcontest@wolfweez-openair.de"
 					>bandcontest@wolfweez-openair.de</a
 				>.
-			</p> -->
+			</p>
 
 			<!-- TODO: obsolete -> remove -->
 			<!-- <br />
