@@ -117,7 +117,8 @@ export default {
 					links: [
 						{ ...routeMeta.MEDIEN__FOTOGALERIE },
 						{ ...routeMeta.SPONSOREN },
-						{ ...routeMeta.BANDCONTEST }
+						{ ...routeMeta.BANDCONTEST },
+						{ ...routeMeta.WINTERSPECIAL }
 						// TODO: add presse/medien here
 						// TODO: add newsletter here
 					]

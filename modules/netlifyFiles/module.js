@@ -39,6 +39,12 @@ export default function () {
 			// 	to: '/',
 			// 	force: true
 			// },
+			// TODO: enable redirect again once the winterspecial 2023 is over
+			// {
+			// 	from: '/winterspecial',
+			// 	to: '/',
+			// 	force: true
+			// },
 			{
 				from: '/bands',
 				to: routeMeta.LINEUP__BANDS.to,

@@ -136,6 +136,11 @@ export const routeMeta = {
 	BANDCONTEST: {
 		title: 'Bandcontest',
 		to: '/bandcontest/'
+	},
+
+	WINTERSPECIAL: {
+		title: 'Winterspecial',
+		to: '/winterspecial/'
 	}
 }
 
