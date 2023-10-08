@@ -138,6 +138,11 @@ export const routeMeta = {
 		to: '/bandcontest/'
 	},
 
+	SHIRTS: {
+		title: 'Shirts',
+		to: '/shirts/'
+	},
+
 	WINTERSPECIAL: {
 		title: 'Winterspecial',
 		to: '/winterspecial/'
