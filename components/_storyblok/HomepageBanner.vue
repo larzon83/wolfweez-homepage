@@ -17,7 +17,7 @@
 				v-else-if="pageBlok.url.url"
 				:href="pageBlok.url.url"
 				rel="noreferrer"
-				target="_blank"
+				:target="pageBlok.url_target_self ? undefined : '_blank'"
 			>
 				<SbImage
 					v-if="pageBlok.image && pageBlok.image.filename"
