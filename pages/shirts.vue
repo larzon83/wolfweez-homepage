@@ -1,6 +1,9 @@
 <template>
 	<section>
-		<h2 class="text-h4 text-sm-h3 text-lg-h2 font-weight-bold mb-5">
+		<!-- <h1 class="d-none d-lg-flex text-h4 text-sm-h3 text-lg-h2 font-weight-bold"> -->
+		<h2
+			class="d-none d-lg-flex text-h4 text-sm-h3 text-lg-h2 font-weight-bold mb-5"
+		>
 			Festival Shirts
 		</h2>
 
@@ -39,9 +42,10 @@
 import useStorybridge from 'storybridgeMixin/useStorybridge.js'
 import savePagetitleToVuex from '~/mixins/savePagetitleToVuex.js'
 import useFormatting from '~/mixins/useFormatting.js'
+import { routeMeta } from '~/utils/constants'
 import { createOgImagePath, createSEOMeta } from '~/utils/seo'
 
-const pageTitle = 'Festival Shirts'
+const pageTitle = routeMeta.SHIRTS.title
 
 export default {
 	name: 'FestivalShirts',
@@ -109,8 +113,7 @@ export default {
 	},
 
 	middleware({ store }) {
-		// TODO:
-		const crumbs = [{ title: pageTitle, to: '/shirts/' }]
+		const crumbs = [{ ...routeMeta.SHIRTS }]
 		store.commit('central/SET_CRUMBS', crumbs)
 	}
 }

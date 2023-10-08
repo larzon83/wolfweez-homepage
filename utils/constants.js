@@ -139,12 +139,12 @@ export const routeMeta = {
 	},
 
 	SHIRTS: {
-		title: 'Shirts',
+		title: 'Festival Shirts',
 		to: '/shirts/'
 	},
 
 	WINTERSPECIAL: {
-		title: 'Winterspecial',
+		title: 'Winter Special',
 		to: '/winterspecial/'
 	}
 }

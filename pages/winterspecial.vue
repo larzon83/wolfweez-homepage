@@ -1,6 +1,8 @@
 <template>
 	<section>
-		<h2 class="text-h4 text-sm-h3 text-lg-h2 font-weight-bold mb-5">
+		<h2
+			class="d-none d-lg-flex text-h4 text-sm-h3 text-lg-h2 font-weight-bold mb-5"
+		>
 			Wolfweez Winter Special
 		</h2>
 
@@ -73,9 +75,10 @@
 import useStorybridge from 'storybridgeMixin/useStorybridge.js'
 import savePagetitleToVuex from '~/mixins/savePagetitleToVuex.js'
 import useFormatting from '~/mixins/useFormatting.js'
+import { routeMeta } from '~/utils/constants'
 import { createOgImagePath, createSEOMeta } from '~/utils/seo'
 
-const pageTitle = 'Wolfweez Winterspecial'
+const pageTitle = 'Wolfweez Winter Special'
 
 export default {
 	name: 'WolfweezWinterspecial',
@@ -127,8 +130,7 @@ export default {
 	},
 
 	middleware({ store }) {
-		// TODO:
-		const crumbs = [{ title: pageTitle, to: '/winterspecial/' }]
+		const crumbs = [{ ...routeMeta.WINTERSPECIAL }]
 		store.commit('central/SET_CRUMBS', crumbs)
 	}
 }
