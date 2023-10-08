@@ -1,16 +1,57 @@
 <template>
 	<section>
 		<h2 class="text-h4 text-sm-h3 text-lg-h2 font-weight-bold mb-5">
-			Wolfweez Winterspecial
+			Wolfweez Winter Special
 		</h2>
 
-		<h3 class="mb-2">Mit Voltbeat</h3>
+		<h3 class="mb-2">Das Indoor Wolfweez Feeling für die kälteren Tage</h3>
+		<p>
+			Ein Abend voller Heavymetal, im Wolfweez OpenAir Festival Style in der
+			Waidbachhalle in Irslingen!
+		</p>
+		<p>
+			Mit dabei ist die VOLBEAT Tribute Band -
+			<a
+				href="https://www.voltbeat.de/"
+				target="_blank"
+				rel="noopener noreferrer"
+				>VOLTBEAT</a
+			>!🤩🔥🤘<br />
+			+ Support Band!😎🤘
+		</p>
+
+		<p>🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥</p>
 		<ul>
 			<li>Samstag, 02.12.2023</li>
 			<li>Waidbachhalle Irslingen</li>
+			<li>Einlass: 19 Uhr</li>
+			<li>Beginn: 20 Uhr</li>
 		</ul>
+		<br />
 
-		<v-row class="mt-2">
+		<p>🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥</p>
+		<v-alert
+			icon="$info"
+			dense
+			outlined
+			prominent
+			text
+			class="pa-4 mb-6 mt-0 mt-lg-5 information--text"
+		>
+			Ticket Verkauf startet in Kürze
+		</v-alert>
+
+		<p>
+			Hard-Tickets sind ebenfalls in allen offiziellen VVK-Stellen erhältlich
+			(Infos folgen), sowie bei Eventim und ReserviX.
+		</p>
+
+		<p>
+			Und natürlich (sofern nicht ausverkauft) an der Abendkasse (hier aber
+			deutlich teurer).
+		</p>
+
+		<!-- <v-row class="mt-2">
 			<v-col
 				v-for="(btn, idx) in buyButtons"
 				:key="`btn-${idx}-${btn.buyButtonId}`"
@@ -24,7 +65,7 @@
 				>
 				</stripe-buy-button>
 			</v-col>
-		</v-row>
+		</v-row> -->
 	</section>
 </template>
 
