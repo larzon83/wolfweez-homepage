@@ -35,7 +35,8 @@
 		<br />
 
 		<p>🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥</p>
-		<v-alert
+
+		<!-- <v-alert
 			icon="$info"
 			dense
 			outlined
@@ -44,19 +45,9 @@
 			class="pa-4 mb-6 mt-0 mt-lg-5 information--text"
 		>
 			Ticket Verkauf startet in Kürze
-		</v-alert>
+		</v-alert> -->
 
-		<p>
-			Hard-Tickets sind ebenfalls in allen offiziellen VVK-Stellen erhältlich
-			(Infos folgen), sowie bei Eventim und ReserviX.
-		</p>
-
-		<p>
-			Und natürlich (sofern nicht ausverkauft) an der Abendkasse (hier aber
-			deutlich teurer).
-		</p>
-
-		<!-- <v-row class="mt-2">
+		<v-row class="mt-2">
 			<v-col
 				v-for="(btn, idx) in buyButtons"
 				:key="`btn-${idx}-${btn.buyButtonId}`"
@@ -70,7 +61,17 @@
 				>
 				</stripe-buy-button>
 			</v-col>
-		</v-row> -->
+		</v-row>
+
+		<p>
+			Hard-Tickets sind ebenfalls in allen offiziellen VVK-Stellen erhältlich
+			(Infos folgen), sowie bei Eventim und ReserviX.
+		</p>
+
+		<p>
+			Und natürlich (sofern nicht ausverkauft) an der Abendkasse (hier aber
+			deutlich teurer).
+		</p>
 	</section>
 </template>
 
