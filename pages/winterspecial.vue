@@ -14,12 +14,15 @@
 		<p>
 			Mit dabei ist die VOLBEAT Tribute Band -
 			<a
-				href="https://www.voltbeat.de/"
+				href="https://www.voltbeat.de"
 				target="_blank"
 				rel="noopener noreferrer"
-				>VOLTBEAT</a
+				><b>VOLTBEAT</b></a
 			>!🤩🔥🤘<br />
-			+ Support Band!😎🤘
+			+ Support von
+			<a href="https://www.crekko.de" target="_blank" rel="noopener noreferrer"
+				>crekko</a
+			>😎🤘
 		</p>
 
 		<p>🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥</p>

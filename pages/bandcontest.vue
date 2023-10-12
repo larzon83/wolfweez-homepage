@@ -76,7 +76,11 @@
 			<h2>Bands</h2>
 			<p>Folgende Bands nehmen am Bandcontest 2022 teil:</p> -->
 
-			<p>
+			<!-- ------------------------ -->
+			<!-- BEWERBUNG -->
+			<!-- ------------------------ -->
+
+			<!-- <p>
 				Yeah! Großartige Sache das ihr hier gelandet seid und euch mit euerer
 				Band bei unserem Bandcontest bewerbt!!!
 			</p>
@@ -172,7 +176,86 @@
 				<a href="mailto:bandcontest@wolfweez-openair.de"
 					>bandcontest@wolfweez-openair.de</a
 				>.
+			</p> -->
+
+			<!-- ------------------------ -->
+			<!-- BEFORE-SHOW -->
+			<!-- ------------------------ -->
+
+			<p>
+				Der Bandcontest 2023 steht in den Startlöchern und die fünf Bands für
+				das Finale stehen fest!
 			</p>
+			<p>
+				Am <b>18.11.2023</b> ist es wieder so weit, der dritte Bandcontest des
+				Wolfweez OpenAir Festivals wird veranstaltet.<br />
+				Fünf Bands aus Nah und Fern werden an diesem Abend um die zwei begehrten
+				Plätze, vom 2024er Line-Up des Wolfweez OpenAir Festivals auf der Bühne
+				gegeneinander antreten und euch ordentlich einheizen.
+			</p>
+
+			<ul>
+				<li>Der erste Platz bekommt den Opener Slot am Festival-Samstag.</li>
+				<li>
+					Die zweitplatzierte Band darf das Festival am Festival-Freitag
+					eröffnen.
+				</li>
+			</ul>
+			<br />
+
+			<v-divider />
+			<br />
+
+			<p>
+				Ihr als Zuschauer, habt zusammen mit der Jury, die Aufgabe, diese beiden
+				Bands an diesem Abend auszuwählen.
+			</p>
+
+			<p>
+				Ihr erhaltet am Eingang pro Person 2 Plastikchips, welche jeweils als 1
+				Stimme zählen.<br />
+				Somit habt ihr zwei Stimmen, die Ihr entweder einer Band gebt oder wenn
+				euch zwei sehr gut gefallen haben, auf diese beiden aufteilt.<br />
+				Bei der Jury stehen dafür transparente Kunststoffrohre bereit, in welche
+				ihr für eure Band, den/die Chips einwerfen könnt.
+			</p>
+
+			<p>
+				Die Jury, welche an diesem Abend ebenfalls ihre Bewertung macht, hat
+				verschiedene Kriterien auf ihrem Zettel.<br />
+				So zählen unter anderem: Spielerisches können, gesamt auftreten,
+				Bühnenshow, usw. zu den verschiedenen Kriterien, welche die Jury
+				bewerten wird.<br />
+				Am Ende werden dann die Punktezahlen der Bands ermittelt und noch am
+				selben Abend bekannt gegeben, wer die beiden Siegerplätze belegt hat.
+			</p>
+
+			<v-divider />
+			<br />
+
+			<p>
+				Nach dem Bandcontest startet dann die große Aftershow-Party mit der
+				<b>Metal-Cover-Band HEIMATGOLD</b>!
+			</p>
+
+			<p>
+				Wir freuen uns auf einen tollen Abend mit großartigen Bands und einer
+				anschließenden, ausgelassenen, After-Show-Party!
+			</p>
+
+			<p>
+				Kommt vorbei, unterstützt die Bands und habt einen tollen Abend bei uns
+				in der Waidbachhalle in Irslingen!
+			</p>
+
+			<v-divider />
+			<br />
+
+			<ul>
+				<li>Doors Open 18.00 Uhr</li>
+				<li>Beginn 19.00 Uhr</li>
+				<li>Eintritt 10€</li>
+			</ul>
 
 			<!-- TODO: obsolete -> remove -->
 			<!-- <br />
