@@ -287,7 +287,14 @@
 			</v-simple-table> -->
 		</div>
 
-		<!-- <v-row tag="section">
+		<br />
+		<v-divider />
+		<br />
+
+		<h2>Bands</h2>
+		<p>Folgende Bands nehmen am Bandcontest 2023 teil:</p>
+
+		<v-row tag="section">
 			<v-col
 				v-for="band in bands.stories"
 				:key="band.content._uid"
@@ -319,7 +326,7 @@
 					/>
 				</v-card>
 			</v-col>
-		</v-row> -->
+		</v-row>
 	</section>
 </template>
 
