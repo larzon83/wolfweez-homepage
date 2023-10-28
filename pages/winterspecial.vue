@@ -87,6 +87,22 @@
 				</v-row>
 			</v-card-text>
 		</v-card>
+
+		<h2 class="mt-10 pb-3">Offizielle Vorverkaufstellen</h2>
+		<v-row>
+			<template v-for="vvk in story.content.vvk_places">
+				<v-col v-if="!vvk.disabled" :key="vvk._uid" cols="12" md="6">
+					<!-- TODO: make this h3 -->
+					<b>{{ vvk.name }}</b>
+					<br />
+					<span v-if="vvk.additional_line"
+						>{{ vvk.additional_line }}<br
+					/></span>
+					{{ vvk.street }} {{ vvk.street_nr }}<br />
+					{{ vvk.plz }} {{ vvk.city }}
+				</v-col>
+			</template>
+		</v-row>
 	</section>
 </template>
 
@@ -94,6 +110,7 @@
 import useStorybridge from 'storybridgeMixin/useStorybridge.js'
 import savePagetitleToVuex from '~/mixins/savePagetitleToVuex.js'
 import useFormatting from '~/mixins/useFormatting.js'
+import { sbData } from '~/utils'
 import { routeMeta } from '~/utils/constants'
 import { createOgImagePath, createSEOMeta } from '~/utils/seo'
 
@@ -120,6 +137,13 @@ export default {
 				}
 			]
 		}
+	},
+
+	async asyncData(context) {
+		return await sbData({
+			ctx: context,
+			path: '/tickets/tickets'
+		})
 	},
 
 	computed: {
