@@ -197,11 +197,13 @@
 			</p>
 		</v-alert> -->
 
+		<!-- TODO: what is this? -->
+		<!-- :class="{ 'mt-n12': !hasActiveFestivalContent }" -->
+
 		<HomePage
 			v-if="story.content.component"
 			:blok="story.content"
 			:news-sorted="newsSorted"
-			:class="{ 'mt-n12': !hasActiveFestivalContent }"
 		/>
 
 		<!-- <v-col v-for="item in foo" :key="item.name" cols="12" class="mt-12">
