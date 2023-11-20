@@ -65,7 +65,7 @@
 					<v-btn
 						:ripple="false"
 						:aria-label="`${$config.siteTitle.short} auf Instagram`"
-						href="https://www.instagram.com/wolfweez_openair_/"
+						href="https://www.instagram.com/wolfweez_festival_/"
 						icon
 						rel="noreferrer"
 						target="_blank"
