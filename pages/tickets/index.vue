@@ -35,6 +35,21 @@
 		</h2>
 
 		<v-alert
+			v-if="story.content.show_warning_box"
+			icon="$info"
+			dense
+			outlined
+			prominent
+			text
+			class="pa-4 mb-10 mt-0 mt-lg-5 warning--text"
+		>
+			<rich-text-renderer
+				v-if="story.content.warning_box"
+				:document="story.content.warning_box"
+			/>
+		</v-alert>
+
+		<v-alert
 			v-if="story.content.show_info_box"
 			icon="$info"
 			dense
