@@ -106,7 +106,7 @@
 								Line-Up {{ currentFestival.content.year }}
 							</h2>
 
-							<v-divider class="pb-10" />
+							<v-divider class="pb-4" />
 
 							<SbImage
 								v-if="
@@ -118,7 +118,7 @@
 								:preset="$config.presetNames.HOME_ALL_BANDS"
 							/>
 
-							<v-divider class="mt-12 pb-5" />
+							<v-divider class="mt-6 pb-5" />
 
 							<v-row align="center" justify="center" no-gutters>
 								<v-btn
