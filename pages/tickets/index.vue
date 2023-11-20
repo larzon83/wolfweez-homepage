@@ -445,10 +445,10 @@ export default {
 
 			// return hasExtraShipping ? shippingExtended : shippingBase
 
-			const shippingRate2023 = this.shippingRates.find(
-				s => s.ident === 'shippingRate2023'
+			const currentShippingRate = this.shippingRates.find(
+				s => s.ident === 'currentShippingRate'
 			)
-			return shippingRate2023 || {}
+			return currentShippingRate || {}
 		},
 
 		chargeAmount() {
