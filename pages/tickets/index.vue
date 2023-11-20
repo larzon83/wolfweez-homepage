@@ -369,11 +369,11 @@ export default {
 
 	data() {
 		return {
-			// pageIsActive:
-			// 	process.env.NODE_ENV === 'development' ||
-			// 	process.env.NUXT_ENV_IS_SPA === 'true' ||
-			// 	process.env.NUXT_ENV_STORYBLOK_PREVIEW === 'true',
-			pageIsActive: false,
+			pageIsActive:
+				process.env.NODE_ENV === 'development' ||
+				process.env.NUXT_ENV_IS_SPA === 'true' ||
+				process.env.NUXT_ENV_STORYBLOK_PREVIEW === 'true',
+			// pageIsActive: false,
 			pageTitle,
 			checkoutError: '',
 			devProducts: [],
