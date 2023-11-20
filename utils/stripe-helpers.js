@@ -37,20 +37,25 @@ const constructShippingRates = ratesList => {
 const constructProducts = (productsList, pricesList, sbTickets, testMode) => {
 	if (!productsList) return []
 
-	const productsWithPrices = productsList.data
-		.filter(p => p.active && !p.name.includes('Festivalshirt'))
-		.map(product => {
+	const productsWithPrices = productsList.data.reduce((acc, currProduct) => {
+		if (
+			currProduct.active &&
+			!currProduct.name.includes('Festivalshirt') &&
+			!currProduct.name.includes('Winterspecial')
+		) {
 			let prices = []
 			if (pricesList && pricesList.data) {
 				prices = pricesList.data.filter(
-					price => price.product === product.id && price.active === true
+					price => price.product === currProduct.id && price.active === true
 				)
 			}
-			return {
-				...product,
+			acc.push({
+				...currProduct,
 				prices
-			}
-		})
+			})
+		}
+		return acc
+	}, [])
 
 	const sbProductId = testMode === 'true' ? 'stripe_id_test' : 'stripe_id_live'
 
