@@ -15,52 +15,6 @@
 		</h1>
 
 		<!-- TODO: put text in SB -->
-		<!-- <div>
-			<p>
-				Der Bandcontest 2022 ist vorbei und die Halle wurde wieder in ihren
-				ursprünglichen Zustand versetzt!😁🤘💪
-			</p>
-
-			<p>
-				Nach einem tollen Bandcontest am Freitag, mit super Bands, die wirklich
-				alles auf der Bühne gegeben haben, einem tollen Publikum, und einer sehr
-				fachlichen Jury wurden am Abend gleich die beiden Sieger-Bands
-				ermittelt. 🥳🤘🍻
-			</p>
-
-			<p>Es war bis zum siebten Platz ein Kopf an Kopf rennen!</p>
-
-			<p>
-				Vielen Dank an dieser Stelle nochmals an alle Bands die mit dabei
-				waren!🤩🤘
-			</p>
-
-			<p>
-				Das Rennen um die zwei begehrten Plätze
-				machten.....*Trommelwirbel*....😁🥁
-			</p>
-
-			<p>
-				<b>Platz 1: FEARPARK</b><br />
-				<b>Platz 2: MADHOUZE</b><br />
-				🥳🥳🥳🥳🥳🥳
-			</p>
-
-			<p>
-				Somit steht auch fest wer am Festival-Freitag und am Festival-Samstag
-				die jeweiligen Festivaltage eröffnet!🤩🤘
-			</p>
-
-			<p>
-				Das heißt, die ersten zwei Bands vom 2023er LineUp sind veröffentlicht.
-				😎🤘
-			</p>
-
-			<p>
-				Wir wünschen allen einen schönen Sonntag und seid gespannt...die
-				Veröffentlichung des 2023er LineUp's beginnt demnächst😎😉🤘
-			</p>
-		</div> -->
 
 		<div>
 			<!-- <p>
@@ -182,7 +136,7 @@
 			<!-- BEFORE-SHOW -->
 			<!-- ------------------------ -->
 
-			<p>
+			<!-- <p>
 				Der Bandcontest 2023 steht in den Startlöchern und die fünf Bands für
 				das Finale stehen fest!
 			</p>
@@ -255,7 +209,46 @@
 				<li>Doors Open 18.00 Uhr</li>
 				<li>Beginn 19.00 Uhr</li>
 				<li>Eintritt 10€</li>
-			</ul>
+			</ul> -->
+
+			<!-- ------------------------ -->
+			<!-- AFTER-SHOW -->
+			<!-- ------------------------ -->
+
+			<p>
+				Der Bandcontest 2023 ist vorbei und die Halle wurde wieder in ihren
+				ursprünglichen Zustand versetzt!😁🤘💪
+			</p>
+
+			<p>
+				Nach einem tollen Bandcontest am Samstag, mit super Bands, die wirklich
+				alles auf der Bühne gegeben haben, einem tollen Publikum, und einer sehr
+				fachlichen Jury wurden am Abend gleich die beiden Sieger-Bands
+				ermittelt. 🥳🤘🍻
+			</p>
+
+			<p>Es war bis zum siebten Platz ein Kopf an Kopf rennen!</p>
+
+			<p>
+				Vielen Dank an dieser Stelle nochmals an alle Bands die mit dabei
+				waren!🤩🤘
+			</p>
+
+			<p>
+				Das Rennen um die zwei begehrten Plätze
+				machten.....*Trommelwirbel*....😁🥁
+			</p>
+
+			<p>
+				<b>Platz 1: Black and Damned</b><br />
+				<b>Platz 2: Concusion</b><br />
+				🥳🥳🥳🥳🥳🥳
+			</p>
+
+			<p>
+				Somit steht auch fest wer am Festival-Freitag und am Festival-Samstag
+				die jeweiligen Festivaltage eröffnet!🤩🤘
+			</p>
 
 			<!-- TODO: obsolete -> remove -->
 			<!-- <br />
@@ -287,12 +280,12 @@
 			</v-simple-table> -->
 		</div>
 
-		<br />
+		<!-- TODO: use for BEFORE-SHOW -->
+		<!-- <br />
 		<v-divider />
 		<br />
-
 		<h2>Bands</h2>
-		<p>Folgende Bands nehmen am Bandcontest 2023 teil:</p>
+		<p>Folgende Bands nehmen am Bandcontest 2023 teil:</p> -->
 
 		<v-row tag="section">
 			<v-col
