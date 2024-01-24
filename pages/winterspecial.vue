@@ -47,7 +47,23 @@
 			Ticket Verkauf startet in Kürze
 		</v-alert> -->
 
-		<v-card color="darkish" flat class="mt-6">
+		<v-alert
+			icon="$info"
+			dense
+			outlined
+			prominent
+			text
+			class="pa-4 mb-6 mt-0 mt-lg-5 information--text"
+		>
+			<h3>Der Online Ticket Vorverkauf ist beendet</h3>
+			<p>
+				Tickets sind bis Freitag, 01.12.2023 noch in den unten genannten VVK
+				Stellen erhältlich oder bei Ausschussmitgliedern bis ausverkauft.
+				Ansonsten Abendkasse, aber deutlich teurer und auch bis ausverkauft.
+			</p>
+		</v-alert>
+
+		<!-- <v-card color="darkish" flat class="mt-6">
 			<v-card-text>
 				<v-row align="center" justify="center" no-gutters>
 					<v-row>
@@ -86,7 +102,7 @@
 					</v-row>
 				</v-row>
 			</v-card-text>
-		</v-card>
+		</v-card> -->
 
 		<h2 class="mt-10 pb-3">Offizielle Vorverkaufstellen</h2>
 		<v-row>
