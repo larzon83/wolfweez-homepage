@@ -78,6 +78,12 @@ export const getNiceDate = date => {
 	return `${splitted[2]}.${splitted[1]}.${splitted[0]}`
 }
 
+/**
+ *
+ * @param {String} timeStart
+ * @param {String} timeEnd
+ * @returns {String}
+ */
 export const getPlayTime = (timeStart, timeEnd) => {
 	if (timeStart === '') return 'TBA'
 

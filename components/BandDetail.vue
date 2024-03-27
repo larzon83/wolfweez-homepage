@@ -47,7 +47,9 @@
 						<h2>Running Order</h2>
 						<v-divider />
 						<div class="pb-2"><b>Tag:</b> {{ playDay || 'TBA' }}</div>
-						<div><b>Zeit:</b> {{ playTime || 'TBA' }}</div>
+						<div>
+							<b>Zeit:</b> {{ showPlayTimes ? playTime || 'TBA' : 'TBA' }}
+						</div>
 					</v-card-text>
 
 					<v-card-text
@@ -99,8 +101,9 @@
 </template>
 
 <script>
-import 'vue-lazy-youtube-video/dist/style.min.css'
 import LazyYoutubeVideo from 'vue-lazy-youtube-video'
+import 'vue-lazy-youtube-video/dist/style.min.css'
+import { mapState } from 'vuex'
 import useFormatting from '~/mixins/useFormatting.js'
 
 export default {
@@ -133,6 +136,8 @@ export default {
 	},
 
 	computed: {
+		...mapState('central', ['showPlayTimes']),
+
 		bandLinks() {
 			const links = []
 

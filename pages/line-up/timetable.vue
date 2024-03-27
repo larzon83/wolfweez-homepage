@@ -49,7 +49,7 @@
 									:class="{ alternate: index % 2 === 0 }"
 								>
 									<v-list-item-content class="timetable-content">
-										<div class="time mb-1">
+										<div v-if="showPlayTimes" class="time mb-1">
 											{{ $_playTime(slot.time_start, slot.time_end) }}
 										</div>
 										<div class="band font-weight-bold">
@@ -84,6 +84,7 @@
 
 <script>
 import useStorybridge from 'storybridgeMixin/useStorybridge.js'
+import { mapState } from 'vuex'
 import savePagetitleToVuex from '~/mixins/savePagetitleToVuex.js'
 import useFormatting from '~/mixins/useFormatting.js'
 import { sbData } from '~/utils'
@@ -130,6 +131,10 @@ export default {
 			path: '/line-up/timetable',
 			resolveLinks: 'story'
 		})
+	},
+
+	computed: {
+		...mapState('central', ['showPlayTimes'])
 	},
 
 	middleware({ store }) {
