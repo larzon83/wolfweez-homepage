@@ -71,12 +71,12 @@
 				<h2>Frühstück und Kaffee</h2>
 				<div>Freitag und Samstag jeweils ab 8:00 bis 10:00 Uhr.</div>
 				<h2 class="mt-8">Frühschoppen am Samstag Morgen</h2>
-				<div class="text-subtitle-2 font-weight-regular">08.07.2022</div>
-				Traditioneller "Frühschoppen" mit den lustigen Wildeckern
+				<div class="text-subtitle-2 font-weight-regular">06.07.2024</div>
+				Traditioneller "Frühschoppen" mit Tanzlmusi
 				<!-- <nuxt-link to="/line-up/bands/polkamusikanten-stetten/"
 					>Polkamusikanten Stetten</nuxt-link
 				> -->
-				ab 10:30 Uhr (freier Eintritt). Ende 15 Uhr.
+				ab 10:30 Uhr (freier Eintritt). Ende 14 Uhr.
 			</v-col>
 		</template>
 	</v-row>
@@ -119,7 +119,7 @@ export default {
 
 	data() {
 		return {
-			pageIsActive: false,
+			pageIsActive: true,
 			pageTitle
 		}
 	},
