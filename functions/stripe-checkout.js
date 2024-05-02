@@ -55,6 +55,10 @@ const handler = async event => {
 			shipping_address_collection: {
 				allowed_countries: Object.keys(countryNames)
 			},
+			// https://stripe.com/docs/receipts?payment-ui=checkout&ui=hosted#paid-invoices
+			// invoice_creation: {
+			// 	enabled: true
+			// },
 			line_items: items
 		})
 	} catch (error) {
