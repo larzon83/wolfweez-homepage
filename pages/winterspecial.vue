@@ -3,7 +3,7 @@
 		<h2
 			class="d-none d-lg-flex text-h4 text-sm-h3 text-lg-h2 font-weight-bold mb-5"
 		>
-			Wolfweez Winter Special
+			Wolfweez Winter Special 2024
 		</h2>
 
 		<h3 class="mb-2">Das Indoor Wolfweez Feeling für die kälteren Tage</h3>
@@ -19,15 +19,15 @@
 				rel="noopener noreferrer"
 				><b>VOLTBEAT</b></a
 			>!🤩🔥🤘<br />
-			+ Support von
-			<a href="https://www.crekko.de" target="_blank" rel="noopener noreferrer"
+			+ Support
+			<!-- von	<a href="https://www.crekko.de" target="_blank" rel="noopener noreferrer"
 				>crekko</a
-			>😎🤘
+			>😎🤘 -->
 		</p>
 
 		<p>🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥</p>
 		<ul>
-			<li>Samstag, 02.12.2023</li>
+			<li>Samstag, 07.12.2024</li>
 			<li>Waidbachhalle Irslingen</li>
 			<li>Einlass: 19 Uhr</li>
 			<li>Beginn: 20 Uhr</li>
@@ -36,7 +36,7 @@
 
 		<p>🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥</p>
 
-		<!-- <v-alert
+		<v-alert
 			icon="$info"
 			dense
 			outlined
@@ -44,10 +44,10 @@
 			text
 			class="pa-4 mb-6 mt-0 mt-lg-5 information--text"
 		>
-			Ticket Verkauf startet in Kürze
-		</v-alert> -->
+			Tickets gibt's auf Eventim und Reservix und Hardtickets ab 5. Juli.
+		</v-alert>
 
-		<v-alert
+		<!-- <v-alert
 			icon="$info"
 			dense
 			outlined
@@ -61,7 +61,7 @@
 				Stellen erhältlich oder bei Ausschussmitgliedern bis ausverkauft.
 				Ansonsten Abendkasse, aber deutlich teurer und auch bis ausverkauft.
 			</p>
-		</v-alert>
+		</v-alert> -->
 
 		<!-- <v-card color="darkish" flat class="mt-6">
 			<v-card-text>
@@ -104,11 +104,10 @@
 			</v-card-text>
 		</v-card> -->
 
-		<h2 class="mt-10 pb-3">Offizielle Vorverkaufstellen</h2>
+		<!-- <h2 class="mt-10 pb-3">Offizielle Vorverkaufstellen</h2>
 		<v-row>
 			<template v-for="vvk in story.content.vvk_places">
 				<v-col v-if="!vvk.disabled" :key="vvk._uid" cols="12" md="6">
-					<!-- TODO: make this h3 -->
 					<b>{{ vvk.name }}</b>
 					<br />
 					<span v-if="vvk.additional_line"
@@ -118,7 +117,7 @@
 					{{ vvk.plz }} {{ vvk.city }}
 				</v-col>
 			</template>
-		</v-row>
+		</v-row> -->
 	</section>
 </template>
 
