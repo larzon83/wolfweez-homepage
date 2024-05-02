@@ -1,6 +1,11 @@
 <template>
 	<v-row
-		v-if="pageBlok.url && pageBlok.image && pageBlok.image.filename"
+		v-if="
+			!pageBlok.disabled &&
+			pageBlok.url &&
+			pageBlok.image &&
+			pageBlok.image.filename
+		"
 		v-editable="pageBlok"
 		class="mt-9"
 	>
