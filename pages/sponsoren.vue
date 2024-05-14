@@ -46,22 +46,25 @@
 		<!-- TODO: make this a h2 or h3 -->
 		<h2 class="mt-16">{{ story.content.title }}</h2>
 		<v-row class="mt-3 mb-0">
-			<v-col
-				v-for="sponsor in story.content.sponsors_list"
-				:key="`normal-sponsor-${sponsor._uid}`"
-				v-editable="sponsor"
-				cols="6"
-				lg="4"
-			>
-				<v-card color="darkish" flat>
-					<v-card-text class="pa-3 pa-md-5 pa-lg-3 pa-xl-5">
-						<SponsorItem
-							:sponsor="sponsor"
-							:preset="$config.presetNames.SPONSORS_NORMAL"
-						/>
-					</v-card-text>
-				</v-card>
-			</v-col>
+			<!-- disabled -->
+			<template v-for="sponsor in story.content.sponsors_list">
+				<v-col
+					v-if="!sponsor.disabled"
+					:key="`normal-sponsor-${sponsor._uid}`"
+					v-editable="sponsor"
+					cols="6"
+					lg="4"
+				>
+					<v-card color="darkish" flat>
+						<v-card-text class="pa-3 pa-md-5 pa-lg-3 pa-xl-5">
+							<SponsorItem
+								:sponsor="sponsor"
+								:preset="$config.presetNames.SPONSORS_NORMAL"
+							/>
+						</v-card-text>
+					</v-card>
+				</v-col>
+			</template>
 		</v-row>
 	</section>
 </template>
