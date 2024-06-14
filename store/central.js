@@ -1,7 +1,7 @@
 export const state = () => ({
 	crumbs: [],
 	currentPageTitle: '',
-	showPlayTimes: false
+	showPlayTimes: true
 })
 
 export const mutations = {
