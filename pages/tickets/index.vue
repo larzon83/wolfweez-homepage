@@ -20,12 +20,29 @@
 			/>
 		</v-alert>
 
-		<div v-if="story.content.text_page_inactive" class="mt-8">
+		<div v-if="story.content.show_page_inactive_box" class="mt-8">
 			<rich-text-renderer
 				v-if="story.content.text_page_inactive"
 				:document="story.content.text_page_inactive"
 			/>
 		</div>
+
+		<!-- NOTE: duplicated this from below; lazy... :) -->
+		<h2 class="mt-16 pb-3">Offizielle Vorverkaufstellen</h2>
+		<v-row>
+			<template v-for="vvk in story.content.vvk_places">
+				<v-col v-if="!vvk.disabled" :key="vvk._uid" cols="12" md="6">
+					<!-- TODO: make this h3 -->
+					<b>{{ vvk.name }}</b>
+					<br />
+					<span v-if="vvk.additional_line"
+						>{{ vvk.additional_line }}<br
+					/></span>
+					{{ vvk.street }} {{ vvk.street_nr }}<br />
+					{{ vvk.plz }} {{ vvk.city }}
+				</v-col>
+			</template>
+		</v-row>
 	</section>
 
 	<!-- ACTIVE -->
@@ -387,7 +404,7 @@ export default {
 			// 	process.env.NODE_ENV === 'development' ||
 			// 	process.env.NUXT_ENV_IS_SPA === 'true' ||
 			// 	process.env.NUXT_ENV_STORYBLOK_PREVIEW === 'true',
-			pageIsActive: true,
+			pageIsActive: false,
 			pageTitle,
 			checkoutError: '',
 			devProducts: [],
