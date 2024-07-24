@@ -20,7 +20,7 @@
 			<!-- ------------------------ -->
 			<!-- NOTE: FIRST INFO -->
 			<!-- ------------------------ -->
-			<p><b>Termin:</b> 16. November 2024</p>
+			<p><b>Termin:</b> 06. Dezember 2024</p>
 			<p>Weitere Infos folgen.</p>
 
 			<!-- ------------------------ -->
