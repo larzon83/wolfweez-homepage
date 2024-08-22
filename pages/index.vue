@@ -1,6 +1,6 @@
 <template>
 	<v-row justify="center" align="center" no-gutters class="mt-lg-5 mt-0">
-		<v-col v-if="bands.stories.length > 2" cols="12">
+		<v-col v-if="pageIsActive && bands.stories.length > 2" cols="12">
 			<vue-horizontal
 				ref="horizontal"
 				class="horizontal"
@@ -271,6 +271,7 @@ export default {
 
 	data() {
 		return {
+			pageIsActive: false,
 			// isActive: false,
 			pageTitle: routeMeta.HOME.title,
 			width: 0,

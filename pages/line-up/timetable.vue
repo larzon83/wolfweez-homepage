@@ -120,7 +120,7 @@ export default {
 
 	data() {
 		return {
-			pageIsActive: true,
+			pageIsActive: false,
 			pageTitle
 		}
 	},
