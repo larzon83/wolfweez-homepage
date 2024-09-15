@@ -8,29 +8,63 @@
 
 		<h3 class="mb-2">Das Indoor Wolfweez Feeling für die kälteren Tage</h3>
 		<p>
-			Ein Abend voller Heavymetal, im Wolfweez OpenAir Festival Style in der
-			Waidbachhalle in Irslingen!
+			Zwei Tage Rock und Metal vom feinsten, hintereinander, in der
+			Waidbachhalle in Irslingen!🤩🤘
 		</p>
+		<v-divider class="my-5" />
 		<p>
+			Am <b>Freitag den 06. Dezember 2024</b> findet unser alljährlicher
+			<nuxt-link :to="bandContestLink"><b>Bandcontest</b></nuxt-link> statt, bei
+			dem 5 Nachwuchsbands vor einer Fachjury und euch sich unter Beweis stellen
+			werden! Den beiden Gewinnern winken wieder die Opener-Slots beim Wolfweez
+			OpenAir Festival zu! Welche 5 Bands an diesem Abend das Finale bestreiten
+			werden, geben wir Ende Oktober bekannt!
+			<br />
+			<br />
+			Weitere Infos zum Bandcontest findet ihr
+			<nuxt-link :to="bandContestLink">hier</nuxt-link>.
+		</p>
+		<v-divider class="my-5" />
+		<p>
+			Am <b>Samstag 07. Dezember 2024</b> öffnen dann die Pforten zur
+			Winter-Sepcial-Night! 🤩🤘<br />
+			In diesem Jahr mit 2 hochkarätigen Tribute Bands!<br />
 			Mit dabei ist die VOLBEAT Tribute Band -
 			<a
-				href="https://www.voltbeat.de"
+				href="https://www.facebook.com/PapercutLPTributeBand"
 				target="_blank"
 				rel="noopener noreferrer"
-				><b>VOLTBEAT</b></a
-			>!🤩🔥🤘<br />
-			+ Support
-			<!-- von	<a href="https://www.crekko.de" target="_blank" rel="noopener noreferrer"
-				>crekko</a
-			>😎🤘 -->
+				><b>Papercut - Linkin Park Tribute Band</b></a
+			>
+			&
+			<a
+				href="https://www.facebook.com/PapercutLPTributeBand"
+				target="_blank"
+				rel="noopener noreferrer"
+				><b>Seven-Shots</b></a
+			>
+			(ehem. VOLTBEAT)!!🤩🤘
+		</p>
+
+		<p>
+			Nachdem beim letztjährigen Winter-Special, Voltbeat die Halle zum beben
+			gebracht hat und wir eine richtig geile Rock ´n Roll Party gefeiert haben,
+			haben wir die Jungs noch am selben Abend für das diesjährige
+			Winter-Special fix gemacht! Wir freuen uns sehr, dass sie dieses Jahr
+			wieder die Waidbachhalle, mit neuem Namen, zum beben bringen werden! 😎🤘
+			Wer 2022 auf dem Wolfweez OpenAir Festival zu Gast war, wird sich noch
+			sehr Gut an Papercut erinnern können, welche an jenem Abend das Festival
+			zum kochen gebracht haben. Wir freuen uns riesig, dass die Jungs aus
+			Italien, wieder zu uns nach Irslingen reisen und gemeinsam das Wolfweez
+			Winter-Special, mit Seven Shots, zum beben bringen werden!! 🤩😎🤘
 		</p>
 
 		<p>🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥</p>
 		<ul>
-			<li>Samstag, 07.12.2024</li>
+			<li>Freitag, 06.12.2024 und Samstag, 07.12.2024</li>
 			<li>Waidbachhalle Irslingen</li>
-			<li>Einlass: 19 Uhr</li>
-			<li>Beginn: 20 Uhr</li>
+			<li>Einlass (jeweils): 19 Uhr</li>
+			<li>Beginn (jeweils): 20 Uhr</li>
 		</ul>
 		<br />
 
@@ -63,7 +97,7 @@
 			</p>
 		</v-alert> -->
 
-		<!-- <v-card color="darkish" flat class="mt-6">
+		<v-card color="darkish" flat class="mt-6">
 			<v-card-text>
 				<v-row align="center" justify="center" no-gutters>
 					<v-row>
@@ -102,9 +136,9 @@
 					</v-row>
 				</v-row>
 			</v-card-text>
-		</v-card> -->
+		</v-card>
 
-		<!-- <h2 class="mt-10 pb-3">Offizielle Vorverkaufstellen</h2>
+		<h2 class="mt-10 pb-3">Offizielle Vorverkaufstellen</h2>
 		<v-row>
 			<template v-for="vvk in story.content.vvk_places">
 				<v-col v-if="!vvk.disabled" :key="vvk._uid" cols="12" md="6">
@@ -117,7 +151,7 @@
 					{{ vvk.plz }} {{ vvk.city }}
 				</v-col>
 			</template>
-		</v-row> -->
+		</v-row>
 	</section>
 </template>
 
@@ -185,6 +219,10 @@ export default {
 				}
 			]
 		}
+	},
+
+	created() {
+		this.bandContestLink = routeMeta.BANDCONTEST.to
 	},
 
 	middleware({ store }) {
