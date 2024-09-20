@@ -70,7 +70,7 @@
 
 		<p>🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥</p>
 
-		<v-alert
+		<!-- <v-alert
 			icon="$info"
 			dense
 			outlined
@@ -79,7 +79,7 @@
 			class="pa-4 mb-6 mt-0 mt-lg-5 information--text"
 		>
 			Tickets gibt's auf Eventim und Reservix und Hardtickets ab 5. Juli.
-		</v-alert>
+		</v-alert> -->
 
 		<!-- <v-alert
 			icon="$info"
@@ -118,7 +118,7 @@
 							</ClientOnly>
 						</v-col>
 						<v-col cols="12" lg="6" xl="8">
-							<h3 class="mt-1">Jetzt Ticket für nur 28,50 € sichern! *</h3>
+							<h3 class="mt-1">Jetzt Ticket für nur 33 € sichern! *</h3>
 							<v-divider class="my-5" />
 							<p>
 								Hard-Tickets sind ebenfalls in allen offiziellen VVK-Stellen
@@ -203,7 +203,7 @@ export default {
 					'pk_test_51IP7XYBfAFuG6uOs5pu8crgpe5Z6OUfreIGvoM6Vdz66XQnGN4H4RR9qoy2uwQv0meyYfxV4YsmAS2ZKbsOrxbTc00CET6X6bc'
 				return [
 					{
-						buyButtonId: 'buy_btn_1Nxz9cBfAFuG6uOsdN1aBgNE',
+						buyButtonId: 'buy_btn_1Q11H1BfAFuG6uOso4ZOt0EZ',
 						publishableKey
 					}
 				]
@@ -214,7 +214,7 @@ export default {
 				'pk_live_51IP7XYBfAFuG6uOsT6iPXBc5tAIj8xOiOSDprjvToPCV3wrzchcqQe3p8WdZJbBvAYrMAUDaE7dg6GevBgzOwTMd00CXYTn8IM'
 			return [
 				{
-					buyButtonId: 'buy_btn_1NxzCiBfAFuG6uOsYfznllyQ',
+					buyButtonId: 'buy_btn_1Q11N7BfAFuG6uOslxgCZDT7',
 					publishableKey
 				}
 			]
