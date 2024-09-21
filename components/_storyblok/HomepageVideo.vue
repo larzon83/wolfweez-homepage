@@ -7,7 +7,16 @@
 					<LazyYoutubeVideo
 						:src="`https://www.youtube.com/embed/${pageBlok.url}`"
 						alt="Video thumbnail"
+						:preview-image-size="
+							pageBlok.thumbnail_quality &&
+							pageBlok.thumbnail_quality !== 'automatic'
+								? pageBlok.thumbnail_quality
+								: ''
+						"
 						button-label="Video abspielen"
+						:iframe-attributes="{
+							referrerpolicy: 'strict-origin-when-cross-origin'
+						}"
 					/>
 				</v-lazy>
 			</v-responsive>

@@ -97,46 +97,10 @@
 			</p>
 		</v-alert> -->
 
-		<v-card color="darkish" flat class="mt-6">
-			<v-card-text>
-				<v-row align="center" justify="center" no-gutters>
-					<v-row>
-						<v-col
-							v-for="(btn, idx) in buyButtons"
-							:key="`btn-${idx}-${btn.buyButtonId}`"
-							cols="12"
-							lg="6"
-							xl="4"
-							class="d-flex justify-center ma-n2"
-						>
-							<ClientOnly>
-								<stripe-buy-button
-									:buy-button-id="btn.buyButtonId"
-									:publishable-key="btn.publishableKey"
-								>
-								</stripe-buy-button>
-							</ClientOnly>
-						</v-col>
-						<v-col cols="12" lg="6" xl="8">
-							<h3 class="mt-1">Jetzt Ticket für nur 33 € sichern! *</h3>
-							<v-divider class="my-5" />
-							<p>
-								Hard-Tickets sind ebenfalls in allen offiziellen VVK-Stellen
-								erhältlich (Infos folgen), sowie bei Eventim und ReserviX.
-							</p>
-
-							<p>
-								Und natürlich (sofern nicht ausverkauft) an der Abendkasse (hier
-								aber deutlich teurer).
-							</p>
-							<p class="font-italic" style="opacity: 0.4">
-								<small> *inklusive MwSt., Druck- & Logistikgebühren </small>
-							</p>
-						</v-col>
-					</v-row>
-				</v-row>
-			</v-card-text>
-		</v-card>
+		<LazyWinterspecialBuyButton
+			v-if="showWinterspecialBuyButton"
+			class="mt-6"
+		/>
 
 		<h2 class="mt-10 pb-3">Offizielle Vorverkaufstellen</h2>
 		<v-row>
@@ -157,6 +121,7 @@
 
 <script>
 import useStorybridge from 'storybridgeMixin/useStorybridge.js'
+import { mapState } from 'vuex'
 import savePagetitleToVuex from '~/mixins/savePagetitleToVuex.js'
 import useFormatting from '~/mixins/useFormatting.js'
 import { sbData } from '~/utils'
@@ -178,13 +143,7 @@ export default {
 				imageAlt: title,
 				title,
 				url: this.$route.path
-			}),
-			script: [
-				{
-					src: 'https://js.stripe.com/v3/buy-button.js',
-					async: true
-				}
-			]
+			})
 		}
 	},
 
@@ -196,6 +155,7 @@ export default {
 	},
 
 	computed: {
+		...mapState(['showWinterspecialBuyButton']),
 		buyButtons() {
 			// dev
 			if (process.env.NUXT_ENV_TEST_MODE === 'true') {

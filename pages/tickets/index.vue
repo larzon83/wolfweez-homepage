@@ -1,6 +1,34 @@
 <template>
+	<!-- WINTER SPECIAL -->
+	<section v-if="showWinterspecialBuyButton">
+		<LazyWinterspecialBuyButton>
+			<h2 class="text-h4 font-weight-bold mb-4">
+				Tickets Wolfweez Winter Special 2024
+			</h2>
+			<p>
+				Weitere Infos zum Winter Special findet ihr
+				<nuxt-link :to="winterSpecialLink">hier</nuxt-link>.
+			</p>
+		</LazyWinterspecialBuyButton>
+
+		<h2 class="mt-10 pb-3">Offizielle Vorverkaufstellen</h2>
+		<v-row>
+			<template v-for="vvk in story.content.vvk_places">
+				<v-col v-if="!vvk.disabled" :key="vvk._uid" cols="12" md="6">
+					<b>{{ vvk.name }}</b>
+					<br />
+					<span v-if="vvk.additional_line"
+						>{{ vvk.additional_line }}<br
+					/></span>
+					{{ vvk.street }} {{ vvk.street_nr }}<br />
+					{{ vvk.plz }} {{ vvk.city }}
+				</v-col>
+			</template>
+		</v-row>
+	</section>
+
 	<!-- IN-ACTIVE -->
-	<section v-if="!pageIsActive">
+	<section v-else-if="!pageIsActive">
 		<h2 class="d-none d-lg-flex text-h4 text-sm-h3 text-lg-h2 font-weight-bold">
 			Tickets
 		</h2>
@@ -334,6 +362,7 @@
 
 <script>
 import useStorybridge from 'storybridgeMixin/useStorybridge.js'
+import { mapState } from 'vuex'
 import savePagetitleToVuex from '~/mixins/savePagetitleToVuex.js'
 import useFormatting from '~/mixins/useFormatting.js'
 import { sbData } from '~/utils'
@@ -422,6 +451,7 @@ export default {
 	},
 
 	computed: {
+		...mapState(['showWinterspecialBuyButton']),
 		tickets() {
 			if (this.devProducts.length) return this.devProducts
 			return this.$stripeProducts
@@ -494,6 +524,10 @@ export default {
 
 			return this.$_formatPrice(sum)
 		}
+	},
+
+	created() {
+		this.winterSpecialLink = routeMeta.WINTERSPECIAL.to
 	},
 
 	async mounted() {

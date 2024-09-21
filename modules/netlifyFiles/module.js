@@ -45,7 +45,7 @@ export default function () {
 			// 	to: '/',
 			// 	force: true
 			// },
-			// TODO: enable redirect again once the winterspecial 2023 is over
+			// TODO: enable redirect again once the winterspecial is over
 			// {
 			// 	from: '/winterspecial',
 			// 	to: '/',

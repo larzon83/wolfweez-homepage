@@ -19,7 +19,8 @@ export const state = () => ({
 	redirects: {
 		[tabTypes.INFOS]: {},
 		[tabTypes.HISTORY]: {}
-	}
+	},
+	showWinterspecialBuyButton: true
 })
 
 export const getters = {
