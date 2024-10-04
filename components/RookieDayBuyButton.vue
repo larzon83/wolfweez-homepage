@@ -32,7 +32,13 @@
 							<br />
 							<p>
 								Hard-Tickets sind ebenfalls in allen offiziellen VVK-Stellen
-								erhältlich (s.u.), sowie im Store von Heavysaurus.
+								erhältlich (s.u.), sowie im
+								<a
+									href="https://heavysaurus.store/collections/baden-wurttemberg/products/05-04-25-heavysaurus-konzert-irslingen-waidbachhalle"
+									target="_blank"
+									rel="noopener noreferrer"
+									><b>Store von Heavysaurus</b></a
+								>.
 							</p>
 
 							<p>
