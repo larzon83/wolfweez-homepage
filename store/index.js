@@ -20,7 +20,8 @@ export const state = () => ({
 		[tabTypes.INFOS]: {},
 		[tabTypes.HISTORY]: {}
 	},
-	showWinterspecialBuyButton: true
+	showWinterspecialBuyButton: true,
+	showRookieDayBuyButton: true
 })
 
 export const getters = {

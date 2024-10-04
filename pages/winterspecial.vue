@@ -155,30 +155,7 @@ export default {
 	},
 
 	computed: {
-		...mapState(['showWinterspecialBuyButton']),
-		buyButtons() {
-			// dev
-			if (process.env.NUXT_ENV_TEST_MODE === 'true') {
-				const publishableKey =
-					'pk_test_51IP7XYBfAFuG6uOs5pu8crgpe5Z6OUfreIGvoM6Vdz66XQnGN4H4RR9qoy2uwQv0meyYfxV4YsmAS2ZKbsOrxbTc00CET6X6bc'
-				return [
-					{
-						buyButtonId: 'buy_btn_1Q11H1BfAFuG6uOso4ZOt0EZ',
-						publishableKey
-					}
-				]
-			}
-
-			// real
-			const publishableKey =
-				'pk_live_51IP7XYBfAFuG6uOsT6iPXBc5tAIj8xOiOSDprjvToPCV3wrzchcqQe3p8WdZJbBvAYrMAUDaE7dg6GevBgzOwTMd00CXYTn8IM'
-			return [
-				{
-					buyButtonId: 'buy_btn_1Q11N7BfAFuG6uOslxgCZDT7',
-					publishableKey
-				}
-			]
-		}
+		...mapState(['showWinterspecialBuyButton'])
 	},
 
 	created() {

@@ -118,7 +118,8 @@ export default {
 						{ ...routeMeta.MEDIEN__FOTOGALERIE },
 						{ ...routeMeta.SPONSOREN },
 						{ ...routeMeta.BANDCONTEST },
-						{ ...routeMeta.WINTERSPECIAL }
+						{ ...routeMeta.WINTERSPECIAL },
+						{ ...routeMeta.ROOKIE__DAY }
 						// TODO: add presse/medien here
 						// TODO: add newsletter here
 					]

@@ -11,7 +11,6 @@
 							:key="`btn-${idx}-${btn.buyButtonId}`"
 							cols="12"
 							lg="6"
-							xl="4"
 							class="d-flex justify-center ma-n2"
 						>
 							<ClientOnly>
@@ -22,12 +21,18 @@
 								</stripe-buy-button>
 							</ClientOnly>
 						</v-col>
-						<v-col cols="12" lg="6" xl="8">
-							<h3 class="mt-1">Jetzt Ticket für nur 33 € sichern! *</h3>
+						<v-col cols="12">
+							<h3 class="mt-1">Jetzt Ticket ab 35,50 € sichern! *</h3>
 							<v-divider class="my-5" />
+							<p>Preise:</p>
+							<ul>
+								<li>Kind: <b>€35,50</b>*</li>
+								<li>Erwachsene: <b>€39,50</b>*</li>
+							</ul>
+							<br />
 							<p>
 								Hard-Tickets sind ebenfalls in allen offiziellen VVK-Stellen
-								erhältlich (s.u.), sowie bei Eventim und ReserviX.
+								erhältlich (s.u.), sowie im Store von Heavysaurus.
 							</p>
 
 							<p>
@@ -47,7 +52,7 @@
 
 <script>
 export default {
-	name: 'WinterspecialBuyButton',
+	name: 'RookieDayBuyButton',
 
 	head() {
 		return {
@@ -68,7 +73,13 @@ export default {
 					'pk_test_51IP7XYBfAFuG6uOs5pu8crgpe5Z6OUfreIGvoM6Vdz66XQnGN4H4RR9qoy2uwQv0meyYfxV4YsmAS2ZKbsOrxbTc00CET6X6bc'
 				return [
 					{
-						buyButtonId: 'buy_btn_1Q11H1BfAFuG6uOso4ZOt0EZ',
+						// Erwachsene
+						buyButtonId: 'buy_btn_1Q6D19BfAFuG6uOsvVG9eV71',
+						publishableKey
+					},
+					{
+						// Kind
+						buyButtonId: 'buy_btn_1Q6D1eBfAFuG6uOsvPghZubm',
 						publishableKey
 					}
 				]
@@ -79,7 +90,13 @@ export default {
 				'pk_live_51IP7XYBfAFuG6uOsT6iPXBc5tAIj8xOiOSDprjvToPCV3wrzchcqQe3p8WdZJbBvAYrMAUDaE7dg6GevBgzOwTMd00CXYTn8IM'
 			return [
 				{
-					buyButtonId: 'buy_btn_1Q11N7BfAFuG6uOslxgCZDT7',
+					// Erwachsene
+					buyButtonId: 'buy_btn_1Q6CpkBfAFuG6uOss1LqKKGh',
+					publishableKey
+				},
+				{
+					// Kind
+					buyButtonId: 'buy_btn_1Q6CwyBfAFuG6uOsdwqUwJNz',
 					publishableKey
 				}
 			]

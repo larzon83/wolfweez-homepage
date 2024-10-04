@@ -51,6 +51,12 @@ export default function () {
 			// 	to: '/',
 			// 	force: true
 			// },
+			// TODO: enable redirect again once the rookie day is over
+			// {
+			// 	from: '/rookieday',
+			// 	to: '/',
+			// 	force: true
+			// },
 			{
 				from: '/bands',
 				to: routeMeta.LINEUP__BANDS.to,

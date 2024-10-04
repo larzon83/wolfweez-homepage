@@ -1,7 +1,7 @@
 <template>
 	<!-- WINTER SPECIAL -->
-	<section v-if="showWinterspecialBuyButton">
-		<LazyWinterspecialBuyButton>
+	<section v-if="showWinterspecialBuyButton || showRookieDayBuyButton">
+		<LazyWinterspecialBuyButton v-if="showWinterspecialBuyButton">
 			<h2 class="text-h4 font-weight-bold mb-4">
 				Tickets Wolfweez Winter Special 2024
 			</h2>
@@ -10,6 +10,21 @@
 				<nuxt-link :to="winterSpecialLink">hier</nuxt-link>.
 			</p>
 		</LazyWinterspecialBuyButton>
+
+		<LazyRookieDayBuyButton v-if="showRookieDayBuyButton">
+			<h2
+				:class="[
+					'text-h4 font-weight-bold mb-4',
+					showWinterspecialBuyButton && 'mt-12'
+				]"
+			>
+				Tickets Wolfweez Rookie Day 2025
+			</h2>
+			<p>
+				Weitere Infos zum Rookie Day findet ihr
+				<nuxt-link :to="rookieDayLink">hier</nuxt-link>.
+			</p>
+		</LazyRookieDayBuyButton>
 
 		<h2 class="mt-10 pb-3">Offizielle Vorverkaufstellen</h2>
 		<v-row>
@@ -451,7 +466,7 @@ export default {
 	},
 
 	computed: {
-		...mapState(['showWinterspecialBuyButton']),
+		...mapState(['showWinterspecialBuyButton', 'showRookieDayBuyButton']),
 		tickets() {
 			if (this.devProducts.length) return this.devProducts
 			return this.$stripeProducts
@@ -528,6 +543,7 @@ export default {
 
 	created() {
 		this.winterSpecialLink = routeMeta.WINTERSPECIAL.to
+		this.rookieDayLink = routeMeta.ROOKIE__DAY.to
 	},
 
 	async mounted() {

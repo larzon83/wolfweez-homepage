@@ -41,7 +41,8 @@ const constructProducts = (productsList, pricesList, sbTickets, testMode) => {
 		if (
 			currProduct.active &&
 			!currProduct.name.includes('Festivalshirt') &&
-			!currProduct.name.includes('Winterspecial')
+			!currProduct.name.includes('Winterspecial') &&
+			!currProduct.name.includes('Rookie Day')
 		) {
 			let prices = []
 			if (pricesList && pricesList.data) {
