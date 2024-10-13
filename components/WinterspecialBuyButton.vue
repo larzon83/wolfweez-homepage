@@ -25,6 +25,24 @@
 						<v-col cols="12" lg="6" xl="8">
 							<h3 class="mt-1">Jetzt Ticket für nur 33 € sichern! *</h3>
 							<v-divider class="my-5" />
+							<v-alert
+								icon="$info"
+								dense
+								outlined
+								prominent
+								text
+								class="pa-4 mb-4 information--text"
+							>
+								<p><b>ACHTUNG</b></p>
+								<p>
+									Diese Online-Tickets sind nur für den Tribute Bands Abend am
+									Samstag bestimmt.
+								</p>
+								<p>
+									Tickets für den Bandcontest am Freitag gibt es nur an der
+									Abendkasse.
+								</p>
+							</v-alert>
 							<p>
 								Hard-Tickets sind ebenfalls in allen offiziellen VVK-Stellen
 								erhältlich (s.u.), sowie bei Eventim und ReserviX.
