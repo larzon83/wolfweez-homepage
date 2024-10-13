@@ -1,9 +1,16 @@
 <template>
-	<section>
+	<section v-editable="story.content">
+		<SbImage
+			v-if="story.content.image_social && story.content.image_social.filename"
+			:alt="story.content.headline"
+			:pic="story.content.image_social"
+			:preset="$config.presetNames.FULL_WIDTH"
+			class="mb-8 mb-lg-12"
+		/>
 		<h2
 			class="d-none d-lg-flex text-h4 text-sm-h3 text-lg-h2 font-weight-bold mb-5"
 		>
-			Wolfweez Rookie Day 2025
+			{{ story.content.headline }}
 		</h2>
 
 		<h3 class="mb-2">Ein Tag für unser jüngstes Publikum!</h3>
@@ -127,7 +134,7 @@ import savePagetitleToVuex from '~/mixins/savePagetitleToVuex.js'
 import useFormatting from '~/mixins/useFormatting.js'
 import { sbData } from '~/utils'
 import { routeMeta } from '~/utils/constants'
-import { createOgImagePath, createSEOMeta } from '~/utils/seo'
+import { createSEOMeta } from '~/utils/seo'
 
 const pageTitle = 'Wolfweez Rookie Day 2025'
 
@@ -137,11 +144,19 @@ export default {
 
 	head() {
 		const title = pageTitle
+
+		const { image, imageHeight } = this.$_generateOgImageEntry(
+			this.story.content.image_social?.filename,
+			this.$route.path
+		)
+
 		return {
 			title,
 			meta: createSEOMeta({
-				image: createOgImagePath(this.$route.path),
+				description: this.story.content.description_meta,
+				image,
 				imageAlt: title,
+				imageHeight,
 				title,
 				url: this.$route.path
 			})
@@ -151,7 +166,7 @@ export default {
 	async asyncData(context) {
 		return await sbData({
 			ctx: context,
-			path: '/tickets/tickets'
+			path: '/rookieday'
 		})
 	},
 
