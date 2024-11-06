@@ -271,7 +271,7 @@ export default {
 
 	data() {
 		return {
-			pageIsActive: false,
+			pageIsActive: true,
 			// isActive: false,
 			pageTitle: routeMeta.HOME.title,
 			width: 0,
