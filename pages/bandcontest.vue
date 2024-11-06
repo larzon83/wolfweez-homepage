@@ -27,7 +27,7 @@
 			<!-- NOTE: BEWERBUNG -->
 			<!-- ------------------------ -->
 
-			<p>
+			<!-- <p>
 				Yeah! Großartige Sache das ihr hier gelandet seid und euch mit euerer
 				Band bei unserem Bandcontest bewerbt!!!
 			</p>
@@ -35,7 +35,6 @@
 			<p>
 				<b>Termin:</b> 06. Dezember 2024<br />
 				<b>Location:</b> Waidbachhalle 78661 Irslingen<br />
-				<!-- <b>Doors Open:</b> 18.00 Uhr<br /> -->
 				<b>Bewerbungszeitraum:</b> 22.08.2024 – 06.11.2024
 			</p>
 			<h3>Gewinn</h3>
@@ -129,6 +128,15 @@
 				<a href="mailto:bandcontest@wolfweez-openair.de"
 					>bandcontest@wolfweez-openair.de</a
 				>.
+			</p> -->
+
+			<!-- ------------------------ -->
+			<!-- NOTE: Bewerbungsphase beendet -->
+			<!-- ------------------------ -->
+
+			<p>
+				Die Bewerbungsphase ist beendet. Weitere Infos mit allen teilnehmenden
+				Bands folgen.
 			</p>
 
 			<!-- ------------------------ -->
