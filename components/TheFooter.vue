@@ -119,7 +119,8 @@ export default {
 						{ ...routeMeta.SPONSOREN },
 						{ ...routeMeta.BANDCONTEST },
 						{ ...routeMeta.WINTERSPECIAL },
-						{ ...routeMeta.ROOKIE__DAY }
+						{ ...routeMeta.ROOKIE__DAY },
+						{ ...routeMeta.MIETEN }
 						// TODO: add presse/medien here
 						// TODO: add newsletter here
 					]

@@ -151,6 +151,11 @@ export const routeMeta = {
 	ROOKIE__DAY: {
 		title: 'Rookie Day',
 		to: '/rookieday/'
+	},
+
+	MIETEN: {
+		title: 'Mietgegenstände',
+		to: '/mieten/'
 	}
 }
 

@@ -4,6 +4,7 @@
 			<div v-if="galleries.length" class="gallery">
 				<template v-for="(gallery, galleryIndex) in galleries">
 					<h2
+						v-if="!hideHeadline"
 						:key="`gallery-headline-${galleryIndex}`"
 						:class="[
 							paddingTopOverride
@@ -73,6 +74,10 @@ export default {
 		headline: {
 			type: String,
 			default: ''
+		},
+		hideHeadline: {
+			type: Boolean,
+			default: false
 		},
 		id: {
 			type: String,
