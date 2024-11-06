@@ -134,21 +134,21 @@
 			<!-- NOTE: Bewerbungsphase beendet -->
 			<!-- ------------------------ -->
 
-			<p>
+			<!-- <p>
 				Die Bewerbungsphase ist beendet. Weitere Infos mit allen teilnehmenden
 				Bands folgen.
-			</p>
+			</p> -->
 
 			<!-- ------------------------ -->
 			<!-- NOTE: BEFORE-SHOW -->
 			<!-- ------------------------ -->
 
-			<!-- <p>
+			<p>
 				Der Bandcontest 2024 steht in den Startlöchern und die fünf Bands für
 				das Finale stehen fest!
 			</p>
 			<p>
-				Am <b>16.11.2024</b> ist es wieder so weit, der dritte Bandcontest des
+				Am <b>06.12.2024</b> ist es wieder so weit, der vierte Bandcontest des
 				Wolfweez OpenAir Festivals wird veranstaltet.<br />
 				Fünf Bands aus Nah und Fern werden an diesem Abend um die zwei begehrten
 				Plätze, vom 2025er Line-Up des Wolfweez OpenAir Festivals auf der Bühne
@@ -194,10 +194,7 @@
 			<v-divider />
 			<br />
 
-			<p>
-				Nach dem Bandcontest startet dann die große Aftershow-Party mit der
-				<b>Metal-Cover-Band HEIMATGOLD</b>!
-			</p>
+			<p>Nach dem Bandcontest startet dann die große Aftershow-Party!</p>
 
 			<p>
 				Wir freuen uns auf einen tollen Abend mit großartigen Bands und einer
@@ -213,10 +210,10 @@
 			<br />
 
 			<ul>
-				<li>Doors Open 18.00 Uhr</li>
-				<li>Beginn 19.00 Uhr</li>
+				<li>Einlass: 19 Uhr</li>
+				<li>Beginn: 20 Uhr</li>
 				<li>Eintritt 10€</li>
-			</ul> -->
+			</ul>
 
 			<!-- ------------------------ -->
 			<!-- NOTE: AFTER-SHOW -->
@@ -288,16 +285,16 @@
 		</div>
 
 		<!-- TODO: use for BEFORE-SHOW -->
-		<!-- <br />
+		<br />
 		<v-divider />
 		<br />
 		<h2>Bands</h2>
-		<p>Folgende Bands nehmen am Bandcontest 2024 teil:</p> -->
+		<p>Folgende Bands nehmen am Bandcontest 2024 teil:</p>
 
 		<!-- ------------------------ -->
 		<!-- NOTE: SIEGER BANDS -->
 		<!-- ------------------------ -->
-		<!-- <v-row tag="section">
+		<v-row tag="section">
 			<v-col
 				v-for="band in bands.stories"
 				:key="band.content._uid"
@@ -329,7 +326,7 @@
 					/>
 				</v-card>
 			</v-col>
-		</v-row> -->
+		</v-row>
 	</section>
 </template>
 
