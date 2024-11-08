@@ -44,7 +44,14 @@
 			Einachsanhänger für Zugmaul, Beleuchtung 7 Poliger Stecker, 25 km/h Schild
 		</div>
 
-		<LightGalleries :galleries="galleries" hide-headline class="mt-8" />
+		<LightGalleries :galleries="galleries" hide-headline class="mt-8 mb-8" />
+
+		<v-divider class="my-5" />
+
+		<h2 class="mb-2">WC-Container</h2>
+		<p>
+			<i>Im Umbau. Info's und Bilder folgen.</i>
+		</p>
 	</section>
 </template>
 
