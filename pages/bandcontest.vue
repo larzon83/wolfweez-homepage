@@ -210,7 +210,7 @@
 			<br />
 
 			<ul>
-				<li>Einlass: 19 Uhr</li>
+				<li>Einlass: 18 Uhr</li>
 				<li>Beginn: 20 Uhr</li>
 				<li>Eintritt 10€</li>
 			</ul>
