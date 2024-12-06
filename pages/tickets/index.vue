@@ -1,6 +1,17 @@
 <template>
-	<!-- WINTER SPECIAL -->
-	<section v-if="showWinterspecialBuyButton || showRookieDayBuyButton">
+	<!-- TODO: Finde passende Unterkünfte in Irslingen und Umgebung -->
+	<section
+		v-if="
+			showLyaBuyButton || showWinterspecialBuyButton || showRookieDayBuyButton
+		"
+		class="buy-buttons"
+	>
+		<LazyLyaBuyButton v-if="showLyaBuyButton">
+			<h2 class="text-h4 font-weight-bold mb-4">
+				Tickets Wolfweez OpenAir Festival 2025
+			</h2>
+		</LazyLyaBuyButton>
+
 		<LazyWinterspecialBuyButton v-if="showWinterspecialBuyButton">
 			<h2 class="text-h4 font-weight-bold mb-4">
 				Tickets Wolfweez Winter Special 2024
@@ -12,12 +23,7 @@
 		</LazyWinterspecialBuyButton>
 
 		<LazyRookieDayBuyButton v-if="showRookieDayBuyButton">
-			<h2
-				:class="[
-					'text-h4 font-weight-bold mb-4',
-					showWinterspecialBuyButton && 'mt-12'
-				]"
-			>
+			<h2 :class="['text-h4 font-weight-bold mb-4']">
 				Tickets Wolfweez Rookie Day 2025
 			</h2>
 			<p>
@@ -26,20 +32,22 @@
 			</p>
 		</LazyRookieDayBuyButton>
 
-		<h2 class="mt-10 pb-3">Offizielle Vorverkaufstellen</h2>
-		<v-row>
-			<template v-for="vvk in story.content.vvk_places">
-				<v-col v-if="!vvk.disabled" :key="vvk._uid" cols="12" md="6">
-					<b>{{ vvk.name }}</b>
-					<br />
-					<span v-if="vvk.additional_line"
-						>{{ vvk.additional_line }}<br
-					/></span>
-					{{ vvk.street }} {{ vvk.street_nr }}<br />
-					{{ vvk.plz }} {{ vvk.city }}
-				</v-col>
-			</template>
-		</v-row>
+		<div>
+			<h2 class="pb-3">Offizielle Vorverkaufstellen</h2>
+			<v-row>
+				<template v-for="vvk in story.content.vvk_places">
+					<v-col v-if="!vvk.disabled" :key="vvk._uid" cols="12" md="6">
+						<b>{{ vvk.name }}</b>
+						<br />
+						<span v-if="vvk.additional_line"
+							>{{ vvk.additional_line }}<br
+						/></span>
+						{{ vvk.street }} {{ vvk.street_nr }}<br />
+						{{ vvk.plz }} {{ vvk.city }}
+					</v-col>
+				</template>
+			</v-row>
+		</div>
 	</section>
 
 	<!-- IN-ACTIVE -->
@@ -466,7 +474,11 @@ export default {
 	},
 
 	computed: {
-		...mapState(['showWinterspecialBuyButton', 'showRookieDayBuyButton']),
+		...mapState([
+			'showLyaBuyButton',
+			'showWinterspecialBuyButton',
+			'showRookieDayBuyButton'
+		]),
 		tickets() {
 			if (this.devProducts.length) return this.devProducts
 			return this.$stripeProducts
@@ -701,6 +713,12 @@ export default {
 			-webkit-appearance: none;
 			margin: 0;
 		}
+	}
+}
+
+.buy-buttons {
+	& > * + * {
+		margin-top: 48px;
 	}
 }
 </style>
