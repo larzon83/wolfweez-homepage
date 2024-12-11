@@ -143,7 +143,7 @@
 			<!-- NOTE: BEFORE-SHOW -->
 			<!-- ------------------------ -->
 
-			<p>
+			<!-- <p>
 				Der Bandcontest 2024 steht in den Startlöchern und die fünf Bands für
 				das Finale stehen fest!
 			</p>
@@ -213,13 +213,13 @@
 				<li>Einlass: 18 Uhr</li>
 				<li>Beginn: 20 Uhr</li>
 				<li>Eintritt 10€</li>
-			</ul>
+			</ul> -->
 
 			<!-- ------------------------ -->
 			<!-- NOTE: AFTER-SHOW -->
 			<!-- ------------------------ -->
 
-			<!-- <p>
+			<p>
 				Der Bandcontest 2024 ist vorbei und die Halle wurde wieder in ihren
 				ursprünglichen Zustand versetzt!😁🤘💪
 			</p>
@@ -244,15 +244,25 @@
 			</p>
 
 			<p>
-				<b>Platz 1: Black and Damned</b><br />
-				<b>Platz 2: Concusion</b><br />
+				<b
+					>Platz 1:
+					<a href="https://www.wolfweez-openair.de/line-up/bands/full-stop/"
+						>Full Stop</a
+					></b
+				><br />
+				<b
+					>Platz 2:
+					<a href="https://www.wolfweez-openair.de/line-up/bands/sydra/"
+						>Sydra</a
+					></b
+				><br />
 				🥳🥳🥳🥳🥳🥳
 			</p>
 
 			<p>
 				Somit steht auch fest wer am Festival-Freitag und am Festival-Samstag
 				die jeweiligen Festivaltage eröffnet!🤩🤘
-			</p> -->
+			</p>
 
 			<!-- TODO: obsolete -> remove -->
 			<!-- <br />
@@ -285,15 +295,15 @@
 		</div>
 
 		<!-- TODO: use for BEFORE-SHOW -->
-		<br />
+		<!-- ------------------------ -->
+		<!-- NOTE: SIEGER BANDS -->
+		<!-- ------------------------ -->
+		<!-- <br />
 		<v-divider />
 		<br />
 		<h2>Bands</h2>
 		<p>Folgende Bands nehmen am Bandcontest 2024 teil:</p>
 
-		<!-- ------------------------ -->
-		<!-- NOTE: SIEGER BANDS -->
-		<!-- ------------------------ -->
 		<v-row tag="section">
 			<v-col
 				v-for="band in bands.stories"
@@ -326,7 +336,7 @@
 					/>
 				</v-card>
 			</v-col>
-		</v-row>
+		</v-row> -->
 	</section>
 </template>
 
