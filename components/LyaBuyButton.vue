@@ -59,10 +59,12 @@
 								<li>
 									<span>Kombi Ticket: 90€</span>
 									<s class="font-italic" style="opacity: 0.4">95€</s>
+									<i>(+ 4,90€ VVK Gebühr)</i>
 								</li>
 								<li>
 									<span>Camping Ticket: 20€</span>
 									<s class="font-italic" style="opacity: 0.4">22€</s>
+									<i>(+ 2€ VVK Gebühr)</i>
 								</li>
 							</ul>
 							<v-alert
