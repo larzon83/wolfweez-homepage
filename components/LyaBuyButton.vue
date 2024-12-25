@@ -19,7 +19,6 @@
 							>
 								<v-img
 									alt="Ticket Wolfweez OpenAir Festival 2025"
-									content-class="contentClass---------------"
 									:width="200"
 									:height="200"
 									contain
@@ -48,7 +47,7 @@
 							</v-btn>
 						</v-col>
 						<v-col cols="12" lg="6" xl="8">
-							<h3 class="mt-1">Early Wolf Vorverkauf</h3>
+							<!-- <h3 class="mt-1">Early Wolf Vorverkauf</h3>
 							<v-divider class="my-5" />
 							<p>
 								Erhalte Kombiticket sowie Campingticket im Aktionszeitraum zum
@@ -66,6 +65,16 @@
 									<s class="font-italic" style="opacity: 0.4">22€</s>
 									<i>(+ 2€ VVK Gebühr)</i>
 								</li>
+							</ul> -->
+							<ul>
+								<li>
+									<span>Kombi Ticket: 95€</span>
+									<i style="opacity: 0.4">(+ 4,90€ VVK Gebühr)</i>
+								</li>
+								<li>
+									<span>Camping Ticket: 22,20€</span>
+									<i style="opacity: 0.4">(+ 2€ VVK Gebühr)</i>
+								</li>
 							</ul>
 							<v-alert
 								icon="$info"
@@ -76,7 +85,9 @@
 								class="pa-4 mt-8 mb-0 information--text"
 							>
 								<p><b>ACHTUNG</b></p>
-								<p>Die Vorverkaufsstellen werden ab Januar ausgestattet.</p>
+								<p>
+									Die Vorverkaufsstellen (s.u.) werden ab Januar ausgestattet.
+								</p>
 							</v-alert>
 						</v-col>
 					</v-row>
