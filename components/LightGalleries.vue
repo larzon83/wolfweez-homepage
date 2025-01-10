@@ -14,9 +14,7 @@
 								: 'pt-16',
 							paddingBottomOverride ? paddingBottomOverride : 'pb-3'
 						]"
-						v-text="
-							headline ? headline : `${$config.siteTitle.short} ${gallery.year}`
-						"
+						v-text="headline ? headline : getGalleryTitle(gallery)"
 					/>
 					<v-row :key="`gallery-${galleryIndex}`" class="gallery-row">
 						<template v-for="(img, imgIndex) in gallery.imgs">
@@ -28,9 +26,7 @@
 								:lg="colsLg"
 							>
 								<v-img
-									:alt="`${$config.siteTitle.short} ${gallery.year} - Bild ${
-										imgIndex + 1
-									}`"
+									:alt="`${getGalleryTitle(gallery)} - Bild ${imgIndex + 1}`"
 									:src="$_transformImage(img.filename, '221x221')"
 									:lazy-src="$_transformImage(img.filename, '6x6')"
 									:srcset="$_generateDpiSrcsetEntries(img.filename, 221)"
@@ -70,6 +66,10 @@ export default {
 		galleries: {
 			type: Array,
 			default: () => []
+		},
+		galleryTitle: {
+			type: String,
+			default: ''
 		},
 		headline: {
 			type: String,
@@ -125,9 +125,7 @@ export default {
 						downloadUrl: img.filename,
 						alt: this.isSingleImage
 							? img.alt
-							: `${this.$config.siteTitle.short} ${gallery.year} - Bild ${
-									index + 1
-							  }`,
+							: `${this.getGalleryTitle(gallery)} - Bild ${index + 1}`,
 						responsive: `
 									${this.$_transformImage(img.filename, '329x0')} 340,
 									${this.$_transformImage(img.filename, '529x0')} 540,
@@ -152,6 +150,15 @@ export default {
 	},
 
 	methods: {
+		getGalleryTitle(gallery) {
+			if (this.galleryTitle) {
+				return this.galleryTitle
+			}
+
+			const maybeYear = gallery?.year ? ` ${gallery.year}` : ''
+			return `${this.$config.siteTitle.short}${maybeYear}`
+		},
+
 		async handleOpenGallery(slideIndex = 0, galleryIndex = 0) {
 			// initialize lightgallery once
 			if (this.galleryInstance === null) {
@@ -177,7 +184,10 @@ export default {
 
 				const el = document.getElementById(this.id)
 				let plugins = [lgFullscreen, lgZoom]
-				if (!this.isSingleImage) plugins = [...plugins, lgThumbnail]
+
+				if (!this.isSingleImage) {
+					plugins = [...plugins, lgThumbnail]
+				}
 
 				this.galleryInstance = lg.default(el, {
 					// TODO: licenseKey
