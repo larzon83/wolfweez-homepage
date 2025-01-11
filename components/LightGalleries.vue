@@ -67,6 +67,7 @@ export default {
 			type: Array,
 			default: () => []
 		},
+		// TODO: this should rather be inside a gallery in the galleries array
 		galleryTitle: {
 			type: String,
 			default: ''
