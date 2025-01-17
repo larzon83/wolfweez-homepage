@@ -86,7 +86,8 @@
 							>
 								<p><b>ACHTUNG</b></p>
 								<p>
-									Die Vorverkaufsstellen (s.u.) werden ab Januar ausgestattet.
+									Die Vorverkaufsstellen (s.u.) werden ab Mitte März
+									ausgestattet.
 								</p>
 							</v-alert>
 						</v-col>

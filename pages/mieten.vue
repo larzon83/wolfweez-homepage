@@ -28,6 +28,7 @@
 				:document="rentalProperty.text"
 			/>
 
+			<!-- TODO: rename rentalProperty.gallery -> rentalProperty.gallery_images -->
 			<LightGalleries
 				v-if="
 					rentalProperty.id &&
