@@ -120,7 +120,8 @@ export default {
 						{ ...routeMeta.BANDCONTEST },
 						{ ...routeMeta.WINTERSPECIAL },
 						{ ...routeMeta.ROOKIE__DAY },
-						{ ...routeMeta.MIETEN }
+						{ ...routeMeta.MIETEN },
+						{ ...routeMeta.MII_MITGLIEDSCHAFT }
 						// TODO: add presse/medien here
 						// TODO: add newsletter here
 					]

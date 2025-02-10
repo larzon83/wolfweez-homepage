@@ -156,6 +156,11 @@ export const routeMeta = {
 	MIETEN: {
 		title: 'Mietgegenstände',
 		to: '/mieten/'
+	},
+
+	MII_MITGLIEDSCHAFT: {
+		title: 'Musikinitiative Irslingen Mitgliedschaft',
+		to: '/mii-mitgliedschaft/'
 	}
 }
 
