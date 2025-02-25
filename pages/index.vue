@@ -89,7 +89,7 @@
 			</div>
 		</v-col>
 
-		<!-- <v-col
+		<v-col
 			v-if="
 				currentFestival.content.image_all_bands &&
 				currentFestival.content.image_all_bands.filename
@@ -166,7 +166,7 @@
 					</v-card>
 				</v-col>
 			</v-row>
-		</v-col> -->
+		</v-col>
 
 		<!-- <component
 			:is="story.content.component"
