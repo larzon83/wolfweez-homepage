@@ -81,7 +81,7 @@ import { createSEOMeta } from '~/utils/seo'
 const pageTitle = routeMeta.SPONSOREN.title
 
 export default {
-	name: pageTitle,
+	name: 'SponsorenUndPartner',
 	mixins: [savePagetitleToVuex, useFormatting, useStorybridge],
 
 	head() {

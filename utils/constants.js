@@ -109,7 +109,7 @@ export const routeMeta = {
 	},
 
 	SPONSOREN: {
-		title: 'Sponsoren',
+		title: 'Sponsoren & Partner',
 		to: '/sponsoren/'
 	},
 
