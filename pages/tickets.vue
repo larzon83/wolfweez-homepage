@@ -61,6 +61,21 @@
 			</h2>
 		</LazyLyaBuyButton>
 
+		<a
+			href="https://infield.live/festivals/wolfweez-open-air-festival/?booking=true"
+			rel="noreferrer"
+			target="_blank"
+			class="buy-buttons d-block"
+		>
+			<SbImage
+				alt="infield festival weeks"
+				:pic="{
+					filename:
+						'https://a.storyblok.com/f/95378/1920x520/700d985e2f/infield-banner-2025.png?cv=1740830236346'
+				}"
+				:preset="$config.presetNames.FULL_WIDTH"
+		/></a>
+
 		<LazyWinterspecialBuyButton v-if="showWinterspecialBuyButton">
 			<h2 class="text-h4 font-weight-bold mb-4">
 				Tickets Wolfweez Winter Special 2024
