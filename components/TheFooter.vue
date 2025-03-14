@@ -152,6 +152,7 @@ export default {
 
 	.powered-by {
 		column-gap: 25px;
+		row-gap: 8px;
 
 		.sub-headline {
 			@media #{map-get($display-breakpoints, 'md-and-down')} {
