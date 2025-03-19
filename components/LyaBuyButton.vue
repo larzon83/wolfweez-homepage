@@ -72,6 +72,14 @@
 									<i style="opacity: 0.4">(+ 4,90€ VVK Gebühr)</i>
 								</li>
 								<li>
+									<span>Tagesticket Freitag: 50,00€</span>
+									<i style="opacity: 0.4">(+ 3,50€ VVK Gebühr)</i>
+								</li>
+								<li>
+									<span>Tagesticket Samstag: 60,00€</span>
+									<i style="opacity: 0.4">(+ 4,20€ VVK Gebühr)</i>
+								</li>
+								<li>
 									<span>Camping Ticket: 22,20€</span>
 									<i style="opacity: 0.4">(+ 2€ VVK Gebühr)</i>
 								</li>
