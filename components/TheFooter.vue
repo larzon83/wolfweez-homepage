@@ -33,13 +33,21 @@
 						</v-card>
 					</v-col>
 				</v-row>
+				<v-row align="center" no-gutters class="powered-by justify-center mt-5">
+					<v-subheader class="sub-headline text-button justify-center pl-0 pr-0"
+						>Merchandise Kooperationspartner</v-subheader
+					>
+					<a href="https://antisocial.store/" rel="noopener" target="_blank"
+						>Antisocial Store</a
+					>
+				</v-row>
 				<v-row
 					align="center"
 					no-gutters
-					class="powered-by justify-center justify-md-start mt-5"
+					class="powered-by justify-center mt-12"
 				>
 					<v-subheader
-						class="sub-headline text-button justify-center justify-md-start pl-0 pr-0 pr-md-4"
+						class="sub-headline text-button justify-center pl-0 pr-0 mb-2"
 						>Powered by</v-subheader
 					>
 					<SponsorItem
@@ -155,9 +163,9 @@ export default {
 		row-gap: 8px;
 
 		.sub-headline {
-			@media #{map-get($display-breakpoints, 'md-and-down')} {
-				width: 100%;
-			}
+			width: 100%;
+			height: unset;
+			line-height: 1.25rem;
 		}
 	}
 }
