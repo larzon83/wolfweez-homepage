@@ -66,6 +66,7 @@
 									<i>(+ 2€ VVK Gebühr)</i>
 								</li>
 							</ul> -->
+							<slot name="inside" />
 							<ul>
 								<li>
 									<span>Kombi Ticket: 95€</span>
@@ -80,11 +81,11 @@
 									<i style="opacity: 0.4">(+ 4,20€ VVK Gebühr)</i>
 								</li>
 								<li>
-									<span>Camping Ticket: 22,20€</span>
-									<i style="opacity: 0.4">(+ 2€ VVK Gebühr)</i>
+									<span>Camping Ticket: 22,00€</span>
+									<i style="opacity: 0.4">(+ 2,20€ VVK Gebühr)</i>
 								</li>
 							</ul>
-							<v-alert
+							<!-- <v-alert
 								icon="$info"
 								dense
 								outlined
@@ -97,7 +98,7 @@
 									Die Vorverkaufsstellen (s.u.) werden ab Mitte März
 									ausgestattet.
 								</p>
-							</v-alert>
+							</v-alert> -->
 						</v-col>
 					</v-row>
 				</v-row>
