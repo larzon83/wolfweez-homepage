@@ -37,9 +37,18 @@
 					<v-subheader class="sub-headline text-button justify-center pl-0 pr-0"
 						>Merchandise Kooperationspartner</v-subheader
 					>
-					<a href="https://antisocial.store/" rel="noopener" target="_blank"
+					<!-- <a href="https://antisocial.store/" rel="noopener" target="_blank"
 						>Antisocial Store</a
-					>
+					> -->
+					<a href="https://antisocial.store/" rel="noopener" target="_blank">
+						<v-img
+							src="https://a.storyblok.com/f/95378/2234x1340/62448f84f7/antisocial-store-logo.png/m/250x0/filters:quality(100)"
+							alt="Antisocial Store"
+							:width="125"
+							contain
+						>
+						</v-img>
+					</a>
 				</v-row>
 				<v-row
 					align="center"
