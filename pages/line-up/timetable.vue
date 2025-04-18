@@ -71,7 +71,7 @@
 				<h2>Frühstück und Kaffee</h2>
 				<div>Freitag und Samstag jeweils ab 8:00 bis 10:00 Uhr.</div>
 				<h2 class="mt-8">Frühschoppen am Samstag Morgen</h2>
-				<div class="text-subtitle-2 font-weight-regular">06.07.2024</div>
+				<div class="text-subtitle-2 font-weight-regular">05.07.2025</div>
 				Traditioneller "Frühschoppen" mit Tanzlmusi
 				<!-- <nuxt-link to="/line-up/bands/polkamusikanten-stetten/"
 					>Polkamusikanten Stetten</nuxt-link
