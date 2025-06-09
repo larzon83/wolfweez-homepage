@@ -158,6 +158,11 @@ export const routeMeta = {
 		to: '/mieten/'
 	},
 
+	VEREIN: {
+		title: 'Der Verein',
+		to: '/verein/'
+	},
+
 	MII_MITGLIEDSCHAFT: {
 		title: 'Musikinitiative Irslingen Mitgliedschaft',
 		to: '/mii-mitgliedschaft/'
@@ -170,5 +175,6 @@ export const mainNavItems = [
 	{ ...routeMeta.INFOS, tabType: tabTypes.INFOS },
 	{ ...routeMeta.LINEUP, tabType: tabTypes.LINEUP },
 	{ ...routeMeta.TICKETS },
-	{ ...routeMeta.HISTORIE, tabType: tabTypes.HISTORY }
+	{ ...routeMeta.HISTORIE, tabType: tabTypes.HISTORY },
+	{ ...routeMeta.VEREIN }
 ]

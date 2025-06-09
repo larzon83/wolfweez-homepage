@@ -179,6 +179,11 @@ export default {
 	&:not(.nav-btn-active) ::v-deep .v-btn__content {
 		color: getcolor('bright', 0.6);
 	}
+
+	@media #{map-get($display-breakpoints, 'lg-only')} {
+		// to fit all main items into one row
+		font-size: $size16;
+	}
 }
 
 .nav-btn-active {
