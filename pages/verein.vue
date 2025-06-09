@@ -9,6 +9,12 @@
 				:pic="story.content.image"
 				:preset="$config.presetNames.NEWS_DETAIL"
 			/>
+			<small
+				v-if="story.content.image.title"
+				style="opacity: 0.4"
+				class="d-block mt-2"
+				><i>{{ story.content.image.title }}</i></small
+			>
 		</div>
 
 		<h1
