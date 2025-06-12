@@ -10,6 +10,32 @@
 						:key="`blok-map-${blok._uid}`"
 						:document="blok.text"
 					/>
+					<LightGalleries
+						v-if="blok.image && blok.image.filename"
+						id="lightgallery-travel-map"
+						:key="`blok-img-galleries-${blok._uid}`"
+						:galleries="[
+							{
+								imgs: [
+									{
+										...blok.image,
+										alt: blok.image.alt || ''
+									}
+								]
+							}
+						]"
+						is-single-image
+					>
+						<template #default="{ open }">
+							<SbImage
+								:alt="blok.image.alt || ''"
+								:pic="blok.image"
+								:preset="$config.presetNames.HISTORY_FLYER"
+								content-class="cursor-pointer"
+								@click.native="open(0, 0)"
+							/>
+						</template>
+					</LightGalleries>
 					<v-divider
 						v-if="index !== content.bloks.length - 1"
 						:key="`blok-map-divider-${index}`"
@@ -46,5 +72,9 @@ export default {
 .map ::v-deep iframe {
 	width: 100%;
 	height: 100%;
+}
+
+#lightgallery-travel-map ::v-deep .cursor-pointer {
+	cursor: pointer;
 }
 </style>
