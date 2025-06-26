@@ -12,6 +12,10 @@
 			v-else-if="story.content.component === 'info_map'"
 			:content="story.content"
 		/>
+		<BasicPageWithGallery
+			v-else-if="story.content.component === 'BasicPage'"
+			:content="story.content"
+		/>
 	</section>
 </template>
 
