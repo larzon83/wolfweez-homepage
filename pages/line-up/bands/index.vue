@@ -105,7 +105,9 @@ export default {
 		})
 
 		const bandsMeta = bandsDir.stories.find(item => item.is_startpage)
-		const bandsAll = bandsDir.stories.filter(item => !item.is_startpage)
+		const bandsAll = bandsDir.stories.filter(
+			item => !item.is_startpage && !item.content.disabled
+		)
 
 		return {
 			bandsAll,

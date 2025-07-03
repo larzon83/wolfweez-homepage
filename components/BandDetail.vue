@@ -1,6 +1,19 @@
 <!-- eslint-disable vue/no-v-text-v-html-on-component -->
 <template>
 	<div v-editable="band">
+		<v-alert
+			v-if="band.disabled"
+			icon="$info"
+			dense
+			outlined
+			prominent
+			text
+			class="pa-4 mb-10 mt-0 warning--text"
+		>
+			<!-- TODO: configure text etc via new sb fields -->
+			<p class="ma-0"><b>ABGESAGT</b></p>
+		</v-alert>
+
 		<h1 class="text-h4 text-sm-h3 text-lg-h2 font-weight-bold pb-4">
 			{{ band.name }}
 		</h1>
@@ -43,7 +56,7 @@
 			<!-- aside -->
 			<v-col cols="12" lg="5" xl="4" tag="aside">
 				<v-card color="darkish" flat>
-					<v-card-text>
+					<v-card-text v-if="!band.disabled">
 						<h2>Running Order</h2>
 						<v-divider />
 						<div class="pb-2"><b>Tag:</b> {{ playDay || 'TBA' }}</div>

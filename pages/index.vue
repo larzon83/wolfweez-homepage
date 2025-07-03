@@ -139,7 +139,8 @@
 						</v-card-text>
 					</v-card>
 				</v-col>
-				<v-col cols="12" lg="auto">
+				<!-- TODO: make configurable via sb -->
+				<!-- <v-col cols="12" lg="auto">
 					<v-card flat class="ticket-box">
 						<v-card-text class="prime ticket-box-inner pb-6">
 							<v-img
@@ -164,7 +165,7 @@
 							</v-btn>
 						</v-card-text>
 					</v-card>
-				</v-col>
+				</v-col> -->
 			</v-row>
 		</v-col>
 
@@ -317,10 +318,16 @@ export default {
 
 		context.store.commit('central/RESET_CRUMBS')
 
+		// TODO: ugly, improve
+		const bandsFiltered = bands
+		bandsFiltered.stories = bandsFiltered.stories.filter(
+			item => !item.content.disabled
+		)
+
 		return {
 			...homepage,
 			// foo,
-			bands,
+			bands: bandsFiltered,
 			newsSorted
 		}
 	},
