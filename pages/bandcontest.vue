@@ -20,26 +20,26 @@
 			<!-- ------------------------ -->
 			<!-- NOTE: FIRST INFO -->
 			<!-- ------------------------ -->
-			<!-- <p><b>Termin:</b> 06. Dezember 2024</p>
+			<!-- <p><b>Termin:</b> 28. November 2025</p>
 			<p>Weitere Infos folgen.</p> -->
 
 			<!-- ------------------------ -->
 			<!-- NOTE: BEWERBUNG -->
 			<!-- ------------------------ -->
 
-			<!-- <p>
+			<p>
 				Yeah! Großartige Sache das ihr hier gelandet seid und euch mit euerer
 				Band bei unserem Bandcontest bewerbt!!!
 			</p>
 			<h2>Infos zum Bandcontest</h2>
 			<p>
-				<b>Termin:</b> 06. Dezember 2024<br />
+				<b>Termin:</b> 28. November 2025<br />
 				<b>Location:</b> Waidbachhalle 78661 Irslingen<br />
-				<b>Bewerbungszeitraum:</b> 22.08.2024 – 06.11.2024
+				<b>Bewerbungszeitraum:</b> 01.09.2025 – 31.10.2025
 			</p>
 			<h3>Gewinn</h3>
 			<p>
-				<b>2x einen Opener-Slot auf dem Wolfweez Open Air Festival 2025.</b>
+				<b>2x einen Opener-Slot auf dem Wolfweez Open Air Festival 2026.</b>
 				<br />
 				<i>5 Bands haben die Chance. Jury- und Zuschauervoting.</i>
 			</p>
@@ -69,7 +69,7 @@
 
 			<p>
 				<b
-					>Schickt uns euere Bewerbung bis zum 15.10.2024 an
+					>Schickt uns euere Bewerbung bis zum 31.10.2025 an
 					<a href="mailto:bandcontest@wolfweez-openair.de"
 						>bandcontest@wolfweez-openair.de</a
 					>.</b
@@ -128,7 +128,7 @@
 				<a href="mailto:bandcontest@wolfweez-openair.de"
 					>bandcontest@wolfweez-openair.de</a
 				>.
-			</p> -->
+			</p>
 
 			<!-- ------------------------ -->
 			<!-- NOTE: Bewerbungsphase beendet -->
@@ -144,14 +144,14 @@
 			<!-- ------------------------ -->
 
 			<!-- <p>
-				Der Bandcontest 2024 steht in den Startlöchern und die fünf Bands für
+				Der Bandcontest 2025 steht in den Startlöchern und die fünf Bands für
 				das Finale stehen fest!
 			</p>
 			<p>
-				Am <b>06.12.2024</b> ist es wieder so weit, der vierte Bandcontest des
+				Am <b>28.11.2025</b> ist es wieder so weit, der fünfte Bandcontest des
 				Wolfweez OpenAir Festivals wird veranstaltet.<br />
 				Fünf Bands aus Nah und Fern werden an diesem Abend um die zwei begehrten
-				Plätze, vom 2025er Line-Up des Wolfweez OpenAir Festivals auf der Bühne
+				Plätze, vom 2026er Line-Up des Wolfweez OpenAir Festivals auf der Bühne
 				gegeneinander antreten und euch ordentlich einheizen.
 			</p>
 
@@ -219,7 +219,7 @@
 			<!-- NOTE: AFTER-SHOW -->
 			<!-- ------------------------ -->
 
-			<p>
+			<!-- <p>
 				Der Bandcontest 2024 ist vorbei und die Halle wurde wieder in ihren
 				ursprünglichen Zustand versetzt!😁🤘💪
 			</p>
@@ -262,7 +262,7 @@
 			<p>
 				Somit steht auch fest wer am Festival-Freitag und am Festival-Samstag
 				die jeweiligen Festivaltage eröffnet!🤩🤘
-			</p>
+			</p> -->
 
 			<!-- TODO: obsolete -> remove -->
 			<!-- <br />
