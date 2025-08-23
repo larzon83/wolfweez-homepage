@@ -120,7 +120,7 @@ export default {
 
 	data() {
 		return {
-			pageIsActive: true,
+			pageIsActive: false,
 			// pageIsActive:
 			// 	process.env.NODE_ENV === 'development' ||
 			// 	process.env.NUXT_ENV_IS_SPA === 'true' ||
