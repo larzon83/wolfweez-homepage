@@ -63,7 +63,7 @@ const imageSrc = resolve(
 const image = fs.readFileSync(imageSrc)
 // eslint-disable-next-line new-cap
 const base64Image = new Buffer.from(image).toString('base64')
-const bgImage = 'data:image/jpeg;base64,' + base64Image
+const bgImage = 'data:image/png;base64,' + base64Image
 
 const htmlTemplateSrc = resolve(__dirname, 'html-template.html')
 const htmlTemplate = fs.readFileSync(htmlTemplateSrc, 'UTF-8')
