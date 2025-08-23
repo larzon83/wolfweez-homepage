@@ -117,7 +117,6 @@ export default {
 			ctx: context,
 			path: '/verein'
 		})
-		console.log('result:', result.story.content.image)
 
 		const crumbs = [
 			{
