@@ -13,16 +13,16 @@
 							class="buy-ticket-wrapper d-flex flex-column align-center align-self-start rounded dark"
 						>
 							<a
-								href="https://loveyourartist.com/de/profiles/wolfweez-openair-festival-FIR319/events/wolfweez-openair-2025-dietingen-VCWDRZ"
+								href="https://loveyourartist.com/de/profiles/musikinitiative-irslingen-2019-ev-FIR319/events/wolfweez-openair-2026-dietingen-MMF5EO"
 								target="_blank"
 								class="mt-2"
 							>
 								<v-img
-									alt="Ticket Wolfweez OpenAir Festival 2025"
+									alt="Ticket Wolfweez OpenAir Festival 2026"
 									:width="200"
 									:height="200"
 									contain
-									src="https://lya-assets.s3.eu-central-1.amazonaws.com/public/8997ee03-3649-43ab-a45d-8cac8e5e1c39/1733209645833/wolfweez-avatar-2025.png"
+									src="https://loveyourartist.imgix.net/public/8997ee03-3649-43ab-a45d-8cac8e5e1c39/1753900055656/250730_Wolfweez_Imagemotiv_2026_1zu1_aufSchwarz.jpg?pjpg=format&w=400"
 									class="rounded"
 								>
 								</v-img>
@@ -32,7 +32,7 @@
 								{{ currentFestival.content.year }}</span
 							>
 							<v-btn
-								href="https://loveyourartist.com/de/profiles/wolfweez-openair-festival-FIR319/events/wolfweez-openair-2025-dietingen-VCWDRZ"
+								href="https://loveyourartist.com/de/profiles/musikinitiative-irslingen-2019-ev-FIR319/events/wolfweez-openair-2026-dietingen-MMF5EO"
 								target="_blank"
 								:ripple="false"
 								color="prime"
@@ -47,27 +47,26 @@
 							</v-btn>
 						</v-col>
 						<v-col cols="12" lg="6" xl="8">
-							<!-- <h3 class="mt-1">Early Wolf Vorverkauf</h3>
+							<h3 class="mt-1">Early Wolf Vorverkauf</h3>
 							<v-divider class="my-5" />
 							<p>
-								Erhalte Kombiticket sowie Campingticket im Aktionszeitraum zum
+								Erhalte das <b>Kombi Ticket</b> im Aktionszeitraum zum
 								vergünstigten Vorverkaufspreis.
 							</p>
-							<p>Zeitraum: <b>06.12.2024 - 24.12.2024</b></p>
+							<p>Zeitraum: <b>01.09.2025 - 01.11.2025</b></p>
 							<ul>
 								<li>
-									<span>Kombi Ticket: 90€</span>
-									<s class="font-italic" style="opacity: 0.4">95€</s>
+									<span>Kombi Ticket: 80€</span>
+									<s class="font-italic" style="opacity: 0.4">105€</s>
 									<i>(+ 4,90€ VVK Gebühr)</i>
 								</li>
 								<li>
-									<span>Camping Ticket: 20€</span>
-									<s class="font-italic" style="opacity: 0.4">22€</s>
+									<span>Camping Ticket: 25€</span>
 									<i>(+ 2€ VVK Gebühr)</i>
 								</li>
-							</ul> -->
+							</ul>
 							<slot name="inside" />
-							<ul>
+							<!-- <ul>
 								<li>
 									<span>Kombi Ticket: 95€</span>
 									<i style="opacity: 0.4">(+ 4,90€ VVK Gebühr)</i>
@@ -84,8 +83,8 @@
 									<span>Camping Ticket: 22,00€</span>
 									<i style="opacity: 0.4">(+ 2,20€ VVK Gebühr)</i>
 								</li>
-							</ul>
-							<!-- <v-alert
+							</ul> -->
+							<v-alert
 								icon="$info"
 								dense
 								outlined
@@ -95,10 +94,10 @@
 							>
 								<p><b>ACHTUNG</b></p>
 								<p>
-									Die Vorverkaufsstellen (s.u.) werden ab Mitte März
+									Die Vorverkaufsstellen (s.u.) werden ab Mitte März 2026
 									ausgestattet.
 								</p>
-							</v-alert> -->
+							</v-alert>
 						</v-col>
 					</v-row>
 				</v-row>

@@ -22,7 +22,7 @@ export const state = () => ({
 	},
 	showLyaBuyButton: true,
 	showWinterspecialBuyButton: false,
-	showRookieDayBuyButton: true
+	showRookieDayBuyButton: false
 })
 
 export const getters = {

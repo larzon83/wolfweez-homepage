@@ -1,6 +1,6 @@
 <template>
 	<!-- IN-ACTIVE -->
-	<section v-if="!pageIsActive">
+	<section v-if="!story.content.page_is_active">
 		<h2 class="d-none d-lg-flex text-h4 text-sm-h3 text-lg-h2 font-weight-bold">
 			Tickets
 		</h2>
@@ -60,11 +60,11 @@
 	>
 		<LazyLyaBuyButton v-if="showLyaBuyButton">
 			<h2 class="text-h4 font-weight-bold mb-4">
-				Tickets Wolfweez OpenAir Festival 2025
+				Tickets Wolfweez OpenAir Festival 2026
 			</h2>
 		</LazyLyaBuyButton>
 
-		<a
+		<!-- <a
 			href="https://infield.live/festivals/wolfweez-open-air-festival/?booking=true"
 			rel="noreferrer"
 			target="_blank"
@@ -77,7 +77,7 @@
 						'https://a.storyblok.com/f/95378/1920x520/700d985e2f/infield-banner-2025.png?cv=1740830236346'
 				}"
 				:preset="$config.presetNames.FULL_WIDTH"
-		/></a>
+		/></a> -->
 
 		<LazyWinterspecialBuyButton v-if="showWinterspecialBuyButton">
 			<h2 class="text-h4 font-weight-bold mb-4">
@@ -99,7 +99,7 @@
 			</p>
 		</LazyRookieDayBuyButton>
 
-		<div>
+		<div v-if="story.content.show_vvk_places">
 			<h2 class="pb-3">Offizielle Vorverkaufstellen</h2>
 			<v-row>
 				<template v-for="vvk in story.content.vvk_places">
@@ -175,7 +175,7 @@ export default {
 			// 	process.env.NODE_ENV === 'development' ||
 			// 	process.env.NUXT_ENV_IS_SPA === 'true' ||
 			// 	process.env.NUXT_ENV_STORYBLOK_PREVIEW === 'true',
-			pageIsActive: false,
+			// pageIsActive: false,
 			pageTitle
 		}
 	},
