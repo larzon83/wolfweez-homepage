@@ -47,22 +47,23 @@
 							</v-btn>
 						</v-col>
 						<v-col cols="12" lg="6" xl="8">
-							<h3 class="mt-1">Early Wolf Vorverkauf</h3>
+							<h3 class="mt-1">Blind Wolf Vorverkauf</h3>
 							<v-divider class="my-5" />
 							<p>
-								Erhalte das <b>Kombi Ticket</b> im Aktionszeitraum zum
-								vergünstigten Vorverkaufspreis.
+								Erhalte das <b>Kombi Ticket</b> in dieser limitierten
+								Ticketaktion zum vergünstigten Vorverkaufspreis. 150 Stück im
+								Verkauf.
 							</p>
-							<p>Zeitraum: <b>01.09.2025 - 01.11.2025</b></p>
+							<!-- <p>Zeitraum: <b>01.09.2025 - 01.11.2025</b></p> -->
 							<ul>
 								<li>
 									<span>Kombi Ticket: 80€</span>
 									<s class="font-italic" style="opacity: 0.4">105€</s>
-									<i>(+ 4,90€ VVK Gebühr)</i>
+									<i>(+ 5,95€ VVK Gebühr)</i>
 								</li>
 								<li>
 									<span>Camping Ticket: 25€</span>
-									<i>(+ 2€ VVK Gebühr)</i>
+									<i>(+ 1,75€ VVK Gebühr)</i>
 								</li>
 							</ul>
 							<slot name="inside" />
@@ -93,9 +94,14 @@
 								class="pa-4 mt-8 mb-0 information--text"
 							>
 								<p><b>ACHTUNG</b></p>
-								<p>
+								<!-- <p>
 									Die Vorverkaufsstellen (s.u.) werden ab Mitte März 2026
 									ausgestattet.
+								</p> -->
+								<p>
+									Die Vorverkaufsstellen werden im Frühjahr 2026 ausgestattet.
+									<br />
+									Tagestickets ebenfalls Frühjahr 2026.
 								</p>
 							</v-alert>
 						</v-col>
