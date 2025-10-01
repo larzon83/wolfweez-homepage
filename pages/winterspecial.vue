@@ -3,22 +3,23 @@
 		<h2
 			class="d-none d-lg-flex text-h4 text-sm-h3 text-lg-h2 font-weight-bold mb-5"
 		>
-			Wolfweez Winter Special 2024
+			Wolfweez Winter Special 2025
 		</h2>
 
 		<h3 class="mb-2">Das Indoor Wolfweez Feeling für die kälteren Tage</h3>
 		<p>
-			Zwei Tage Rock und Metal vom feinsten, hintereinander, in der
+			Zwei Tage Rock und Metal vom Feinsten, hintereinander, in der
 			Waidbachhalle in Irslingen!🤩🤘
 		</p>
 		<v-divider class="my-5" />
 		<p>
-			Am <b>Freitag den 06. Dezember 2024</b> findet unser alljährlicher
+			Am <b>Freitag, den 28. November 2025 </b> findet unser alljährlicher
 			<nuxt-link :to="bandContestLink"><b>Bandcontest</b></nuxt-link> statt, bei
 			dem 5 Nachwuchsbands vor einer Fachjury und euch sich unter Beweis stellen
 			werden! Den beiden Gewinnern winken wieder die Opener-Slots beim Wolfweez
 			OpenAir Festival zu! Welche 5 Bands an diesem Abend das Finale bestreiten
-			werden, geben wir Ende Oktober bekannt!
+			werden, geben wir Ende Oktober bekannt! Diesjährige Aftershow-Party mit
+			Flashbang!!
 			<br />
 			<br />
 			Weitere Infos zum Bandcontest findet ihr
@@ -26,45 +27,63 @@
 		</p>
 		<v-divider class="my-5" />
 		<p>
-			Am <b>Samstag 07. Dezember 2024</b> öffnen dann die Pforten zur
+			Am <b>Samstag, 29. November 2025</b> öffnen dann die Pforten zur
 			Winter-Sepcial-Night! 🤩🤘<br />
-			In diesem Jahr mit 2 hochkarätigen Tribute Bands!<br />
-			Mit dabei ist die VOLBEAT Tribute Band -
+			In diesem Jahr wieder mit zwei hochkarätigen Tribute Bands!
+		</p>
+		<p>
+			Auch feiern wir hier schon das Winter-Special als WarmUp Party für das
+			Wolfweez Festival 2026!<br />
+			10 Jahre Wolfweez müssen gebührend gefeiert werden!
+		</p>
+		<p>
+			Mit dabei ist die Limp Bizkit Tribute Band
 			<a
-				href="https://www.facebook.com/PapercutLPTributeBand"
+				href="https://www.facebook.com/Breakstuffcoverband/"
 				target="_blank"
 				rel="noopener noreferrer"
-				><b>Papercut - Linkin Park Tribute Band</b></a
-			>
-			&
-			<a
-				href="https://www.facebook.com/PapercutLPTributeBand"
-				target="_blank"
-				rel="noopener noreferrer"
-				><b>Seven-Shots</b></a
-			>
-			(ehem. VOLTBEAT)!!🤩🤘
+				><b>BREAK STUFF</b></a
+			>!! 🤩🤘
+
+			<br />
+			Nachdem Break Stuff 2019 damals das Wolfweez Festival schon zum Beben
+			gebracht haben, haben wir uns dazu entschlossen diese Party dieses Jahr
+			bei uns in der Waidbachhalle in Irslingen nochmals zu wiederholen! Wir
+			freuen uns sehr, dass sie die die Strecke von Italien (Venedig) nach
+			Irslingen wieder auf sich nehmen, um gemeinsam mit uns allen das Jubiläum
+			einzuläuten! 😎🤘
 		</p>
 
+		<!-- https://www.facebook.com/officialMr.Jack/ -->
 		<p>
-			Nachdem beim letztjährigen Winter-Special, Voltbeat die Halle zum beben
-			gebracht hat und wir eine richtig geile Rock ´n Roll Party gefeiert haben,
-			haben wir die Jungs noch am selben Abend für das diesjährige
-			Winter-Special fix gemacht! Wir freuen uns sehr, dass sie dieses Jahr
-			wieder die Waidbachhalle, mit neuem Namen, zum beben bringen werden! 😎🤘
-			Wer 2022 auf dem Wolfweez OpenAir Festival zu Gast war, wird sich noch
-			sehr Gut an Papercut erinnern können, welche an jenem Abend das Festival
-			zum kochen gebracht haben. Wir freuen uns riesig, dass die Jungs aus
-			Italien, wieder zu uns nach Irslingen reisen und gemeinsam das Wolfweez
-			Winter-Special, mit Seven Shots, zum beben bringen werden!! 🤩😎🤘
+			In aller Munde sind aktuell System of a Down und da auch wir Fans von SOAD
+			sind, haben wir es uns in diesem Jahr nicht nehmen lassen und hier
+			ebenfalls eine Tribute Band eingeladen! Ebenfalls reisen aus Italien die
+			Jungs von der SOAD Tribute Band
+			<a
+				href="https://www.facebook.com/officialMr.Jack/"
+				target="_blank"
+				rel="noopener noreferrer"
+				><b>MR. JACK</b></a
+			>
+			an!
+		</p>
+		<p>
+			Gemeinsam werden Break Stuff und Mr. Jack das Wolfweez Winter-Special zum
+			Beben bringen!! 🤩😎🤘
 		</p>
 
 		<p>🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥</p>
 		<ul>
-			<li>Freitag, 06.12.2024 und Samstag, 07.12.2024</li>
+			<li>Freitag, 28.11.2025 und Samstag, 29.11.2025</li>
 			<li>Waidbachhalle Irslingen</li>
-			<li>Einlass (jeweils): 19 Uhr</li>
+			<li>Einlass (jeweils): 18 Uhr</li>
 			<li>Beginn (jeweils): 20 Uhr</li>
+			<li>Bandcontest (Freitag): 10€ Abendkasse (nur Abendkasse, kein VVK)</li>
+			<li>
+				Winter-Special (Samstag): 25€ (Abendkasse & VVK, siehe HP zzgl.
+				Gebühren)
+			</li>
 		</ul>
 		<br />
 
@@ -97,7 +116,12 @@
 			</p>
 		</v-alert> -->
 
-		<LazyWinterspecialBuyButton
+		<!-- <LazyWinterspecialBuyButton
+			v-if="showWinterspecialBuyButton"
+			class="mt-6"
+		/> -->
+
+		<LazyLyaWinterspecialButton
 			v-if="showWinterspecialBuyButton"
 			class="mt-6"
 		/>
