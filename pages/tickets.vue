@@ -79,15 +79,25 @@
 				:preset="$config.presetNames.FULL_WIDTH"
 		/></a> -->
 
-		<LazyWinterspecialBuyButton v-if="showWinterspecialBuyButton">
+		<!-- <LazyWinterspecialBuyButton v-if="showWinterspecialBuyButton">
 			<h2 class="text-h4 font-weight-bold mb-4">
-				Tickets Wolfweez Winter Special 2024
+				Tickets Wolfweez Winter Special 2025
 			</h2>
 			<p>
 				Weitere Infos zum Winter Special findet ihr
 				<nuxt-link :to="winterSpecialLink">hier</nuxt-link>.
 			</p>
-		</LazyWinterspecialBuyButton>
+		</LazyWinterspecialBuyButton> -->
+
+		<LazyLyaWinterspecialButton v-if="showWinterspecialBuyButton">
+			<h2 class="text-h4 font-weight-bold mb-4">
+				Tickets Wolfweez Winter Special 2025
+			</h2>
+			<p>
+				Weitere Infos zum Winter Special findet ihr
+				<nuxt-link :to="winterSpecialLink">hier</nuxt-link>.
+			</p>
+		</LazyLyaWinterspecialButton>
 
 		<LazyRookieDayBuyButton v-if="showRookieDayBuyButton">
 			<h2 :class="['text-h4 font-weight-bold mb-4']">
