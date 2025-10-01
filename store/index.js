@@ -20,7 +20,7 @@ export const state = () => ({
 		[tabTypes.INFOS]: {},
 		[tabTypes.HISTORY]: {}
 	},
-	showLyaBuyButton: true,
+	showLyaBuyButton: false,
 	showWinterspecialBuyButton: true,
 	showRookieDayBuyButton: false
 })
