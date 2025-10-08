@@ -11,7 +11,12 @@
 					{{ currentFestival.content.date }}<br />
 					<b>{{ currentFestival.content.year }}</b>
 				</v-col>
-				<v-col class="logo-wrapper text-center" cols="9" md="6">
+				<v-col
+					class="logo-wrapper text-center"
+					cols="9"
+					md="6"
+					style="z-index: 1"
+				>
 					<nuxt-link
 						aria-label="Zur Startseite"
 						class="logo-link d-block"
@@ -23,6 +28,17 @@
 				<v-col class="byline text-left pl-3 d-none d-md-block" cols="3">
 					<b class="place">Irslingen</b><br />
 					bei Rottweil
+				</v-col>
+				<v-col cols="12" class="mt-n12">
+					<v-img
+						alt="10 Jahre Jubiläum"
+						:src="require('~/assets/img/10-jahre-jubilaeum.png')"
+						contain
+						width="300"
+						class="mx-auto px-8 px-md-0"
+						content-class="foobar"
+						eager
+					/>
 				</v-col>
 			</v-row>
 		</div>
