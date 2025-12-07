@@ -21,7 +21,7 @@ export const state = () => ({
 		[tabTypes.HISTORY]: {}
 	},
 	showLyaBuyButton: true,
-	showWinterspecialBuyButton: true,
+	showWinterspecialBuyButton: false,
 	showRookieDayBuyButton: false
 })
 
