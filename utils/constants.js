@@ -110,6 +110,7 @@ export const routeMeta = {
 
 	SPONSOREN: {
 		title: 'Sponsoren & Partner',
+		titleShort: 'Sponsoren',
 		to: '/sponsoren/'
 	},
 
@@ -176,5 +177,6 @@ export const mainNavItems = [
 	{ ...routeMeta.LINEUP, tabType: tabTypes.LINEUP },
 	{ ...routeMeta.TICKETS },
 	{ ...routeMeta.HISTORIE, tabType: tabTypes.HISTORY },
+	{ ...routeMeta.SPONSOREN },
 	{ ...routeMeta.VEREIN }
 ]

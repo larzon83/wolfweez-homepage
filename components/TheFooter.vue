@@ -132,14 +132,14 @@ export default {
 						{ ...routeMeta.TICKETS },
 						{ ...routeMeta.NEWS },
 						{ ...routeMeta.INFOS },
-						{ ...routeMeta.HISTORIE }
+						{ ...routeMeta.HISTORIE },
+						{ ...routeMeta.SPONSOREN }
 					]
 				},
 				{
 					title: 'Dies & Das',
 					links: [
 						{ ...routeMeta.MEDIEN__FOTOGALERIE },
-						{ ...routeMeta.SPONSOREN },
 						{ ...routeMeta.BANDCONTEST },
 						{ ...routeMeta.WINTERSPECIAL },
 						{ ...routeMeta.ROOKIE__DAY },

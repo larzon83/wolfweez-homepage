@@ -55,7 +55,7 @@
 							tile
 							v-bind="attrs"
 							v-on="on"
-							>{{ navItem.title }}</v-btn
+							>{{ navItem.titleShort || navItem.title }}</v-btn
 						>
 					</template>
 
@@ -87,7 +87,7 @@
 					class="nav-btn"
 					text
 					tile
-					>{{ navItem.title }}</v-btn
+					>{{ navItem.titleShort || navItem.title }}</v-btn
 				>
 			</template>
 		</v-row>
@@ -113,18 +113,20 @@ export default {
 			}
 
 			const mainNavItemsWithoutHome = [...this.mainNavItems].splice(1)
-			const foundInMainNavItems = mainNavItemsWithoutHome.find(p =>
+			const itemFoundInMainNavItems = mainNavItemsWithoutHome.find(p =>
 				currentPath.includes(p.to)
 			)
 
-			if (foundInMainNavItems) {
-				return foundInMainNavItems.title
+			if (itemFoundInMainNavItems) {
+				return (
+					itemFoundInMainNavItems.titleShort || itemFoundInMainNavItems.title
+				)
 			}
 
 			let headline = ''
 			for (const route of Object.values(routeMeta)) {
 				if (route.to === currentPath) {
-					headline = route.title
+					headline = route.titleShort || route.title
 					break
 				}
 			}
@@ -173,7 +175,7 @@ export default {
 /*! purgecss end ignore */
 
 .nav-btn {
-	font-size: $size20;
+	font-size: $size19;
 	letter-spacing: $main-nav-letter-spacing;
 
 	&:not(.nav-btn-active) ::v-deep .v-btn__content {
@@ -181,8 +183,8 @@ export default {
 	}
 
 	@media #{map-get($display-breakpoints, 'lg-only')} {
-		// to fit all main items into one row
-		font-size: $size16;
+		font-size: $size14;
+		padding-inline: 12px !important;
 	}
 }
 
