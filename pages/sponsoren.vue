@@ -1,5 +1,40 @@
 <template>
 	<section>
+		<v-card color="darkish" flat class="sponsorenmappe mb-12">
+			<v-card-text>
+				<v-row align="center" class="flex-column flex-md-row">
+					<v-col cols="auto">
+						<a href="/wolfweez-sponsorenmappe-2026.pdf" target="_blank">
+							<v-img
+								alt="Sponsorenmappe 2026"
+								:aspect-ratio="1654 / 827"
+								src="https://a.storyblok.com/f/95378/1654x827/14b901b3d8/wolfweez-sponsorenmappe-2026.png/m/440x0/filters:quality(100)"
+								contain
+								width="220"
+							/>
+						</a>
+					</v-col>
+					<v-col class="text-center text-md-left">
+						<h2 class="mb-3">Jetzt Sponsor werden!</h2>
+						<p class="mb-2">
+							Sponsoring beim Wolfweez ist mehr als nur Logo-Platzierung – es
+							ist gelebte Partnerschaft in einer leidenschaftlichen Community.
+						</p>
+						<p class="mb-1">
+							Wir bieten verschiedene Sponsoring Pakete an.<br />
+							<a href="/wolfweez-sponsorenmappe-2026.pdf" target="_blank"
+								>Hier geht's zur Sponsorenmappe<v-icon
+									size="15"
+									class="ml-2 ahref--text"
+									>$externalLink</v-icon
+								></a
+							>
+						</p>
+					</v-col>
+				</v-row>
+			</v-card-text>
+		</v-card>
+
 		<h1 class="d-none d-lg-flex text-h4 text-sm-h3 text-lg-h2 font-weight-bold">
 			{{ pageTitle }}
 		</h1>
@@ -136,3 +171,25 @@ export default {
 	}
 }
 </script>
+
+<style lang="scss" scoped>
+.v-card.sponsorenmappe {
+	.v-card__text {
+		box-shadow: inset 0 0 0 1px getcolor('prime', 0.15);
+		background: linear-gradient(
+			150deg,
+			getcolor('prime', 0.8),
+			transparent,
+			transparent
+		);
+
+		.v-image {
+			rotate: 6deg;
+			margin: 8px;
+			border: 4px solid getcolor('prime');
+			border-radius: 18px;
+			box-shadow: 0 2px 15px -7px getcolor('dark');
+		}
+	}
+}
+</style>
