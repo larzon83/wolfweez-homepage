@@ -69,6 +69,14 @@
 									<span>Camping Ticket: 25€</span>
 									<i>(+ 2,50€ VVK Gebühr)</i>
 								</li>
+								<li>
+									<span>Tagesticket Freitag: 65€</span>
+									<i>(+ 4,55€ VVK Gebühr)</i>
+								</li>
+								<li>
+									<span>Tagesticket Samstag: 65€</span>
+									<i>(+ 4,55€ VVK Gebühr)</i>
+								</li>
 							</ul>
 							<slot name="inside" />
 							<!-- <ul>
@@ -103,9 +111,10 @@
 									ausgestattet.
 								</p> -->
 								<p>
-									Die Vorverkaufsstellen werden im Frühjahr 2026 ausgestattet.
+									VVK Start Tagestickets am <b>01.02.2026</b> um
+									<b>00:00 Uhr</b>.
 									<br />
-									Tagestickets ebenfalls Frühjahr 2026.
+									VVK-Stellen werden Anfang März ausgestattet.
 								</p>
 							</v-alert>
 						</v-col>
