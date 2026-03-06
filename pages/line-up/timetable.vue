@@ -72,7 +72,8 @@
 				<div>Freitag und Samstag jeweils ab 8:00 bis 10:00 Uhr.</div>
 				<h2 class="mt-8">Frühschoppen am Samstag Morgen</h2>
 				<div class="text-subtitle-2 font-weight-regular">04.07.2026</div>
-				Traditioneller "Frühschoppen" mit Tanzlmusi
+				Traditioneller "Frühschoppen"
+				<!-- mit Tanzlmusi -->
 				<!-- <nuxt-link to="/line-up/bands/polkamusikanten-stetten/"
 					>Polkamusikanten Stetten</nuxt-link
 				> -->
