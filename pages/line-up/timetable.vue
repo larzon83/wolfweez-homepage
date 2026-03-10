@@ -42,7 +42,11 @@
 							<template v-for="(slot, index) in day.entry">
 								<v-list-item
 									:key="`slot-${slot._uid}`"
-									:to="$_slashify(slot.band.story.full_slug)"
+									:to="
+										slot.band.story && slot.band.story.full_slug
+											? $_slashify(slot.band.story.full_slug)
+											: undefined
+									"
 									:ripple="false"
 									nuxt
 									class="px-3 rounded"
@@ -53,7 +57,11 @@
 											{{ $_playTime(slot.time_start, slot.time_end) }}
 										</div>
 										<div class="band font-weight-bold">
-											{{ slot.band.story.content.name }}
+											{{
+												slot.band.story && slot.band.story.content.name
+													? slot.band.story.content.name
+													: slot.band_name
+											}}
 										</div>
 									</v-list-item-content>
 								</v-list-item>
