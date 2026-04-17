@@ -148,6 +148,27 @@
 				</template>
 			</v-row>
 		</div>
+
+		<v-card color="darkish" flat class="mt-16">
+			<v-card-text>
+				<v-row align="center" class="flex-column flex-md-row">
+					<v-col class="text-center text-md-left">
+						<h3>Reservix</h3>
+						<p class="mb-1">
+							Alternativ auch erhältlich unter
+							<a
+								href="https://www.reservix.de/tickets-wolfweez-openair-festival/t15389"
+								target="_blank"
+								rel="noopener noreferrer"
+								>Reservix.de<v-icon size="15" class="ml-2 ahref--text"
+									>$externalLink</v-icon
+								></a
+							>
+						</p>
+					</v-col>
+				</v-row>
+			</v-card-text>
+		</v-card>
 	</section>
 </template>
 
