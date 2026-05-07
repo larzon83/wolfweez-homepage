@@ -132,23 +132,6 @@
 			</p>
 		</LazyRookieDayBuyButton>
 
-		<div v-if="story.content.show_vvk_places">
-			<h2 class="pb-3">Offizielle Vorverkaufstellen</h2>
-			<v-row>
-				<template v-for="vvk in story.content.vvk_places">
-					<v-col v-if="!vvk.disabled" :key="vvk._uid" cols="12" md="6">
-						<b>{{ vvk.name }}</b>
-						<br />
-						<span v-if="vvk.additional_line"
-							>{{ vvk.additional_line }}<br
-						/></span>
-						{{ vvk.street }} {{ vvk.street_nr }}<br />
-						{{ vvk.plz }} {{ vvk.city }}
-					</v-col>
-				</template>
-			</v-row>
-		</div>
-
 		<v-card color="darkish" flat class="mt-16">
 			<v-card-text>
 				<v-row align="center" class="flex-column flex-md-row">
@@ -169,6 +152,23 @@
 				</v-row>
 			</v-card-text>
 		</v-card>
+
+		<div v-if="story.content.show_vvk_places">
+			<h2 class="pb-3">Offizielle Vorverkaufstellen</h2>
+			<v-row>
+				<template v-for="vvk in story.content.vvk_places">
+					<v-col v-if="!vvk.disabled" :key="vvk._uid" cols="12" md="6">
+						<b>{{ vvk.name }}</b>
+						<br />
+						<span v-if="vvk.additional_line"
+							>{{ vvk.additional_line }}<br
+						/></span>
+						{{ vvk.street }} {{ vvk.street_nr }}<br />
+						{{ vvk.plz }} {{ vvk.city }}
+					</v-col>
+				</template>
+			</v-row>
+		</div>
 	</section>
 </template>
 
