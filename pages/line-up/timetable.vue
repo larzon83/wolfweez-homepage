@@ -77,7 +77,7 @@
 			</v-col>
 			<v-col cols="12">
 				<h2>Frühstück und Kaffee</h2>
-				<div>Freitag und Samstag jeweils ab 8:00 bis 10:00 Uhr.</div>
+				<div>Freitag und Samstag jeweils ab 8:00 bis 11:00 Uhr.</div>
 				<h2 class="mt-8">Frühschoppen am Samstag Morgen</h2>
 				<div class="text-subtitle-2 font-weight-regular">04.07.2026</div>
 				Traditioneller "Frühschoppen"
