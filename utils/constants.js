@@ -167,6 +167,11 @@ export const routeMeta = {
 	MII_MITGLIEDSCHAFT: {
 		title: 'Musikinitiative Irslingen Mitgliedschaft',
 		to: '/mii-mitgliedschaft/'
+	},
+
+	ZUSATZSTOFFE: {
+		title: 'Zusatzstoffe',
+		to: '/zusatzstoffe/'
 	}
 }
 
