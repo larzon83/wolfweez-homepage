@@ -9,16 +9,31 @@
 		<h2>Rote</h2>
 		<p>
 			<i
-				>Geschmacksverstärker (enth. Sellerie), Konservierungsstoff
-				(Nitritpökelsalz), Phosphat, Antioxidationsmittel</i
+				>Phosphat, Konservierungsstoff (Nitritpökelsalz), Antioxidationsmittel,
+				Geschmacksverstärker (enth. Sellerie)</i
 			>
+		</p>
+
+		<h2>Steakwecken</h2>
+		<p>
+			<i>Geschmacksverstärker (enth. Sellerie)</i>
+		</p>
+
+		<h2>Wolfs-Gyros</h2>
+		<p>
+			<i>Schweinefleisch, Geschmacksverstärker (enth. Sellerie)</i>
+		</p>
+
+		<h2>Wolfs-Nudla</h2>
+		<p>
+			<i>Eier, Gluten (Weizengrieß), Lactose (Butter)</i>
 		</p>
 
 		<h2 class="mt-8">Wolfs-Pfännle</h2>
 		<p>
 			<i
-				>Lactose (Sahne), Gluten (Weizen), Geschmacksverstärker (enth.
-				Sellerie)</i
+				>Schweinefleisch, Lactose (Sahne), Gluten (Weizen), Geschmacksverstärker
+				(enth. Sellerie)</i
 			>
 		</p>
 	</section>
