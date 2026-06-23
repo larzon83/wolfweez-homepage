@@ -16,6 +16,73 @@
 
 		<!-- ACTIVE -->
 		<template v-else>
+			<v-col cols="12">
+				<h1 class="text-h4 text-sm-h3 text-lg-h2 font-weight-bold pb-4">
+					Mini-Metal-Dorf "Cub-Stage"
+				</h1>
+			</v-col>
+
+			<v-col
+				v-for="(day, dayIndex) in mmdDays"
+				:key="`mmd-day-${dayIndex}`"
+				cols="12"
+				lg="6"
+				xl="4"
+			>
+				<v-card color="darkish" flat height="100%" class="timetable-card">
+					<v-card-title
+						class="timetable-header justify-center text-center pb-3"
+					>
+						<div class="flex-column justify-center">
+							<h2>{{ day.day_display_name }}</h2>
+							<div class="date text-subtitle-1 font-weight-medium">
+								{{ day.day }}
+							</div>
+						</div>
+					</v-card-title>
+					<v-card-text class="pt-5">
+						<v-list color="transparent" class="py-0 mx-n2">
+							<template v-for="(slot, index) in day.entry">
+								<v-list-item
+									:key="`mmd-day-slot-${slot.index}`"
+									:ripple="false"
+									nuxt
+									class="px-3 rounded"
+									:class="{ alternate: index % 2 === 0 }"
+								>
+									<v-list-item-content class="timetable-content -mmd">
+										<div class="time mb-1">
+											{{ slot.time }}
+										</div>
+										<div class="band font-weight-bold">
+											{{ slot.name }}
+										</div>
+									</v-list-item-content>
+								</v-list-item>
+								<v-divider
+									v-if="index !== day.entry.length - 1"
+									:key="`divider-${slot._uid}`"
+									class="my-2 mx-1"
+								/>
+							</template>
+						</v-list>
+					</v-card-text>
+				</v-card>
+			</v-col>
+
+			<!-- ######## -->
+			<!-- ######## -->
+			<!-- ######## -->
+			<!-- ######## -->
+			<!-- ######## -->
+			<!-- ######## -->
+
+			<v-col cols="12" class="mt-16">
+				<h1 class="text-h4 text-sm-h3 text-lg-h2 font-weight-bold pb-4">
+					Infield "Wolf-Stage"
+				</h1>
+			</v-col>
+
 			<v-col
 				v-for="day in story.content.entry"
 				:key="day._uid"
@@ -134,7 +201,51 @@ export default {
 			// 	process.env.NODE_ENV === 'development' ||
 			// 	process.env.NUXT_ENV_IS_SPA === 'true' ||
 			// 	process.env.NUXT_ENV_STORYBLOK_PREVIEW === 'true',
-			pageTitle
+			pageTitle,
+			mmdDays: [
+				{
+					day_display_name: 'Donnerstag',
+					day: '02.07.2026',
+					entry: [
+						{
+							name: 'Broken Silence',
+							time: '20:00 – 23:00'
+						}
+					]
+				},
+				{
+					day_display_name: 'Freitag',
+					day: '03.07.2026',
+					entry: [
+						{
+							name: 'Metal DJ',
+							time: '14:00 – 19:00'
+						},
+						{
+							name: 'Metal DJ',
+							time: '01:10 – 02:00'
+						}
+					]
+				},
+				{
+					day_display_name: 'Samstag',
+					day: '04.07.2026',
+					entry: [
+						{
+							name: 'Löwenmusikanten',
+							time: '10:30 – 14:00'
+						},
+						{
+							name: 'Mason Finley',
+							time: '14:30 – 16:00'
+						},
+						{
+							name: 'Metal DJ',
+							time: '01:10 – 02:00'
+						}
+					]
+				}
+			]
 		}
 	},
 
@@ -185,6 +296,12 @@ export default {
 				color: getcolor('prime');
 				font-size: $size21;
 				line-height: 1.3;
+			}
+
+			&.-mmd {
+				.band {
+					color: white;
+				}
 			}
 		}
 	}
