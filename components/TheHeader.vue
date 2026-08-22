@@ -11,12 +11,9 @@
 					{{ currentFestival.content.date }}<br />
 					<b>{{ currentFestival.content.year }}</b>
 				</v-col>
-				<v-col
-					class="logo-wrapper text-center"
-					cols="9"
-					md="6"
-					style="z-index: 1"
-				>
+				<!-- add this if something like commented out jubilaeum needs to be shown again: -->
+				<!-- style="z-index: 1" -->
+				<v-col class="logo-wrapper text-center" cols="9" md="6">
 					<nuxt-link
 						aria-label="Zur Startseite"
 						class="logo-link d-block"
@@ -29,7 +26,7 @@
 					<b class="place">Irslingen</b><br />
 					bei Rottweil
 				</v-col>
-				<v-col cols="12" class="mt-n12">
+				<!-- <v-col cols="12" class="mt-n12">
 					<v-img
 						alt="10 Jahre Jubiläum"
 						:src="require('~/assets/img/10-jahre-jubilaeum.png')"
@@ -39,7 +36,7 @@
 						content-class="foobar"
 						eager
 					/>
-				</v-col>
+				</v-col> -->
 			</v-row>
 		</div>
 		<!-- Rellax Options: https://github.com/dixonandmoe/rellax#features -->
