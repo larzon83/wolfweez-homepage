@@ -11,6 +11,7 @@
 				class="pa-4 mb-10 mt-0 information--text"
 			>
 				<p><b>TBA</b></p>
+				<p>LineUp 2027 loading...</p>
 			</v-alert>
 		</v-col>
 
@@ -196,7 +197,7 @@ export default {
 
 	data() {
 		return {
-			pageIsActive: true,
+			pageIsActive: false,
 			// pageIsActive:
 			// 	process.env.NODE_ENV === 'development' ||
 			// 	process.env.NUXT_ENV_IS_SPA === 'true' ||

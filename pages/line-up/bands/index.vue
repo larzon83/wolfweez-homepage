@@ -1,7 +1,7 @@
 <template>
 	<v-row tag="section">
 		<!-- IN-ACTIVE -->
-		<!-- <v-col v-if="bandsAll" cols="12">
+		<v-col v-if="bandsAll" cols="12">
 			<v-alert
 				icon="$info"
 				dense
@@ -11,8 +11,9 @@
 				class="pa-4 mb-10 mt-0 information--text"
 			>
 				<p><b>TBA</b></p>
+				<p>LineUp 2027 loading...</p>
 			</v-alert>
-		</v-col> -->
+		</v-col>
 
 		<!-- ACTIVE -->
 		<v-col
