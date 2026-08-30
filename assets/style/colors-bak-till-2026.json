@@ -1,13 +1,13 @@
 {
 	"clientcolors": {
-		"ahref":								"#fcad3e",
+		"ahref":								"#51d68b",
 		"bad":									"#ff5252",
 		"bright":								"#ebebee",
 		"dark":									"#212121",
 		"darkish":							"#2a2c2d",
 		"good":									"#4caf50",
 		"information":					"#2196f3",
-		"prime":								"#fca121",
+		"prime":								"#49c67f",
 		"warn":									"#fb8c00"
 	}
 }
