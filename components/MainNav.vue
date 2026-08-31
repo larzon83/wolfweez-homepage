@@ -190,7 +190,8 @@ export default {
 
 .nav-btn-active {
 	background: getcolor('prime');
-	color: getcolor('bright') !important;
+	// TODO: change back to 'bright' after 2027 orange is gone
+	color: getcolor('dark') !important;
 	font-weight: 800;
 
 	&:before {

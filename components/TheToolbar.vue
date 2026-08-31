@@ -177,6 +177,8 @@ export default {
 
 .nav-btn-active {
 	background: getcolor('prime');
+	// TODO: remove this after 2027 orange is gone
+	color: getcolor('dark') !important;
 	font-weight: 800;
 
 	&:before {
@@ -223,6 +225,8 @@ export default {
 
 	&.v-list-item--active {
 		background: getcolor('prime');
+		// TODO: remove this after 2027 orange is gone
+		color: getcolor('dark') !important;
 		font-weight: 800;
 
 		&:hover::before,
