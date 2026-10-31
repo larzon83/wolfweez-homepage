@@ -6,16 +6,16 @@
 			<slot />
 
 			<a
-				href="https://loveyourartist.com/de/profiles/musikinitiative-irslingen-2019-ev-FIR319/events/wolfweez-openair-2026-dietingen-MMF5EO"
+				href="https://loveyourartist.com/de/profiles/musikinitiative-irslingen-2019-ev-FIR319/events/wolfweez-openair-2027-dietingen-EISK9YJ"
 				target="_blank"
 				class="mt-2"
 			>
 				<v-img
-					alt="Ticket Wolfweez OpenAir Festival 2026"
+					alt="Ticket Wolfweez OpenAir Festival 2027"
 					:width="200"
 					:height="200"
 					contain
-					src="https://loveyourartist.imgix.net/public/8997ee03-3649-43ab-a45d-8cac8e5e1c39/1753900055656/250730_Wolfweez_Imagemotiv_2026_1zu1_aufSchwarz.jpg?pjpg=format&w=400"
+					src="https://loveyourartist.imgix.net/public/8997ee03-3649-43ab-a45d-8cac8e5e1c39/1791381570366/wolfweez-imagemotiv-2027-final-wolf-schriftzug.jpg?auto=format&compress&q=75&h=400&dpr=2"
 					class="rounded"
 				>
 				</v-img>
@@ -27,7 +27,7 @@
 				}}
 			</span>
 			<v-btn
-				href="https://loveyourartist.com/de/profiles/musikinitiative-irslingen-2019-ev-FIR319/events/wolfweez-openair-2026-dietingen-MMF5EO"
+				href="https://loveyourartist.com/de/profiles/musikinitiative-irslingen-2019-ev-FIR319/events/wolfweez-openair-2027-dietingen-EISK9YJ"
 				target="_blank"
 				:ripple="false"
 				color="prime"

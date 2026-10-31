@@ -66,7 +66,7 @@
 
 		<template v-if="showLyaBuyButton">
 			<h2 class="text-h4 font-weight-bold mb-4">
-				Tickets Wolfweez OpenAir Festival 2026
+				Tickets Wolfweez OpenAir Festival 2027
 			</h2>
 
 			<v-row tag="section">
@@ -77,8 +77,10 @@
 					md="6"
 					xl="4"
 				>
-					<LazyLyaBuyButton2 :date-custom="box.dateCustom">
-						<h3 class="text-h5 font-weight-bold mb-1">{{ box.title }}</h3>
+					<LazyLyaBuyButton2 :date-custom="box.dateCustom" class="fill-height">
+						<h3 class="text-h5 font-weight-bold text-center mb-1">
+							{{ box.title }}
+						</h3>
 						<span class="mb-2"
 							>{{ box.price }}€ <i>(+ {{ box.vvk }}€ VVK Gebühr)</i></span
 						>
@@ -132,7 +134,8 @@
 			</p>
 		</LazyRookieDayBuyButton>
 
-		<v-card color="darkish" flat class="mt-16">
+		<!-- Reservix -->
+		<!-- <v-card color="darkish" flat class="mt-16">
 			<v-card-text>
 				<v-row align="center" class="flex-column flex-md-row">
 					<v-col class="text-center text-md-left">
@@ -151,7 +154,7 @@
 					</v-col>
 				</v-row>
 			</v-card-text>
-		</v-card>
+		</v-card> -->
 
 		<div v-if="story.content.show_vvk_places">
 			<h2 class="pb-3">Offizielle Vorverkaufstellen</h2>
@@ -250,28 +253,33 @@ export default {
 
 		lyaBoxes() {
 			return [
+				// {
+				// 	title: 'Kombi Ticket',
+				// 	price: '110',
+				// 	vvk: '11'
+				// },
 				{
-					title: 'Kombi Ticket',
-					price: '105',
-					vvk: '7,35'
+					title: '"Early Wolf" Kombi Ticket',
+					price: '95',
+					vvk: '9,50'
 				},
 				{
 					title: 'Camping Ticket',
-					price: '25',
-					vvk: '2,50'
-				},
-				{
-					title: 'Tagesticket Freitag',
-					price: '65',
-					vvk: '4,55',
-					dateCustom: '03. Juli 2026'
-				},
-				{
-					title: 'Tagesticket Samstag',
-					price: '65',
-					vvk: '4,55',
-					dateCustom: '04. Juli 2026'
+					price: '30',
+					vvk: '3'
 				}
+				// {
+				// 	title: 'Tagesticket Freitag',
+				// 	price: '65',
+				// 	vvk: '4,55',
+				// 	dateCustom: '03. Juli 2026'
+				// },
+				// {
+				// 	title: 'Tagesticket Samstag',
+				// 	price: '65',
+				// 	vvk: '4,55',
+				// 	dateCustom: '04. Juli 2026'
+				// }
 			]
 		}
 	},
