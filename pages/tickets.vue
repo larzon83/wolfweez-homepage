@@ -84,6 +84,17 @@
 						<span class="mb-2"
 							>{{ box.price }}€ <i>(+ {{ box.vvk }}€ VVK Gebühr)</i></span
 						>
+						<v-alert
+							v-if="box.info"
+							icon="$info"
+							dense
+							outlined
+							prominent
+							text
+							class="pa-2 py-4 my-2 information--text"
+						>
+							{{ box.info }}
+						</v-alert>
 					</LazyLyaBuyButton2>
 				</v-col>
 			</v-row>
@@ -266,7 +277,8 @@ export default {
 				{
 					title: 'Camping Ticket',
 					price: '30',
-					vvk: '3'
+					vvk: '3',
+					info: 'Jede Person benötight ein eigenes Camping Ticket'
 				}
 				// {
 				// 	title: 'Tagesticket Freitag',
