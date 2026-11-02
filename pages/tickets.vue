@@ -264,21 +264,22 @@ export default {
 
 		lyaBoxes() {
 			return [
-				// {
-				// 	title: 'Kombi Ticket',
-				// 	price: '110',
-				// 	vvk: '11'
-				// },
 				{
-					title: '"Early Wolf" Kombi Ticket',
-					price: '95',
-					vvk: '9,50'
+					title: 'Kombi Ticket',
+					price: '110',
+					vvk: '11',
+					info: 'Zugang zum Festival Freitag + Samstag'
 				},
+				// {
+				// 	title: '"Early Wolf" Kombi Ticket',
+				// 	price: '95',
+				// 	vvk: '9,50'
+				// },
 				{
 					title: 'Camping Ticket',
 					price: '30',
 					vvk: '3',
-					info: 'Jede Person benötigt ein eigenes Camping Ticket'
+					info: 'Jede Person benötigt ein eigenes Camping Ticket (beinhaltet auch das KFZ, WoMo oder WoWa)'
 				}
 				// {
 				// 	title: 'Tagesticket Freitag',
