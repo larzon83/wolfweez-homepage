@@ -278,7 +278,7 @@ export default {
 					title: 'Camping Ticket',
 					price: '30',
 					vvk: '3',
-					info: 'Jede Person benötight ein eigenes Camping Ticket'
+					info: 'Jede Person benötigt ein eigenes Camping Ticket'
 				}
 				// {
 				// 	title: 'Tagesticket Freitag',
