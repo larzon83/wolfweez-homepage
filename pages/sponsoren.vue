@@ -4,11 +4,11 @@
 			<v-card-text>
 				<v-row align="center" class="flex-column flex-md-row">
 					<v-col cols="auto">
-						<a href="/wolfweez-sponsorenmappe-2026.pdf" target="_blank">
+						<a href="/wolfweez-sponsorenmappe-2027.pdf" target="_blank">
 							<v-img
 								alt="Sponsorenmappe 2026"
 								:aspect-ratio="1654 / 827"
-								src="https://a.storyblok.com/f/95378/1654x827/14b901b3d8/wolfweez-sponsorenmappe-2026.png/m/440x0/filters:quality(100)"
+								src="https://a.storyblok.com/f/95378/1654x827/2b0387803e/wolfweez-sponsorenmappe-2027.png/m/440x0/filters:quality(100)"
 								contain
 								width="220"
 							/>
@@ -22,7 +22,7 @@
 						</p>
 						<p class="mb-1">
 							Wir bieten verschiedene Sponsoring Pakete an.<br />
-							<a href="/wolfweez-sponsorenmappe-2026.pdf" target="_blank"
+							<a href="/wolfweez-sponsorenmappe-2027.pdf" target="_blank"
 								>Hier geht's zur Sponsorenmappe<v-icon
 									size="15"
 									class="ml-2 ahref--text"
